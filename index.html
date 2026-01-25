@@ -866,10 +866,10 @@
         .card-compact .card-text { font-size: 0.8125rem; }
 
         /* ============================================
-           ABOUT SECTION
+           ABOUT SECTION - Premium Corporate
            ============================================ */
         #about .section-header {
-            max-width: 800px;
+            max-width: 720px;
         }
 
         @media (min-width: 768px) {
@@ -878,10 +878,154 @@
                 margin-right: auto;
                 text-align: center;
             }
+        }
 
-            #about .section-text {
-                margin-left: auto;
-                margin-right: auto;
+        #about .section-title {
+            font-size: 1.5rem;
+            line-height: 1.35;
+        }
+
+        @media (min-width: 768px) {
+            #about .section-title {
+                font-size: 1.875rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #about .section-title {
+                font-size: 2.125rem;
+            }
+        }
+
+        .about-subtitle {
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 640px;
+            margin: 0 auto 32px;
+        }
+
+        @media (min-width: 768px) {
+            .about-subtitle {
+                font-size: 1.0625rem;
+                margin-bottom: 40px;
+            }
+        }
+
+        /* Principles Chips */
+        .about-principles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 16px;
+            margin-bottom: 48px;
+        }
+
+        @media (min-width: 768px) {
+            .about-principles {
+                gap: 12px 24px;
+                margin-bottom: 56px;
+            }
+        }
+
+        .about-principles span {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+        }
+
+        .about-principles span:not(:last-child)::after {
+            content: '•';
+            position: absolute;
+            right: -14px;
+            color: var(--ice-flow);
+        }
+
+        @media (min-width: 768px) {
+            .about-principles span {
+                font-size: 0.8125rem;
+            }
+            .about-principles span:not(:last-child)::after {
+                right: -18px;
+            }
+        }
+
+        /* Facts Grid */
+        .facts-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 480px) {
+            .facts-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .facts-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+
+        .fact-tile {
+            padding: 20px 24px;
+            background: var(--snow-white-pure);
+            border: 1px solid rgba(165, 196, 212, 0.15);
+            border-radius: 12px;
+            transition: all 0.25s ease;
+        }
+
+        .fact-tile:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(165, 196, 212, 0.15);
+            border-color: rgba(165, 196, 212, 0.25);
+        }
+
+        @media (min-width: 768px) {
+            .fact-tile {
+                padding: 24px 28px;
+            }
+        }
+
+        .fact-tile-title {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        @media (min-width: 768px) {
+            .fact-tile-title {
+                font-size: 1rem;
+            }
+        }
+
+        .fact-tile-text {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        @media (min-width: 768px) {
+            .fact-tile-text {
+                font-size: 0.875rem;
+            }
+        }
+
+        /* Disable hover on touch */
+        @media (hover: none) {
+            .fact-tile:hover {
+                transform: none;
+                box-shadow: none;
             }
         }
 
@@ -1629,21 +1773,41 @@
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-label">About iPeptides</span>
-                <h2 class="section-title">iPeptides — международная компания, выстроенная вокруг точности, воспроизводимости и доверия</h2>
-                <p class="section-text">Мы объединяем производство, контроль качества и логистику в единую систему — чтобы партнёры получали стабильный продукт и предсказуемый результат поставок.</p>
+                <h2 class="section-title">iPeptides — компания, выстроенная вокруг точности и доверия</h2>
             </div>
-            <div class="cards-grid cards-grid-3 reveal">
-                <div class="card">
-                    <h3 class="card-title">Системность процессов</h3>
-                    <p class="card-text">Стандартизация на каждом этапе производства и контроля</p>
+            <p class="about-subtitle reveal">Мы объединяем производство, контроль качества и логистику в единую систему — чтобы партнёры получали стабильный продукт и предсказуемые поставки.</p>
+
+            <div class="about-principles reveal">
+                <span>Производство</span>
+                <span>Контроль партии</span>
+                <span>Документация</span>
+                <span>Логистика</span>
+            </div>
+
+            <div class="facts-grid reveal">
+                <div class="fact-tile">
+                    <h3 class="fact-tile-title">B2B-поставки</h3>
+                    <p class="fact-tile-text">Россия и международные направления</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Контроль партии</h3>
-                    <p class="card-text">Прослеживаемость и сопровождение по запросу партнёра</p>
+                <div class="fact-tile">
+                    <h3 class="fact-tile-title">Прослеживаемость партии</h3>
+                    <p class="fact-tile-text">Сопровождение по запросу партнёра</p>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Партнёрская модель</h3>
-                    <p class="card-text">Долгосрочные условия сотрудничества и стабильность</p>
+                <div class="fact-tile">
+                    <h3 class="fact-tile-title">Производственный цикл</h3>
+                    <p class="fact-tile-text">Стандартизация ключевых этапов</p>
+                </div>
+                <div class="fact-tile">
+                    <h3 class="fact-tile-title">Системный контроль</h3>
+                    <p class="fact-tile-text">Параметры партии перед отгрузкой</p>
+                </div>
+                <div class="fact-tile">
+                    <h3 class="fact-tile-title">Упаковка и маркировка</h3>
+                    <p class="fact-tile-text">Под требования партнёров</p>
+                </div>
+                <div class="fact-tile">
+                    <h3 class="fact-tile-title">Партнёрский формат</h3>
+                    <p class="fact-tile-text">Долгосрочные условия</p>
                 </div>
             </div>
         </div>
