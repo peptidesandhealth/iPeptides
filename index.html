@@ -429,29 +429,37 @@
             }
         }
 
-        .hero::after {
-            content: '';
+        /* Video Background */
+        .hero-video {
             position: absolute;
-            top: 20%;
-            right: -20%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(165, 196, 212, 0.15) 0%, transparent 70%);
-            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(248, 249, 250, 0.75);
+            z-index: 1;
+        }
+
+        /* Hide video on mobile for performance */
+        @media (max-width: 768px) {
+            .hero-video {
+                display: none;
+            }
         }
 
         .hero-content {
             position: relative;
-            z-index: 1;
-        }
-
-        @media (min-width: 1024px) {
-            .hero-content {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 60px;
-                align-items: center;
-            }
+            z-index: 2;
         }
 
         .hero-text {
@@ -459,7 +467,7 @@
         }
 
         @media (min-width: 1024px) {
-            .hero-text { margin-bottom: 0; }
+            .hero-text { margin-bottom: 0; max-width: 700px; }
         }
 
         .hero-label {
@@ -527,46 +535,6 @@
             color: var(--text-light);
             text-transform: uppercase;
             letter-spacing: 0.12em;
-        }
-
-        .hero-visual {
-            display: none;
-        }
-
-        @media (min-width: 1024px) {
-            .hero-visual {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 400px;
-                background: linear-gradient(135deg, var(--ice-flow-light) 0%, rgba(255,255,255,0.5) 100%);
-                border-radius: 24px;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .hero-visual::before {
-                content: '';
-                position: absolute;
-                width: 200px;
-                height: 200px;
-                background: radial-gradient(circle, var(--ice-flow) 0%, transparent 70%);
-                opacity: 0.4;
-                animation: float 8s ease-in-out infinite;
-            }
-
-            .hero-visual::after {
-                content: 'iPeptides';
-                font-size: 3rem;
-                font-weight: 600;
-                color: rgba(90, 122, 138, 0.15);
-                letter-spacing: 0.1em;
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(20px, -20px); }
         }
 
         /* ============================================
@@ -1415,6 +1383,10 @@
 
     <!-- Hero -->
     <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
@@ -1427,7 +1399,6 @@
                     </div>
                     <p class="hero-note">Manufacturer & Global Supplier • B2B Solutions</p>
                 </div>
-                <div class="hero-visual"></div>
             </div>
         </div>
     </section>
