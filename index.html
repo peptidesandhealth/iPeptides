@@ -184,7 +184,8 @@
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            margin-top: 16px;
+            margin-top: 8px;
+            margin-bottom: 12px;
             opacity: 0.7;
         }
 
@@ -192,7 +193,28 @@
             .coverage-line {
                 font-size: 0.6875rem;
                 letter-spacing: 0.18em;
-                margin-top: 20px;
+                margin-top: 10px;
+                margin-bottom: 16px;
+            }
+        }
+
+        /* Scale & Trust section */
+        #scale .section-title {
+            color: var(--ice-flow-deep);
+        }
+
+        #scale .card-compact {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 120px;
+        }
+
+        @media (min-width: 768px) {
+            #scale .card-compact {
+                min-height: 140px;
             }
         }
 
@@ -2308,8 +2330,8 @@
             <div class="section-header reveal">
                 <span class="section-label">Scale & Trust</span>
                 <h2 class="section-title">Масштаб и доверие</h2>
-                <p class="section-text">Инфраструктура iPeptides создана для партнёров: стабильность партий, прозрачность процессов и предсказуемая логистика.</p>
                 <p class="coverage-line">Russia • CIS • Europe • MENA • Asia</p>
+                <p class="section-text">Инфраструктура iPeptides создана для партнёров: стабильность партий, прозрачность процессов и предсказуемая логистика.</p>
             </div>
             <div class="cards-grid cards-grid-4 reveal">
                 <div class="card card-compact">
