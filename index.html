@@ -934,46 +934,44 @@
             }
         }
 
-        /* Principles Chips - Mobile optimized */
+        /* Principles Row - text with bullet separators */
         .about-principles {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 6px 10px;
+            gap: 8px 16px;
             margin-bottom: 32px;
         }
 
         @media (min-width: 768px) {
             .about-principles {
-                gap: 10px 20px;
+                gap: 12px 24px;
                 margin-bottom: 44px;
             }
         }
 
         .about-principles span {
-            font-size: 0.625rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 500;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding: 6px 10px;
-            background: rgba(165, 196, 212, 0.12);
-            border-radius: 20px;
-            white-space: nowrap;
+            letter-spacing: 0.1em;
+            position: relative;
         }
 
-        @media (min-width: 480px) {
-            .about-principles span {
-                font-size: 0.6875rem;
-                padding: 7px 14px;
-            }
+        .about-principles span:not(:last-child)::after {
+            content: '•';
+            position: absolute;
+            right: -14px;
+            color: var(--ice-flow);
         }
 
         @media (min-width: 768px) {
             .about-principles span {
-                font-size: 0.75rem;
-                padding: 8px 16px;
-                letter-spacing: 0.1em;
+                font-size: 0.8125rem;
+            }
+            .about-principles span:not(:last-child)::after {
+                right: -18px;
             }
         }
 
