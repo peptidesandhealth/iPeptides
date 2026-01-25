@@ -1172,15 +1172,166 @@
         }
 
         /* ============================================
-           PRINCIPLES SECTION
+           PRINCIPLES SECTION - Premium Glassmorphism
            ============================================ */
-        .principle-card {
-            position: relative;
-            padding-left: 0;
+        .principles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
         }
 
-        .principle-card .card-number {
-            position: static;
+        @media (min-width: 768px) {
+            .principles-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+            }
+        }
+
+        /* Premium Glass Card */
+        .principle-card-premium {
+            position: relative;
+            background: rgba(255, 255, 255, 0.52);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.42);
+            border-radius: 24px;
+            padding: 32px 28px;
+            text-align: center;
+            box-shadow:
+                0 8px 32px rgba(165, 196, 212, 0.15),
+                0 2px 8px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            /* Premium reveal animation initial state */
+            opacity: 0;
+            transform: translateY(30px);
+            filter: blur(6px);
+            transition:
+                opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
+        }
+
+        .principle-card-premium.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* Staggered reveal delays */
+        .principle-card-premium:nth-child(1) { transition-delay: 0s; }
+        .principle-card-premium:nth-child(2) { transition-delay: 0.15s; }
+        .principle-card-premium:nth-child(3) { transition-delay: 0.3s; }
+
+        @media (min-width: 768px) {
+            .principle-card-premium {
+                padding: 40px 32px;
+                border-radius: 28px;
+            }
+        }
+
+        /* Premium hover effect - PC only */
+        @media (hover: hover) {
+            .principle-card-premium:hover {
+                transform: translateY(-8px);
+                box-shadow:
+                    0 20px 48px rgba(165, 196, 212, 0.22),
+                    0 8px 24px rgba(90, 122, 138, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                border-color: rgba(255, 255, 255, 0.6);
+            }
+
+            .principle-card-premium:hover .principle-icon {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        /* Watermark Number */
+        .principle-number {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--ice-flow-dark);
+            opacity: 0.35;
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        @media (min-width: 768px) {
+            .principle-number {
+                font-size: 1.125rem;
+                top: 20px;
+                right: 24px;
+            }
+        }
+
+        /* Icon */
+        .principle-icon {
+            width: 36px;
+            height: 36px;
+            margin: 0 auto 20px;
+            opacity: 0.85;
+            transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+
+        .principle-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .principle-icon {
+                width: 42px;
+                height: 42px;
+                margin-bottom: 24px;
+            }
+        }
+
+        /* Title */
+        .principle-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+
+        @media (min-width: 768px) {
+            .principle-title {
+                font-size: 1.25rem;
+                margin-bottom: 12px;
+            }
+        }
+
+        /* Text */
+        .principle-text {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .principle-text {
+                font-size: 0.9375rem;
+                line-height: 1.65;
+            }
+        }
+
+        /* Disable hover on touch */
+        @media (hover: none) {
+            .principle-card-premium:hover {
+                transform: none;
+                box-shadow:
+                    0 8px 32px rgba(165, 196, 212, 0.15),
+                    0 2px 8px rgba(0, 0, 0, 0.04),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            }
         }
 
         /* ============================================
@@ -2015,21 +2166,47 @@
                 <h2 class="section-title">Принципы iPeptides</h2>
                 <p class="section-text">Мы строим партнёрство на точности процессов, стабильности партии и предсказуемости поставок.</p>
             </div>
-            <div class="cards-grid cards-grid-3 reveal">
-                <div class="card principle-card">
-                    <div class="card-number">01</div>
-                    <h3 class="card-title">Точность</h3>
-                    <p class="card-text">Стандартизация процедур и контроль параметров на ключевых этапах</p>
+            <div class="principles-grid">
+                <div class="principle-card-premium">
+                    <span class="principle-number">01</span>
+                    <div class="principle-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="12" cy="12" r="6"/>
+                            <circle cx="12" cy="12" r="2"/>
+                            <line x1="12" y1="2" x2="12" y2="4"/>
+                            <line x1="12" y1="20" x2="12" y2="22"/>
+                            <line x1="2" y1="12" x2="4" y2="12"/>
+                            <line x1="20" y1="12" x2="22" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3 class="principle-title">Точность</h3>
+                    <p class="principle-text">Стандартизация процедур и контроль параметров на ключевых этапах.</p>
                 </div>
-                <div class="card principle-card">
-                    <div class="card-number">02</div>
-                    <h3 class="card-title">Стабильность</h3>
-                    <p class="card-text">Повторяемость характеристик партии и прозрачность процессов</p>
+                <div class="principle-card-premium">
+                    <span class="principle-number">02</span>
+                    <div class="principle-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="M12 8v4"/>
+                            <path d="M12 16h.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="principle-title">Стабильность</h3>
+                    <p class="principle-text">Повторяемость характеристик партии и прозрачность процессов.</p>
                 </div>
-                <div class="card principle-card">
-                    <div class="card-number">03</div>
-                    <h3 class="card-title">Партнёрство</h3>
-                    <p class="card-text">Гибкие форматы работы и сопровождение под задачи бизнеса</p>
+                <div class="principle-card-premium">
+                    <span class="principle-number">03</span>
+                    <div class="principle-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="principle-title">Партнёрство</h3>
+                    <p class="principle-text">Гибкие форматы работы и сопровождение под задачи бизнеса.</p>
                 </div>
             </div>
         </div>
@@ -2485,6 +2662,22 @@
         };
         window.addEventListener('scroll', revealFactTiles);
         window.addEventListener('load', revealFactTiles);
+
+        // Premium reveal for principle cards (blur-to-sharp + lift + stagger)
+        const principleCards = document.querySelectorAll('.principle-card-premium');
+        const revealPrincipleCards = () => {
+            const principlesGrid = document.querySelector('.principles-grid');
+            if (principlesGrid) {
+                const gridTop = principlesGrid.getBoundingClientRect().top;
+                if (gridTop < window.innerHeight - 80) {
+                    principleCards.forEach(card => {
+                        card.classList.add('revealed');
+                    });
+                }
+            }
+        };
+        window.addEventListener('scroll', revealPrincipleCards);
+        window.addEventListener('load', revealPrincipleCards);
 
         // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(btn => {
