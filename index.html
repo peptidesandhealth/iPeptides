@@ -258,6 +258,17 @@
             color: var(--ice-flow-deep);
         }
 
+        /* Hide description on mobile */
+        #scale .section-text {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            #scale .section-text {
+                display: block;
+            }
+        }
+
         #scale .card-compact {
             display: flex;
             flex-direction: column;
