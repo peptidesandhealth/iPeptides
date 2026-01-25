@@ -249,21 +249,21 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            height: 60px;
-            background: rgba(248, 249, 250, 0.92);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid transparent;
+            height: 52px;
+            background: rgba(252, 252, 252, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(165, 196, 212, 0.15);
             transition: all var(--transition-normal);
         }
 
         .header.scrolled {
-            border-bottom-color: var(--border-light);
-            box-shadow: var(--shadow-sm);
+            background: rgba(252, 252, 252, 0.95);
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
         }
 
         @media (min-width: 768px) {
-            .header { height: 72px; }
+            .header { height: 60px; }
         }
 
         .header-inner {
@@ -274,7 +274,7 @@
         }
 
         .logo {
-            font-size: 1.375rem;
+            font-size: 1.25rem;
             font-weight: 600;
             letter-spacing: -0.02em;
             color: var(--text-primary);
@@ -285,6 +285,10 @@
             color: var(--ice-flow-dark);
         }
 
+        @media (min-width: 768px) {
+            .logo { font-size: 1.375rem; }
+        }
+
         /* Desktop Nav */
         .nav {
             display: none;
@@ -293,14 +297,14 @@
         @media (min-width: 1024px) {
             .nav {
                 display: flex;
-                gap: 32px;
+                gap: 28px;
             }
         }
 
         .nav a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             font-weight: 400;
             transition: color var(--transition-fast);
         }
@@ -309,21 +313,52 @@
             color: var(--text-primary);
         }
 
-        .header-actions {
-            display: none;
-            gap: 10px;
+        /* Header Right Section */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        @media (min-width: 1024px) {
-            .header-actions {
-                display: flex;
+        /* Language Switcher */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            background: rgba(165, 196, 212, 0.12);
+            border-radius: 8px;
+            padding: 3px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            padding: 5px 10px;
+            font-size: 0.6875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+            background: transparent;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .lang-btn.active {
+            background: var(--snow-white-pure);
+            color: var(--text-dark);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .lang-btn:hover:not(.active) {
+            color: var(--text-primary);
+        }
+
+        @media (min-width: 768px) {
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 0.75rem;
             }
-        }
-
-        .header-actions .btn {
-            min-height: 40px;
-            padding: 10px 20px;
-            font-size: 0.8125rem;
         }
 
         /* Mobile Menu Toggle */
@@ -331,9 +366,9 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: 5px;
-            width: 44px;
-            height: 44px;
+            gap: 4px;
+            width: 40px;
+            height: 40px;
             background: none;
             border: none;
             cursor: pointer;
@@ -346,38 +381,42 @@
 
         .menu-toggle span {
             display: block;
-            width: 22px;
-            height: 2px;
+            width: 20px;
+            height: 1.5px;
             background: var(--text-primary);
             border-radius: 1px;
             transition: all var(--transition-normal);
         }
 
         .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
+            transform: rotate(45deg) translate(4px, 4px);
         }
         .menu-toggle.active span:nth-child(2) { opacity: 0; }
         .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
+            transform: rotate(-45deg) translate(4px, -4px);
         }
 
         /* Mobile Menu */
         .mobile-menu {
             position: fixed;
-            top: 60px;
+            top: 52px;
             left: 0;
             right: 0;
             bottom: 0;
             background: var(--bg-primary);
             z-index: 999;
-            padding: 24px var(--container-padding);
+            padding: 20px var(--container-padding);
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 4px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
             transition: all var(--transition-normal);
+        }
+
+        @media (min-width: 768px) {
+            .mobile-menu { top: 60px; }
         }
 
         .mobile-menu.active {
@@ -388,23 +427,35 @@
 
         .mobile-menu a {
             display: block;
-            padding: 16px 0;
+            padding: 14px 0;
             color: var(--text-primary);
             text-decoration: none;
-            font-size: 1.125rem;
+            font-size: 1rem;
             font-weight: 500;
             border-bottom: 1px solid var(--border-light);
         }
 
-        .mobile-menu-buttons {
+        .mobile-menu-footer {
+            margin-top: auto;
+            padding-top: 20px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 24px;
+            gap: 16px;
         }
 
-        .mobile-menu-buttons .btn {
-            width: 100%;
+        .mobile-lang-switcher {
+            display: flex;
+            justify-content: center;
+            background: rgba(165, 196, 212, 0.12);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .mobile-lang-switcher .lang-btn {
+            flex: 1;
+            padding: 10px;
+            font-size: 0.8125rem;
+            border-radius: 8px;
         }
 
         /* ============================================
@@ -1462,39 +1513,42 @@
                 <a href="#" class="logo">i<span>Peptides</span></a>
 
                 <nav class="nav">
-                    <a href="#about">О компании</a>
-                    <a href="#production">Производство</a>
-                    <a href="#quality">Качество</a>
-                    <a href="#partners">Партнёрам</a>
-                    <a href="#geography">География</a>
-                    <a href="#contact">Контакты</a>
+                    <a href="#about" data-lang-key="nav.about">О компании</a>
+                    <a href="#production" data-lang-key="nav.production">Производство</a>
+                    <a href="#quality" data-lang-key="nav.quality">Качество</a>
+                    <a href="#partners" data-lang-key="nav.partners">Партнёрам</a>
+                    <a href="#geography" data-lang-key="nav.geography">География</a>
+                    <a href="#contact" data-lang-key="nav.contact">Контакты</a>
                 </nav>
 
-                <div class="header-actions">
-                    <button class="btn btn-ghost" data-modal>Связаться</button>
-                    <button class="btn btn-primary" data-modal>Запросить КП</button>
+                <div class="header-right">
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                    </div>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
-
-                <button class="menu-toggle" id="menuToggle" aria-label="Меню">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </div>
         </div>
     </header>
 
     <!-- Mobile Menu -->
     <nav class="mobile-menu" id="mobileMenu">
-        <a href="#about">О компании</a>
-        <a href="#production">Производство</a>
-        <a href="#quality">Качество</a>
-        <a href="#partners">Партнёрам</a>
-        <a href="#geography">География</a>
-        <a href="#contact">Контакты</a>
-        <div class="mobile-menu-buttons">
-            <button class="btn btn-primary" data-modal>Запросить КП</button>
-            <button class="btn btn-ghost" data-modal>Связаться</button>
+        <a href="#about" data-lang-key="nav.about">О компании</a>
+        <a href="#production" data-lang-key="nav.production">Производство</a>
+        <a href="#quality" data-lang-key="nav.quality">Качество</a>
+        <a href="#partners" data-lang-key="nav.partners">Партнёрам</a>
+        <a href="#geography" data-lang-key="nav.geography">География</a>
+        <a href="#contact" data-lang-key="nav.contact">Контакты</a>
+        <div class="mobile-menu-footer">
+            <div class="mobile-lang-switcher">
+                <button class="lang-btn active" data-lang="ru">RU</button>
+                <button class="lang-btn" data-lang="en">EN</button>
+            </div>
         </div>
     </nav>
 
@@ -1508,11 +1562,11 @@
                 <p class="hero-label">Manufacturer & Global Supplier • B2B Solutions</p>
                 <h1 class="hero-brand">i<span>Peptides</span></h1>
                 <p class="hero-tagline">
-                    <span>Ведущий производитель и поставщик</span>
-                    <span>пептидных решений премиум-класса</span>
+                    <span data-lang-key="hero.tagline1">Ведущий производитель и поставщик</span>
+                    <span data-lang-key="hero.tagline2">пептидных решений премиум-класса</span>
                 </p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary" data-modal>Стать партнёром</button>
+                    <button class="btn btn-primary" data-modal data-lang-key="hero.cta">Стать партнёром</button>
                 </div>
             </div>
         </div>
@@ -2083,6 +2137,67 @@
             e.preventDefault();
             this.innerHTML = successHTML;
         });
+
+        // Language Switcher
+        const translations = {
+            ru: {
+                'nav.about': 'О компании',
+                'nav.production': 'Производство',
+                'nav.quality': 'Качество',
+                'nav.partners': 'Партнёрам',
+                'nav.geography': 'География',
+                'nav.contact': 'Контакты',
+                'hero.tagline1': 'Ведущий производитель и поставщик',
+                'hero.tagline2': 'пептидных решений премиум-класса',
+                'hero.cta': 'Стать партнёром'
+            },
+            en: {
+                'nav.about': 'About',
+                'nav.production': 'Production',
+                'nav.quality': 'Quality',
+                'nav.partners': 'Partners',
+                'nav.geography': 'Geography',
+                'nav.contact': 'Contact',
+                'hero.tagline1': 'Leading manufacturer and supplier',
+                'hero.tagline2': 'of premium peptide solutions',
+                'hero.cta': 'Become a Partner'
+            }
+        };
+
+        let currentLang = 'ru';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+
+            // Update all text elements with data-lang-key
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update active button state
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+
+            // Save preference
+            localStorage.setItem('lang', lang);
+        }
+
+        // Language button click handlers
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.getAttribute('data-lang'));
+            });
+        });
+
+        // Load saved language preference
+        const savedLang = localStorage.getItem('lang');
+        if (savedLang && translations[savedLang]) {
+            setLanguage(savedLang);
+        }
     </script>
 </body>
 </html>
