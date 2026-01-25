@@ -886,8 +886,25 @@
         /* ============================================
            ABOUT SECTION - Premium Corporate
            ============================================ */
+        #about {
+            padding-top: 48px;
+        }
+
+        @media (min-width: 768px) {
+            #about {
+                padding-top: 64px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #about {
+                padding-top: 80px;
+            }
+        }
+
         #about .section-header {
             max-width: 720px;
+            margin-bottom: 28px;
         }
 
         @media (min-width: 768px) {
@@ -895,93 +912,86 @@
                 margin-left: auto;
                 margin-right: auto;
                 text-align: center;
+                margin-bottom: 36px;
             }
         }
 
         #about .section-title {
-            font-size: 1.5rem;
+            font-size: 1.375rem;
             line-height: 1.35;
+            color: var(--ice-flow-deep);
         }
 
         @media (min-width: 768px) {
             #about .section-title {
-                font-size: 1.875rem;
+                font-size: 1.75rem;
             }
         }
 
         @media (min-width: 1024px) {
             #about .section-title {
-                font-size: 2.125rem;
+                font-size: 2rem;
             }
         }
 
-        .about-subtitle {
-            font-size: 1rem;
-            font-style: italic;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            max-width: 640px;
-            margin: 0 auto 32px;
-        }
-
-        @media (min-width: 768px) {
-            .about-subtitle {
-                font-size: 1.0625rem;
-                margin-bottom: 40px;
-            }
-        }
-
-        /* Principles Chips */
+        /* Principles Chips - Mobile optimized */
         .about-principles {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 8px 16px;
-            margin-bottom: 48px;
+            gap: 6px 10px;
+            margin-bottom: 32px;
         }
 
         @media (min-width: 768px) {
             .about-principles {
-                gap: 12px 24px;
-                margin-bottom: 56px;
+                gap: 10px 20px;
+                margin-bottom: 44px;
             }
         }
 
         .about-principles span {
-            font-size: 0.75rem;
-            font-weight: 500;
+            font-size: 0.625rem;
+            font-weight: 600;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            position: relative;
+            letter-spacing: 0.08em;
+            padding: 6px 10px;
+            background: rgba(165, 196, 212, 0.12);
+            border-radius: 20px;
+            white-space: nowrap;
         }
 
-        .about-principles span:not(:last-child)::after {
-            content: '•';
-            position: absolute;
-            right: -14px;
-            color: var(--ice-flow);
+        @media (min-width: 480px) {
+            .about-principles span {
+                font-size: 0.6875rem;
+                padding: 7px 14px;
+            }
         }
 
         @media (min-width: 768px) {
             .about-principles span {
-                font-size: 0.8125rem;
-            }
-            .about-principles span:not(:last-child)::after {
-                right: -18px;
+                font-size: 0.75rem;
+                padding: 8px 16px;
+                letter-spacing: 0.1em;
             }
         }
 
         /* Facts Grid */
         .facts-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
         }
 
         @media (min-width: 480px) {
             .facts-grid {
-                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .facts-grid {
                 gap: 16px;
             }
         }
@@ -993,47 +1003,125 @@
             }
         }
 
+        /* Fact Tile - Premium with equal height & vertical centering */
         .fact-tile {
-            padding: 20px 24px;
+            padding: 16px 14px;
             background: var(--snow-white-pure);
             border: 1px solid rgba(165, 196, 212, 0.15);
             border-radius: 12px;
-            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            min-height: 100px;
+            /* Premium reveal animation initial state */
+            opacity: 0;
+            transform: translateY(24px);
+            filter: blur(4px);
+            transition:
+                opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
         }
 
-        .fact-tile:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(165, 196, 212, 0.15);
-            border-color: rgba(165, 196, 212, 0.25);
+        .fact-tile.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* Staggered reveal delays */
+        .fact-tile:nth-child(1) { transition-delay: 0s; }
+        .fact-tile:nth-child(2) { transition-delay: 0.08s; }
+        .fact-tile:nth-child(3) { transition-delay: 0.16s; }
+        .fact-tile:nth-child(4) { transition-delay: 0.24s; }
+        .fact-tile:nth-child(5) { transition-delay: 0.32s; }
+        .fact-tile:nth-child(6) { transition-delay: 0.4s; }
+
+        @media (min-width: 480px) {
+            .fact-tile {
+                padding: 18px 16px;
+                min-height: 110px;
+            }
         }
 
         @media (min-width: 768px) {
             .fact-tile {
-                padding: 24px 28px;
+                padding: 24px 20px;
+                min-height: 130px;
+                border-radius: 14px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .fact-tile {
+                padding: 28px 24px;
+                min-height: 140px;
+            }
+        }
+
+        /* Premium hover effect - PC only */
+        @media (hover: hover) {
+            .fact-tile:hover {
+                transform: translateY(-6px);
+                box-shadow:
+                    0 12px 32px rgba(165, 196, 212, 0.2),
+                    0 4px 12px rgba(90, 122, 138, 0.08);
+                border-color: rgba(165, 196, 212, 0.35);
             }
         }
 
         .fact-tile-title {
-            font-size: 0.9375rem;
+            font-size: 0.8125rem;
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             line-height: 1.3;
         }
 
+        @media (min-width: 480px) {
+            .fact-tile-title {
+                font-size: 0.875rem;
+                margin-bottom: 5px;
+            }
+        }
+
         @media (min-width: 768px) {
+            .fact-tile-title {
+                font-size: 0.9375rem;
+                margin-bottom: 6px;
+            }
+        }
+
+        @media (min-width: 1024px) {
             .fact-tile-title {
                 font-size: 1rem;
             }
         }
 
         .fact-tile-text {
-            font-size: 0.8125rem;
+            font-size: 0.6875rem;
             color: var(--text-secondary);
-            line-height: 1.5;
+            line-height: 1.45;
+        }
+
+        @media (min-width: 480px) {
+            .fact-tile-text {
+                font-size: 0.75rem;
+            }
         }
 
         @media (min-width: 768px) {
+            .fact-tile-text {
+                font-size: 0.8125rem;
+                line-height: 1.5;
+            }
+        }
+
+        @media (min-width: 1024px) {
             .fact-tile-text {
                 font-size: 0.875rem;
             }
@@ -1793,7 +1881,6 @@
                 <span class="section-label">About iPeptides</span>
                 <h2 class="section-title">iPeptides — компания, выстроенная вокруг точности и доверия</h2>
             </div>
-            <p class="about-subtitle reveal">Мы объединяем производство, контроль качества и логистику в единую систему — чтобы партнёры получали стабильный продукт и предсказуемые поставки.</p>
 
             <div class="about-principles reveal">
                 <span>Производство</span>
@@ -2293,6 +2380,22 @@
         };
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
+
+        // Premium reveal for fact tiles (blur-to-sharp + lift)
+        const factTiles = document.querySelectorAll('.fact-tile');
+        const revealFactTiles = () => {
+            const factsGrid = document.querySelector('.facts-grid');
+            if (factsGrid) {
+                const gridTop = factsGrid.getBoundingClientRect().top;
+                if (gridTop < window.innerHeight - 60) {
+                    factTiles.forEach(tile => {
+                        tile.classList.add('revealed');
+                    });
+                }
+            }
+        };
+        window.addEventListener('scroll', revealFactTiles);
+        window.addEventListener('load', revealFactTiles);
 
         // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(btn => {
