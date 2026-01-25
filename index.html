@@ -268,9 +268,16 @@
 
         .header-inner {
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: space-between;
             height: 100%;
+            padding-bottom: 10px;
+        }
+
+        @media (min-width: 1024px) {
+            .header-inner {
+                padding-bottom: 12px;
+            }
         }
 
         .logo {
@@ -279,6 +286,7 @@
             letter-spacing: -0.01em;
             color: var(--ice-flow-dark);
             text-decoration: none;
+            line-height: 1;
         }
 
         .logo span {
@@ -297,10 +305,10 @@
         @media (min-width: 1024px) {
             .nav {
                 display: flex;
-                align-items: center;
-                gap: 36px;
+                align-items: flex-end;
+                gap: 32px;
                 margin-left: auto;
-                margin-right: 24px;
+                margin-right: 16px;
             }
         }
 
@@ -310,6 +318,7 @@
             font-size: 0.9375rem;
             font-weight: 400;
             transition: color var(--transition-fast);
+            line-height: 1;
         }
 
         .nav a:hover {
@@ -319,8 +328,8 @@
         /* Header Right Section */
         .header-right {
             display: flex;
-            align-items: center;
-            gap: 12px;
+            align-items: flex-end;
+            gap: 10px;
         }
 
         /* Language Switcher */
@@ -328,21 +337,21 @@
             display: flex;
             align-items: center;
             background: var(--ice-flow-dark);
-            border-radius: 20px;
-            padding: 4px;
-            gap: 2px;
+            border-radius: 14px;
+            padding: 2px;
+            gap: 1px;
         }
 
         .lang-btn {
-            padding: 6px 12px;
-            font-size: 0.75rem;
+            padding: 4px 9px;
+            font-size: 0.6875rem;
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.02em;
             color: rgba(255, 255, 255, 0.7);
             background: transparent;
             border: none;
-            border-radius: 16px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all var(--transition-fast);
         }
@@ -358,8 +367,8 @@
 
         @media (min-width: 1024px) {
             .lang-btn {
-                padding: 7px 14px;
-                font-size: 0.8125rem;
+                padding: 5px 10px;
+                font-size: 0.75rem;
             }
         }
 
