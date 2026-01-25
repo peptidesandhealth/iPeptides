@@ -3,74 +3,1412 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="iPeptides - информация о пептидах и здоровье">
-    <title>iPeptides - Пептиды и Здоровье</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta name="description" content="iPeptides — глобальный производитель и поставщик пептидных решений премиум-класса. B2B партнёрство, производство полного цикла, международные поставки.">
+    <title>iPeptides — Global Peptide Manufacturer & Supplier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #111113;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.05);
+            --border-subtle: rgba(255, 255, 255, 0.06);
+            --border-accent: rgba(255, 255, 255, 0.1);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.4);
+            --accent-blue: #4a9eff;
+            --accent-blue-dim: rgba(74, 158, 255, 0.15);
+            --accent-silver: #c0c7d0;
+            --gradient-hero: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(74, 158, 255, 0.15), transparent);
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --shadow-glow: 0 0 60px rgba(74, 158, 255, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: var(--accent-blue);
+            color: var(--text-primary);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 48px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                padding: 0 64px;
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            background: rgba(10, 10, 11, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 16px 0;
+            border-bottom-color: var(--border-subtle);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        .nav {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .nav {
+                display: flex;
+                gap: 40px;
+            }
+        }
+
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            transition: color 0.2s ease;
+        }
+
+        .nav a:hover {
+            color: var(--text-primary);
+        }
+
+        .header-actions {
+            display: none;
+            gap: 12px;
+        }
+
+        @media (min-width: 1024px) {
+            .header-actions {
+                display: flex;
+            }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-silver);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card);
+            border-color: var(--text-secondary);
+        }
+
+        .btn-accent {
+            background: var(--accent-blue);
+            color: var(--text-primary);
+        }
+
+        .btn-accent:hover {
+            background: #5ca8ff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(74, 158, 255, 0.3);
+        }
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 0.9375rem;
+        }
+
+        /* Mobile Menu Button */
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        @media (min-width: 1024px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--accent-blue);
+        }
+
+        .mobile-menu-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 120px 0 80px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-hero);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            transform: translateX(-50%);
+            background: radial-gradient(circle, rgba(74, 158, 255, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+            50% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.125rem, 2vw, 1.375rem);
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 48px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease 0.4s forwards;
+        }
+
+        .hero-note {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.6s forwards;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 120px 0;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 80px 0;
+            }
+        }
+
+        .section-header {
+            max-width: 720px;
+            margin-bottom: 64px;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .section-text {
+            font-size: 1.0625rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .cards-grid-3 {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .cards-grid-4 {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .cards-grid-6 {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        @media (min-width: 640px) {
+            .cards-grid-3, .cards-grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .cards-grid-6 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .cards-grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .cards-grid-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .cards-grid-6 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        }
+
+        .glass-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-accent);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .glass-card-title {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            letter-spacing: -0.01em;
+        }
+
+        .glass-card-text {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .glass-card-small .glass-card-title {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .glass-card-small .glass-card-text {
+            font-size: 0.875rem;
+        }
+
+        /* About Section */
+        .about-statement {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            line-height: 1.4;
+            margin-bottom: 24px;
+        }
+
+        /* Production List */
+        .production-list {
+            display: grid;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .production-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 24px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .production-item:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-accent);
+        }
+
+        .production-number {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-blue);
+            background: var(--accent-blue-dim);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .production-text {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Geography */
+        .geography-content {
+            display: grid;
+            gap: 48px;
+        }
+
+        @media (min-width: 768px) {
+            .geography-content {
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+            }
+        }
+
+        .geography-map {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .geography-map::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, var(--accent-blue-dim) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .geography-map-text {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 600px;
+            height: 400px;
+            transform: translateX(-50%);
+            background: radial-gradient(ellipse, rgba(74, 158, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: clamp(1.75rem, 3vw, 2.25rem);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 1.0625rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-subtle);
+            padding: 64px 0 32px;
+        }
+
+        .footer-content {
+            display: grid;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-content {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            max-width: 320px;
+        }
+
+        .footer-column h4 {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .footer-copyright {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+
+        .footer-disclaimer {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            line-height: 1.5;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-accent);
+            border-radius: 20px;
+            padding: 48px;
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            transform: scale(0.95) translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .modal-close::before,
+        .modal-close::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 1.5px;
+            background: var(--text-secondary);
+        }
+
+        .modal-close::before {
+            transform: rotate(45deg);
+        }
+
+        .modal-close::after {
+            transform: rotate(-45deg);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .modal-subtitle {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.9375rem;
+            font-family: inherit;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            background: var(--bg-card-hover);
+        }
+
+        .form-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        textarea.form-input {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+        /* Success Message */
+        .success-message {
+            text-align: center;
+            padding: 24px 0;
+        }
+
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--accent-blue-dim);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+        }
+
+        .success-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: var(--accent-blue);
+        }
+
+        .success-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .success-text {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+        }
+
+        /* Divider */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+        }
+
+        /* Stagger animation for cards */
+        .stagger > * {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .stagger.visible > *:nth-child(1) { animation: fadeUp 0.6s ease 0.1s forwards; }
+        .stagger.visible > *:nth-child(2) { animation: fadeUp 0.6s ease 0.2s forwards; }
+        .stagger.visible > *:nth-child(3) { animation: fadeUp 0.6s ease 0.3s forwards; }
+        .stagger.visible > *:nth-child(4) { animation: fadeUp 0.6s ease 0.4s forwards; }
+        .stagger.visible > *:nth-child(5) { animation: fadeUp 0.6s ease 0.5s forwards; }
+        .stagger.visible > *:nth-child(6) { animation: fadeUp 0.6s ease 0.6s forwards; }
+    </style>
 </head>
 <body>
-    <header class="header">
+    <!-- Header -->
+    <header class="header" id="header">
         <div class="container">
-            <nav class="nav">
-                <a href="/" class="logo">iPeptides</a>
-                <ul class="nav-menu">
-                    <li><a href="#about">О нас</a></li>
-                    <li><a href="#products">Продукты</a></li>
-                    <li><a href="#contact">Контакты</a></li>
-                </ul>
-            </nav>
+            <div class="header-inner">
+                <a href="#" class="logo">i<span>Peptides</span></a>
+
+                <nav class="nav">
+                    <a href="#about">О компании</a>
+                    <a href="#production">Производство</a>
+                    <a href="#quality">Качество</a>
+                    <a href="#partners">Партнёрам</a>
+                    <a href="#geography">География</a>
+                    <a href="#contact">Контакты</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="btn btn-secondary" data-modal="request">Запросить КП</button>
+                    <button class="btn btn-primary" data-modal="contact">Связаться</button>
+                </div>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Меню">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="container">
-                <h1>Добро пожаловать в iPeptides</h1>
-                <p>Ваш надежный источник информации о пептидах и здоровье</p>
-                <a href="#about" class="btn">Узнать больше</a>
-            </div>
-        </section>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about">О компании</a>
+        <a href="#production">Производство</a>
+        <a href="#quality">Качество</a>
+        <a href="#partners">Партнёрам</a>
+        <a href="#geography">География</a>
+        <a href="#contact">Контакты</a>
+        <div class="mobile-menu-buttons">
+            <button class="btn btn-primary btn-large" data-modal="request">Запросить КП</button>
+            <button class="btn btn-secondary btn-large" data-modal="contact">Связаться</button>
+        </div>
+    </div>
 
-        <section id="about" class="section">
-            <div class="container">
-                <h2>О нас</h2>
-                <p>iPeptides - это платформа, посвященная исследованию и популяризации знаний о пептидах и их влиянии на здоровье человека.</p>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">iPeptides — глобальный производитель и поставщик пептидных решений премиум-класса</h1>
+                <p class="hero-subtitle">Стандарты. Контроль. Стабильность. Поставки по России и миру.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-accent btn-large" data-modal="partner">Стать партнёром</button>
+                    <button class="btn btn-secondary btn-large" data-modal="request">Запросить коммерческое предложение</button>
+                </div>
+                <p class="hero-note">Manufacturer & Global Supplier • B2B Solutions</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="products" class="section section-alt">
-            <div class="container">
-                <h2>Наши продукты</h2>
-                <div class="grid">
-                    <div class="card">
-                        <h3>Исследования</h3>
-                        <p>Актуальные научные исследования в области пептидов.</p>
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-header">
+                    <p class="about-statement">iPeptides — это международная компания, выстроенная вокруг точности, воспроизводимости и доверия.</p>
+                    <p class="section-text">Мы производим и поставляем пептидные решения для профессионального рынка, соединяем производство, контроль качества и логистику в единую систему, работающую на результат партнёра.</p>
+                </div>
+            </div>
+            <div class="cards-grid cards-grid-3 stagger reveal">
+                <div class="glass-card">
+                    <h3 class="glass-card-title">Системность процессов</h3>
+                    <p class="glass-card-text">Каждый этап — от сырья до отгрузки — стандартизирован и задокументирован</p>
+                </div>
+                <div class="glass-card">
+                    <h3 class="glass-card-title">Контроль партии и прозрачность</h3>
+                    <p class="glass-card-text">Полная прослеживаемость и документальное подтверждение характеристик</p>
+                </div>
+                <div class="glass-card">
+                    <h3 class="glass-card-title">Долгосрочная партнёрская модель</h3>
+                    <p class="glass-card-text">Мы выстраиваем отношения на годы, а не на разовые сделки</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Scale & Trust -->
+    <section id="scale">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-header">
+                    <h2 class="section-title">Масштаб и доверие</h2>
+                    <p class="section-text">Инфраструктура, выстроенная для стабильных поставок и долгосрочного партнёрства</p>
+                </div>
+            </div>
+            <div class="cards-grid cards-grid-4 stagger reveal">
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Поставки по России и международным направлениям</h3>
+                    <p class="glass-card-text">Гибкая логистика под задачи бизнеса</p>
+                </div>
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Партнёрская сеть и B2B-инфраструктура</h3>
+                    <p class="glass-card-text">Отлаженные процессы работы с бизнесом</p>
+                </div>
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Стабильность партии и повторяемость</h3>
+                    <p class="glass-card-text">Одинаковый результат в каждой поставке</p>
+                </div>
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Документация и сопровождение</h3>
+                    <p class="glass-card-text">Полный пакет документов по запросу</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Production -->
+    <section id="production">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-header">
+                    <h2 class="section-title">Производство полного цикла</h2>
+                    <p class="section-text">Процессы построены для стабильности и предсказуемости результата на каждом этапе производственной цепочки</p>
+                </div>
+            </div>
+            <div class="production-list reveal">
+                <div class="production-item">
+                    <span class="production-number">01</span>
+                    <p class="production-text">Технологичное производство и стандартизация всех процессов</p>
+                </div>
+                <div class="production-item">
+                    <span class="production-number">02</span>
+                    <p class="production-text">Контроль качества на каждом этапе производственного цикла</p>
+                </div>
+                <div class="production-item">
+                    <span class="production-number">03</span>
+                    <p class="production-text">Упаковка и маркировка под требования B2B-партнёров</p>
+                </div>
+                <div class="production-item">
+                    <span class="production-number">04</span>
+                    <p class="production-text">Логистика и соблюдение сроков поставок</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Quality -->
+    <section id="quality">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-header">
+                    <h2 class="section-title">Контроль качества — базовый стандарт</h2>
+                    <p class="section-text">Качество — не опция, а фундамент каждого процесса и каждой партии</p>
+                </div>
+            </div>
+            <div class="cards-grid cards-grid-4 stagger reveal">
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Входной контроль сырья</h3>
+                    <p class="glass-card-text">Проверка и верификация каждой входящей партии</p>
+                </div>
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Проверка перед отгрузкой</h3>
+                    <p class="glass-card-text">Финальный контроль качества готовой продукции</p>
+                </div>
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Документация по запросу</h3>
+                    <p class="glass-card-text">Сертификаты и подтверждения для партнёров</p>
+                </div>
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Условия хранения</h3>
+                    <p class="glass-card-text">Соблюдение температурного режима и транспортировки</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Partners -->
+    <section id="partners">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-header">
+                    <h2 class="section-title">Форматы сотрудничества</h2>
+                    <p class="section-text">Решения для разных бизнес-моделей и масштабов</p>
+                </div>
+            </div>
+            <div class="cards-grid cards-grid-4 stagger reveal">
+                <div class="glass-card">
+                    <h3 class="glass-card-title">Дистрибьюторы и реселлеры</h3>
+                    <p class="glass-card-text">Оптовые поставки, масштабируемые объёмы, партнёрские условия</p>
+                </div>
+                <div class="glass-card">
+                    <h3 class="glass-card-title">Клиники и специалисты</h3>
+                    <p class="glass-card-text">Профессиональные решения для медицинских учреждений</p>
+                </div>
+                <div class="glass-card">
+                    <h3 class="glass-card-title">Private Label</h3>
+                    <p class="glass-card-text">Производство под ваш бренд с полным сопровождением</p>
+                </div>
+                <div class="glass-card">
+                    <h3 class="glass-card-title">Онлайн-ритейл</h3>
+                    <p class="glass-card-text">Стабильные отгрузки и поддержка для e-commerce</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Geography -->
+    <section id="geography">
+        <div class="container">
+            <div class="geography-content">
+                <div class="reveal">
+                    <h2 class="section-title">Россия и международные направления</h2>
+                    <p class="section-text" style="margin-top: 20px;">Мы выстраиваем поставки под задачи бизнеса — сроки, формат и сопровождение согласуются индивидуально. География присутствия постоянно расширяется.</p>
+                    <button class="btn btn-secondary" style="margin-top: 32px;" data-modal="geography">Обсудить логистику</button>
+                </div>
+                <div class="geography-map reveal">
+                    <span class="geography-map-text">Global Delivery</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Why iPeptides -->
+    <section id="why">
+        <div class="container">
+            <div class="reveal">
+                <div class="section-header">
+                    <h2 class="section-title">Почему выбирают iPeptides</h2>
+                </div>
+            </div>
+            <div class="cards-grid cards-grid-6 stagger reveal">
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Стабильность и повторяемость</h3>
+                    <p class="glass-card-text">Одинаковое качество в каждой партии</p>
+                </div>
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Качество как система</h3>
+                    <p class="glass-card-text">Встроенный контроль на всех этапах</p>
+                </div>
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Коммерческая надёжность</h3>
+                    <p class="glass-card-text">Прозрачные условия и соблюдение договорённостей</p>
+                </div>
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Партнёрская поддержка</h3>
+                    <p class="glass-card-text">Персональное сопровождение на каждом этапе</p>
+                </div>
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Масштабируемые объёмы</h3>
+                    <p class="glass-card-text">Готовность к росту вместе с партнёром</p>
+                </div>
+                <div class="glass-card glass-card-small">
+                    <h3 class="glass-card-title">Премиальные стандарты</h3>
+                    <p class="glass-card-text">Упаковка и презентация высшего уровня</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2 class="cta-title">Сотрудничество с iPeptides</h2>
+                <p class="cta-text">Запросите коммерческое предложение — мы подберём формат партнёрства под ваши задачи и масштаб бизнеса.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-accent btn-large" data-modal="request">Запросить КП</button>
+                    <a href="https://t.me/peptidesandhealth" target="_blank" class="btn btn-secondary btn-large">Написать в Telegram</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">i<span>Peptides</span></a>
+                    <p>Глобальный производитель и поставщик пептидных решений для профессионального рынка</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Контакты</h4>
+                    <div class="footer-links">
+                        <a href="mailto:contact@ipeptides.com">contact@ipeptides.com</a>
+                        <a href="https://t.me/peptidesandhealth" target="_blank">@peptidesandhealth</a>
                     </div>
-                    <div class="card">
-                        <h3>Консультации</h3>
-                        <p>Профессиональные консультации специалистов.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Образование</h3>
-                        <p>Образовательные материалы и курсы.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>География</h4>
+                    <div class="footer-links">
+                        <span style="color: var(--text-secondary); font-size: 0.9375rem;">Россия / International</span>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section id="contact" class="section">
-            <div class="container">
-                <h2>Контакты</h2>
-                <p>Свяжитесь с нами для получения дополнительной информации.</p>
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 iPeptides. Все права защищены.</p>
+                <p class="footer-disclaimer">Информация на сайте предназначена для профессионального использования и носит ознакомительный характер. Не является публичной офертой.</p>
             </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 iPeptides. Все права защищены.</p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Закрыть"></button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Mobile menu
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu on link click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Reveal animations on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Modal
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalContent = document.getElementById('modalContent');
+        const modalClose = document.getElementById('modalClose');
+
+        const formHTML = `
+            <h3 class="modal-title">Оставить заявку</h3>
+            <p class="modal-subtitle">Заполните форму и мы свяжемся с вами</p>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label class="form-label">Имя</label>
+                    <input type="text" class="form-input" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Компания</label>
+                    <input type="text" class="form-input" placeholder="Название компании">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" placeholder="email@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Сообщение</label>
+                    <textarea class="form-input" placeholder="Опишите ваш запрос"></textarea>
+                </div>
+                <button type="submit" class="btn btn-accent btn-large form-submit">Отправить заявку</button>
+            </form>
+        `;
+
+        const successHTML = `
+            <div class="success-message">
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <h3 class="success-title">Заявка отправлена</h3>
+                <p class="success-text">Мы свяжемся с вами в ближайшее время</p>
+            </div>
+        `;
+
+        // Open modal
+        document.querySelectorAll('[data-modal]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                modalContent.innerHTML = formHTML;
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+
+                // Close mobile menu if open
+                menuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+
+                // Add form submit handler
+                const form = document.getElementById('contactForm');
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    modalContent.innerHTML = successHTML;
+                    setTimeout(() => {
+                        closeModal();
+                    }, 2500);
+                });
+            });
+        });
+
+        // Close modal
+        const closeModal = () => {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        modalClose.addEventListener('click', closeModal);
+
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
