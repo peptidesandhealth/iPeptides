@@ -411,21 +411,14 @@
            HERO SECTION
            ============================================ */
         .hero {
-            padding-top: calc(60px + 48px);
-            padding-bottom: 48px;
             min-height: 100vh;
+            min-height: 100dvh;
             background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-accent) 100%);
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .hero {
-                padding-top: calc(72px + 80px);
-                padding-bottom: 80px;
-            }
+            padding: 0;
         }
 
         /* Video Background */
@@ -446,45 +439,107 @@
             position: relative;
             z-index: 2;
             width: 100%;
-        }
-
-        /* Glassmorphism Card */
-        .hero-card {
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 24px;
-            padding: 32px 28px;
-            box-shadow: 0 8px 32px rgba(165, 196, 212, 0.15), 0 2px 8px rgba(0, 0, 0, 0.03);
-            text-align: center;
-            max-width: 100%;
+            padding: 120px 24px 60px;
         }
 
         @media (min-width: 768px) {
-            .hero-card {
-                padding: 48px 56px;
-                text-align: left;
-                max-width: 580px;
-                margin-left: calc(-1 * var(--container-padding) + 12px);
-                margin-right: auto;
+            .hero-content {
+                padding: 0 0 0 90px;
             }
         }
 
         @media (min-width: 1024px) {
-            .hero-card {
-                padding: 56px 64px;
-                max-width: 620px;
-                margin-left: calc(-1 * var(--container-padding) + 16px);
+            .hero-content {
+                padding: 0 0 0 100px;
             }
         }
 
+        @media (min-width: 1280px) {
+            .hero-content {
+                padding: 0 0 0 110px;
+            }
+        }
+
+        /* Premium Text Panel - soft glass under text */
+        .hero-text-panel {
+            position: relative;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .hero-text-panel {
+                max-width: 520px;
+                text-align: left;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-text-panel {
+                max-width: 560px;
+            }
+        }
+
+        /* Soft glass layer behind text */
+        .hero-text-panel::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 60%, transparent 80%);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 60px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @media (min-width: 768px) {
+            .hero-text-panel::before {
+                top: -40px;
+                left: -50px;
+                right: -60px;
+                bottom: -40px;
+                background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 75%);
+                border-radius: 80px;
+            }
+        }
+
+        /* Top label */
+        .hero-label {
+            font-size: 0.5625rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 20px;
+            opacity: 0.85;
+        }
+
+        @media (min-width: 768px) {
+            .hero-label {
+                font-size: 0.625rem;
+                margin-bottom: 24px;
+                letter-spacing: 0.22em;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-label {
+                font-size: 0.6875rem;
+                margin-bottom: 28px;
+            }
+        }
+
+        /* Brand name */
         .hero-brand {
-            font-size: 2.5rem;
-            font-weight: 700;
+            font-size: 3.25rem;
+            font-weight: 600;
             letter-spacing: -0.03em;
             color: var(--text-dark);
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             line-height: 1;
         }
 
@@ -494,67 +549,69 @@
 
         @media (min-width: 768px) {
             .hero-brand {
-                font-size: 3rem;
-                margin-bottom: 20px;
+                font-size: 4rem;
+                margin-bottom: 28px;
             }
         }
 
         @media (min-width: 1024px) {
             .hero-brand {
-                font-size: 3.5rem;
+                font-size: 4.5rem;
+                margin-bottom: 32px;
             }
         }
 
-        .hero-note {
-            font-size: 0.625rem;
-            font-weight: 500;
-            color: var(--text-dark);
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 16px;
-        }
-
-        @media (min-width: 768px) {
-            .hero-note {
-                font-size: 0.6875rem;
-                margin-bottom: 20px;
+        @media (min-width: 1280px) {
+            .hero-brand {
+                font-size: 5rem;
             }
         }
 
+        /* Tagline - two lines */
         .hero-tagline {
-            font-size: 1.125rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            line-height: 1.5;
-            margin-bottom: 32px;
+            font-size: 1.0625rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            letter-spacing: 0.01em;
+        }
+
+        .hero-tagline span {
+            display: block;
         }
 
         @media (min-width: 768px) {
             .hero-tagline {
-                font-size: 1.375rem;
-                margin-bottom: 36px;
+                font-size: 1.1875rem;
+                margin-bottom: 48px;
+                line-height: 1.65;
             }
         }
 
         @media (min-width: 1024px) {
             .hero-tagline {
-                font-size: 1.5rem;
+                font-size: 1.3125rem;
+                margin-bottom: 52px;
             }
         }
 
-        .hero-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
+        /* Button */
         .hero-buttons .btn {
             width: 100%;
+            min-height: 52px;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            border-radius: 14px;
+            padding: 16px 36px;
         }
 
         @media (min-width: 768px) {
             .hero-buttons .btn {
                 width: auto;
+                min-height: 48px;
+                padding: 14px 32px;
+                border-radius: 12px;
             }
         }
 
@@ -1407,15 +1464,16 @@
         <video class="hero-video" autoplay muted loop playsinline>
             <source src="hero.mp4" type="video/mp4">
         </video>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-card">
-                    <p class="hero-note">Manufacturer & Global Supplier • B2B Solutions</p>
-                    <h1 class="hero-brand">i<span>Peptides</span></h1>
-                    <p class="hero-tagline">Ведущий производитель и поставщик пептидных решений премиум-класса</p>
-                    <div class="hero-buttons">
-                        <button class="btn btn-primary" data-modal>Стать партнёром</button>
-                    </div>
+        <div class="hero-content">
+            <div class="hero-text-panel">
+                <p class="hero-label">Manufacturer & Global Supplier • B2B Solutions</p>
+                <h1 class="hero-brand">i<span>Peptides</span></h1>
+                <p class="hero-tagline">
+                    <span>Ведущий производитель и поставщик</span>
+                    <span>пептидных решений премиум-класса</span>
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" data-modal>Стать партнёром</button>
                 </div>
             </div>
         </div>
