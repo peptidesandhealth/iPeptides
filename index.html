@@ -217,6 +217,15 @@
             z-index: 0;
         }
 
+        /* Mobile: adjust video scale and position */
+        @media (max-width: 767px) {
+            .scale-video {
+                min-width: 180%;
+                min-height: 100%;
+                transform: translate(-40%, -50%);
+            }
+        }
+
         #scale .container {
             position: relative;
             z-index: 1;
