@@ -467,43 +467,44 @@
             text-align: center;
         }
 
-        @media (min-width: 768px) {
-            .hero-text-panel {
-                max-width: 520px;
-                text-align: left;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .hero-text-panel {
-                max-width: 560px;
-            }
-        }
-
         /* Soft glass layer behind text */
         .hero-text-panel::before {
             content: '';
             position: absolute;
-            top: -30px;
-            left: -30px;
-            right: -30px;
-            bottom: -30px;
+            top: -24px;
+            left: -24px;
+            right: -24px;
+            bottom: -24px;
             background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 60%, transparent 80%);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border-radius: 60px;
+            border-radius: 40px;
             z-index: -1;
             pointer-events: none;
         }
 
         @media (min-width: 768px) {
+            .hero-text-panel {
+                max-width: fit-content;
+                text-align: left;
+            }
+
             .hero-text-panel::before {
-                top: -40px;
-                left: -50px;
-                right: -60px;
-                bottom: -40px;
-                background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 75%);
-                border-radius: 80px;
+                top: -32px;
+                left: -40px;
+                right: -40px;
+                bottom: -32px;
+                background: radial-gradient(ellipse at 40% 50%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 55%, transparent 75%);
+                border-radius: 50px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-text-panel::before {
+                top: -36px;
+                left: -48px;
+                right: -48px;
+                bottom: -36px;
             }
         }
 
