@@ -2165,6 +2165,7 @@
             flex-direction: column;
             gap: 12px;
             justify-content: center;
+            margin-bottom: 40px;
         }
 
         @media (min-width: 480px) {
@@ -2174,8 +2175,106 @@
             }
         }
 
+        @media (min-width: 768px) {
+            .cta-buttons {
+                margin-bottom: 48px;
+            }
+        }
+
+        /* Partnership Form - Premium Style */
+        .partnership-form-wrapper {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 28px 24px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            box-shadow:
+                0 8px 32px rgba(165, 196, 212, 0.18),
+                0 2px 8px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        }
+
+        @media (min-width: 768px) {
+            .partnership-form-wrapper {
+                max-width: 520px;
+                padding: 36px 40px;
+                border-radius: 24px;
+            }
+        }
+
+        .partnership-form-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .partnership-form-subtitle {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .partnership-form .form-group {
+            margin-bottom: 16px;
+        }
+
+        .partnership-form .form-group:last-of-type {
+            margin-bottom: 20px;
+        }
+
+        .partnership-form .form-input {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(192, 192, 192, 0.35);
+        }
+
+        .partnership-form .form-input:focus {
+            background: #ffffff;
+            border-color: var(--ice-flow);
+            box-shadow: 0 0 0 3px rgba(165, 196, 212, 0.2);
+        }
+
+        .partnership-form .btn-primary {
+            width: 100%;
+            min-height: 52px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            box-shadow:
+                0 4px 14px rgba(90, 122, 138, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .partnership-form .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 6px 20px rgba(90, 122, 138, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        /* Form row for Name/Company on desktop */
+        .partnership-form .form-row {
+            display: grid;
+            gap: 16px;
+        }
+
+        @media (min-width: 480px) {
+            .partnership-form .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .partnership-form .form-row .form-group {
+            margin-bottom: 0;
+        }
+
         /* ============================================
-           CONTACT SECTION
+           CONTACT SECTION (Legacy - kept for compatibility)
            ============================================ */
         .contact-grid {
             display: grid;
@@ -2269,80 +2368,103 @@
         }
 
         /* ============================================
-           FOOTER
+           FOOTER - Minimal Bottom Line
            ============================================ */
         .footer {
             background: var(--snow-white-pure);
             border-top: 1px solid var(--border-light);
-            padding: 48px 0 32px;
+            padding: 24px 0;
         }
 
-        .footer-content {
-            display: grid;
-            gap: 32px;
-            margin-bottom: 32px;
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
         }
 
         @media (min-width: 768px) {
-            .footer-content {
-                grid-template-columns: 2fr 1fr 1fr;
+            .footer-inner {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 24px;
             }
         }
 
-        .footer-brand .logo {
-            display: inline-block;
-            margin-bottom: 12px;
-        }
-
-        .footer-brand p {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            max-width: 280px;
-        }
-
-        .footer-column h4 {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-light);
-            margin-bottom: 16px;
-        }
-
-        .footer-links {
+        .footer-contacts {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            align-items: center;
+            gap: 8px;
         }
 
-        .footer-links a,
-        .footer-links span {
+        @media (min-width: 768px) {
+            .footer-contacts {
+                flex-direction: row;
+                gap: 24px;
+            }
+        }
+
+        .footer-contacts a {
             font-size: 0.875rem;
             color: var(--text-secondary);
             text-decoration: none;
             transition: color var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .footer-links a:hover {
+        .footer-contacts a:hover {
             color: var(--ice-flow-dark);
         }
 
-        .footer-bottom {
-            padding-top: 24px;
-            border-top: 1px solid var(--border-light);
+        .footer-contacts .separator {
+            display: none;
+            color: var(--border-chrome);
+        }
+
+        @media (min-width: 768px) {
+            .footer-contacts .separator {
+                display: inline;
+            }
+        }
+
+        .footer-legal {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-legal {
+                flex-direction: row;
+                text-align: left;
+                gap: 16px;
+            }
         }
 
         .footer-copyright {
             font-size: 0.75rem;
             color: var(--text-light);
-            margin-bottom: 8px;
+            line-height: 1.4;
+            white-space: nowrap;
         }
 
         .footer-disclaimer {
             font-size: 0.6875rem;
             color: var(--text-light);
             line-height: 1.5;
-            max-width: 500px;
+            max-width: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-disclaimer {
+                max-width: none;
+            }
         }
 
         /* ============================================
@@ -2515,7 +2637,6 @@
                         <a href="#quality" data-lang-key="nav.quality">Качество</a>
                         <a href="#partners" data-lang-key="nav.partners">Партнёрам</a>
                         <a href="#geography" data-lang-key="nav.geography">География</a>
-                        <a href="#contact" data-lang-key="nav.contact">Контакты</a>
                     </nav>
                     <div class="lang-switcher">
                         <button class="lang-btn active" data-lang="ru">RU</button>
@@ -2545,7 +2666,6 @@
         <a href="#quality" data-lang-key="nav.quality">Качество</a>
         <a href="#partners" data-lang-key="nav.partners">Партнёрам</a>
         <a href="#geography" data-lang-key="nav.geography">География</a>
-        <a href="#contact" data-lang-key="nav.contact">Контакты</a>
     </nav>
 
     <!-- Hero -->
@@ -3108,36 +3228,22 @@
         </div>
     </section>
 
-    <!-- CTA -->
-    <section class="cta-section">
+    <!-- CTA / Partnership -->
+    <section id="partnership" class="cta-section">
         <div class="container">
             <div class="cta-content reveal">
                 <span class="section-label">Partnership</span>
                 <h2 class="section-title">Сотрудничество с iPeptides</h2>
                 <p class="section-text" style="margin: 0 auto 32px;">Запросите коммерческое предложение — мы предложим формат партнёрства под ваши задачи и масштаб бизнеса.</p>
                 <div class="cta-buttons">
-                    <button class="btn btn-primary btn-block" data-modal>Запросить КП</button>
                     <a href="https://t.me/peptidesandhealth" target="_blank" class="btn btn-secondary btn-block">Написать в Telegram</a>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact -->
-    <section id="contact" class="bg-white">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info reveal">
-                    <span class="section-label">Contact</span>
-                    <h2 class="section-title">Контакты</h2>
-                    <div class="contact-links">
-                        <a href="mailto:contact@ipeptides.com">contact@ipeptides.com</a>
-                        <a href="https://t.me/peptidesandhealth" target="_blank">@peptidesandhealth</a>
-                        <span>Россия / International</span>
-                    </div>
-                </div>
-                <div class="reveal">
-                    <form class="form" id="contactForm">
+                <!-- Partnership Form -->
+                <div class="partnership-form-wrapper reveal">
+                    <h3 class="partnership-form-title">Оставить заявку</h3>
+                    <p class="partnership-form-subtitle">Заполните форму и мы свяжемся с вами</p>
+                    <form class="form partnership-form" id="partnershipForm">
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label">Имя</label>
@@ -3154,7 +3260,7 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Сообщение</label>
-                            <textarea class="form-input" placeholder="Опишите ваш запрос"></textarea>
+                            <textarea class="form-input" placeholder="Опишите ваш запрос" rows="3"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Отправить заявку</button>
                     </form>
@@ -3166,28 +3272,16 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="#" class="logo">i<span>Peptides</span></a>
-                    <p>Глобальный производитель и поставщик пептидных решений для профессионального рынка</p>
+            <div class="footer-inner">
+                <div class="footer-contacts">
+                    <a href="mailto:contact@ipeptides.com">contact@ipeptides.com</a>
+                    <span class="separator">|</span>
+                    <a href="https://t.me/peptidesandhealth" target="_blank">Telegram: @peptidesandhealth</a>
                 </div>
-                <div class="footer-column">
-                    <h4>Контакты</h4>
-                    <div class="footer-links">
-                        <a href="mailto:contact@ipeptides.com">contact@ipeptides.com</a>
-                        <a href="https://t.me/peptidesandhealth" target="_blank">@peptidesandhealth</a>
-                    </div>
+                <div class="footer-legal">
+                    <p class="footer-copyright">© 2025 iPeptides</p>
+                    <p class="footer-disclaimer">Информация на сайте носит ознакомительный характер. Не является публичной офертой.</p>
                 </div>
-                <div class="footer-column">
-                    <h4>География</h4>
-                    <div class="footer-links">
-                        <span>Россия / International</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p class="footer-copyright">© 2025 iPeptides. Все права защищены.</p>
-                <p class="footer-disclaimer">Информация на сайте предназначена для профессионального использования и носит ознакомительный характер. Не является публичной офертой.</p>
             </div>
         </div>
     </footer>
@@ -3460,11 +3554,24 @@
             if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal();
         });
 
-        // Contact form
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            this.innerHTML = successHTML;
-        });
+        // Partnership form (in CTA section)
+        const partnershipForm = document.getElementById('partnershipForm');
+        if (partnershipForm) {
+            partnershipForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                this.innerHTML = `
+                    <div class="success-message" style="text-align: center; padding: 20px 0;">
+                        <div class="success-icon" style="width: 48px; height: 48px; margin: 0 auto 16px; background: var(--ice-flow-light); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="var(--ice-flow-deep)" stroke-width="2.5" width="24" height="24">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3 style="font-size: 1.125rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">Заявка отправлена</h3>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary);">Мы свяжемся с вами в ближайшее время</p>
+                    </div>
+                `;
+            });
+        }
 
         // Language Switcher
         const translations = {
@@ -3474,7 +3581,6 @@
                 'nav.quality': 'Качество',
                 'nav.partners': 'Партнёрам',
                 'nav.geography': 'География',
-                'nav.contact': 'Контакты',
                 'hero.tagline1': 'Ведущий производитель и поставщик',
                 'hero.tagline2': 'пептидных решений премиум-класса',
                 'hero.cta': 'Стать партнёром'
@@ -3485,7 +3591,6 @@
                 'nav.quality': 'Quality',
                 'nav.partners': 'Partners',
                 'nav.geography': 'Geography',
-                'nav.contact': 'Contact',
                 'hero.tagline1': 'Leading manufacturer and supplier',
                 'hero.tagline2': 'of premium peptide solutions',
                 'hero.cta': 'Become a Partner'
