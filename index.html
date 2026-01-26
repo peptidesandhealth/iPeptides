@@ -3198,6 +3198,269 @@
         }
 
         /* ============================================
+           PARTNERS SECTION - Premium B2B
+           ============================================ */
+        .partners-premium {
+            background: linear-gradient(180deg, var(--snow-white-pure) 0%, var(--bg-accent) 100%);
+            overflow: hidden;
+        }
+
+        .partners-premium .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .partners-premium .section-text {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* Mobile Carousel Container */
+        .partners-carousel-wrapper {
+            position: relative;
+            margin: 0 calc(-1 * var(--container-padding));
+            padding: 0 var(--container-padding);
+        }
+
+        .partners-carousel {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 8px 0 24px;
+        }
+
+        .partners-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Premium B2B Card */
+        .partner-card {
+            flex: 0 0 calc(85% - 8px);
+            min-width: calc(85% - 8px);
+            scroll-snap-align: center;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(165, 196, 212, 0.25);
+            border-radius: 24px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(16px);
+            filter: blur(4px);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.35s ease,
+                        border-color 0.35s ease;
+            box-shadow: 0 4px 24px rgba(165, 196, 212, 0.12);
+        }
+
+        .partner-card.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* Card Badge */
+        .partner-badge {
+            font-size: 0.625rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--ice-flow-dark);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .partner-badge::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(165, 196, 212, 0.4) 0%, transparent 100%);
+        }
+
+        /* Card Icon */
+        .partner-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.15) 0%, rgba(165, 196, 212, 0.05) 100%);
+            border-radius: 12px;
+            margin-bottom: 16px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .partner-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--ice-flow-deep);
+            stroke-width: 1.75;
+            fill: none;
+            transition: stroke 0.3s ease;
+        }
+
+        .partner-card-title {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+            line-height: 1.35;
+        }
+
+        .partner-card-text {
+            font-size: 0.9375rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-top: auto;
+        }
+
+        /* Carousel Dots */
+        .partners-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .partners-dots .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--chrome);
+            opacity: 0.4;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+        }
+
+        .partners-dots .dot.active {
+            background: var(--ice-flow-deep);
+            opacity: 1;
+            width: 20px;
+            border-radius: 3px;
+        }
+
+        /* Tablet: 2 cards visible */
+        @media (min-width: 540px) {
+            .partner-card {
+                flex: 0 0 calc(50% - 8px);
+                min-width: calc(50% - 8px);
+            }
+        }
+
+        /* Desktop: Grid layout */
+        @media (min-width: 768px) {
+            .partners-premium .section-header {
+                margin-bottom: 56px;
+            }
+
+            .partners-carousel-wrapper {
+                margin: 0;
+                padding: 0;
+            }
+
+            .partners-carousel {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+                overflow: visible;
+                padding: 8px;
+            }
+
+            .partner-card {
+                flex: none;
+                min-width: 0;
+                padding: 32px 28px;
+                min-height: 220px;
+            }
+
+            .partner-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 12px 40px rgba(165, 196, 212, 0.22);
+                border-color: rgba(165, 196, 212, 0.45);
+            }
+
+            .partner-card:hover .partner-icon {
+                background: linear-gradient(135deg, rgba(165, 196, 212, 0.25) 0%, rgba(165, 196, 212, 0.1) 100%);
+                transform: scale(1.05);
+            }
+
+            .partner-card:hover .partner-icon svg {
+                stroke: var(--ice-flow-dark);
+            }
+
+            .partners-dots {
+                display: none;
+            }
+
+            .partner-badge {
+                font-size: 0.6875rem;
+            }
+
+            .partner-icon {
+                width: 44px;
+                height: 44px;
+                border-radius: 14px;
+                margin-bottom: 20px;
+            }
+
+            .partner-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .partner-card-title {
+                font-size: 1.125rem;
+                margin-bottom: 10px;
+            }
+
+            .partner-card-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* Large Desktop: 4 columns */
+        @media (min-width: 1024px) {
+            .partners-premium .section-header {
+                margin-bottom: 64px;
+            }
+
+            .partners-carousel {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+            }
+
+            .partner-card {
+                padding: 28px 24px;
+                border-radius: 28px;
+                min-height: 240px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .partners-carousel {
+                gap: 24px;
+            }
+
+            .partner-card {
+                padding: 32px 28px;
+            }
+        }
+
+        /* ============================================
            REVEAL ANIMATIONS
            ============================================ */
         .reveal {
@@ -3684,30 +3947,73 @@
         </div>
     </section>
 
-    <!-- Partners -->
-    <section id="partners" class="bg-white">
+    <!-- Partners - Premium B2B -->
+    <section id="partners" class="partners-premium">
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-label">B2B Cooperation</span>
                 <h2 class="section-title">Партнёрам</h2>
-                <p class="section-text">Форматы сотрудничества для разных бизнес-моделей и масштабов.</p>
+                <p class="section-text">Форматы партнёрства под задачи бизнеса.</p>
             </div>
-            <div class="cards-grid cards-grid-4 reveal">
-                <div class="card">
-                    <h3 class="card-title">Дистрибьюторы и реселлеры</h3>
-                    <p class="card-text">Оптовые поставки, масштабируемые объёмы</p>
+            <div class="partners-carousel-wrapper">
+                <div class="partners-carousel">
+                    <!-- Card 1: Distributors -->
+                    <div class="partner-card" data-partner-index="0">
+                        <span class="partner-badge">Format 01</span>
+                        <div class="partner-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                        </div>
+                        <h3 class="partner-card-title">Дистрибьюторы и реселлеры</h3>
+                        <p class="partner-card-text">Оптовые поставки и масштабируемые объёмы.</p>
+                    </div>
+                    <!-- Card 2: Professional -->
+                    <div class="partner-card" data-partner-index="1">
+                        <span class="partner-badge">Format 02</span>
+                        <div class="partner-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                            </svg>
+                        </div>
+                        <h3 class="partner-card-title">Профессиональный сегмент</h3>
+                        <p class="partner-card-text">Решения для специалистов и клиник.</p>
+                    </div>
+                    <!-- Card 3: Private Label -->
+                    <div class="partner-card" data-partner-index="2">
+                        <span class="partner-badge">Format 03</span>
+                        <div class="partner-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                                <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                            </svg>
+                        </div>
+                        <h3 class="partner-card-title">Private Label</h3>
+                        <p class="partner-card-text">Производство под ваш бренд и формат.</p>
+                    </div>
+                    <!-- Card 4: Online Channels -->
+                    <div class="partner-card" data-partner-index="3">
+                        <span class="partner-badge">Format 04</span>
+                        <div class="partner-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="partner-card-title">Онлайн-каналы</h3>
+                        <p class="partner-card-text">Стабильные отгрузки для e-commerce.</p>
+                    </div>
                 </div>
-                <div class="card">
-                    <h3 class="card-title">Профессиональный сегмент</h3>
-                    <p class="card-text">Решения для специалистов</p>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">Private Label</h3>
-                    <p class="card-text">Производство под ваш бренд</p>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">Онлайн-каналы</h3>
-                    <p class="card-text">Стабильные отгрузки для e-commerce</p>
+                <!-- Dots Pagination -->
+                <div class="partners-dots">
+                    <button class="dot active" data-index="0" aria-label="Card 1"></button>
+                    <button class="dot" data-index="1" aria-label="Card 2"></button>
+                    <button class="dot" data-index="2" aria-label="Card 3"></button>
+                    <button class="dot" data-index="3" aria-label="Card 4"></button>
                 </div>
             </div>
         </div>
@@ -4054,6 +4360,57 @@
         };
         window.addEventListener('scroll', revealQualityItems);
         window.addEventListener('load', revealQualityItems);
+
+        // Partner cards staggered reveal (Premium B2B)
+        const partnerCards = document.querySelectorAll('.partner-card');
+        const revealPartnerCards = () => {
+            const partnersSection = document.querySelector('.partners-premium');
+            if (partnersSection) {
+                const sectionTop = partnersSection.getBoundingClientRect().top;
+                if (sectionTop < window.innerHeight - 80) {
+                    partnerCards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('revealed');
+                        }, index * 100);
+                    });
+                }
+            }
+        };
+        window.addEventListener('scroll', revealPartnerCards);
+        window.addEventListener('load', revealPartnerCards);
+
+        // Partners carousel pagination dots
+        const partnersCarousel = document.querySelector('.partners-carousel');
+        const partnersDots = document.querySelectorAll('.partners-dots .dot');
+
+        if (partnersCarousel && partnersDots.length) {
+            // Update dots on scroll
+            partnersCarousel.addEventListener('scroll', () => {
+                const scrollLeft = partnersCarousel.scrollLeft;
+                const card = partnersCarousel.querySelector('.partner-card');
+                if (card) {
+                    const cardWidth = card.offsetWidth + 16;
+                    const activeIndex = Math.round(scrollLeft / cardWidth);
+                    partnersDots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === activeIndex);
+                    });
+                }
+            });
+
+            // Click on dots to navigate
+            partnersDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    const card = partnersCarousel.querySelector('.partner-card');
+                    if (card) {
+                        const cardWidth = card.offsetWidth + 16;
+                        partnersCarousel.scrollTo({
+                            left: cardWidth * index,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
 
         // Principles carousel pagination dots
         const principlesGrid = document.querySelector('.principles-grid');
