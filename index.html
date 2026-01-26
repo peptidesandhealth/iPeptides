@@ -2481,7 +2481,7 @@
         }
 
         /* ============================================
-           PARTNERSHIP SECTION - PREMIUM B2B CARDS
+           PARTNERSHIP SECTION - Premium Compact Two-Column
            ============================================ */
         .partnership-section {
             background: linear-gradient(180deg, var(--bg-accent) 0%, var(--ice-flow-light) 100%);
@@ -2500,8 +2500,8 @@
 
         @media (min-width: 1024px) {
             .partnership-section {
-                padding-top: 72px;
-                padding-bottom: 72px;
+                padding-top: 64px;
+                padding-bottom: 64px;
             }
         }
 
@@ -2517,242 +2517,228 @@
             pointer-events: none;
         }
 
-        /* B2B Cards Wrapper */
-        .b2b-cards-wrapper {
-            position: relative;
-            margin-top: 32px;
-            margin-bottom: 40px;
-        }
-
-        @media (min-width: 768px) {
-            .b2b-cards-wrapper {
-                margin-top: 40px;
-                margin-bottom: 48px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .b2b-cards-wrapper {
-                margin-top: 48px;
-                margin-bottom: 56px;
-            }
-        }
-
-        /* B2B Cards Carousel - Mobile: horizontal scroll, Desktop: grid */
-        .b2b-cards-carousel {
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            padding: 8px 4px 16px;
-            margin: 0 -20px;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-
-        /* Hide scrollbar on mobile */
-        .b2b-cards-carousel::-webkit-scrollbar {
-            display: none;
-        }
-        .b2b-cards-carousel {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        @media (min-width: 768px) {
-            .b2b-cards-carousel {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-                overflow: visible;
-                padding: 8px;
-                margin: 0;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .b2b-cards-carousel {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 24px;
-            }
-        }
-
-        /* B2B Card - Premium Glassmorphism */
-        .b2b-card {
-            flex: 0 0 calc(85% - 8px);
-            scroll-snap-align: start;
-            background: rgba(255, 255, 255, 0.58);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 26px;
-            padding: 28px 24px;
+        /* Two-Column Layout Container */
+        .partnership-layout {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
-            min-height: 200px;
-            box-shadow:
-                0 8px 32px rgba(165, 196, 212, 0.12),
-                0 2px 8px rgba(0, 0, 0, 0.03),
-                inset 0 1px 0 rgba(255, 255, 255, 0.7);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            /* Animation initial state */
-            opacity: 0;
-            transform: translateY(24px);
-            filter: blur(4px);
-        }
-
-        /* Stagger animation delay based on card index */
-        .b2b-card {
-            transition-delay: calc(var(--card-index) * 0.1s);
-        }
-
-        .b2b-cards-wrapper.visible .b2b-card,
-        .reveal.visible .b2b-card {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
+            gap: 32px;
+            margin-top: 32px;
         }
 
         @media (min-width: 768px) {
-            .b2b-card {
-                flex: none;
-                min-height: 220px;
-                padding: 32px 24px;
+            .partnership-layout {
+                margin-top: 40px;
+                gap: 40px;
             }
         }
 
         @media (min-width: 1024px) {
-            .b2b-card {
-                min-height: 240px;
-                padding: 36px 28px;
-            }
-
-            .b2b-card:hover {
-                transform: translateY(-6px);
-                box-shadow:
-                    0 16px 48px rgba(165, 196, 212, 0.22),
-                    0 4px 12px rgba(0, 0, 0, 0.05),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-                background: rgba(255, 255, 255, 0.68);
-            }
-
-            .b2b-card:hover .b2b-card-icon {
-                background: linear-gradient(135deg, var(--ice-flow) 0%, var(--ice-flow-dark) 100%);
-                box-shadow: 0 4px 16px rgba(165, 196, 212, 0.35);
-            }
-
-            .b2b-card:hover .b2b-card-icon svg {
-                stroke: #ffffff;
+            .partnership-layout {
+                flex-direction: row;
+                align-items: stretch;
+                gap: 0;
+                margin-top: 48px;
             }
         }
 
-        /* B2B Card Icon */
-        .b2b-card-icon {
-            width: 48px;
-            height: 48px;
+        /* Left Column: Benefits List */
+        .partnership-benefits {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 1024px) {
+            .partnership-benefits {
+                flex: 1;
+                padding-right: 48px;
+                justify-content: center;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .partnership-benefits {
+                padding-right: 64px;
+            }
+        }
+
+        /* Benefit Item */
+        .benefit-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(165, 196, 212, 0.2);
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .benefit-item:first-child {
+            padding-top: 0;
+        }
+
+        .benefit-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .benefit-item.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered reveal delays */
+        .benefit-item:nth-child(1) { transition-delay: 0s; }
+        .benefit-item:nth-child(2) { transition-delay: 0.08s; }
+        .benefit-item:nth-child(3) { transition-delay: 0.16s; }
+        .benefit-item:nth-child(4) { transition-delay: 0.24s; }
+
+        @media (min-width: 768px) {
+            .benefit-item {
+                gap: 20px;
+                padding: 24px 0;
+            }
+        }
+
+        /* Benefit Icon */
+        .benefit-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(165, 196, 212, 0.2) 0%, rgba(139, 175, 194, 0.15) 100%);
-            border-radius: 14px;
-            margin-bottom: 18px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.15) 0%, rgba(165, 196, 212, 0.05) 100%);
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }
 
-        .b2b-card-icon svg {
+        .benefit-icon svg {
+            width: 20px;
+            height: 20px;
             stroke: var(--ice-flow-deep);
+            stroke-width: 1.75;
+            fill: none;
             transition: stroke 0.3s ease;
         }
 
         @media (min-width: 768px) {
-            .b2b-card-icon {
-                width: 52px;
-                height: 52px;
-                border-radius: 16px;
-                margin-bottom: 20px;
+            .benefit-icon {
+                width: 44px;
+                height: 44px;
+            }
+
+            .benefit-icon svg {
+                width: 22px;
+                height: 22px;
             }
         }
 
-        /* B2B Card Title */
-        .b2b-card-title {
-            font-size: 0.8125rem;
+        /* Benefit Content */
+        .benefit-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .benefit-title {
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.1em;
             color: var(--text-dark);
-            margin-bottom: 10px;
+            margin-bottom: 4px;
             line-height: 1.3;
         }
 
-        @media (min-width: 768px) {
-            .b2b-card-title {
-                font-size: 0.875rem;
-                letter-spacing: 0.1em;
-                margin-bottom: 12px;
-            }
-        }
-
-        /* B2B Card Text */
-        .b2b-card-text {
+        .benefit-text {
             font-size: 0.875rem;
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.5;
             margin: 0;
         }
 
         @media (min-width: 768px) {
-            .b2b-card-text {
+            .benefit-title {
+                font-size: 0.8125rem;
+                margin-bottom: 6px;
+            }
+
+            .benefit-text {
                 font-size: 0.9375rem;
             }
         }
 
-        /* B2B Cards Pagination Dots - Mobile Only */
-        .b2b-cards-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 8px;
+        /* Mobile Horizontal Divider */
+        .partnership-divider-mobile {
+            display: block;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(165, 196, 212, 0.3) 20%, rgba(165, 196, 212, 0.3) 80%, transparent 100%);
+            margin: 8px 0;
         }
 
-        @media (min-width: 768px) {
-            .b2b-cards-dots {
+        @media (min-width: 1024px) {
+            .partnership-divider-mobile {
                 display: none;
             }
         }
 
-        .b2b-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(165, 196, 212, 0.35);
-            transition: all 0.3s ease;
-            cursor: pointer;
+        /* Desktop Vertical Divider (Apple-style hairline) */
+        .partnership-divider {
+            display: none;
         }
 
-        .b2b-dot.active {
-            background: var(--ice-flow-dark);
-            width: 20px;
-            border-radius: 4px;
+        @media (min-width: 1024px) {
+            .partnership-divider {
+                display: block;
+                width: 1px;
+                background: linear-gradient(180deg, transparent 0%, rgba(165, 196, 212, 0.35) 15%, rgba(165, 196, 212, 0.35) 85%, transparent 100%);
+                flex-shrink: 0;
+            }
         }
 
-        /* Partnership Form Container */
-        .partnership-form-container {
+        /* Right Column: Form */
+        .partnership-form-column {
             display: flex;
             justify-content: center;
         }
 
-        .partnership-form-container .partnership-form-wrapper {
-            width: 100%;
-            max-width: 540px;
+        @media (min-width: 1024px) {
+            .partnership-form-column {
+                flex: 0 0 auto;
+                padding-left: 48px;
+                align-items: center;
+            }
         }
 
-        @media (min-width: 768px) {
-            .partnership-form-container .partnership-form-wrapper {
-                max-width: 480px;
+        @media (min-width: 1200px) {
+            .partnership-form-column {
+                padding-left: 64px;
+            }
+        }
+
+        /* Partnership Form Wrapper - Compact */
+        .partnership-form-column .partnership-form-wrapper {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        @media (min-width: 480px) {
+            .partnership-form-column .partnership-form-wrapper {
+                max-width: 420px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .partnership-form-column .partnership-form-wrapper {
+                width: 380px;
+                max-width: 380px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .partnership-form-column .partnership-form-wrapper {
+                width: 420px;
+                max-width: 420px;
             }
         }
 
@@ -4363,7 +4349,7 @@
         </div>
     </section>
 
-    <!-- CTA / Partnership -->
+    <!-- CTA / Partnership - Premium Compact Two-Column -->
     <section id="partnership" class="partnership-section">
         <div class="container">
             <!-- Section Header -->
@@ -4373,100 +4359,106 @@
                 <p class="section-text" style="margin: 0 auto;">B2B-инфраструктура для масштабирования вашего бизнеса</p>
             </div>
 
-            <!-- Premium B2B Cards - Desktop Grid / Mobile Carousel -->
-            <div class="b2b-cards-wrapper reveal">
-                <div class="b2b-cards-carousel">
-                    <!-- Card 1: B2B Partnership -->
-                    <div class="b2b-card" style="--card-index: 0;">
-                        <div class="b2b-card-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                                <circle cx="9" cy="7" r="4"/>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            <!-- Two-Column Layout -->
+            <div class="partnership-layout">
+                <!-- Left: Benefits List -->
+                <div class="partnership-benefits">
+                    <!-- Benefit 1: B2B Partnership -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="9" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M23 21v-2a4 4 0 00-3-3.87" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M16 3.13a4 4 0 010 7.75" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        <h3 class="b2b-card-title">B2B PARTNERSHIP</h3>
-                        <p class="b2b-card-text">Форматы сотрудничества под задачи бизнеса.</p>
+                        <div class="benefit-content">
+                            <h3 class="benefit-title">B2B Partnership</h3>
+                            <p class="benefit-text">Форматы сотрудничества под задачи бизнеса.</p>
+                        </div>
                     </div>
 
-                    <!-- Card 2: Global Delivery -->
-                    <div class="b2b-card" style="--card-index: 1;">
-                        <div class="b2b-card-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="2" y1="12" x2="22" y2="12"/>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    <!-- Benefit 2: Global Delivery -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="2" y1="12" x2="22" y2="12" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        <h3 class="b2b-card-title">GLOBAL DELIVERY</h3>
-                        <p class="b2b-card-text">Поставки по России и международным направлениям.</p>
+                        <div class="benefit-content">
+                            <h3 class="benefit-title">Global Delivery</h3>
+                            <p class="benefit-text">Поставки по России и международным направлениям.</p>
+                        </div>
                     </div>
 
-                    <!-- Card 3: Batch Consistency -->
-                    <div class="b2b-card" style="--card-index: 2;">
-                        <div class="b2b-card-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                                <polyline points="2 17 12 22 22 17"/>
-                                <polyline points="2 12 12 17 22 12"/>
+                    <!-- Benefit 3: Batch Consistency -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 17l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        <h3 class="b2b-card-title">BATCH CONSISTENCY</h3>
-                        <p class="b2b-card-text">Стабильность характеристик от партии к партии.</p>
+                        <div class="benefit-content">
+                            <h3 class="benefit-title">Batch Consistency</h3>
+                            <p class="benefit-text">Стабильность характеристик от партии к партии.</p>
+                        </div>
                     </div>
 
-                    <!-- Card 4: Documentation Support -->
-                    <div class="b2b-card" style="--card-index: 3;">
-                        <div class="b2b-card-icon">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14 2 14 8 20 8"/>
-                                <line x1="16" y1="13" x2="8" y2="13"/>
-                                <line x1="16" y1="17" x2="8" y2="17"/>
-                                <polyline points="10 9 9 9 8 9"/>
+                    <!-- Benefit 4: Documentation Support -->
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M14 2v6h6" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                         </div>
-                        <h3 class="b2b-card-title">DOCUMENTATION SUPPORT</h3>
-                        <p class="b2b-card-text">Материалы и сопровождение по запросу партнёра.</p>
+                        <div class="benefit-content">
+                            <h3 class="benefit-title">Documentation Support</h3>
+                            <p class="benefit-text">Материалы и сопровождение по запросу партнёра.</p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Mobile Pagination Dots -->
-                <div class="b2b-cards-dots">
-                    <span class="b2b-dot active"></span>
-                    <span class="b2b-dot"></span>
-                    <span class="b2b-dot"></span>
-                    <span class="b2b-dot"></span>
-                </div>
-            </div>
+                <!-- Mobile Horizontal Divider -->
+                <div class="partnership-divider-mobile"></div>
 
-            <!-- Partnership Form -->
-            <div class="partnership-form-container reveal">
-                <div class="partnership-form-wrapper">
-                    <h3 class="partnership-form-title">Оставить заявку</h3>
-                    <p class="partnership-form-subtitle">Заполните форму и мы свяжемся с вами</p>
-                    <form class="form partnership-form" id="partnershipForm">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="form-label">Имя</label>
-                                <input type="text" class="form-input" placeholder="Ваше имя" required>
+                <!-- Desktop Vertical Divider (Apple-style hairline) -->
+                <div class="partnership-divider"></div>
+
+                <!-- Right: Partnership Form -->
+                <div class="partnership-form-column">
+                    <div class="partnership-form-wrapper">
+                        <h3 class="partnership-form-title">Оставить заявку</h3>
+                        <p class="partnership-form-subtitle">Заполните форму и мы свяжемся с вами</p>
+                        <form class="form partnership-form" id="partnershipForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Имя</label>
+                                    <input type="text" class="form-input" placeholder="Ваше имя" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Компания</label>
+                                    <input type="text" class="form-input" placeholder="Название">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Компания</label>
-                                <input type="text" class="form-input" placeholder="Название">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" placeholder="email@company.com" required>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-input" placeholder="email@company.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Сообщение</label>
-                            <textarea class="form-input" placeholder="Опишите ваш запрос" rows="2"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Отправить запрос</button>
-                    </form>
+                            <div class="form-group">
+                                <label class="form-label">Сообщение</label>
+                                <textarea class="form-input" placeholder="Опишите ваш запрос" rows="2"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Отправить запрос</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -4726,6 +4718,27 @@
             });
         }
 
+        // Partnership benefit items staggered reveal (Premium compact)
+        const benefitItems = document.querySelectorAll('.benefit-item');
+        let benefitItemsRevealed = false;
+        const revealBenefitItems = () => {
+            if (benefitItemsRevealed) return;
+            const partnershipSection = document.querySelector('.partnership-section');
+            if (partnershipSection) {
+                const sectionTop = partnershipSection.getBoundingClientRect().top;
+                if (sectionTop < window.innerHeight - 100) {
+                    benefitItemsRevealed = true;
+                    benefitItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('revealed');
+                        }, index * 100);
+                    });
+                }
+            }
+        };
+        window.addEventListener('scroll', revealBenefitItems);
+        window.addEventListener('load', revealBenefitItems);
+
         // Principles carousel pagination dots
         const principlesGrid = document.querySelector('.principles-grid');
         const dots = document.querySelectorAll('.principles-dots .dot');
@@ -4774,39 +4787,6 @@
                         dot.classList.toggle('active', index === activeIndex);
                     });
                 }
-            });
-        }
-
-        // B2B Cards carousel pagination dots
-        const b2bCarousel = document.querySelector('.b2b-cards-carousel');
-        const b2bDots = document.querySelectorAll('.b2b-cards-dots .b2b-dot');
-
-        if (b2bCarousel && b2bDots.length) {
-            b2bCarousel.addEventListener('scroll', () => {
-                const scrollLeft = b2bCarousel.scrollLeft;
-                const card = b2bCarousel.querySelector('.b2b-card');
-                if (card) {
-                    const cardWidth = card.offsetWidth + 16; // 16px gap
-                    const activeIndex = Math.round(scrollLeft / cardWidth);
-
-                    b2bDots.forEach((dot, index) => {
-                        dot.classList.toggle('active', index === activeIndex);
-                    });
-                }
-            });
-
-            // Click on dot to scroll to card
-            b2bDots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    const card = b2bCarousel.querySelector('.b2b-card');
-                    if (card) {
-                        const cardWidth = card.offsetWidth + 16;
-                        b2bCarousel.scrollTo({
-                            left: index * cardWidth,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
             });
         }
 
