@@ -2140,6 +2140,15 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .cta-section {
+                padding-top: 56px;
+                padding-bottom: 56px;
+            }
         }
 
         .cta-section::before {
@@ -2165,7 +2174,7 @@
             flex-direction: column;
             gap: 12px;
             justify-content: center;
-            margin-bottom: 40px;
+            margin-bottom: 28px;
         }
 
         @media (min-width: 480px) {
@@ -2177,90 +2186,115 @@
 
         @media (min-width: 768px) {
             .cta-buttons {
-                margin-bottom: 48px;
+                margin-bottom: 32px;
             }
         }
 
-        /* Partnership Form - Premium Style */
+        /* Partnership Form - Premium Compact Style */
         .partnership-form-wrapper {
-            max-width: 480px;
+            max-width: 420px;
             margin: 0 auto;
-            padding: 28px 24px;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.65);
+            border-radius: 16px;
             box-shadow:
-                0 8px 32px rgba(165, 196, 212, 0.18),
-                0 2px 8px rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+                0 6px 24px rgba(165, 196, 212, 0.15),
+                0 2px 6px rgba(0, 0, 0, 0.03),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
 
         @media (min-width: 768px) {
             .partnership-form-wrapper {
-                max-width: 520px;
-                padding: 36px 40px;
-                border-radius: 24px;
+                max-width: 460px;
+                padding: 24px;
+                border-radius: 18px;
             }
         }
 
         .partnership-form-title {
-            font-size: 1.125rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
             text-align: center;
+            letter-spacing: -0.01em;
         }
 
         .partnership-form-subtitle {
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             color: var(--text-secondary);
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             text-align: center;
         }
 
-        .partnership-form .form-group {
-            margin-bottom: 16px;
+        .partnership-form {
+            gap: 12px;
         }
 
-        .partnership-form .form-group:last-of-type {
-            margin-bottom: 20px;
+        .partnership-form .form-group {
+            margin-bottom: 0;
+        }
+
+        .partnership-form .form-label {
+            font-size: 0.75rem;
+            margin-bottom: 4px;
         }
 
         .partnership-form .form-input {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid rgba(192, 192, 192, 0.35);
+            min-height: 44px;
+            padding: 10px 14px;
+            font-size: 0.875rem;
+            background: rgba(255, 255, 255, 0.92);
+            border: 1px solid rgba(192, 192, 192, 0.3);
+            border-radius: 10px;
         }
 
         .partnership-form .form-input:focus {
             background: #ffffff;
             border-color: var(--ice-flow);
-            box-shadow: 0 0 0 3px rgba(165, 196, 212, 0.2);
+            box-shadow: 0 0 0 3px rgba(165, 196, 212, 0.18);
+        }
+
+        .partnership-form textarea.form-input {
+            min-height: 90px;
+            max-height: 110px;
+            resize: none;
+        }
+
+        @media (max-width: 479px) {
+            .partnership-form textarea.form-input {
+                min-height: 80px;
+                max-height: 100px;
+            }
         }
 
         .partnership-form .btn-primary {
             width: 100%;
-            min-height: 52px;
-            font-size: 1rem;
+            min-height: 46px;
+            height: 46px;
+            font-size: 0.9375rem;
             font-weight: 600;
-            border-radius: 12px;
+            border-radius: 10px;
+            margin-top: 4px;
             box-shadow:
-                0 4px 14px rgba(90, 122, 138, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+                0 4px 12px rgba(90, 122, 138, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.12);
         }
 
         .partnership-form .btn-primary:hover {
-            transform: translateY(-2px);
+            transform: translateY(-1px);
             box-shadow:
-                0 6px 20px rgba(90, 122, 138, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+                0 6px 16px rgba(90, 122, 138, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.12);
         }
 
         /* Form row for Name/Company on desktop */
         .partnership-form .form-row {
             display: grid;
-            gap: 16px;
+            gap: 12px;
         }
 
         @media (min-width: 480px) {
@@ -2363,7 +2397,7 @@
         }
 
         textarea.form-input {
-            min-height: 120px;
+            min-height: 100px;
             resize: vertical;
         }
 
@@ -3234,7 +3268,7 @@
             <div class="cta-content reveal">
                 <span class="section-label">Partnership</span>
                 <h2 class="section-title">Сотрудничество с iPeptides</h2>
-                <p class="section-text" style="margin: 0 auto 32px;">Запросите коммерческое предложение — мы предложим формат партнёрства под ваши задачи и масштаб бизнеса.</p>
+                <p class="section-text" style="margin: 0 auto 24px;">Запросите коммерческое предложение — мы предложим формат партнёрства под ваши задачи и масштаб бизнеса.</p>
                 <div class="cta-buttons">
                     <a href="https://t.me/peptidesandhealth" target="_blank" class="btn btn-secondary btn-block">Написать в Telegram</a>
                 </div>
@@ -3262,7 +3296,7 @@
                             <label class="form-label">Сообщение</label>
                             <textarea class="form-input" placeholder="Опишите ваш запрос" rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                        <button type="submit" class="btn btn-primary">Отправить запрос</button>
                     </form>
                 </div>
             </div>
