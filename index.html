@@ -3129,119 +3129,179 @@
         }
 
         /* ============================================
-           QUALITY SECTION - Apple Style
+           QUALITY SECTION - Premium Glass Panel
            ============================================ */
         .quality-apple {
             background: var(--snow-white-pure);
         }
 
-        .quality-apple .container {
-            max-width: 900px;
-        }
-
         .quality-apple .section-header {
             text-align: center;
-            margin-bottom: 56px;
+            margin-bottom: 32px;
         }
 
         .quality-apple .section-title {
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
         .quality-apple .section-text {
-            max-width: 640px;
+            max-width: 480px;
             margin: 0 auto;
             color: var(--text-secondary);
-            font-size: 1.0625rem;
-            line-height: 1.75;
+            font-size: 0.9375rem;
+            line-height: 1.6;
         }
 
-        .quality-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            max-width: 720px;
+        @media (min-width: 768px) {
+            .quality-apple .section-header {
+                margin-bottom: 40px;
+            }
+
+            .quality-apple .section-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* Glass Panel Container */
+        .quality-glass-panel {
+            max-width: 600px;
             margin: 0 auto;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(165, 196, 212, 0.2);
+            border-radius: 24px;
+            padding: 0;
+            box-shadow:
+                0 4px 24px rgba(165, 196, 212, 0.12),
+                0 1px 3px rgba(0, 0, 0, 0.04);
         }
 
+        @media (min-width: 768px) {
+            .quality-glass-panel {
+                max-width: 580px;
+                border-radius: 28px;
+            }
+        }
+
+        /* Quality Item - List Row */
         .quality-item {
-            padding: 28px 24px;
-            border-top: 1px solid rgba(165, 196, 212, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 18px;
             opacity: 0;
-            transform: translateY(8px);
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(10px);
+            filter: blur(4px);
+            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        background 0.25s ease;
+        }
+
+        .quality-item:not(:last-child) {
+            border-bottom: 1px solid rgba(165, 196, 212, 0.15);
+        }
+
+        .quality-item:first-child {
+            border-radius: 24px 24px 0 0;
         }
 
         .quality-item:last-child {
-            border-bottom: 1px solid rgba(165, 196, 212, 0.3);
+            border-radius: 0 0 24px 24px;
         }
 
         .quality-item.revealed {
             opacity: 1;
             transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* Staggered reveal delays */
+        .quality-item:nth-child(1) { transition-delay: 0s; }
+        .quality-item:nth-child(2) { transition-delay: 0.08s; }
+        .quality-item:nth-child(3) { transition-delay: 0.16s; }
+        .quality-item:nth-child(4) { transition-delay: 0.24s; }
+
+        /* Quality Item Icon */
+        .quality-item-icon {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.16) 0%, rgba(165, 196, 212, 0.06) 100%);
+            border-radius: 9px;
+        }
+
+        .quality-item-icon svg {
+            width: 16px;
+            height: 16px;
+            stroke: var(--ice-flow-deep);
+            stroke-width: 1.75;
+            fill: none;
         }
 
         .quality-item-title {
-            font-size: 1rem;
+            font-size: 0.875rem;
             font-weight: 600;
             color: var(--text-dark);
             letter-spacing: -0.01em;
-            line-height: 1.5;
+            line-height: 1.4;
+            flex: 1;
         }
 
-        /* Desktop: 2x2 grid with hairline separators */
+        /* Desktop hover and sizing */
         @media (min-width: 768px) {
-            .quality-apple .section-header {
-                margin-bottom: 64px;
-            }
-
-            .quality-apple .section-text {
-                font-size: 1.125rem;
-            }
-
-            .quality-grid {
-                grid-template-columns: 1fr 1fr;
-                position: relative;
+            .quality-glass-panel {
+                max-width: 560px;
             }
 
             .quality-item {
-                padding: 36px 32px;
-                border-top: none;
-                border-bottom: none;
+                gap: 16px;
+                padding: 18px 24px;
+            }
+
+            .quality-item:first-child {
+                border-radius: 28px 28px 0 0;
             }
 
             .quality-item:last-child {
-                border-bottom: none;
+                border-radius: 0 0 28px 28px;
             }
 
-            /* Top row items */
-            .quality-item:nth-child(1),
-            .quality-item:nth-child(2) {
-                border-bottom: 1px solid rgba(165, 196, 212, 0.3);
+            .quality-item:hover {
+                background: rgba(165, 196, 212, 0.06);
             }
 
-            /* Left column items */
-            .quality-item:nth-child(1),
-            .quality-item:nth-child(3) {
-                border-right: 1px solid rgba(165, 196, 212, 0.3);
+            .quality-item-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+            }
+
+            .quality-item-icon svg {
+                width: 18px;
+                height: 18px;
             }
 
             .quality-item-title {
-                font-size: 1.0625rem;
+                font-size: 0.9375rem;
             }
         }
 
         @media (min-width: 1024px) {
-            .quality-apple .section-header {
-                margin-bottom: 72px;
+            .quality-glass-panel {
+                max-width: 580px;
             }
 
             .quality-item {
-                padding: 44px 40px;
+                padding: 20px 28px;
             }
 
             .quality-item-title {
-                font-size: 1.125rem;
+                font-size: 1rem;
             }
         }
 
@@ -4149,24 +4209,53 @@
         </div>
     </section>
 
-    <!-- Quality - Apple Style -->
+    <!-- Quality - Premium Glass Panel -->
     <section id="quality" class="quality-apple">
         <div class="container">
             <div class="section-header reveal">
                 <h2 class="section-title">Контроль качества</h2>
-                <p class="section-text">Качество — это система. Мы контролируем параметры партии на этапах, которые определяют стабильность результата.</p>
+                <p class="section-text">Единый стандарт контроля от сырья до отгрузки.</p>
             </div>
-            <div class="quality-grid">
-                <div class="quality-item" data-quality-index="0">
+            <div class="quality-glass-panel">
+                <div class="quality-item">
+                    <div class="quality-item-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <span class="quality-item-title">Входной контроль сырья и материалов</span>
                 </div>
-                <div class="quality-item" data-quality-index="1">
+                <div class="quality-item">
+                    <div class="quality-item-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <span class="quality-item-title">Контроль партии перед отгрузкой</span>
                 </div>
-                <div class="quality-item" data-quality-index="2">
+                <div class="quality-item">
+                    <div class="quality-item-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round" stroke-linejoin="round"/>
+                            <line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <span class="quality-item-title">Документация по запросу партнёра</span>
                 </div>
-                <div class="quality-item" data-quality-index="3">
+                <div class="quality-item">
+                    <div class="quality-item-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="3" width="15" height="13" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="5.5" cy="18.5" r="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="18.5" cy="18.5" r="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <span class="quality-item-title">Соблюдение условий хранения и доставки</span>
                 </div>
             </div>
@@ -4632,17 +4721,20 @@
         window.addEventListener('scroll', revealPrincipleCards);
         window.addEventListener('load', revealPrincipleCards);
 
-        // Quality items staggered reveal (Apple-style)
+        // Quality items staggered reveal (Premium glass panel)
         const qualityItems = document.querySelectorAll('.quality-item');
+        let qualityRevealed = false;
         const revealQualityItems = () => {
-            const qualityGrid = document.querySelector('.quality-grid');
-            if (qualityGrid) {
-                const gridTop = qualityGrid.getBoundingClientRect().top;
-                if (gridTop < window.innerHeight - 100) {
+            if (qualityRevealed) return;
+            const qualityPanel = document.querySelector('.quality-glass-panel');
+            if (qualityPanel) {
+                const panelTop = qualityPanel.getBoundingClientRect().top;
+                if (panelTop < window.innerHeight - 80) {
+                    qualityRevealed = true;
                     qualityItems.forEach((item, index) => {
                         setTimeout(() => {
                             item.classList.add('revealed');
-                        }, index * 120);
+                        }, index * 100);
                     });
                 }
             }
