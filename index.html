@@ -1702,8 +1702,12 @@
         }
 
         /* ============================================
-           PRODUCTION SECTION
+           PRODUCTION SECTION - Premium Glassmorphism
            ============================================ */
+        #production {
+            background: linear-gradient(180deg, var(--snow-white) 0%, var(--bg-accent) 100%);
+        }
+
         .production-content {
             display: grid;
             gap: 32px;
@@ -1712,42 +1716,271 @@
         @media (min-width: 768px) {
             .production-content {
                 grid-template-columns: 1fr 1.2fr;
-                gap: 48px;
+                gap: 56px;
                 align-items: start;
             }
         }
 
-        .production-list {
+        /* Premium badge label */
+        .production-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--ice-flow-dark);
+            margin-bottom: 16px;
+        }
+
+        .production-badge-marker {
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, var(--ice-flow) 0%, var(--ice-flow-dark) 100%);
+            border-radius: 50%;
+            animation: pulse-marker 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-marker {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.15); }
+        }
+
+        /* Corporate tagline */
+        .production-tagline {
             display: flex;
-            flex-direction: column;
-            gap: 12px;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--ice-flow-dark);
         }
 
-        .production-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 16px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 12px;
-            transition: all var(--transition-normal);
-        }
-
-        .production-item:hover {
-            border-color: var(--ice-flow);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .production-item .card-number {
-            margin-bottom: 0;
+        .production-tagline-marker {
+            width: 6px;
+            height: 6px;
+            background: linear-gradient(135deg, #8BAFC2 0%, #5a7a8a 100%);
+            border-radius: 50%;
             flex-shrink: 0;
         }
 
-        .production-item-text {
+        .production-tagline span {
+            opacity: 0.6;
+        }
+
+        .production-tagline-text {
+            opacity: 1 !important;
+        }
+
+        /* Production list */
+        .production-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Premium glassmorphism production item */
+        .production-item {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 2px 12px rgba(165, 196, 212, 0.08);
+            /* Premium reveal animation initial state */
+            opacity: 0;
+            transform: translateY(20px);
+            filter: blur(4px);
+        }
+
+        .production-item.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        /* Staggered reveal delays */
+        .production-item:nth-child(1) { transition-delay: 0s; }
+        .production-item:nth-child(2) { transition-delay: 0.1s; }
+        .production-item:nth-child(3) { transition-delay: 0.2s; }
+        .production-item:nth-child(4) { transition-delay: 0.3s; }
+
+        /* Active state - premium highlight */
+        .production-item.active {
+            background: rgba(255, 255, 255, 0.75);
+            border-color: rgba(165, 196, 212, 0.4);
+            box-shadow:
+                0 4px 20px rgba(165, 196, 212, 0.15),
+                0 0 0 1px rgba(165, 196, 212, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .production-item:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.65);
+            border-color: rgba(165, 196, 212, 0.3);
+            box-shadow: 0 4px 16px rgba(165, 196, 212, 0.12);
+            transform: translateY(-2px);
+        }
+
+        /* Icon container */
+        .production-item-icon {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.15) 0%, rgba(139, 175, 194, 0.1) 100%);
+            border-radius: 10px;
+            border: 1px solid rgba(165, 196, 212, 0.2);
+        }
+
+        .production-item-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--ice-flow-deep);
+            stroke-width: 1.75;
+        }
+
+        .production-item.active .production-item-icon {
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.25) 0%, rgba(139, 175, 194, 0.15) 100%);
+            border-color: rgba(165, 196, 212, 0.35);
+        }
+
+        .production-item.active .production-item-icon svg {
+            color: var(--ice-flow-dark);
+        }
+
+        /* Number badge */
+        .production-item .card-number {
+            margin-bottom: 0;
+            flex-shrink: 0;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ice-flow-deep);
+            opacity: 0.7;
+            min-width: 20px;
+        }
+
+        .production-item.active .card-number {
+            opacity: 1;
+            color: var(--ice-flow-dark);
+        }
+
+        /* Content area */
+        .production-item-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .production-item-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .production-item-title {
             font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .production-item.active .production-item-title {
+            color: var(--text-dark);
+        }
+
+        /* Expanded details */
+        .production-item-details {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        opacity 0.3s ease,
+                        margin-top 0.3s ease;
+            margin-top: 0;
+        }
+
+        .production-item.active .production-item-details {
+            max-height: 80px;
+            opacity: 1;
+            margin-top: 10px;
+        }
+
+        .production-item-details p {
+            font-size: 0.8125rem;
             color: var(--text-secondary);
-            line-height: 1.5;
+            line-height: 1.55;
+        }
+
+        /* Chevron indicator */
+        .production-item-chevron {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            color: var(--ice-flow-dark);
+            opacity: 0.5;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            margin-left: auto;
+            align-self: center;
+        }
+
+        .production-item.active .production-item-chevron {
+            transform: rotate(180deg);
+            opacity: 0.8;
+        }
+
+        /* Mobile accordion adjustments */
+        @media (max-width: 767px) {
+            .production-content {
+                gap: 28px;
+            }
+
+            .production-item {
+                padding: 16px 18px;
+            }
+
+            .production-item-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .production-item-icon svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            .production-item-title {
+                font-size: 0.875rem;
+            }
+
+            .production-item-details p {
+                font-size: 0.8125rem;
+            }
+
+            .production-tagline {
+                flex-wrap: wrap;
+                gap: 6px;
+            }
+        }
+
+        /* Disable hover transforms on touch devices */
+        @media (hover: none) {
+            .production-item:hover:not(.active) {
+                transform: none;
+                box-shadow: 0 2px 12px rgba(165, 196, 212, 0.08);
+            }
         }
 
         /* ============================================
@@ -2261,8 +2494,7 @@
         /* Disable hover effects on touch devices */
         @media (hover: none) {
             .card:hover,
-            .timeline-item:hover,
-            .production-item:hover {
+            .timeline-item:hover {
                 transform: none;
                 box-shadow: none;
             }
@@ -2596,30 +2828,112 @@
     </section>
 
     <!-- Production -->
-    <section id="production" class="bg-white">
+    <section id="production">
         <div class="container">
             <div class="production-content">
                 <div class="reveal">
-                    <span class="section-label">Production</span>
+                    <div class="production-badge">
+                        <span class="production-badge-marker"></span>
+                        <span>Production System</span>
+                    </div>
                     <h2 class="section-title">Производство полного цикла</h2>
-                    <p class="section-text">Производственные процессы выстроены так, чтобы обеспечивать стабильность качества и воспроизводимость партии.</p>
+                    <p class="section-text">Производственные процессы выстроены вокруг стабильности качества, воспроизводимости партий и соблюдения сроков поставок.</p>
+                    <div class="production-tagline">
+                        <span class="production-tagline-marker"></span>
+                        <span class="production-tagline-text">Full-cycle</span>
+                        <span>•</span>
+                        <span class="production-tagline-text">Quality Control</span>
+                        <span>•</span>
+                        <span class="production-tagline-text">Logistics</span>
+                    </div>
                 </div>
-                <div class="production-list reveal">
-                    <div class="production-item">
+                <div class="production-list">
+                    <div class="production-item active" data-production="1">
+                        <div class="production-item-icon">
+                            <!-- Settings/Factory icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                        </div>
                         <div class="card-number">01</div>
-                        <p class="production-item-text">Технологичные линии и стандартизация процедур</p>
+                        <div class="production-item-content">
+                            <div class="production-item-header">
+                                <span class="production-item-title">Технологичные линии</span>
+                            </div>
+                            <div class="production-item-details">
+                                <p>Стандартизированные процедуры и современное оборудование для стабильного выпуска партий.</p>
+                            </div>
+                        </div>
+                        <svg class="production-item-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
                     </div>
-                    <div class="production-item">
+                    <div class="production-item" data-production="2">
+                        <div class="production-item-icon">
+                            <!-- Shield/Check icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <polyline points="9 12 11 14 15 10"></polyline>
+                            </svg>
+                        </div>
                         <div class="card-number">02</div>
-                        <p class="production-item-text">Контроль параметров на ключевых этапах</p>
+                        <div class="production-item-content">
+                            <div class="production-item-header">
+                                <span class="production-item-title">Контроль качества</span>
+                            </div>
+                            <div class="production-item-details">
+                                <p>Многоуровневая проверка параметров на ключевых этапах производственного цикла.</p>
+                            </div>
+                        </div>
+                        <svg class="production-item-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
                     </div>
-                    <div class="production-item">
+                    <div class="production-item" data-production="3">
+                        <div class="production-item-icon">
+                            <!-- Box/Package icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                        </div>
                         <div class="card-number">03</div>
-                        <p class="production-item-text">Упаковка и маркировка под требования партнёров</p>
+                        <div class="production-item-content">
+                            <div class="production-item-header">
+                                <span class="production-item-title">Упаковка и маркировка</span>
+                            </div>
+                            <div class="production-item-details">
+                                <p>Индивидуальная упаковка и маркировка под требования партнёров и рынков сбыта.</p>
+                            </div>
+                        </div>
+                        <svg class="production-item-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
                     </div>
-                    <div class="production-item">
+                    <div class="production-item" data-production="4">
+                        <div class="production-item-icon">
+                            <!-- Truck/Route icon -->
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="3" width="15" height="13"></rect>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                            </svg>
+                        </div>
                         <div class="card-number">04</div>
-                        <p class="production-item-text">Логистика и соблюдение сроков отгрузки</p>
+                        <div class="production-item-content">
+                            <div class="production-item-header">
+                                <span class="production-item-title">Логистика и отгрузка</span>
+                            </div>
+                            <div class="production-item-details">
+                                <p>Соблюдение сроков поставок и условий хранения на всех этапах доставки.</p>
+                            </div>
+                        </div>
+                        <svg class="production-item-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -3042,6 +3356,37 @@
                 }
             });
         }
+
+        // Premium reveal for production items (blur-to-sharp + lift + stagger)
+        const productionItems = document.querySelectorAll('.production-item');
+        const revealProductionItems = () => {
+            const productionList = document.querySelector('.production-list');
+            if (productionList) {
+                const listTop = productionList.getBoundingClientRect().top;
+                if (listTop < window.innerHeight - 80) {
+                    productionItems.forEach(item => {
+                        item.classList.add('revealed');
+                    });
+                }
+            }
+        };
+        window.addEventListener('scroll', revealProductionItems);
+        window.addEventListener('load', revealProductionItems);
+
+        // Production accordion functionality
+        productionItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Close all items
+                productionItems.forEach(i => i.classList.remove('active'));
+
+                // Open clicked if it wasn't active
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
 
         // FAQ accordion
         document.querySelectorAll('.faq-question').forEach(btn => {
