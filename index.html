@@ -3184,7 +3184,7 @@
         }
 
         /* ============================================
-           WHY IPEPTIDES - Premium B2B Section
+           WHY IPEPTIDES - Premium Compact Apple-style
            ============================================ */
         .why-premium {
             background: var(--bg-secondary);
@@ -3193,220 +3193,171 @@
 
         .why-premium .section-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
         @media (min-width: 768px) {
             .why-premium .section-header {
-                margin-bottom: 56px;
+                margin-bottom: 40px;
             }
         }
 
-        /* Mobile: Horizontal scroll carousel */
-        .why-carousel-wrapper {
-            position: relative;
-            margin: 0 calc(-1 * var(--container-padding));
-            padding: 0 var(--container-padding);
-        }
-
-        .why-cards-grid {
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            padding: 8px 0 24px;
-        }
-
-        .why-cards-grid::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Premium Why Card - Glassmorphism */
-        .why-card {
-            flex: 0 0 calc(85% - 8px);
-            min-width: calc(85% - 8px);
-            scroll-snap-align: center;
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(165, 196, 212, 0.2);
+        /* Glass Panel Container */
+        .why-glass-panel {
+            max-width: 680px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(165, 196, 212, 0.22);
             border-radius: 24px;
-            padding: 28px 24px;
-            display: flex;
-            flex-direction: column;
+            padding: 0;
+            box-shadow:
+                0 4px 24px rgba(165, 196, 212, 0.1),
+                0 1px 3px rgba(0, 0, 0, 0.04);
             opacity: 0;
-            transform: translateY(20px);
-            filter: blur(6px);
+            transform: translateY(16px);
             transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                        filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                        box-shadow 0.35s ease,
-                        border-color 0.35s ease;
-            box-shadow: 0 4px 24px rgba(165, 196, 212, 0.1);
+                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .why-card.revealed {
+        .why-glass-panel.revealed {
             opacity: 1;
             transform: translateY(0);
-            filter: blur(0);
         }
 
-        /* Staggered reveal delays */
-        .why-card:nth-child(1) { transition-delay: 0s; }
-        .why-card:nth-child(2) { transition-delay: 0.1s; }
-        .why-card:nth-child(3) { transition-delay: 0.2s; }
-        .why-card:nth-child(4) { transition-delay: 0.3s; }
+        /* Compact List Item */
+        .why-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 18px 20px;
+            transition: background 0.25s ease;
+        }
 
-        /* Why Card Icon */
-        .why-card-icon {
-            width: 44px;
-            height: 44px;
+        .why-item:not(:last-child) {
+            border-bottom: 1px solid rgba(165, 196, 212, 0.15);
+        }
+
+        .why-item:first-child {
+            border-radius: 24px 24px 0 0;
+        }
+
+        .why-item:last-child {
+            border-radius: 0 0 24px 24px;
+        }
+
+        .why-item:only-child {
+            border-radius: 24px;
+        }
+
+        /* Compact Icon */
+        .why-item-icon {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(165, 196, 212, 0.12) 0%, rgba(165, 196, 212, 0.04) 100%);
-            border-radius: 14px;
-            margin-bottom: 20px;
-            transition: background 0.35s ease, transform 0.35s ease;
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.14) 0%, rgba(165, 196, 212, 0.06) 100%);
+            border-radius: 9px;
+            margin-top: 2px;
         }
 
-        .why-card-icon svg {
-            width: 20px;
-            height: 20px;
+        .why-item-icon svg {
+            width: 16px;
+            height: 16px;
             stroke: var(--ice-flow-deep);
             stroke-width: 1.75;
             fill: none;
-            transition: stroke 0.35s ease, filter 0.35s ease;
         }
 
-        .why-card-title {
-            font-size: 1.0625rem;
+        /* Item Content */
+        .why-item-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .why-item-title {
+            font-size: 0.9375rem;
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 10px;
+            margin-bottom: 3px;
             letter-spacing: -0.01em;
             line-height: 1.35;
         }
 
-        .why-card-text {
-            font-size: 0.9375rem;
+        .why-item-text {
+            font-size: 0.8125rem;
             color: var(--text-secondary);
-            line-height: 1.6;
-            margin-top: auto;
+            line-height: 1.5;
+            margin: 0;
         }
 
-        /* Mobile carousel dots */
-        .why-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 8px;
-        }
-
-        .why-dots .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--chrome);
-            opacity: 0.4;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-            padding: 0;
-        }
-
-        .why-dots .dot.active {
-            background: var(--ice-flow-deep);
-            opacity: 1;
-            width: 20px;
-            border-radius: 3px;
-        }
-
-        /* Tablet: 2 cards visible in scroll */
-        @media (min-width: 540px) {
-            .why-card {
-                flex: 0 0 calc(50% - 8px);
-                min-width: calc(50% - 8px);
-            }
-        }
-
-        /* Desktop: 2x2 Grid layout */
+        /* Tablet/Desktop adjustments */
         @media (min-width: 768px) {
-            .why-carousel-wrapper {
-                margin: 0;
-                padding: 0;
-            }
-
-            .why-cards-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
-                overflow: visible;
-                padding: 8px;
-            }
-
-            .why-card {
-                flex: none;
-                min-width: 0;
-                padding: 36px 32px;
-                min-height: 200px;
+            .why-glass-panel {
+                max-width: 600px;
                 border-radius: 28px;
             }
 
-            .why-card:hover {
-                transform: translateY(-6px);
-                box-shadow: 0 16px 48px rgba(165, 196, 212, 0.22);
-                border-color: rgba(165, 196, 212, 0.4);
+            .why-item {
+                gap: 16px;
+                padding: 20px 28px;
             }
 
-            .why-card:hover .why-card-icon {
-                background: linear-gradient(135deg, rgba(165, 196, 212, 0.2) 0%, rgba(165, 196, 212, 0.08) 100%);
-                transform: scale(1.05);
+            .why-item:first-child {
+                border-radius: 28px 28px 0 0;
             }
 
-            .why-card:hover .why-card-icon svg {
-                stroke: var(--ice-flow-darker);
-                filter: drop-shadow(0 0 6px rgba(165, 196, 212, 0.4));
+            .why-item:last-child {
+                border-radius: 0 0 28px 28px;
             }
 
-            .why-card-icon {
-                width: 48px;
-                height: 48px;
-                border-radius: 16px;
-                margin-bottom: 24px;
+            .why-item:only-child {
+                border-radius: 28px;
             }
 
-            .why-card-icon svg {
-                width: 22px;
-                height: 22px;
+            .why-item-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
             }
 
-            .why-card-title {
-                font-size: 1.125rem;
-                margin-bottom: 12px;
+            .why-item-icon svg {
+                width: 18px;
+                height: 18px;
             }
 
-            .why-dots {
-                display: none;
+            .why-item-title {
+                font-size: 1rem;
+                margin-bottom: 4px;
+            }
+
+            .why-item-text {
+                font-size: 0.875rem;
+            }
+
+            .why-item:hover {
+                background: rgba(165, 196, 212, 0.06);
             }
         }
 
         @media (min-width: 1024px) {
-            .why-card {
-                padding: 40px 36px;
-                min-height: 220px;
+            .why-glass-panel {
+                max-width: 640px;
             }
 
-            .why-card-title {
-                font-size: 1.1875rem;
+            .why-item {
+                padding: 22px 32px;
             }
 
-            .why-card-text {
-                font-size: 1rem;
+            .why-item-title {
+                font-size: 1.0625rem;
+            }
+
+            .why-item-text {
+                font-size: 0.9375rem;
             }
         }
 
@@ -4232,70 +4183,66 @@
         </div>
     </section>
 
-    <!-- Why Choose - Premium B2B -->
+    <!-- Why Choose - Premium Compact Apple-style -->
     <section id="why" class="why-premium">
         <div class="container">
             <div class="section-header center reveal">
                 <span class="section-label">Why iPeptides</span>
                 <h2 class="section-title">Почему выбирают iPeptides</h2>
             </div>
-            <div class="why-carousel-wrapper">
-                <div class="why-cards-grid">
-                    <div class="why-card">
-                        <div class="why-card-icon">
-                            <!-- Layers/Repeat icon -->
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2L2 7l10 5 10-5-10-5z" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M2 17l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <h3 class="why-card-title">Повторяемость партии</h3>
-                        <p class="why-card-text">Стабильные параметры и воспроизводимость результата.</p>
+            <div class="why-glass-panel">
+                <div class="why-item">
+                    <div class="why-item-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </div>
-                    <div class="why-card">
-                        <div class="why-card-icon">
-                            <!-- Shield/Check icon -->
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <h3 class="why-card-title">Коммерческая надёжность</h3>
-                        <p class="why-card-text">Предсказуемые сроки и прозрачные условия работы.</p>
-                    </div>
-                    <div class="why-card">
-                        <div class="why-card-icon">
-                            <!-- File/Search icon -->
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M14 2v6h6" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M10 13a2 2 0 100 4 2 2 0 000-4z" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M12 15l2 2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <h3 class="why-card-title">Документация и сопровождение</h3>
-                        <p class="why-card-text">Материалы и подтверждения по запросу партнёра.</p>
-                    </div>
-                    <div class="why-card">
-                        <div class="why-card-icon">
-                            <!-- Handshake/Users icon -->
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <circle cx="9" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M23 21v-2a4 4 0 00-3-3.87" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M16 3.13a4 4 0 010 7.75" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <h3 class="why-card-title">Гибкие форматы сотрудничества</h3>
-                        <p class="why-card-text">B2B-поставки, проф-сегмент, private label и e-commerce.</p>
+                    <div class="why-item-content">
+                        <h3 class="why-item-title">Повторяемость партии</h3>
+                        <p class="why-item-text">Стабильные параметры и воспроизводимость результата.</p>
                     </div>
                 </div>
-                <div class="why-dots">
-                    <button class="dot active" data-index="0" aria-label="Slide 1"></button>
-                    <button class="dot" data-index="1" aria-label="Slide 2"></button>
-                    <button class="dot" data-index="2" aria-label="Slide 3"></button>
-                    <button class="dot" data-index="3" aria-label="Slide 4"></button>
+                <div class="why-item">
+                    <div class="why-item-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="why-item-content">
+                        <h3 class="why-item-title">Коммерческая надёжность</h3>
+                        <p class="why-item-text">Предсказуемые сроки и прозрачные условия работы.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-item-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14 2v6h6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M10 13a2 2 0 100 4 2 2 0 000-4z" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 15l2 2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="why-item-content">
+                        <h3 class="why-item-title">Документация и сопровождение</h3>
+                        <p class="why-item-text">Материалы и подтверждения по запросу партнёра.</p>
+                    </div>
+                </div>
+                <div class="why-item">
+                    <div class="why-item-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="9" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M23 21v-2a4 4 0 00-3-3.87" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 3.13a4 4 0 010 7.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="why-item-content">
+                        <h3 class="why-item-title">Гибкие форматы сотрудничества</h3>
+                        <p class="why-item-text">B2B-поставки, проф-сегмент, private label и e-commerce.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -4665,58 +4612,22 @@
         }
 
         // Why iPeptides cards staggered reveal (Premium B2B)
-        const whyCards = document.querySelectorAll('.why-card');
-        let whyCardsRevealed = false;
-        const revealWhyCards = () => {
-            if (whyCardsRevealed) return;
+        // Why iPeptides glass panel reveal
+        const whyGlassPanel = document.querySelector('.why-glass-panel');
+        let whyPanelRevealed = false;
+        const revealWhyPanel = () => {
+            if (whyPanelRevealed) return;
             const whySection = document.querySelector('.why-premium');
-            if (whySection) {
+            if (whySection && whyGlassPanel) {
                 const sectionTop = whySection.getBoundingClientRect().top;
                 if (sectionTop < window.innerHeight - 80) {
-                    whyCardsRevealed = true;
-                    whyCards.forEach((card, index) => {
-                        setTimeout(() => {
-                            card.classList.add('revealed');
-                        }, index * 120);
-                    });
+                    whyPanelRevealed = true;
+                    whyGlassPanel.classList.add('revealed');
                 }
             }
         };
-        window.addEventListener('scroll', revealWhyCards);
-        window.addEventListener('load', revealWhyCards);
-
-        // Why iPeptides carousel pagination dots
-        const whyCarousel = document.querySelector('.why-cards-grid');
-        const whyDots = document.querySelectorAll('.why-dots .dot');
-
-        if (whyCarousel && whyDots.length) {
-            // Update dots on scroll
-            whyCarousel.addEventListener('scroll', () => {
-                const scrollLeft = whyCarousel.scrollLeft;
-                const card = whyCarousel.querySelector('.why-card');
-                if (card) {
-                    const cardWidth = card.offsetWidth + 16;
-                    const activeIndex = Math.round(scrollLeft / cardWidth);
-                    whyDots.forEach((dot, index) => {
-                        dot.classList.toggle('active', index === activeIndex);
-                    });
-                }
-            });
-
-            // Click on dots to navigate
-            whyDots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    const card = whyCarousel.querySelector('.why-card');
-                    if (card) {
-                        const cardWidth = card.offsetWidth + 16;
-                        whyCarousel.scrollTo({
-                            left: cardWidth * index,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        }
+        window.addEventListener('scroll', revealWhyPanel);
+        window.addEventListener('load', revealWhyPanel);
 
         // Partnership benefit items staggered reveal (Premium compact)
         const benefitItems = document.querySelectorAll('.benefit-item');
