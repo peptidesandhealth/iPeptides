@@ -2037,15 +2037,83 @@
         }
 
         /* ============================================
-           FAQ SECTION
+           FAQ SECTION - Premium Glassmorphism
            ============================================ */
+        #faq {
+            padding-top: 48px;
+            padding-bottom: 48px;
+        }
+
+        @media (min-width: 768px) {
+            #faq {
+                padding-top: 64px;
+                padding-bottom: 64px;
+            }
+        }
+
+        #faq .section-header {
+            margin-bottom: 28px;
+        }
+
+        @media (min-width: 768px) {
+            #faq .section-header {
+                margin-bottom: 36px;
+            }
+        }
+
+        .faq-badge {
+            display: inline-block;
+            font-size: 0.625rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--ice-flow-dark);
+            background: rgba(165, 196, 212, 0.15);
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
         .faq-list {
-            max-width: 800px;
+            max-width: 640px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .faq-list {
+                gap: 12px;
+            }
         }
 
         .faq-item {
-            border-bottom: 1px solid var(--border-light);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 14px;
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            box-shadow:
+                0 2px 8px rgba(165, 196, 212, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow:
+                0 4px 16px rgba(165, 196, 212, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        }
+
+        .faq-item.active {
+            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(165, 196, 212, 0.3);
+            box-shadow:
+                0 4px 20px rgba(165, 196, 212, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
 
         .faq-question {
@@ -2053,8 +2121,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 16px;
-            padding: 20px 0;
+            gap: 14px;
+            padding: 16px 18px;
             background: none;
             border: none;
             cursor: pointer;
@@ -2062,74 +2130,80 @@
             font-family: inherit;
         }
 
+        @media (min-width: 768px) {
+            .faq-question {
+                padding: 18px 22px;
+            }
+        }
+
         .faq-question-text {
-            font-size: 1rem;
+            font-size: 0.9375rem;
             font-weight: 500;
             color: var(--text-dark);
             line-height: 1.4;
         }
 
         @media (min-width: 768px) {
-            .faq-question { padding: 24px 0; }
-            .faq-question-text { font-size: 1.0625rem; }
+            .faq-question-text {
+                font-size: 1rem;
+            }
         }
 
-        .faq-icon {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--snow-white);
-            border: 1px solid var(--border-chrome);
+        /* Chevron Arrow */
+        .faq-chevron {
+            width: 20px;
+            height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            transition: all var(--transition-normal);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .faq-icon::before,
-        .faq-icon::after {
+        .faq-chevron::before {
             content: '';
-            position: absolute;
-            background: var(--text-secondary);
-            transition: all var(--transition-normal);
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid var(--text-secondary);
+            border-bottom: 2px solid var(--text-secondary);
+            transform: rotate(45deg);
+            transition: border-color var(--transition-normal);
         }
 
-        .faq-icon::before {
-            width: 10px;
-            height: 2px;
+        .faq-item:hover .faq-chevron::before {
+            border-color: var(--ice-flow-dark);
         }
 
-        .faq-icon::after {
-            width: 2px;
-            height: 10px;
+        .faq-item.active .faq-chevron {
+            transform: rotate(180deg);
         }
 
-        .faq-item.active .faq-icon {
-            background: var(--ice-flow-light);
-            border-color: var(--ice-flow);
-        }
-
-        .faq-item.active .faq-icon::after {
-            transform: rotate(90deg);
-            opacity: 0;
+        .faq-item.active .faq-chevron::before {
+            border-color: var(--ice-flow-dark);
         }
 
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height var(--transition-slow);
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .faq-answer-inner {
-            padding-bottom: 20px;
-            font-size: 0.9375rem;
+            padding: 0 18px 16px;
+            font-size: 0.875rem;
             color: var(--text-secondary);
-            line-height: 1.7;
+            line-height: 1.65;
+        }
+
+        @media (min-width: 768px) {
+            .faq-answer-inner {
+                padding: 0 22px 18px;
+                font-size: 0.9375rem;
+            }
         }
 
         .faq-item.active .faq-answer {
-            max-height: 200px;
+            max-height: 150px;
         }
 
         /* ============================================
@@ -3209,53 +3283,44 @@
     <section id="faq" class="bg-accent">
         <div class="container">
             <div class="section-header center reveal">
-                <span class="section-label">FAQ</span>
+                <span class="faq-badge">FAQ • For partners</span>
                 <h2 class="section-title">Вопросы партнёров</h2>
             </div>
             <div class="faq-list reveal">
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span class="faq-question-text">Вы работаете только по России или международно?</span>
-                        <span class="faq-icon"></span>
+                        <span class="faq-question-text">Вы работаете по России и международно?</span>
+                        <span class="faq-chevron"></span>
                     </button>
                     <div class="faq-answer">
-                        <p class="faq-answer-inner">Мы выстраиваем поставки по России и международным направлениям. География и формат согласуются под вашу задачу.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span class="faq-question-text">Какие форматы сотрудничества доступны?</span>
-                        <span class="faq-icon"></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p class="faq-answer-inner">Оптовые поставки, регулярные объёмы, партнёрские условия, а также private label под ваш бренд.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span class="faq-question-text">Есть ли документация и сопровождение?</span>
-                        <span class="faq-icon"></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p class="faq-answer-inner">Документация и подтверждения предоставляются по запросу в рамках согласованного формата поставки.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span class="faq-question-text">Можно ли обсудить упаковку и маркировку?</span>
-                        <span class="faq-icon"></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p class="faq-answer-inner">Да. Мы согласовываем упаковку и маркировку под B2B-формат партнёра.</p>
+                        <p class="faq-answer-inner">Да. Организуем поставки по России и международным направлениям. Логистика под задачу партнёра.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question">
                         <span class="faq-question-text">Как быстро можно получить коммерческое предложение?</span>
-                        <span class="faq-icon"></span>
+                        <span class="faq-chevron"></span>
                     </button>
                     <div class="faq-answer">
-                        <p class="faq-answer-inner">Обычно после уточнения параметров запроса мы готовим КП в короткие сроки.</p>
+                        <p class="faq-answer-inner">Обычно в течение 24–48 часов в рабочие дни после уточнения запроса и объёмов.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-question-text">Какая документация доступна по запросу?</span>
+                        <span class="faq-chevron"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-inner">По запросу предоставляем спецификации и подтверждающие материалы по партии.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="faq-question-text">Можно ли адаптировать упаковку и маркировку под требования партнёра?</span>
+                        <span class="faq-chevron"></span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="faq-answer-inner">Да. Упаковку и маркировку согласуем под требования партнёра и формат поставки.</p>
                     </div>
                 </div>
             </div>
