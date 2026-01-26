@@ -1482,94 +1482,222 @@
         }
 
         /* ============================================
-           TIMELINE (How We Work)
+           TIMELINE (How We Work) - Premium Glassmorphism
            ============================================ */
         .timeline {
             display: flex;
-            flex-direction: column;
-            gap: 16px;
+            gap: 12px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 8px 4px 24px;
+            margin: 0 -20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
 
-        .timeline-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-light);
-            border-radius: 16px;
-            padding: 20px;
+        .timeline::-webkit-scrollbar {
+            display: none;
+        }
+
+        .timeline-card {
             position: relative;
-            transition: all var(--transition-normal);
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 20px;
+            padding: 22px 18px;
+            box-shadow:
+                0 8px 28px rgba(165, 196, 212, 0.12),
+                0 2px 8px rgba(0, 0, 0, 0.03),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            /* Mobile carousel: 78vw width for 1 card + peek */
+            width: 78vw;
+            min-width: 260px;
+            max-width: 300px;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            /* Premium reveal animation */
+            opacity: 0;
+            transform: translateY(20px);
+            filter: blur(4px);
+            transition:
+                opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
         }
 
-        .timeline-item:hover {
-            border-color: var(--ice-flow);
-            box-shadow: var(--shadow-md);
+        .timeline-card.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
         }
+
+        /* Staggered reveal delays */
+        .timeline-card:nth-child(1) { transition-delay: 0s; }
+        .timeline-card:nth-child(2) { transition-delay: 0.1s; }
+        .timeline-card:nth-child(3) { transition-delay: 0.2s; }
+        .timeline-card:nth-child(4) { transition-delay: 0.3s; }
 
         .timeline-header {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 8px;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
         .timeline-number {
-            width: 36px;
-            height: 36px;
-            background: var(--gradient-accent);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.875rem;
-            font-weight: 600;
-            flex-shrink: 0;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            color: var(--ice-flow-deep);
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .timeline-icon {
+            width: 20px;
+            height: 20px;
+            opacity: 0.75;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .timeline-icon svg {
+            width: 100%;
+            height: 100%;
         }
 
         .timeline-title {
-            font-size: 1rem;
+            font-size: 0.9375rem;
             font-weight: 600;
             color: var(--text-dark);
+            letter-spacing: -0.01em;
         }
 
         .timeline-text {
-            font-size: 0.875rem;
+            font-size: 0.8125rem;
             color: var(--text-secondary);
-            padding-left: 52px;
+            line-height: 1.55;
         }
 
-        @media (min-width: 1024px) {
+        /* Timeline dots pagination - Mobile */
+        .timeline-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .timeline-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(165, 196, 212, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-dots .dot.active {
+            background: var(--ice-flow-deep);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        @media (min-width: 768px) {
             .timeline {
-                flex-direction: row;
-                gap: 24px;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 20px;
+                overflow: visible;
+                padding: 8px 0;
+                margin: 0;
             }
 
-            .timeline-item {
-                flex: 1;
-                padding: 28px;
-            }
-
-            .timeline-item::after {
-                content: '';
-                position: absolute;
-                top: 38px;
-                right: -24px;
-                width: 24px;
-                height: 2px;
-                background: var(--chrome);
-            }
-
-            .timeline-item:last-child::after {
-                display: none;
+            .timeline-card {
+                width: auto;
+                min-width: auto;
+                max-width: none;
+                padding: 28px 24px;
+                border-radius: 24px;
+                min-height: 180px;
+                display: flex;
+                flex-direction: column;
             }
 
             .timeline-header {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 12px;
+                gap: 14px;
+                margin-bottom: 16px;
+            }
+
+            .timeline-number {
+                font-size: 0.8125rem;
+            }
+
+            .timeline-icon {
+                width: 22px;
+                height: 22px;
+            }
+
+            .timeline-title {
+                font-size: 1rem;
             }
 
             .timeline-text {
-                padding-left: 0;
+                font-size: 0.875rem;
+            }
+
+            .timeline-dots {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .timeline {
+                gap: 24px;
+            }
+
+            .timeline-card {
+                padding: 32px 28px;
+                min-height: 200px;
+            }
+
+            .timeline-icon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        /* Premium hover effect - PC only */
+        @media (hover: hover) {
+            .timeline-card:hover {
+                transform: translateY(-6px);
+                box-shadow:
+                    0 16px 40px rgba(165, 196, 212, 0.2),
+                    0 8px 20px rgba(90, 122, 138, 0.08),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                border-color: rgba(255, 255, 255, 0.6);
+            }
+
+            .timeline-card:hover .timeline-number {
+                opacity: 1;
+            }
+
+            .timeline-card:hover .timeline-icon {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        /* Disable hover lift on touch devices */
+        @media (hover: none) {
+            .timeline-card:hover {
+                transform: none;
             }
         }
 
@@ -2398,37 +2526,71 @@
             <div class="section-header center reveal">
                 <span class="section-label">How We Work</span>
                 <h2 class="section-title">Как мы работаем</h2>
-                <p class="section-text">Короткий цикл согласования и чёткая структура взаимодействия — чтобы партнёр получал результат без лишних действий.</p>
+                <p class="section-text">Чёткий цикл взаимодействия — от запроса до отгрузки. Без лишних действий.</p>
             </div>
-            <div class="timeline reveal">
-                <div class="timeline-item">
+            <div class="timeline">
+                <div class="timeline-card">
                     <div class="timeline-header">
-                        <div class="timeline-number">1</div>
+                        <span class="timeline-number">01</span>
+                        <div class="timeline-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                <line x1="9" y1="10" x2="15" y2="10"/>
+                            </svg>
+                        </div>
                         <h3 class="timeline-title">Запрос</h3>
                     </div>
-                    <p class="timeline-text">Вы оставляете запрос, мы уточняем формат, объёмы и условия</p>
+                    <p class="timeline-text">Фиксируем задачу, объёмы и формат поставки.</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-card">
                     <div class="timeline-header">
-                        <div class="timeline-number">2</div>
+                        <span class="timeline-number">02</span>
+                        <div class="timeline-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <path d="M9 15l2 2 4-4"/>
+                            </svg>
+                        </div>
                         <h3 class="timeline-title">Согласование</h3>
                     </div>
-                    <p class="timeline-text">Фиксируем спецификацию, сроки, упаковку и логистику</p>
+                    <p class="timeline-text">Подтверждаем сроки, упаковку и логистику.</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-card">
                     <div class="timeline-header">
-                        <div class="timeline-number">3</div>
+                        <span class="timeline-number">03</span>
+                        <div class="timeline-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                            </svg>
+                        </div>
                         <h3 class="timeline-title">Подготовка</h3>
                     </div>
-                    <p class="timeline-text">Контроль процессов и готовность к поставке</p>
+                    <p class="timeline-text">Контроль партии и готовность к отгрузке.</p>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-card">
                     <div class="timeline-header">
-                        <div class="timeline-number">4</div>
+                        <span class="timeline-number">04</span>
+                        <div class="timeline-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="3" width="15" height="13" rx="2" ry="2"/>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                                <circle cx="5.5" cy="18.5" r="2.5"/>
+                                <circle cx="18.5" cy="18.5" r="2.5"/>
+                            </svg>
+                        </div>
                         <h3 class="timeline-title">Отгрузка</h3>
                     </div>
-                    <p class="timeline-text">Передача партии и дальнейшее сопровождение</p>
+                    <p class="timeline-text">Передача партии и дальнейшее сопровождение.</p>
                 </div>
+            </div>
+            <!-- Mobile pagination dots -->
+            <div class="timeline-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
         </div>
     </section>
@@ -2843,6 +3005,41 @@
                 dots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === activeIndex);
                 });
+            });
+        }
+
+        // Premium reveal for timeline cards (blur-to-sharp + lift + stagger)
+        const timelineCards = document.querySelectorAll('.timeline-card');
+        const revealTimelineCards = () => {
+            const timeline = document.querySelector('.timeline');
+            if (timeline) {
+                const gridTop = timeline.getBoundingClientRect().top;
+                if (gridTop < window.innerHeight - 80) {
+                    timelineCards.forEach(card => {
+                        card.classList.add('revealed');
+                    });
+                }
+            }
+        };
+        window.addEventListener('scroll', revealTimelineCards);
+        window.addEventListener('load', revealTimelineCards);
+
+        // Timeline carousel pagination dots
+        const timelineContainer = document.querySelector('.timeline');
+        const timelineDots = document.querySelectorAll('.timeline-dots .dot');
+
+        if (timelineContainer && timelineDots.length) {
+            timelineContainer.addEventListener('scroll', () => {
+                const scrollLeft = timelineContainer.scrollLeft;
+                const card = timelineContainer.querySelector('.timeline-card');
+                if (card) {
+                    const cardWidth = card.offsetWidth + 12; // 12px gap
+                    const activeIndex = Math.round(scrollLeft / cardWidth);
+
+                    timelineDots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === activeIndex);
+                    });
+                }
             });
         }
 
