@@ -3081,6 +3081,123 @@
         }
 
         /* ============================================
+           QUALITY SECTION - Apple Style
+           ============================================ */
+        .quality-apple {
+            background: var(--snow-white-pure);
+        }
+
+        .quality-apple .container {
+            max-width: 900px;
+        }
+
+        .quality-apple .section-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .quality-apple .section-title {
+            margin-bottom: 20px;
+        }
+
+        .quality-apple .section-text {
+            max-width: 640px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+            font-size: 1.0625rem;
+            line-height: 1.75;
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .quality-item {
+            padding: 28px 24px;
+            border-top: 1px solid rgba(165, 196, 212, 0.3);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .quality-item:last-child {
+            border-bottom: 1px solid rgba(165, 196, 212, 0.3);
+        }
+
+        .quality-item.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .quality-item-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            letter-spacing: -0.01em;
+            line-height: 1.5;
+        }
+
+        /* Desktop: 2x2 grid with hairline separators */
+        @media (min-width: 768px) {
+            .quality-apple .section-header {
+                margin-bottom: 64px;
+            }
+
+            .quality-apple .section-text {
+                font-size: 1.125rem;
+            }
+
+            .quality-grid {
+                grid-template-columns: 1fr 1fr;
+                position: relative;
+            }
+
+            .quality-item {
+                padding: 36px 32px;
+                border-top: none;
+                border-bottom: none;
+            }
+
+            .quality-item:last-child {
+                border-bottom: none;
+            }
+
+            /* Top row items */
+            .quality-item:nth-child(1),
+            .quality-item:nth-child(2) {
+                border-bottom: 1px solid rgba(165, 196, 212, 0.3);
+            }
+
+            /* Left column items */
+            .quality-item:nth-child(1),
+            .quality-item:nth-child(3) {
+                border-right: 1px solid rgba(165, 196, 212, 0.3);
+            }
+
+            .quality-item-title {
+                font-size: 1.0625rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .quality-apple .section-header {
+                margin-bottom: 72px;
+            }
+
+            .quality-item {
+                padding: 44px 40px;
+            }
+
+            .quality-item-title {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* ============================================
            REVEAL ANIMATIONS
            ============================================ */
         .reveal {
@@ -3543,30 +3660,25 @@
         </div>
     </section>
 
-    <!-- Quality -->
-    <section id="quality" class="bg-accent">
+    <!-- Quality - Apple Style -->
+    <section id="quality" class="quality-apple">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-label">Quality Control</span>
                 <h2 class="section-title">Контроль качества</h2>
                 <p class="section-text">Качество — это система. Мы контролируем параметры партии на этапах, которые определяют стабильность результата.</p>
             </div>
-            <div class="cards-grid cards-grid-4 reveal">
-                <div class="card card-compact">
-                    <h3 class="card-title">Входной контроль</h3>
-                    <p class="card-text">Проверка сырья и материалов</p>
+            <div class="quality-grid">
+                <div class="quality-item" data-quality-index="0">
+                    <span class="quality-item-title">Входной контроль сырья и материалов</span>
                 </div>
-                <div class="card card-compact">
-                    <h3 class="card-title">Проверка партии</h3>
-                    <p class="card-text">Контроль перед отгрузкой</p>
+                <div class="quality-item" data-quality-index="1">
+                    <span class="quality-item-title">Контроль партии перед отгрузкой</span>
                 </div>
-                <div class="card card-compact">
-                    <h3 class="card-title">Документация</h3>
-                    <p class="card-text">Сертификаты по запросу</p>
+                <div class="quality-item" data-quality-index="2">
+                    <span class="quality-item-title">Документация по запросу партнёра</span>
                 </div>
-                <div class="card card-compact">
-                    <h3 class="card-title">Хранение и доставка</h3>
-                    <p class="card-text">Соблюдение условий</p>
+                <div class="quality-item" data-quality-index="3">
+                    <span class="quality-item-title">Соблюдение условий хранения и доставки</span>
                 </div>
             </div>
         </div>
@@ -3924,6 +4036,24 @@
         };
         window.addEventListener('scroll', revealPrincipleCards);
         window.addEventListener('load', revealPrincipleCards);
+
+        // Quality items staggered reveal (Apple-style)
+        const qualityItems = document.querySelectorAll('.quality-item');
+        const revealQualityItems = () => {
+            const qualityGrid = document.querySelector('.quality-grid');
+            if (qualityGrid) {
+                const gridTop = qualityGrid.getBoundingClientRect().top;
+                if (gridTop < window.innerHeight - 100) {
+                    qualityItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.add('revealed');
+                        }, index * 120);
+                    });
+                }
+            }
+        };
+        window.addEventListener('scroll', revealQualityItems);
+        window.addEventListener('load', revealQualityItems);
 
         // Principles carousel pagination dots
         const principlesGrid = document.querySelector('.principles-grid');
