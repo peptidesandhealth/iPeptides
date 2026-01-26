@@ -2330,49 +2330,49 @@
             margin: 0 auto;
             padding: 16px;
             background: rgba(255, 255, 255, 0.78);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.65);
-            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 18px;
             box-shadow:
-                0 6px 24px rgba(165, 196, 212, 0.15),
+                0 4px 20px rgba(165, 196, 212, 0.14),
                 0 2px 6px rgba(0, 0, 0, 0.03),
                 inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
 
         @media (min-width: 768px) {
             .partnership-form-wrapper {
-                max-width: 460px;
-                padding: 24px;
-                border-radius: 18px;
+                max-width: 420px;
+                padding: 20px;
+                border-radius: 20px;
             }
         }
 
         @media (min-width: 1024px) {
             .partnership-form-wrapper {
-                flex: 0 0 46%;
-                max-width: 460px;
+                flex: 0 0 auto;
+                max-width: none;
                 margin: 0;
-                padding: 24px 28px;
-                border-radius: 18px;
+                padding: 20px 24px;
+                border-radius: 22px;
                 box-shadow:
-                    0 8px 32px rgba(165, 196, 212, 0.18),
-                    0 4px 12px rgba(0, 0, 0, 0.04),
+                    0 6px 28px rgba(165, 196, 212, 0.16),
+                    0 3px 10px rgba(0, 0, 0, 0.03),
                     inset 0 1px 0 rgba(255, 255, 255, 0.9);
             }
         }
 
         .partnership-form-title {
-            font-size: 1.25rem;
+            font-size: 1.0625rem;
             font-weight: 600;
             color: var(--text-dark);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             text-align: center;
             letter-spacing: -0.01em;
         }
 
         .partnership-form-subtitle {
-            font-size: 0.8125rem;
+            font-size: 0.75rem;
             color: var(--text-secondary);
             margin-bottom: 12px;
             text-align: center;
@@ -2380,17 +2380,17 @@
 
         @media (max-width: 767px) {
             .partnership-form-title {
-                font-size: 1.125rem;
+                font-size: 1rem;
             }
 
             .partnership-form-subtitle {
-                font-size: 0.75rem;
+                font-size: 0.6875rem;
                 margin-bottom: 10px;
             }
         }
 
         .partnership-form {
-            gap: 12px;
+            gap: 10px;
         }
 
         .partnership-form .form-group {
@@ -2398,81 +2398,86 @@
         }
 
         .partnership-form .form-label {
-            font-size: 0.75rem;
-            margin-bottom: 4px;
+            font-size: 0.6875rem;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--text-secondary);
         }
 
         .partnership-form .form-input {
-            min-height: 44px;
-            padding: 10px 14px;
-            font-size: 0.875rem;
+            min-height: 40px;
+            padding: 9px 12px;
+            font-size: 0.8125rem;
             background: rgba(255, 255, 255, 0.92);
-            border: 1px solid rgba(192, 192, 192, 0.3);
-            border-radius: 10px;
+            border: 1px solid rgba(192, 192, 192, 0.25);
+            border-radius: 9px;
         }
 
         .partnership-form .form-input:focus {
             background: #ffffff;
             border-color: var(--ice-flow);
-            box-shadow: 0 0 0 3px rgba(165, 196, 212, 0.18);
+            box-shadow: 0 0 0 3px rgba(165, 196, 212, 0.15);
         }
 
         .partnership-form textarea.form-input {
-            min-height: 90px;
-            max-height: 110px;
+            min-height: 70px;
+            max-height: 90px;
             resize: none;
         }
 
         @media (max-width: 767px) {
             .partnership-form {
-                gap: 10px;
+                gap: 8px;
             }
 
             .partnership-form textarea.form-input {
-                min-height: 60px;
-                max-height: 80px;
+                min-height: 56px;
+                max-height: 70px;
             }
 
             .partnership-form .form-input {
-                min-height: 40px;
-                padding: 8px 12px;
+                min-height: 38px;
+                padding: 8px 10px;
             }
 
             .partnership-form .btn-primary {
-                min-height: 44px;
-                height: 44px;
+                min-height: 42px;
+                height: 42px;
             }
         }
 
         .partnership-form .btn-primary {
             width: 100%;
-            min-height: 46px;
-            height: 46px;
-            font-size: 0.9375rem;
+            min-height: 44px;
+            height: 44px;
+            font-size: 0.875rem;
             font-weight: 600;
             border-radius: 10px;
-            margin-top: 4px;
+            margin-top: 2px;
             box-shadow:
-                0 4px 12px rgba(90, 122, 138, 0.25),
+                0 3px 10px rgba(90, 122, 138, 0.22),
                 inset 0 1px 0 rgba(255, 255, 255, 0.12);
         }
 
         .partnership-form .btn-primary:hover {
             transform: translateY(-1px);
             box-shadow:
-                0 6px 16px rgba(90, 122, 138, 0.35),
+                0 5px 14px rgba(90, 122, 138, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.12);
         }
 
-        /* Form row for Name/Company on desktop */
+        /* Form row for Name/Company */
         .partnership-form .form-row {
             display: grid;
-            gap: 12px;
+            gap: 10px;
+            grid-template-columns: 1fr 1fr;
         }
 
-        @media (min-width: 480px) {
+        @media (max-width: 479px) {
             .partnership-form .form-row {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
+                gap: 8px;
             }
         }
 
@@ -2493,15 +2498,15 @@
 
         @media (min-width: 768px) {
             .partnership-section {
-                padding-top: 56px;
-                padding-bottom: 56px;
+                padding-top: 48px;
+                padding-bottom: 48px;
             }
         }
 
         @media (min-width: 1024px) {
             .partnership-section {
-                padding-top: 64px;
-                padding-bottom: 64px;
+                padding-top: 56px;
+                padding-bottom: 56px;
             }
         }
 
@@ -2521,23 +2526,26 @@
         .partnership-layout {
             display: flex;
             flex-direction: column;
-            gap: 32px;
-            margin-top: 32px;
+            gap: 24px;
+            margin-top: 28px;
         }
 
         @media (min-width: 768px) {
             .partnership-layout {
-                margin-top: 40px;
-                gap: 40px;
+                margin-top: 36px;
+                gap: 32px;
             }
         }
 
         @media (min-width: 1024px) {
             .partnership-layout {
                 flex-direction: row;
-                align-items: stretch;
+                align-items: center;
                 gap: 0;
-                margin-top: 48px;
+                margin-top: 40px;
+                max-width: 1000px;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
 
@@ -2550,27 +2558,24 @@
         @media (min-width: 1024px) {
             .partnership-benefits {
                 flex: 1;
-                padding-right: 48px;
+                padding-right: 40px;
                 justify-content: center;
             }
         }
 
-        @media (min-width: 1200px) {
-            .partnership-benefits {
-                padding-right: 64px;
-            }
-        }
-
-        /* Benefit Item */
+        /* Benefit Item - Desktop shows all, Mobile is accordion */
         .benefit-item {
             display: flex;
-            gap: 16px;
-            padding: 20px 0;
-            border-bottom: 1px solid rgba(165, 196, 212, 0.2);
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(165, 196, 212, 0.18);
             opacity: 0;
-            transform: translateY(12px);
+            transform: translateY(10px);
             transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                         transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            position: relative;
         }
 
         .benefit-item:first-child {
@@ -2589,48 +2594,50 @@
 
         /* Staggered reveal delays */
         .benefit-item:nth-child(1) { transition-delay: 0s; }
-        .benefit-item:nth-child(2) { transition-delay: 0.08s; }
-        .benefit-item:nth-child(3) { transition-delay: 0.16s; }
-        .benefit-item:nth-child(4) { transition-delay: 0.24s; }
+        .benefit-item:nth-child(2) { transition-delay: 0.06s; }
+        .benefit-item:nth-child(3) { transition-delay: 0.12s; }
+        .benefit-item:nth-child(4) { transition-delay: 0.18s; }
 
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
             .benefit-item {
-                gap: 20px;
-                padding: 24px 0;
+                gap: 14px;
+                padding: 16px 0;
+                cursor: default;
             }
         }
 
-        /* Benefit Icon */
+        /* Benefit Icon - Compact metallic style */
         .benefit-icon {
             flex-shrink: 0;
-            width: 40px;
-            height: 40px;
+            width: 34px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(165, 196, 212, 0.15) 0%, rgba(165, 196, 212, 0.05) 100%);
-            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.18) 0%, rgba(165, 196, 212, 0.06) 100%);
+            border-radius: 9px;
             transition: all 0.3s ease;
         }
 
         .benefit-icon svg {
-            width: 20px;
-            height: 20px;
+            width: 17px;
+            height: 17px;
             stroke: var(--ice-flow-deep);
             stroke-width: 1.75;
             fill: none;
             transition: stroke 0.3s ease;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
             .benefit-icon {
-                width: 44px;
-                height: 44px;
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
             }
 
             .benefit-icon svg {
-                width: 22px;
-                height: 22px;
+                width: 18px;
+                height: 18px;
             }
         }
 
@@ -2640,31 +2647,91 @@
             min-width: 0;
         }
 
+        .benefit-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
         .benefit-title {
-            font-size: 0.75rem;
+            font-size: 0.6875rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             color: var(--text-dark);
-            margin-bottom: 4px;
+            margin-bottom: 0;
             line-height: 1.3;
         }
 
-        .benefit-text {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin: 0;
+        /* Chevron for mobile accordion */
+        .benefit-chevron {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @media (min-width: 768px) {
+        .benefit-chevron svg {
+            width: 12px;
+            height: 12px;
+            stroke: var(--text-secondary);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .benefit-item.active .benefit-chevron {
+            transform: rotate(180deg);
+        }
+
+        @media (min-width: 1024px) {
+            .benefit-chevron {
+                display: none;
+            }
+        }
+
+        /* Benefit description - accordion on mobile, always visible on desktop */
+        .benefit-text {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            filter: blur(3px);
+            transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                        opacity 0.3s ease,
+                        filter 0.3s ease,
+                        margin 0.35s ease;
+        }
+
+        .benefit-item.active .benefit-text {
+            max-height: 60px;
+            opacity: 1;
+            filter: blur(0);
+            margin-top: 6px;
+        }
+
+        @media (min-width: 1024px) {
             .benefit-title {
-                font-size: 0.8125rem;
-                margin-bottom: 6px;
+                font-size: 0.75rem;
+                letter-spacing: 0.1em;
             }
 
             .benefit-text {
-                font-size: 0.9375rem;
+                max-height: none;
+                opacity: 1;
+                filter: blur(0);
+                margin-top: 4px;
+                font-size: 0.875rem;
+            }
+
+            .benefit-item.active .benefit-text {
+                margin-top: 4px;
             }
         }
 
@@ -2673,7 +2740,7 @@
             display: block;
             height: 1px;
             background: linear-gradient(90deg, transparent 0%, rgba(165, 196, 212, 0.3) 20%, rgba(165, 196, 212, 0.3) 80%, transparent 100%);
-            margin: 8px 0;
+            margin: 4px 0;
         }
 
         @media (min-width: 1024px) {
@@ -2691,6 +2758,7 @@
             .partnership-divider {
                 display: block;
                 width: 1px;
+                align-self: stretch;
                 background: linear-gradient(180deg, transparent 0%, rgba(165, 196, 212, 0.35) 15%, rgba(165, 196, 212, 0.35) 85%, transparent 100%);
                 flex-shrink: 0;
             }
@@ -2705,14 +2773,8 @@
         @media (min-width: 1024px) {
             .partnership-form-column {
                 flex: 0 0 auto;
-                padding-left: 48px;
+                padding-left: 40px;
                 align-items: center;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .partnership-form-column {
-                padding-left: 64px;
             }
         }
 
@@ -2724,21 +2786,21 @@
 
         @media (min-width: 480px) {
             .partnership-form-column .partnership-form-wrapper {
-                max-width: 420px;
+                max-width: 400px;
             }
         }
 
         @media (min-width: 1024px) {
             .partnership-form-column .partnership-form-wrapper {
-                width: 380px;
-                max-width: 380px;
+                width: 420px;
+                max-width: 420px;
             }
         }
 
         @media (min-width: 1200px) {
             .partnership-form-column .partnership-form-wrapper {
-                width: 420px;
-                max-width: 420px;
+                width: 460px;
+                max-width: 460px;
             }
         }
 
@@ -4308,7 +4370,7 @@
 
             <!-- Two-Column Layout -->
             <div class="partnership-layout">
-                <!-- Left: Benefits List -->
+                <!-- Left: Benefits List (Accordion on mobile) -->
                 <div class="partnership-benefits">
                     <!-- Benefit 1: B2B Partnership -->
                     <div class="benefit-item">
@@ -4321,7 +4383,14 @@
                             </svg>
                         </div>
                         <div class="benefit-content">
-                            <h3 class="benefit-title">B2B Partnership</h3>
+                            <div class="benefit-header">
+                                <h3 class="benefit-title">B2B Partnership</h3>
+                                <span class="benefit-chevron">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                            </div>
                             <p class="benefit-text">Форматы сотрудничества под задачи бизнеса.</p>
                         </div>
                     </div>
@@ -4336,7 +4405,14 @@
                             </svg>
                         </div>
                         <div class="benefit-content">
-                            <h3 class="benefit-title">Global Delivery</h3>
+                            <div class="benefit-header">
+                                <h3 class="benefit-title">Global Delivery</h3>
+                                <span class="benefit-chevron">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                            </div>
                             <p class="benefit-text">Поставки по России и международным направлениям.</p>
                         </div>
                     </div>
@@ -4351,7 +4427,14 @@
                             </svg>
                         </div>
                         <div class="benefit-content">
-                            <h3 class="benefit-title">Batch Consistency</h3>
+                            <div class="benefit-header">
+                                <h3 class="benefit-title">Batch Consistency</h3>
+                                <span class="benefit-chevron">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                            </div>
                             <p class="benefit-text">Стабильность характеристик от партии к партии.</p>
                         </div>
                     </div>
@@ -4367,7 +4450,14 @@
                             </svg>
                         </div>
                         <div class="benefit-content">
-                            <h3 class="benefit-title">Documentation Support</h3>
+                            <div class="benefit-header">
+                                <h3 class="benefit-title">Documentation Support</h3>
+                                <span class="benefit-chevron">
+                                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                            </div>
                             <p class="benefit-text">Материалы и сопровождение по запросу партнёра.</p>
                         </div>
                     </div>
@@ -4642,13 +4732,49 @@
                     benefitItems.forEach((item, index) => {
                         setTimeout(() => {
                             item.classList.add('revealed');
-                        }, index * 100);
+                        }, index * 80);
                     });
                 }
             }
         };
         window.addEventListener('scroll', revealBenefitItems);
         window.addEventListener('load', revealBenefitItems);
+
+        // Partnership benefits accordion (mobile only)
+        const isMobile = () => window.innerWidth < 1024;
+
+        benefitItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (!isMobile()) return; // Only work on mobile
+
+                const isActive = item.classList.contains('active');
+
+                // Close all other items (one-open-at-a-time)
+                benefitItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+
+                // Toggle current item
+                if (isActive) {
+                    item.classList.remove('active');
+                } else {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // On desktop, ensure all items show text (add active class)
+        const handleBenefitResize = () => {
+            if (!isMobile()) {
+                benefitItems.forEach(item => item.classList.add('active'));
+            } else {
+                benefitItems.forEach(item => item.classList.remove('active'));
+            }
+        };
+        window.addEventListener('resize', handleBenefitResize);
+        window.addEventListener('load', handleBenefitResize);
 
         // Principles carousel pagination dots
         const principlesGrid = document.querySelector('.principles-grid');
