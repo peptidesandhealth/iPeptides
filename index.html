@@ -1984,59 +1984,6 @@
         }
 
         /* ============================================
-           GEOGRAPHY SECTION
-           ============================================ */
-        .geography-panel {
-            background: linear-gradient(135deg, var(--ice-flow-light) 0%, var(--snow-white-pure) 100%);
-            border: 1px solid var(--border-light);
-            border-radius: 20px;
-            padding: 32px;
-            display: grid;
-            gap: 24px;
-        }
-
-        @media (min-width: 768px) {
-            .geography-panel {
-                grid-template-columns: 1fr 1fr;
-                padding: 48px;
-                gap: 48px;
-                align-items: center;
-            }
-        }
-
-        .geography-visual {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 150px;
-            position: relative;
-        }
-
-        .geography-visual::before {
-            content: '';
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            background: radial-gradient(circle, rgba(165, 196, 212, 0.4) 0%, transparent 70%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.8; }
-        }
-
-        .geography-visual span {
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* ============================================
            FAQ SECTION - Premium Glassmorphism
            ============================================ */
         #faq {
@@ -2534,6 +2481,300 @@
         }
 
         /* ============================================
+           PARTNERSHIP SECTION - PREMIUM B2B CARDS
+           ============================================ */
+        .partnership-section {
+            background: linear-gradient(180deg, var(--bg-accent) 0%, var(--ice-flow-light) 100%);
+            position: relative;
+            overflow: hidden;
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .partnership-section {
+                padding-top: 56px;
+                padding-bottom: 56px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .partnership-section {
+                padding-top: 72px;
+                padding-bottom: 72px;
+            }
+        }
+
+        .partnership-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(255,255,255,0.4) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* B2B Cards Wrapper */
+        .b2b-cards-wrapper {
+            position: relative;
+            margin-top: 32px;
+            margin-bottom: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .b2b-cards-wrapper {
+                margin-top: 40px;
+                margin-bottom: 48px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .b2b-cards-wrapper {
+                margin-top: 48px;
+                margin-bottom: 56px;
+            }
+        }
+
+        /* B2B Cards Carousel - Mobile: horizontal scroll, Desktop: grid */
+        .b2b-cards-carousel {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 8px 4px 16px;
+            margin: 0 -20px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        /* Hide scrollbar on mobile */
+        .b2b-cards-carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .b2b-cards-carousel {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @media (min-width: 768px) {
+            .b2b-cards-carousel {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                overflow: visible;
+                padding: 8px;
+                margin: 0;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .b2b-cards-carousel {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 24px;
+            }
+        }
+
+        /* B2B Card - Premium Glassmorphism */
+        .b2b-card {
+            flex: 0 0 calc(85% - 8px);
+            scroll-snap-align: start;
+            background: rgba(255, 255, 255, 0.58);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 26px;
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 200px;
+            box-shadow:
+                0 8px 32px rgba(165, 196, 212, 0.12),
+                0 2px 8px rgba(0, 0, 0, 0.03),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            /* Animation initial state */
+            opacity: 0;
+            transform: translateY(24px);
+            filter: blur(4px);
+        }
+
+        /* Stagger animation delay based on card index */
+        .b2b-card {
+            transition-delay: calc(var(--card-index) * 0.1s);
+        }
+
+        .b2b-cards-wrapper.visible .b2b-card,
+        .reveal.visible .b2b-card {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        @media (min-width: 768px) {
+            .b2b-card {
+                flex: none;
+                min-height: 220px;
+                padding: 32px 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .b2b-card {
+                min-height: 240px;
+                padding: 36px 28px;
+            }
+
+            .b2b-card:hover {
+                transform: translateY(-6px);
+                box-shadow:
+                    0 16px 48px rgba(165, 196, 212, 0.22),
+                    0 4px 12px rgba(0, 0, 0, 0.05),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                background: rgba(255, 255, 255, 0.68);
+            }
+
+            .b2b-card:hover .b2b-card-icon {
+                background: linear-gradient(135deg, var(--ice-flow) 0%, var(--ice-flow-dark) 100%);
+                box-shadow: 0 4px 16px rgba(165, 196, 212, 0.35);
+            }
+
+            .b2b-card:hover .b2b-card-icon svg {
+                stroke: #ffffff;
+            }
+        }
+
+        /* B2B Card Icon */
+        .b2b-card-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.2) 0%, rgba(139, 175, 194, 0.15) 100%);
+            border-radius: 14px;
+            margin-bottom: 18px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .b2b-card-icon svg {
+            stroke: var(--ice-flow-deep);
+            transition: stroke 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .b2b-card-icon {
+                width: 52px;
+                height: 52px;
+                border-radius: 16px;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* B2B Card Title */
+        .b2b-card-title {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        @media (min-width: 768px) {
+            .b2b-card-title {
+                font-size: 0.875rem;
+                letter-spacing: 0.1em;
+                margin-bottom: 12px;
+            }
+        }
+
+        /* B2B Card Text */
+        .b2b-card-text {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media (min-width: 768px) {
+            .b2b-card-text {
+                font-size: 0.9375rem;
+            }
+        }
+
+        /* B2B Card Regions - Special styling for Global Delivery */
+        .b2b-card-regions {
+            font-size: 0.6875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--ice-flow-deep);
+            margin-top: 12px;
+            opacity: 0.8;
+        }
+
+        @media (min-width: 768px) {
+            .b2b-card-regions {
+                font-size: 0.75rem;
+                margin-top: 14px;
+            }
+        }
+
+        /* B2B Cards Pagination Dots - Mobile Only */
+        .b2b-cards-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        @media (min-width: 768px) {
+            .b2b-cards-dots {
+                display: none;
+            }
+        }
+
+        .b2b-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(165, 196, 212, 0.35);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .b2b-dot.active {
+            background: var(--ice-flow-dark);
+            width: 20px;
+            border-radius: 4px;
+        }
+
+        /* Partnership Form Container */
+        .partnership-form-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .partnership-form-container .partnership-form-wrapper {
+            width: 100%;
+            max-width: 540px;
+        }
+
+        @media (min-width: 768px) {
+            .partnership-form-container .partnership-form-wrapper {
+                max-width: 480px;
+            }
+        }
+
+        /* ============================================
            CONTACT SECTION (Legacy - kept for compatibility)
            ============================================ */
         .contact-grid {
@@ -2898,7 +3139,6 @@
                         <a href="#production" data-lang-key="nav.production">Производство</a>
                         <a href="#quality" data-lang-key="nav.quality">Качество</a>
                         <a href="#partners" data-lang-key="nav.partners">Партнёрам</a>
-                        <a href="#geography" data-lang-key="nav.geography">География</a>
                     </nav>
                     <div class="lang-switcher">
                         <button class="lang-btn active" data-lang="ru">RU</button>
@@ -2927,7 +3167,6 @@
         <a href="#production" data-lang-key="nav.production">Производство</a>
         <a href="#quality" data-lang-key="nav.quality">Качество</a>
         <a href="#partners" data-lang-key="nav.partners">Партнёрам</a>
-        <a href="#geography" data-lang-key="nav.geography">География</a>
     </nav>
 
     <!-- Hero -->
@@ -3380,23 +3619,6 @@
         </div>
     </section>
 
-    <!-- Geography -->
-    <section id="geography" class="bg-accent">
-        <div class="container">
-            <div class="geography-panel reveal">
-                <div>
-                    <span class="section-label">Geography</span>
-                    <h2 class="section-title">География поставок</h2>
-                    <p class="section-text" style="margin-bottom: 24px;">Мы выстраиваем поставки под задачи бизнеса: география, формат, сроки и сопровождение согласуются индивидуально.</p>
-                    <button class="btn btn-secondary" data-modal>Обсудить логистику</button>
-                </div>
-                <div class="geography-visual">
-                    <span>Global Delivery</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Why Choose -->
     <section id="why" class="bg-white">
         <div class="container">
@@ -3482,21 +3704,86 @@
     </section>
 
     <!-- CTA / Partnership -->
-    <section id="partnership" class="cta-section">
+    <section id="partnership" class="partnership-section">
         <div class="container">
-            <div class="cta-layout reveal">
-                <!-- Left Column: Text Content -->
-                <div class="cta-text">
-                    <span class="section-label">Partnership</span>
-                    <h2 class="section-title">Сотрудничество с iPeptides</h2>
-                    <p class="section-text">Запросите коммерческое предложение — мы предложим формат партнёрства под ваши задачи и масштаб бизнеса.</p>
-                    <ul class="cta-benefits">
-                        <li>Гибкие условия для оптовых партнёров</li>
-                        <li>Техническая поддержка и документация</li>
-                        <li>Индивидуальный расчёт под ваш объём</li>
-                    </ul>
+            <!-- Section Header -->
+            <div class="section-header center reveal">
+                <span class="section-label">Partnership</span>
+                <h2 class="section-title">Сотрудничество с iPeptides</h2>
+                <p class="section-text" style="margin: 0 auto;">B2B-инфраструктура для масштабирования вашего бизнеса</p>
+            </div>
+
+            <!-- Premium B2B Cards - Desktop Grid / Mobile Carousel -->
+            <div class="b2b-cards-wrapper reveal">
+                <div class="b2b-cards-carousel">
+                    <!-- Card 1: B2B Partnership -->
+                    <div class="b2b-card" style="--card-index: 0;">
+                        <div class="b2b-card-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3 class="b2b-card-title">B2B PARTNERSHIP</h3>
+                        <p class="b2b-card-text">Форматы сотрудничества под задачи бизнеса.</p>
+                    </div>
+
+                    <!-- Card 2: Global Delivery -->
+                    <div class="b2b-card" style="--card-index: 1;">
+                        <div class="b2b-card-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="b2b-card-title">GLOBAL DELIVERY</h3>
+                        <p class="b2b-card-text">Поставки по России и международным направлениям.</p>
+                        <p class="b2b-card-regions">Россия • CIS • Europe • MENA • Asia</p>
+                    </div>
+
+                    <!-- Card 3: Batch Consistency -->
+                    <div class="b2b-card" style="--card-index: 2;">
+                        <div class="b2b-card-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                                <polyline points="2 17 12 22 22 17"/>
+                                <polyline points="2 12 12 17 22 12"/>
+                            </svg>
+                        </div>
+                        <h3 class="b2b-card-title">BATCH CONSISTENCY</h3>
+                        <p class="b2b-card-text">Стабильность характеристик от партии к партии.</p>
+                    </div>
+
+                    <!-- Card 4: Documentation Support -->
+                    <div class="b2b-card" style="--card-index: 3;">
+                        <div class="b2b-card-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </div>
+                        <h3 class="b2b-card-title">DOCUMENTATION SUPPORT</h3>
+                        <p class="b2b-card-text">Материалы и сопровождение по запросу партнёра.</p>
+                    </div>
                 </div>
-                <!-- Right Column: Form -->
+
+                <!-- Mobile Pagination Dots -->
+                <div class="b2b-cards-dots">
+                    <span class="b2b-dot active"></span>
+                    <span class="b2b-dot"></span>
+                    <span class="b2b-dot"></span>
+                    <span class="b2b-dot"></span>
+                </div>
+            </div>
+
+            <!-- Partnership Form -->
+            <div class="partnership-form-container reveal">
                 <div class="partnership-form-wrapper">
                     <h3 class="partnership-form-title">Оставить заявку</h3>
                     <p class="partnership-form-subtitle">Заполните форму и мы свяжемся с вами</p>
@@ -3708,6 +3995,39 @@
             });
         }
 
+        // B2B Cards carousel pagination dots
+        const b2bCarousel = document.querySelector('.b2b-cards-carousel');
+        const b2bDots = document.querySelectorAll('.b2b-cards-dots .b2b-dot');
+
+        if (b2bCarousel && b2bDots.length) {
+            b2bCarousel.addEventListener('scroll', () => {
+                const scrollLeft = b2bCarousel.scrollLeft;
+                const card = b2bCarousel.querySelector('.b2b-card');
+                if (card) {
+                    const cardWidth = card.offsetWidth + 16; // 16px gap
+                    const activeIndex = Math.round(scrollLeft / cardWidth);
+
+                    b2bDots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === activeIndex);
+                    });
+                }
+            });
+
+            // Click on dot to scroll to card
+            b2bDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    const card = b2bCarousel.querySelector('.b2b-card');
+                    if (card) {
+                        const cardWidth = card.offsetWidth + 16;
+                        b2bCarousel.scrollTo({
+                            left: index * cardWidth,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
         // Premium reveal for production items (blur-to-sharp + lift + stagger)
         const productionItems = document.querySelectorAll('.production-item');
         const revealProductionItems = () => {
@@ -3837,7 +4157,6 @@
                 'nav.production': 'Производство',
                 'nav.quality': 'Качество',
                 'nav.partners': 'Партнёрам',
-                'nav.geography': 'География',
                 'hero.tagline1': 'Ведущий производитель и поставщик',
                 'hero.tagline2': 'пептидных решений премиум-класса',
                 'hero.cta': 'Стать партнёром'
@@ -3847,7 +4166,6 @@
                 'nav.production': 'Production',
                 'nav.quality': 'Quality',
                 'nav.partners': 'Partners',
-                'nav.geography': 'Geography',
                 'hero.tagline1': 'Leading manufacturer and supplier',
                 'hero.tagline2': 'of premium peptide solutions',
                 'hero.cta': 'Become a Partner'
