@@ -1123,7 +1123,7 @@
 
         /* Compact sections for Quality + Production */
         .compact-section {
-            padding: 28px 0;
+            padding: 24px 0;
         }
 
         @media (min-width: 768px) {
@@ -1135,6 +1135,17 @@
         @media (min-width: 1024px) {
             .compact-section {
                 padding: 48px 0;
+            }
+        }
+
+        /* Even more compact inside shared video wrapper on mobile */
+        @media (max-width: 767px) {
+            .shared-video-wrap .compact-section {
+                padding: 20px 0;
+            }
+
+            .shared-video-wrap .compact-section .section-header {
+                margin-bottom: 16px;
             }
         }
 
@@ -1183,7 +1194,60 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center center;
             z-index: 0;
+        }
+
+        /* Mobile overlay for readability */
+        .shared-video-wrap .video-overlay-mobile {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            .shared-video-wrap .video-overlay-mobile {
+                display: block;
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    180deg,
+                    rgba(248, 252, 255, 0.72) 0%,
+                    rgba(245, 250, 255, 0.68) 50%,
+                    rgba(248, 252, 255, 0.74) 100%
+                );
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            /* Better video framing on narrow screens */
+            .shared-video-wrap .video-bg {
+                object-position: center 40%;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .shared-video-wrap .video-bg {
+                object-position: center 35%;
+            }
+
+            /* Slightly denser overlay on very small screens */
+            .shared-video-wrap .video-overlay-mobile {
+                background: linear-gradient(
+                    180deg,
+                    rgba(248, 252, 255, 0.78) 0%,
+                    rgba(245, 250, 255, 0.74) 50%,
+                    rgba(248, 252, 255, 0.80) 100%
+                );
+            }
+        }
+
+        /* Reduced motion: pause video, show poster/gradient */
+        @media (prefers-reduced-motion: reduce) {
+            .shared-video-wrap .video-bg {
+                display: none;
+            }
+            .shared-video-wrap {
+                background: linear-gradient(180deg, #e8f2f8 0%, #dce8f0 50%, #e8f2f8 100%);
+            }
         }
 
         .shared-video-wrap .shared-content {
@@ -1199,11 +1263,11 @@
 
         /* Уменьшаем отступ между блоками внутри общей обертки */
         .shared-video-wrap .quality-apple {
-            padding-bottom: 16px;
+            padding-bottom: 12px;
         }
 
         .shared-video-wrap #production {
-            padding-top: 16px;
+            padding-top: 12px;
         }
 
         @media (min-width: 768px) {
@@ -1236,6 +1300,18 @@
                 0 1px 3px rgba(110, 140, 160, 0.08);
         }
 
+        /* Mobile: stronger card contrast */
+        @media (max-width: 767px) {
+            .shared-video-wrap .quality-item,
+            .shared-video-wrap .production-item {
+                background: rgba(255, 255, 255, 0.82);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(110, 140, 160, 0.22);
+                box-shadow: 0 2px 12px rgba(110, 140, 160, 0.1);
+            }
+        }
+
         .shared-video-wrap .quality-item:hover,
         .shared-video-wrap .production-item:hover:not(.active) {
             background: rgba(255, 255, 255, 0.75);
@@ -1251,6 +1327,13 @@
             box-shadow:
                 0 8px 32px rgba(110, 140, 160, 0.2),
                 0 0 0 1px rgba(139, 175, 194, 0.18);
+        }
+
+        @media (max-width: 767px) {
+            .shared-video-wrap .production-item.active {
+                background: rgba(165, 196, 212, 0.35);
+                box-shadow: 0 4px 16px rgba(110, 140, 160, 0.15);
+            }
         }
 
         /* ============================================
@@ -4527,6 +4610,8 @@
         <video class="video-bg" autoplay muted loop playsinline preload="metadata" poster="fondoverie.jpeg">
             <source src="fon2.mp4" type="video/mp4">
         </video>
+        <!-- Mobile Overlay for readability -->
+        <div class="video-overlay-mobile"></div>
         <!-- Content -->
         <div class="shared-content">
 
