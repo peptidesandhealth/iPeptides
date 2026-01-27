@@ -794,7 +794,7 @@
             font-weight: 400;
             color: var(--text-secondary);
             line-height: 1.55;
-            margin-bottom: 32px;
+            margin-bottom: 16px;
             letter-spacing: 0.01em;
         }
 
@@ -805,14 +805,14 @@
         @media (min-width: 480px) {
             .hero-tagline {
                 font-size: 1rem;
-                margin-bottom: 36px;
+                margin-bottom: 18px;
             }
         }
 
         @media (min-width: 768px) {
             .hero-tagline {
                 font-size: 1.1875rem;
-                margin-bottom: 48px;
+                margin-bottom: 20px;
                 line-height: 1.65;
             }
         }
@@ -820,7 +820,43 @@
         @media (min-width: 1024px) {
             .hero-tagline {
                 font-size: 1.3125rem;
-                margin-bottom: 52px;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Hero Geo Line */
+        .hero-geo {
+            font-size: 0.625rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 24px;
+            opacity: 0.75;
+            text-align: center;
+        }
+
+        @media (min-width: 480px) {
+            .hero-geo {
+                font-size: 0.6875rem;
+                letter-spacing: 0.14em;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-geo {
+                font-size: 0.75rem;
+                letter-spacing: 0.16em;
+                margin-bottom: 32px;
+                text-align: left;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-geo {
+                font-size: 0.8125rem;
+                letter-spacing: 0.18em;
+                margin-bottom: 36px;
             }
         }
 
@@ -3728,6 +3764,7 @@
                     <span data-lang-key="hero.tagline1">Ведущий производитель и поставщик</span>
                     <span data-lang-key="hero.tagline2">пептидных решений премиум-класса</span>
                 </p>
+                <p class="hero-geo">Russia • CIS • Europe • MENA • Asia</p>
                 <div class="hero-buttons">
                     <button class="btn btn-primary" data-modal data-lang-key="hero.cta">Стать партнёром</button>
                 </div>
@@ -3899,7 +3936,6 @@
             <div class="section-header reveal">
                 <span class="section-label">Scale & Trust</span>
                 <h2 class="section-title">Масштаб и доверие</h2>
-                <p class="coverage-line">Russia • CIS • Europe • MENA • Asia</p>
                 <div class="section-principles">
                     <span>Надёжность</span>
                     <span>Прозрачность</span>
