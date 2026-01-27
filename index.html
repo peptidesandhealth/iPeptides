@@ -170,12 +170,12 @@
         /* Section Overlay Title - единый стиль заголовков-оверлайнов */
         .section-overlay {
             display: block;
-            font-size: 0.8125rem;
+            font-size: 0.6875rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.18em;
             color: var(--ice-flow-dark);
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             line-height: 1.4;
         }
 
@@ -185,18 +185,23 @@
 
         @media (min-width: 768px) {
             .section-overlay {
-                font-size: 0.875rem;
+                font-size: 0.75rem;
                 letter-spacing: 0.2em;
-                margin-bottom: 24px;
+                margin-bottom: 12px;
             }
         }
 
         @media (min-width: 1024px) {
             .section-overlay {
-                font-size: 0.9375rem;
+                font-size: 0.8125rem;
                 letter-spacing: 0.22em;
-                margin-bottom: 28px;
+                margin-bottom: 14px;
             }
+        }
+
+        /* Dark background variant */
+        .section-overlay.on-dark {
+            color: rgba(165, 196, 212, 0.7);
         }
 
         @media (min-width: 768px) {
@@ -257,48 +262,15 @@
             }
         }
 
-        .infra-badge {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .infra-overlay {
-            font-size: 0.6875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: rgba(165, 196, 212, 0.7);
-        }
-
-        .infra-principles {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 4px 12px;
-        }
-
-        .infra-principles span {
-            position: relative;
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: rgba(255, 255, 255, 0.92);
+        /* Infrastructure section header */
+        .infra-header {
+            margin-bottom: 24px;
         }
 
         @media (min-width: 768px) {
-            .infra-principles span {
-                font-size: 1rem;
+            .infra-header {
+                margin-bottom: 32px;
             }
-        }
-
-        .infra-principles span:not(:last-child)::after {
-            content: '•';
-            position: absolute;
-            right: -9px;
-            color: rgba(165, 196, 212, 0.5);
         }
 
         /* Premium glass cards grid */
@@ -1360,22 +1332,20 @@
             }
         }
 
-        /* Section Principles - универсальный стиль для шапок с точками */
+        /* Section Principles - единый стиль для строки с точками */
         .section-principles {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 6px 12px;
-            margin-top: 12px;
-            margin-bottom: 0;
+            gap: 4px 14px;
         }
 
         .section-principles span {
-            font-size: 0.625rem;
-            font-weight: 500;
-            color: var(--text-secondary);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-dark);
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
             position: relative;
             white-space: nowrap;
         }
@@ -1389,26 +1359,37 @@
 
         @media (min-width: 768px) {
             .section-principles {
-                gap: 8px 20px;
-                margin-top: 14px;
+                gap: 4px 18px;
             }
             .section-principles span {
-                font-size: 0.6875rem;
-                letter-spacing: 0.15em;
+                font-size: 0.75rem;
+                letter-spacing: 0.12em;
             }
             .section-principles span:not(:last-child)::after {
-                right: -14px;
+                right: -13px;
             }
         }
 
         @media (min-width: 1024px) {
+            .section-principles {
+                gap: 4px 22px;
+            }
             .section-principles span {
-                font-size: 0.75rem;
-                letter-spacing: 0.18em;
+                font-size: 0.8125rem;
+                letter-spacing: 0.15em;
             }
             .section-principles span:not(:last-child)::after {
-                right: -16px;
+                right: -15px;
             }
+        }
+
+        /* Dark background variant */
+        .section-principles.on-dark span {
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .section-principles.on-dark span:not(:last-child)::after {
+            color: rgba(165, 196, 212, 0.5);
         }
 
         /* Facts Grid */
@@ -2174,14 +2155,6 @@
         .production-section .section-header {
             text-align: center;
             margin-bottom: 0;
-        }
-
-        .production-section .section-overlay {
-            text-align: center;
-        }
-
-        .production-section .section-principles {
-            justify-content: center;
         }
 
         /* Desktop: two columns, header+list left, empty right */
@@ -3535,15 +3508,6 @@
             margin-bottom: 0;
         }
 
-        .quality-apple .section-overlay {
-            text-align: center;
-            margin-bottom: 12px;
-        }
-
-        .quality-apple .section-principles {
-            justify-content: center;
-        }
-
         /* Desktop: two columns, empty left, header+panel right */
         @media (min-width: 1024px) {
             .quality-layout {
@@ -4328,11 +4292,11 @@
     <!-- Infrastructure - Premium Compact -->
     <section id="scale" class="infra-section">
         <div class="container">
-            <!-- Compact header badge -->
-            <div class="infra-header reveal">
-                <div class="infra-badge">
-                    <span class="infra-overlay">Инфраструктура</span>
-                    <div class="infra-principles">
+            <!-- Compact header -->
+            <div class="infra-header">
+                <div class="section-header center reveal">
+                    <h2 class="section-overlay on-dark">Инфраструктура</h2>
+                    <div class="section-principles on-dark">
                         <span>Надёжность</span>
                         <span>Прозрачность</span>
                         <span>Логистика</span>
