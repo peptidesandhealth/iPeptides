@@ -1952,6 +1952,44 @@
             border-radius: 999px;
             line-height: 1;
             opacity: 0.9;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        /* Mobile ≤480px: Hide icons, show only number badge + title */
+        @media (max-width: 480px) {
+            .timeline-icon {
+                display: none;
+            }
+
+            .timeline-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .timeline-title {
+                flex: 1;
+                font-size: 0.9375rem;
+                order: 1;
+            }
+
+            .timeline-number {
+                order: 2;
+                font-size: 0.6875rem;
+                font-weight: 700;
+                padding: 5px 10px;
+                background: linear-gradient(135deg, rgba(165, 196, 212, 0.25) 0%, rgba(139, 175, 194, 0.18) 100%);
+                border: 1px solid rgba(165, 196, 212, 0.2);
+                color: var(--ice-flow-deep);
+            }
+
+            .timeline-card:hover .timeline-number,
+            .timeline-card:active .timeline-number {
+                background: linear-gradient(135deg, rgba(139, 175, 194, 0.35) 0%, rgba(110, 140, 160, 0.25) 100%);
+                color: var(--ice-flow-dark);
+                transform: scale(1.05);
+            }
         }
 
         .timeline-text {
