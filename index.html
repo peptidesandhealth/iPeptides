@@ -353,6 +353,26 @@
             border-color: rgba(165, 196, 212, 0.4);
         }
 
+        /* Active state - premium steel-blue highlight (mobile accordion) */
+        .infra-card.active {
+            background: rgba(165, 196, 212, 0.22);
+            border-color: rgba(139, 175, 194, 0.45);
+            box-shadow: 0 6px 24px rgba(110, 140, 160, 0.18);
+        }
+
+        .infra-card.active .infra-card-icon {
+            background: linear-gradient(135deg, rgba(139, 175, 194, 0.35) 0%, rgba(110, 140, 160, 0.2) 100%);
+            border-color: rgba(139, 175, 194, 0.45);
+        }
+
+        .infra-card.active .infra-card-icon svg {
+            color: var(--ice-flow-dark);
+        }
+
+        .infra-card.active .infra-card-title {
+            color: var(--text-dark);
+        }
+
         /* Card icon */
         .infra-card-icon {
             width: 32px;
@@ -2246,13 +2266,13 @@
         .production-item:nth-child(3) { transition-delay: 0.2s; }
         .production-item:nth-child(4) { transition-delay: 0.3s; }
 
-        /* Active state - premium highlight */
+        /* Active state - premium steel-blue highlight */
         .production-item.active {
-            background: rgba(255, 255, 255, 0.75);
-            border-color: rgba(165, 196, 212, 0.4);
+            background: rgba(165, 196, 212, 0.22);
+            border-color: rgba(139, 175, 194, 0.45);
             box-shadow:
-                0 4px 20px rgba(165, 196, 212, 0.15),
-                0 0 0 1px rgba(165, 196, 212, 0.1);
+                0 6px 24px rgba(110, 140, 160, 0.18),
+                0 0 0 1px rgba(139, 175, 194, 0.15);
             transform: translateY(-2px);
         }
 
@@ -2833,7 +2853,11 @@
             opacity: 0;
             transform: translateY(10px);
             transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        background 0.2s ease,
+                        border-color 0.2s ease,
+                        padding 0.2s ease,
+                        margin 0.2s ease;
             cursor: pointer;
             position: relative;
         }
@@ -2945,11 +2969,42 @@
 
         .benefit-item.active .benefit-chevron {
             transform: rotate(180deg);
+            stroke: var(--ice-flow-dark);
+        }
+
+        /* Active state - premium steel-blue highlight (mobile accordion) */
+        .benefit-item.active {
+            background: rgba(165, 196, 212, 0.15);
+            border-radius: 12px;
+            margin: 0 -12px;
+            padding: 14px 12px;
+            border-bottom-color: transparent;
+        }
+
+        .benefit-item.active .benefit-icon {
+            background: linear-gradient(135deg, rgba(139, 175, 194, 0.35) 0%, rgba(110, 140, 160, 0.2) 100%);
+            border-color: rgba(139, 175, 194, 0.45);
+        }
+
+        .benefit-item.active .benefit-icon svg {
+            stroke: var(--ice-flow-dark);
+        }
+
+        .benefit-item.active .benefit-title {
+            color: var(--text-dark);
         }
 
         @media (min-width: 1024px) {
             .benefit-chevron {
                 display: none;
+            }
+
+            .benefit-item.active {
+                background: transparent;
+                margin: 0;
+                padding: 16px 0;
+                border-radius: 0;
+                border-bottom-color: rgba(165, 196, 212, 0.18);
             }
         }
 
