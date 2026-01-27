@@ -1857,6 +1857,32 @@
             }
         }
 
+        /* Desktop 1024px+: reverse order (list left, header right) */
+        @media (min-width: 1024px) {
+            .production-section .production-content {
+                grid-template-columns: 1.2fr 1fr;
+                gap: 64px;
+                align-items: center;
+            }
+
+            .production-section .production-content > .reveal {
+                order: 2;
+            }
+
+            .production-section .production-content > .production-list {
+                order: 1;
+            }
+
+            .production-section .section-overlay,
+            .production-section .section-principles {
+                text-align: right;
+            }
+
+            .production-section .section-principles {
+                justify-content: flex-end;
+            }
+        }
+
         /* Premium badge label */
         .production-badge {
             display: inline-flex;
@@ -3135,9 +3161,16 @@
             background: var(--snow-white-pure);
         }
 
+        /* Quality Layout - two column on desktop */
+        .quality-layout {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
         .quality-apple .section-header {
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 0;
         }
 
         .quality-apple .section-overlay {
@@ -3154,12 +3187,34 @@
         }
 
         @media (min-width: 768px) {
-            .quality-apple .section-header {
-                margin-bottom: 40px;
+            .quality-layout {
+                gap: 40px;
             }
 
             .quality-apple .section-text {
                 font-size: 1rem;
+            }
+        }
+
+        /* Desktop: two columns, header left, panel right */
+        @media (min-width: 1024px) {
+            .quality-layout {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 48px;
+                align-items: center;
+            }
+
+            .quality-apple .section-header {
+                text-align: left;
+            }
+
+            .quality-apple .section-overlay {
+                text-align: left;
+            }
+
+            .quality-apple .section-principles {
+                justify-content: flex-start;
             }
         }
 
@@ -3182,6 +3237,13 @@
             .quality-glass-panel {
                 max-width: 580px;
                 border-radius: 28px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .quality-glass-panel {
+                max-width: none;
+                margin: 0;
             }
         }
 
@@ -4105,8 +4167,67 @@
         </div>
     </section>
 
+    <!-- Quality - Premium Glass Panel -->
+    <section id="quality" class="quality-apple">
+        <div class="container">
+            <div class="quality-layout">
+                <div class="section-header reveal">
+                    <h2 class="section-overlay">Контроль качества</h2>
+                    <div class="section-principles">
+                        <span>Контроль</span>
+                        <span>Параметры</span>
+                        <span>Соответствие</span>
+                    </div>
+                </div>
+                <div class="quality-glass-panel">
+                    <div class="quality-item">
+                        <div class="quality-item-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="quality-item-title">Входной контроль сырья и материалов</span>
+                    </div>
+                    <div class="quality-item">
+                        <div class="quality-item-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="quality-item-title">Контроль партии перед отгрузкой</span>
+                    </div>
+                    <div class="quality-item">
+                        <div class="quality-item-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="quality-item-title">Документация по запросу партнёра</span>
+                    </div>
+                    <div class="quality-item">
+                        <div class="quality-item-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="3" width="15" height="13" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="5.5" cy="18.5" r="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="18.5" cy="18.5" r="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="quality-item-title">Соблюдение условий хранения и доставки</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Production -->
-    <section id="production">
+    <section id="production" class="production-section">
         <div class="container">
             <div class="production-content">
                 <div class="reveal">
@@ -4205,63 +4326,6 @@
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Quality - Premium Glass Panel -->
-    <section id="quality" class="quality-apple">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-overlay">Контроль качества</h2>
-                <div class="section-principles">
-                    <span>Контроль</span>
-                    <span>Параметры</span>
-                    <span>Соответствие</span>
-                </div>
-            </div>
-            <div class="quality-glass-panel">
-                <div class="quality-item">
-                    <div class="quality-item-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
-                            <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <span class="quality-item-title">Входной контроль сырья и материалов</span>
-                </div>
-                <div class="quality-item">
-                    <div class="quality-item-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke-linecap="round" stroke-linejoin="round"/>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke-linecap="round" stroke-linejoin="round"/>
-                            <line x1="12" y1="22.08" x2="12" y2="12" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <span class="quality-item-title">Контроль партии перед отгрузкой</span>
-                </div>
-                <div class="quality-item">
-                    <div class="quality-item-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
-                            <polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/>
-                            <line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round" stroke-linejoin="round"/>
-                            <line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <span class="quality-item-title">Документация по запросу партнёра</span>
-                </div>
-                <div class="quality-item">
-                    <div class="quality-item-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1" y="3" width="15" height="13" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="5.5" cy="18.5" r="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="18.5" cy="18.5" r="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <span class="quality-item-title">Соблюдение условий хранения и доставки</span>
                 </div>
             </div>
         </div>
