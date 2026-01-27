@@ -3844,10 +3844,10 @@
         }
 
         /* ============================================
-           PARTNERS SECTION - Premium B2B
+           PARTNERS SECTION - Premium B2B (Dark theme like Infrastructure)
            ============================================ */
         .partners-premium {
-            background: linear-gradient(180deg, var(--snow-white-pure) 0%, var(--bg-accent) 100%);
+            background: linear-gradient(180deg, #1a2a3a 0%, #0f1922 100%);
             overflow: hidden;
         }
 
@@ -3859,6 +3859,7 @@
         .partners-premium .section-text {
             max-width: 480px;
             margin: 0 auto;
+            color: rgba(255, 255, 255, 0.75);
         }
 
         /* Mobile Carousel Container */
@@ -3884,15 +3885,15 @@
             display: none;
         }
 
-        /* Premium B2B Card */
+        /* Premium B2B Card - Glass on dark background */
         .partner-card {
             flex: 0 0 calc(85% - 8px);
             min-width: calc(85% - 8px);
             scroll-snap-align: center;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(165, 196, 212, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 24px;
             padding: 28px 24px;
             display: flex;
@@ -3904,8 +3905,9 @@
                         transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                         filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                         box-shadow 0.35s ease,
-                        border-color 0.35s ease;
-            box-shadow: 0 4px 24px rgba(165, 196, 212, 0.12);
+                        border-color 0.35s ease,
+                        background 0.35s ease;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
         }
 
         .partner-card.revealed {
@@ -3914,13 +3916,13 @@
             filter: blur(0);
         }
 
-        /* Card Badge */
+        /* Card Badge - Light on dark */
         .partner-badge {
             font-size: 0.625rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.18em;
-            color: var(--ice-flow-dark);
+            color: rgba(165, 196, 212, 0.9);
             margin-bottom: 16px;
             display: flex;
             align-items: center;
@@ -3931,17 +3933,17 @@
             content: '';
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, rgba(165, 196, 212, 0.4) 0%, transparent 100%);
+            background: linear-gradient(90deg, rgba(165, 196, 212, 0.35) 0%, transparent 100%);
         }
 
-        /* Card Icon */
+        /* Card Icon - Light on dark */
         .partner-icon {
             width: 40px;
             height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(165, 196, 212, 0.15) 0%, rgba(165, 196, 212, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.18) 0%, rgba(165, 196, 212, 0.08) 100%);
             border-radius: 12px;
             margin-bottom: 16px;
             transition: background 0.3s ease, transform 0.3s ease;
@@ -3950,7 +3952,7 @@
         .partner-icon svg {
             width: 20px;
             height: 20px;
-            stroke: var(--ice-flow-deep);
+            stroke: rgba(165, 196, 212, 0.95);
             stroke-width: 1.75;
             fill: none;
             transition: stroke 0.3s ease;
@@ -3959,7 +3961,7 @@
         .partner-card-title {
             font-size: 1.0625rem;
             font-weight: 600;
-            color: var(--text-dark);
+            color: rgba(255, 255, 255, 0.95);
             margin-bottom: 8px;
             letter-spacing: -0.01em;
             line-height: 1.35;
@@ -3967,12 +3969,12 @@
 
         .partner-card-text {
             font-size: 0.9375rem;
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
             margin-top: auto;
         }
 
-        /* Carousel Dots */
+        /* Carousel Dots - Light on dark */
         .partners-dots {
             display: flex;
             justify-content: center;
@@ -3984,8 +3986,8 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: var(--chrome);
-            opacity: 0.4;
+            background: rgba(255, 255, 255, 0.3);
+            opacity: 1;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
@@ -3993,7 +3995,7 @@
         }
 
         .partners-dots .dot.active {
-            background: var(--ice-flow-deep);
+            background: rgba(165, 196, 212, 0.9);
             opacity: 1;
             width: 20px;
             border-radius: 3px;
@@ -4035,17 +4037,18 @@
 
             .partner-card:hover {
                 transform: translateY(-4px);
-                box-shadow: 0 12px 40px rgba(165, 196, 212, 0.22);
-                border-color: rgba(165, 196, 212, 0.45);
+                background: rgba(255, 255, 255, 0.12);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+                border-color: rgba(165, 196, 212, 0.35);
             }
 
             .partner-card:hover .partner-icon {
-                background: linear-gradient(135deg, rgba(165, 196, 212, 0.25) 0%, rgba(165, 196, 212, 0.1) 100%);
+                background: linear-gradient(135deg, rgba(165, 196, 212, 0.28) 0%, rgba(165, 196, 212, 0.12) 100%);
                 transform: scale(1.05);
             }
 
             .partner-card:hover .partner-icon svg {
-                stroke: var(--ice-flow-dark);
+                stroke: rgba(165, 196, 212, 1);
             }
 
             .partners-dots {
@@ -4699,7 +4702,7 @@
     <section id="partners" class="partners-premium">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-overlay" data-i18n="partners.title">Партнёрам</h2>
+                <h2 class="section-overlay on-dark" data-i18n="partners.title">Партнёрам</h2>
             </div>
             </div>
             <div class="partners-carousel-wrapper">
