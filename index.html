@@ -1418,21 +1418,25 @@
         .card-compact .card-text { font-size: 0.8125rem; }
 
         /* ============================================
-           ABOUT SECTION - Premium Corporate
+           ABOUT SECTION - Premium Corporate (Dark theme like Infrastructure)
            ============================================ */
         #about {
+            background: linear-gradient(180deg, #1a2a3a 0%, #0f1922 100%);
             padding-top: 36px;
+            padding-bottom: 36px;
         }
 
         @media (min-width: 768px) {
             #about {
                 padding-top: 48px;
+                padding-bottom: 48px;
             }
         }
 
         @media (min-width: 1024px) {
             #about {
                 padding-top: 56px;
+                padding-bottom: 56px;
             }
         }
 
@@ -1554,11 +1558,13 @@
             }
         }
 
-        /* Fact Tile - Premium with equal height & vertical centering */
+        /* Fact Tile - Premium glass on dark background */
         .fact-tile {
             padding: 16px 14px;
-            background: var(--bg-accent);
-            border: 1px solid rgba(165, 196, 212, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 12px;
             display: flex;
             flex-direction: column;
@@ -1566,6 +1572,7 @@
             align-items: center;
             text-align: center;
             min-height: 100px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             /* Premium reveal animation initial state */
             opacity: 0;
             transform: translateY(24px);
@@ -1575,7 +1582,8 @@
                 transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
                 filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
                 box-shadow 0.3s ease,
-                border-color 0.3s ease;
+                border-color 0.3s ease,
+                background 0.3s ease;
         }
 
         .fact-tile.revealed {
@@ -1614,21 +1622,21 @@
             }
         }
 
-        /* Premium hover effect - PC only */
+        /* Premium hover effect - PC only (dark theme) */
         @media (hover: hover) {
             .fact-tile:hover {
                 transform: translateY(-6px);
-                box-shadow:
-                    0 12px 32px rgba(165, 196, 212, 0.2),
-                    0 4px 12px rgba(90, 122, 138, 0.08);
-                border-color: rgba(165, 196, 212, 0.35);
+                background: rgba(255, 255, 255, 0.12);
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+                border-color: rgba(165, 196, 212, 0.3);
             }
         }
 
+        /* Fact tile typography - light on dark */
         .fact-tile-title {
             font-size: 0.8125rem;
             font-weight: 600;
-            color: var(--text-dark);
+            color: rgba(255, 255, 255, 0.95);
             margin-bottom: 4px;
             line-height: 1.3;
         }
@@ -1655,7 +1663,7 @@
 
         .fact-tile-text {
             font-size: 0.6875rem;
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.45;
         }
 
@@ -4304,11 +4312,11 @@
     </section>
 
     <!-- About -->
-    <section id="about" class="bg-white">
+    <section id="about">
         <div class="container">
             <div class="section-header center reveal">
-                <h2 class="section-overlay" data-i18n="about.title">О компании</h2>
-                <div class="section-principles">
+                <h2 class="section-overlay on-dark" data-i18n="about.title">О компании</h2>
+                <div class="section-principles on-dark">
                     <span data-i18n="about.tag1">Производство</span>
                     <span data-i18n="about.tag2">Документация</span>
                     <span data-i18n="about.tag3">Логистика</span>
@@ -4318,7 +4326,7 @@
             <div class="facts-grid reveal">
                 <div class="fact-tile">
                     <div class="fact-tile-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M2 12h20"/>
                             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
@@ -4329,7 +4337,7 @@
                 </div>
                 <div class="fact-tile">
                     <div class="fact-tile-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
                             <path d="M21 21l-4.35-4.35"/>
                             <path d="M11 8v6"/>
@@ -4341,7 +4349,7 @@
                 </div>
                 <div class="fact-tile">
                     <div class="fact-tile-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="3"/>
                             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
                         </svg>
@@ -4351,7 +4359,7 @@
                 </div>
                 <div class="fact-tile">
                     <div class="fact-tile-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             <path d="M9 12l2 2 4-4"/>
                         </svg>
@@ -4361,7 +4369,7 @@
                 </div>
                 <div class="fact-tile">
                     <div class="fact-tile-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
                             <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
                             <line x1="12" y1="22.08" x2="12" y2="12"/>
@@ -4372,7 +4380,7 @@
                 </div>
                 <div class="fact-tile">
                     <div class="fact-tile-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                             <circle cx="9" cy="7" r="4"/>
                             <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -4384,13 +4392,19 @@
                 </div>
             </div>
 
-            <!-- SVG Gradient Definition -->
+            <!-- SVG Gradient Definitions -->
             <svg width="0" height="0" style="position:absolute">
                 <defs>
                     <linearGradient id="metallic-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" style="stop-color:#8FA7B8"/>
                         <stop offset="50%" style="stop-color:#6E8A9A"/>
                         <stop offset="100%" style="stop-color:#5E7788"/>
+                    </linearGradient>
+                    <!-- Light gradient for dark backgrounds -->
+                    <linearGradient id="metallic-gradient-light" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#B8CCD8"/>
+                        <stop offset="50%" style="stop-color:#A5C4D4"/>
+                        <stop offset="100%" style="stop-color:#8FB0C4"/>
                     </linearGradient>
                 </defs>
             </svg>
@@ -4411,7 +4425,7 @@
             <div class="principles-grid">
                 <div class="principle-card-premium">
                     <div class="principle-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <circle cx="12" cy="12" r="6"/>
                             <circle cx="12" cy="12" r="2"/>
@@ -4426,7 +4440,7 @@
                 </div>
                 <div class="principle-card-premium">
                     <div class="principle-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             <path d="M12 8v4"/>
                             <path d="M12 16h.01"/>
@@ -4437,7 +4451,7 @@
                 </div>
                 <div class="principle-card-premium">
                     <div class="principle-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                             <circle cx="9" cy="7" r="4"/>
                             <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -4560,7 +4574,7 @@
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <div class="timeline-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                                 <line x1="9" y1="10" x2="15" y2="10"/>
                             </svg>
@@ -4573,7 +4587,7 @@
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <div class="timeline-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                                 <polyline points="14 2 14 8 20 8"/>
                                 <path d="M9 15l2 2 4-4"/>
@@ -4587,7 +4601,7 @@
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <div class="timeline-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="3"/>
                                 <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
                             </svg>
@@ -4600,7 +4614,7 @@
                 <div class="timeline-card">
                     <div class="timeline-header">
                         <div class="timeline-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient-light)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="1" y="3" width="15" height="13" rx="2" ry="2"/>
                                 <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
                                 <circle cx="5.5" cy="18.5" r="2.5"/>
