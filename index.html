@@ -1828,26 +1828,44 @@
         /* ============================================
            TIMELINE (How We Work) - Premium Glassmorphism
            ============================================ */
-        /* Mobile: 2x2 grid layout */
+
+        /* Section specific container padding for mobile */
+        #how .container {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        /* Section header for Process */
+        #how .section-header {
+            margin-bottom: 18px;
+        }
+
+        /* Mobile: 2x2 grid layout - strict parameters */
         .timeline {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            padding: 4px 0;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            align-items: stretch;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .timeline-card {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+            height: 100%;
             background: rgba(255, 255, 255, 0.62);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 16px;
-            padding: 16px;
-            box-shadow:
-                0 4px 16px rgba(165, 196, 212, 0.12),
-                0 1px 4px rgba(0, 0, 0, 0.03),
-                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(140, 170, 190, 0.18);
+            border-radius: 18px;
+            padding: 14px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             /* Premium reveal animation */
             opacity: 0;
             transform: translateY(12px);
@@ -1877,14 +1895,14 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 10px;
+            min-width: 0;
         }
 
         .timeline-icon {
+            flex: 0 0 20px;
             width: 20px;
             height: 20px;
-            flex-shrink: 0;
-            opacity: 0.85;
+            opacity: 0.9;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
@@ -1895,30 +1913,33 @@
 
         .timeline-title {
             flex: 1;
-            font-size: 0.875rem;
+            min-width: 0;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--text-dark);
             letter-spacing: -0.01em;
-            line-height: 1.3;
+            line-height: 1.2;
         }
 
         .timeline-number {
-            font-size: 0.625rem;
+            flex: 0 0 auto;
+            font-size: 0.75rem;
             font-weight: 600;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.03em;
             color: var(--ice-flow-dark);
             background: rgba(165, 196, 212, 0.15);
-            padding: 3px 8px;
-            border-radius: 10px;
+            padding: 4px 10px;
+            border-radius: 999px;
             line-height: 1;
-            flex-shrink: 0;
+            opacity: 0.9;
         }
 
         .timeline-text {
-            font-size: 0.75rem;
+            margin-top: 8px;
+            font-size: 0.8125rem;
             color: var(--text-secondary);
-            line-height: 1.5;
-            margin: 0;
+            line-height: 1.35;
+            opacity: 0.85;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -1945,11 +1966,19 @@
         }
 
         @media (min-width: 768px) {
+            #how .container {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            #how .section-header {
+                margin-bottom: 32px;
+            }
+
             .timeline {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 gap: 20px;
-                padding: 8px 0;
             }
 
             .timeline-card {
