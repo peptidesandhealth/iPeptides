@@ -1291,47 +1291,6 @@
             }
         }
 
-        /* Principles Row - text with bullet separators */
-        .about-principles {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px 16px;
-            margin-bottom: 32px;
-        }
-
-        @media (min-width: 768px) {
-            .about-principles {
-                gap: 12px 24px;
-                margin-bottom: 44px;
-            }
-        }
-
-        .about-principles span {
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            position: relative;
-        }
-
-        .about-principles span:not(:last-child)::after {
-            content: '•';
-            position: absolute;
-            right: -14px;
-            color: var(--ice-flow);
-        }
-
-        @media (min-width: 768px) {
-            .about-principles span {
-                font-size: 0.8125rem;
-            }
-            .about-principles span:not(:last-child)::after {
-                right: -18px;
-            }
-        }
-
         /* Section Principles - единый стиль для строки с точками */
         .section-principles {
             display: flex;
@@ -4136,15 +4095,14 @@
     <!-- About -->
     <section id="about" class="bg-white">
         <div class="container">
-            <div class="section-header reveal">
+            <div class="section-header center reveal">
                 <h2 class="section-overlay">О компании</h2>
-            </div>
-
-            <div class="about-principles reveal">
-                <span>Производство</span>
-                <span>Контроль</span>
-                <span>Документация</span>
-                <span>Логистика</span>
+                <div class="section-principles">
+                    <span>Производство</span>
+                    <span>Контроль</span>
+                    <span>Документация</span>
+                    <span>Логистика</span>
+                </div>
             </div>
 
             <div class="facts-grid reveal">
