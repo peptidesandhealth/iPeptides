@@ -1181,18 +1181,6 @@
             z-index: 0;
         }
 
-        .shared-video-wrap .video-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                180deg,
-                rgba(245, 250, 255, 0.72) 0%,
-                rgba(240, 248, 255, 0.68) 50%,
-                rgba(245, 250, 255, 0.75) 100%
-            );
-            z-index: 1;
-        }
-
         .shared-video-wrap .shared-content {
             position: relative;
             z-index: 2;
@@ -1258,18 +1246,6 @@
             box-shadow:
                 0 8px 32px rgba(110, 140, 160, 0.2),
                 0 0 0 1px rgba(139, 175, 194, 0.18);
-        }
-
-        /* Мобильная адаптация: более плотный overlay */
-        @media (max-width: 767px) {
-            .shared-video-wrap .video-overlay {
-                background: linear-gradient(
-                    180deg,
-                    rgba(245, 250, 255, 0.82) 0%,
-                    rgba(240, 248, 255, 0.78) 50%,
-                    rgba(245, 250, 255, 0.84) 100%
-                );
-            }
         }
 
         /* ============================================
@@ -4526,8 +4502,6 @@
         <video class="video-bg" autoplay muted loop playsinline preload="metadata" poster="fondoverie.jpeg">
             <source src="fon1.mp4" type="video/mp4">
         </video>
-        <!-- Overlay for readability -->
-        <div class="video-overlay"></div>
         <!-- Content -->
         <div class="shared-content">
 
