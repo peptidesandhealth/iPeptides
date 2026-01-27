@@ -167,6 +167,38 @@
             max-width: 600px;
         }
 
+        /* Section Overlay Title - единый стиль заголовков-оверлайнов */
+        .section-overlay {
+            display: block;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--ice-flow-dark);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .section-header.center .section-overlay {
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .section-overlay {
+                font-size: 0.875rem;
+                letter-spacing: 0.2em;
+                margin-bottom: 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .section-overlay {
+                font-size: 0.9375rem;
+                letter-spacing: 0.22em;
+                margin-bottom: 28px;
+            }
+        }
+
         @media (min-width: 768px) {
             .section-label { font-size: 0.75rem; margin-bottom: 16px; }
             .section-title { font-size: 2.25rem; margin-bottom: 20px; }
@@ -3074,7 +3106,8 @@
             margin-bottom: 32px;
         }
 
-        .quality-apple .section-title {
+        .quality-apple .section-overlay {
+            text-align: center;
             margin-bottom: 12px;
         }
 
@@ -3776,8 +3809,7 @@
     <section id="about" class="bg-white">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-label">About iPeptides</span>
-                <h2 class="section-title">iPeptides — компания, выстроенная вокруг точности и доверия</h2>
+                <h2 class="section-overlay">О компании</h2>
             </div>
 
             <div class="about-principles reveal">
@@ -3873,8 +3905,7 @@
     <section id="principles" class="bg-accent">
         <div class="container">
             <div class="section-header center reveal">
-                <span class="section-label">Our Principles</span>
-                <h2 class="section-title">Принципы iPeptides</h2>
+                <h2 class="section-overlay">Принципы</h2>
                 <div class="section-principles">
                     <span>Точность</span>
                     <span>Воспроизводимость</span>
@@ -3934,8 +3965,7 @@
     <section id="scale">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-label">Scale & Trust</span>
-                <h2 class="section-title">Масштаб и доверие</h2>
+                <h2 class="section-overlay">Инфраструктура</h2>
                 <div class="section-principles">
                     <span>Надёжность</span>
                     <span>Прозрачность</span>
@@ -3967,8 +3997,7 @@
     <section id="how" class="bg-accent">
         <div class="container">
             <div class="section-header center reveal">
-                <span class="section-label">How We Work</span>
-                <h2 class="section-title">Как мы работаем</h2>
+                <h2 class="section-overlay">Процесс</h2>
                 <div class="section-principles">
                     <span>Запрос</span>
                     <span>Согласование</span>
@@ -4047,11 +4076,7 @@
         <div class="container">
             <div class="production-content">
                 <div class="reveal">
-                    <div class="production-badge">
-                        <span class="production-badge-marker"></span>
-                        <span>Production System</span>
-                    </div>
-                    <h2 class="section-title">Производство полного цикла</h2>
+                    <h2 class="section-overlay">Производство</h2>
                     <div class="section-principles">
                         <span>Процессы</span>
                         <span>Воспроизводимость</span>
@@ -4155,7 +4180,7 @@
     <section id="quality" class="quality-apple">
         <div class="container">
             <div class="section-header reveal">
-                <h2 class="section-title">Контроль качества</h2>
+                <h2 class="section-overlay">Контроль качества</h2>
                 <div class="section-principles">
                     <span>Контроль</span>
                     <span>Параметры</span>
@@ -4212,9 +4237,8 @@
     <section id="partners" class="partners-premium">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-label">B2B Cooperation</span>
-                <h2 class="section-title">Партнёрам</h2>
-                <p class="section-text">Форматы партнёрства под задачи бизнеса.</p>
+                <h2 class="section-overlay">Партнёрам</h2>
+            </div>
             </div>
             <div class="partners-carousel-wrapper">
                 <div class="partners-carousel">
@@ -4284,8 +4308,7 @@
     <section id="why" class="why-premium">
         <div class="container">
             <div class="section-header center reveal">
-                <span class="section-label">Why iPeptides</span>
-                <h2 class="section-title">Почему выбирают iPeptides</h2>
+                <h2 class="section-overlay">Почему iPeptides</h2>
             </div>
             <div class="why-glass-panel">
                 <div class="why-item">
@@ -4350,9 +4373,7 @@
         <div class="container">
             <!-- Section Header -->
             <div class="section-header center reveal">
-                <span class="section-label">Partnership</span>
-                <h2 class="section-title">Сотрудничество с iPeptides</h2>
-                <p class="section-text" style="margin: 0 auto;">B2B-инфраструктура для масштабирования вашего бизнеса</p>
+                <h2 class="section-overlay">Сотрудничество</h2>
             </div>
 
             <!-- Two-Column Layout -->
