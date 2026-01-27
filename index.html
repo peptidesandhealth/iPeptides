@@ -3652,8 +3652,25 @@
            WHY IPEPTIDES - Premium Compact Apple-style
            ============================================ */
         .why-premium {
-            background: var(--bg-secondary);
+            position: relative;
+            background: linear-gradient(135deg, #f5faff 0%, #e8f2f8 100%);
             overflow: hidden;
+        }
+
+        /* Video background for Why section */
+        .why-premium .video-bg-why {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* Content above video */
+        .why-premium .container {
+            position: relative;
+            z-index: 1;
         }
 
         .why-premium .section-header {
@@ -3667,19 +3684,19 @@
             }
         }
 
-        /* Glass Panel Container */
+        /* Glass Panel Container - enhanced for video background */
         .why-glass-panel {
             max-width: 680px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.72);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(165, 196, 212, 0.22);
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(110, 140, 160, 0.28);
             border-radius: 24px;
             padding: 0;
             box-shadow:
-                0 4px 24px rgba(165, 196, 212, 0.1),
-                0 1px 3px rgba(0, 0, 0, 0.04);
+                0 8px 32px rgba(110, 140, 160, 0.15),
+                0 2px 8px rgba(0, 0, 0, 0.06);
             opacity: 0;
             transform: translateY(16px);
             transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
@@ -4751,6 +4768,10 @@
 
     <!-- Why Choose - Premium Compact Apple-style -->
     <section id="why" class="why-premium">
+        <!-- Video Background -->
+        <video class="video-bg-why" autoplay muted loop playsinline preload="metadata" poster="fondoverie.jpeg">
+            <source src="fon2.mp4" type="video/mp4">
+        </video>
         <div class="container">
             <div class="section-header center reveal">
                 <h2 class="section-overlay" data-i18n="why.title">Почему iPeptides</h2>
