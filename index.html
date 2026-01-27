@@ -47,6 +47,7 @@
             --bg-secondary: #FFFFFF;
             --bg-accent: #E8EEF2;
             --bg-card: rgba(255, 255, 255, 0.85);
+            --infra-bg: #1a2a3a;
 
             /* Borders & Shadows */
             --border-light: rgba(165, 196, 212, 0.25);
@@ -936,11 +937,12 @@
         .hero-label {
             font-size: 0.5rem;
             font-weight: 500;
-            color: var(--text-secondary);
+            color: var(--infra-bg);
             text-transform: uppercase;
             letter-spacing: 0.15em;
             margin-bottom: 16px;
-            opacity: 0.8;
+            opacity: 0.85;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
         }
 
         @media (min-width: 480px) {
@@ -971,13 +973,14 @@
             font-size: 2.5rem;
             font-weight: 600;
             letter-spacing: -0.03em;
-            color: var(--text-dark);
+            color: var(--infra-bg);
             margin-bottom: 16px;
             line-height: 1;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
         }
 
         .hero-brand span {
-            color: var(--ice-flow-deep);
+            color: var(--infra-bg);
         }
 
         @media (min-width: 480px) {
@@ -1011,10 +1014,11 @@
         .hero-tagline {
             font-size: 0.9375rem;
             font-weight: 400;
-            color: var(--text-secondary);
+            color: var(--infra-bg);
             line-height: 1.55;
             margin-bottom: 16px;
             letter-spacing: 0.01em;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
         }
 
         .hero-tagline span {
@@ -1047,12 +1051,13 @@
         .hero-geo {
             font-size: 0.625rem;
             font-weight: 500;
-            color: var(--text-secondary);
+            color: var(--infra-bg);
             text-transform: uppercase;
             letter-spacing: 0.12em;
             margin-bottom: 24px;
-            opacity: 0.75;
+            opacity: 0.85;
             text-align: center;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
         }
 
         @media (min-width: 480px) {
