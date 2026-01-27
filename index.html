@@ -1054,6 +1054,57 @@
             }
         }
 
+        /* Section Principles - универсальный стиль для шапок с точками */
+        .section-principles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px 12px;
+            margin-top: 12px;
+            margin-bottom: 0;
+        }
+
+        .section-principles span {
+            font-size: 0.625rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .section-principles span:not(:last-child)::after {
+            content: '•';
+            position: absolute;
+            right: -10px;
+            color: var(--ice-flow);
+        }
+
+        @media (min-width: 768px) {
+            .section-principles {
+                gap: 8px 20px;
+                margin-top: 14px;
+            }
+            .section-principles span {
+                font-size: 0.6875rem;
+                letter-spacing: 0.15em;
+            }
+            .section-principles span:not(:last-child)::after {
+                right: -14px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .section-principles span {
+                font-size: 0.75rem;
+                letter-spacing: 0.18em;
+            }
+            .section-principles span:not(:last-child)::after {
+                right: -16px;
+            }
+        }
+
         /* Facts Grid */
         .facts-grid {
             display: grid;
@@ -3787,7 +3838,11 @@
             <div class="section-header center reveal">
                 <span class="section-label">Our Principles</span>
                 <h2 class="section-title">Принципы iPeptides</h2>
-                <p class="section-text">Мы строим партнёрство на точности процессов, стабильности партии и предсказуемости поставок.</p>
+                <div class="section-principles">
+                    <span>Точность</span>
+                    <span>Воспроизводимость</span>
+                    <span>Доверие</span>
+                </div>
             </div>
             <div class="principles-grid">
                 <div class="principle-card-premium">
@@ -3845,7 +3900,11 @@
                 <span class="section-label">Scale & Trust</span>
                 <h2 class="section-title">Масштаб и доверие</h2>
                 <p class="coverage-line">Russia • CIS • Europe • MENA • Asia</p>
-                <p class="section-text">Инфраструктура iPeptides создана для партнёров: стабильность партий, прозрачность процессов и предсказуемая логистика.</p>
+                <div class="section-principles">
+                    <span>Надёжность</span>
+                    <span>Прозрачность</span>
+                    <span>Логистика</span>
+                </div>
             </div>
             <div class="cards-grid cards-grid-4 reveal">
                 <div class="card card-compact">
