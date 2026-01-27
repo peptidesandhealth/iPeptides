@@ -1164,6 +1164,115 @@
         .bg-accent { background: var(--bg-accent); }
 
         /* ============================================
+           SHARED VIDEO BACKGROUND - Quality + Production
+           ============================================ */
+        .shared-video-wrap {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5faff 0%, #e8f2f8 100%);
+        }
+
+        .shared-video-wrap .video-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .shared-video-wrap .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(245, 250, 255, 0.72) 0%,
+                rgba(240, 248, 255, 0.68) 50%,
+                rgba(245, 250, 255, 0.75) 100%
+            );
+            z-index: 1;
+        }
+
+        .shared-video-wrap .shared-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Убираем старые фоны у секций внутри shared-video-wrap */
+        .shared-video-wrap .quality-apple,
+        .shared-video-wrap #production {
+            background: transparent;
+        }
+
+        /* Уменьшаем отступ между блоками внутри общей обертки */
+        .shared-video-wrap .quality-apple {
+            padding-bottom: 16px;
+        }
+
+        .shared-video-wrap #production {
+            padding-top: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .shared-video-wrap .quality-apple {
+                padding-bottom: 20px;
+            }
+            .shared-video-wrap #production {
+                padding-top: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .shared-video-wrap .quality-apple {
+                padding-bottom: 28px;
+            }
+            .shared-video-wrap #production {
+                padding-top: 28px;
+            }
+        }
+
+        /* Усиленный glass-эффект для карточек на видео-фоне */
+        .shared-video-wrap .quality-item,
+        .shared-video-wrap .production-item {
+            background: rgba(255, 255, 255, 0.62);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(110, 140, 160, 0.28);
+            box-shadow:
+                0 4px 20px rgba(110, 140, 160, 0.12),
+                0 1px 3px rgba(110, 140, 160, 0.08);
+        }
+
+        .shared-video-wrap .quality-item:hover,
+        .shared-video-wrap .production-item:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.75);
+            border-color: rgba(139, 175, 194, 0.38);
+            box-shadow:
+                0 6px 28px rgba(110, 140, 160, 0.16),
+                0 2px 6px rgba(110, 140, 160, 0.1);
+        }
+
+        .shared-video-wrap .production-item.active {
+            background: rgba(165, 196, 212, 0.28);
+            border-color: rgba(139, 175, 194, 0.48);
+            box-shadow:
+                0 8px 32px rgba(110, 140, 160, 0.2),
+                0 0 0 1px rgba(139, 175, 194, 0.18);
+        }
+
+        /* Мобильная адаптация: более плотный overlay */
+        @media (max-width: 767px) {
+            .shared-video-wrap .video-overlay {
+                background: linear-gradient(
+                    180deg,
+                    rgba(245, 250, 255, 0.82) 0%,
+                    rgba(240, 248, 255, 0.78) 50%,
+                    rgba(245, 250, 255, 0.84) 100%
+                );
+            }
+        }
+
+        /* ============================================
            CARDS
            ============================================ */
         .cards-grid {
@@ -4411,6 +4520,17 @@
         </div>
     </section>
 
+    <!-- Shared Video Background Wrapper: Quality + Production -->
+    <div class="shared-video-wrap">
+        <!-- Video Background -->
+        <video class="video-bg" autoplay muted loop playsinline preload="metadata" poster="fondoverie.jpeg">
+            <source src="fon1.mp4" type="video/mp4">
+        </video>
+        <!-- Overlay for readability -->
+        <div class="video-overlay"></div>
+        <!-- Content -->
+        <div class="shared-content">
+
     <!-- Quality - Premium Glass Panel -->
     <section id="quality" class="quality-apple compact-section">
         <div class="container">
@@ -4580,6 +4700,9 @@
             </div>
         </div>
     </section>
+
+        </div><!-- /.shared-content -->
+    </div><!-- /.shared-video-wrap -->
 
     <!-- Partners - Premium B2B -->
     <section id="partners" class="partners-premium">
