@@ -1728,8 +1728,15 @@
            PRINCIPLES SECTION - Premium Glassmorphism
            ============================================ */
         #principles {
-            background: url('фонпринципы.jpeg') center center / cover no-repeat;
+            background: url('fotofon.jpeg') center center / cover no-repeat;
+            background-attachment: scroll;
             position: relative;
+        }
+
+        @media (max-width: 767px) {
+            #principles {
+                background-position: center 40%;
+            }
         }
 
         /* Premium section title - Mobile */
@@ -1790,17 +1797,16 @@
         /* Premium Glass Card - Mobile: Large single card */
         .principle-card-premium {
             position: relative;
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.45);
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(110, 140, 160, 0.22);
             border-radius: 22px;
             padding: 24px 20px;
             text-align: center;
             box-shadow:
-                0 8px 28px rgba(165, 196, 212, 0.15),
-                0 2px 8px rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+                0 8px 28px rgba(110, 140, 160, 0.15),
+                0 2px 8px rgba(0, 0, 0, 0.06);
             /* Mobile carousel: 80vw width for 1 card + peek */
             width: 80vw;
             min-width: 280px;
@@ -2749,15 +2755,12 @@
             max-width: 100%;
             margin: 0 auto;
             padding: 16px;
-            background: rgba(255, 255, 255, 0.78);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(110, 140, 160, 0.2);
             border-radius: 18px;
-            box-shadow:
-                0 4px 20px rgba(165, 196, 212, 0.14),
-                0 2px 6px rgba(0, 0, 0, 0.03),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 20px rgba(110, 140, 160, 0.14);
         }
 
         @media (min-width: 768px) {
@@ -2909,11 +2912,18 @@
            PARTNERSHIP SECTION - Premium Compact Two-Column
            ============================================ */
         .partnership-section {
-            background: linear-gradient(180deg, var(--bg-accent) 0%, var(--ice-flow-light) 100%);
+            background: url('fotofon1.jpeg') center center / cover no-repeat;
+            background-attachment: scroll;
             position: relative;
             overflow: hidden;
             padding-top: 40px;
             padding-bottom: 40px;
+        }
+
+        @media (max-width: 767px) {
+            .partnership-section {
+                background-position: center 40%;
+            }
         }
 
         @media (min-width: 768px) {
@@ -2930,16 +2940,10 @@
             }
         }
 
-        .partnership-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 400px;
-            background: radial-gradient(ellipse, rgba(255,255,255,0.4) 0%, transparent 70%);
-            pointer-events: none;
+        /* Content above background */
+        .partnership-section .container {
+            position: relative;
+            z-index: 1;
         }
 
         /* Two-Column Layout Container */
@@ -2969,17 +2973,32 @@
             }
         }
 
-        /* Left Column: Benefits List */
+        /* Left Column: Benefits List - Glass panel on image background */
         .partnership-benefits {
             display: flex;
             flex-direction: column;
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(110, 140, 160, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(110, 140, 160, 0.12);
+        }
+
+        @media (min-width: 768px) {
+            .partnership-benefits {
+                padding: 24px;
+                border-radius: 24px;
+            }
         }
 
         @media (min-width: 1024px) {
             .partnership-benefits {
                 flex: 1;
-                padding-right: 40px;
+                padding: 28px 32px;
                 justify-content: center;
+                margin-right: 20px;
             }
         }
 
