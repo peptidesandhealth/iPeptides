@@ -596,74 +596,23 @@
             .logo { font-size: 1.5rem; }
         }
 
-        /* Header Right Block */
+        /* Header Right Block - unified for all screen sizes */
         .header-right-block {
-            display: none;
-            align-items: center;
-            gap: 20px;
-            height: 100%;
-        }
-
-        @media (min-width: 1024px) {
-            .header-right-block {
-                display: flex;
-            }
-        }
-
-        /* Desktop Nav */
-        .nav {
-            display: none;
-        }
-
-        @media (min-width: 1024px) {
-            .nav {
-                display: flex;
-                align-items: center;
-                gap: 28px;
-                height: 100%;
-            }
-        }
-
-        .nav a {
             display: flex;
             align-items: center;
-            position: relative;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9375rem;
-            font-weight: 400;
-            line-height: 1;
+            gap: 8px;
             height: 100%;
-            padding: 0;
-            transition: color 0.2s ease;
         }
 
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--ice-flow-dark);
-            border-radius: 1px;
-            transition: width 0.25s ease;
+        @media (min-width: 768px) {
+            .header-right-block {
+                gap: 12px;
+            }
         }
 
-        .nav a:hover {
-            color: var(--ice-flow-dark);
-        }
-
-        .nav a:hover::after {
-            width: 100%;
-        }
-
-        .nav a.active {
-            color: var(--ice-flow-dark);
-        }
-
-        .nav a.active::after {
-            width: 100%;
+        /* Desktop Nav - hidden, replaced by dropdown menu */
+        .nav {
+            display: none;
         }
 
         /* Language Switcher */
@@ -705,21 +654,12 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
-        /* Mobile Controls */
+        /* Mobile Controls - hidden, unified in header-right-block */
         .mobile-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            height: 100%;
+            display: none;
         }
 
-        @media (min-width: 1024px) {
-            .mobile-controls {
-                display: none;
-            }
-        }
-
-        /* Mobile Menu Toggle */
+        /* Menu Toggle - visible on all screen sizes */
         .menu-toggle {
             display: flex;
             flex-direction: column;
@@ -728,23 +668,29 @@
             gap: 5px;
             width: 44px;
             height: 44px;
-            background: none;
+            background: rgba(139, 175, 194, 0.12);
             border: none;
+            border-radius: 12px;
             cursor: pointer;
             padding: 10px;
+            transition: all 0.2s ease;
         }
 
-        @media (min-width: 1024px) {
-            .menu-toggle { display: none; }
+        .menu-toggle:hover {
+            background: rgba(139, 175, 194, 0.2);
         }
 
         .menu-toggle span {
             display: block;
-            width: 20px;
+            width: 18px;
             height: 2px;
             background: var(--text-primary);
             border-radius: 1px;
             transition: all 0.25s ease;
+        }
+
+        .menu-toggle.active {
+            background: rgba(139, 175, 194, 0.25);
         }
 
         .menu-toggle.active span:nth-child(1) {
@@ -755,8 +701,8 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* Mobile Menu */
-        .mobile-menu {
+        /* Dropdown Menu - Premium Glass Panel */
+        .dropdown-menu {
             position: fixed;
             top: 56px;
             left: 0;
@@ -764,55 +710,113 @@
             bottom: 0;
             background: var(--bg-primary);
             z-index: 999;
-            padding: 20px var(--container-padding);
+            padding: 16px var(--container-padding);
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
-            transition: all var(--transition-normal);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Desktop: Premium dropdown panel */
+        @media (min-width: 768px) {
+            .dropdown-menu {
+                position: absolute;
+                top: calc(100% + 8px);
+                left: auto;
+                right: var(--container-padding);
+                bottom: auto;
+                width: 300px;
+                max-height: calc(100vh - 100px);
+                overflow-y: auto;
+                background: rgba(255, 255, 255, 0.65);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                border-radius: 18px;
+                box-shadow:
+                    0 8px 32px rgba(0, 0, 0, 0.08),
+                    0 2px 8px rgba(0, 0, 0, 0.04);
+                padding: 8px;
+                transform: translateY(-8px) scale(0.98);
+            }
         }
 
         @media (min-width: 1024px) {
-            .mobile-menu { top: 64px; }
+            .dropdown-menu {
+                right: var(--container-padding);
+                width: 320px;
+            }
         }
 
-        .mobile-menu.active {
+        @media (min-width: 1280px) {
+            .dropdown-menu {
+                right: max(var(--container-padding), calc((100vw - 1200px) / 2));
+            }
+        }
+
+        .dropdown-menu.active {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
-        .mobile-menu a {
-            display: block;
-            padding: 14px 0;
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 12px 16px;
             color: var(--text-primary);
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.9375rem;
             font-weight: 500;
-            border-bottom: 1px solid var(--border-light);
-            transition: color 0.2s ease;
+            border-radius: 12px;
+            transition: all 0.2s ease;
         }
 
-        .mobile-menu a:hover {
+        /* Mobile: border-bottom style */
+        @media (max-width: 767px) {
+            .dropdown-menu a {
+                padding: 14px 4px;
+                border-bottom: 1px solid var(--border-light);
+                border-radius: 0;
+            }
+            .dropdown-menu a:last-child {
+                border-bottom: none;
+            }
+        }
+
+        .dropdown-menu a:hover {
             color: var(--ice-flow-dark);
+            background: rgba(165, 196, 212, 0.12);
         }
 
-        .mobile-menu-footer {
-            margin-top: auto;
-            padding-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+        .dropdown-menu a:active {
+            background: rgba(165, 196, 212, 0.2);
         }
 
-        .mobile-lang-switcher {
-            display: flex;
-            justify-content: center;
-            background: rgba(139, 175, 194, 0.15);
-            border-radius: 24px;
-            padding: 4px;
+        /* Menu overlay for click-outside detection */
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 998;
+            background: transparent;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        @media (max-width: 767px) {
+            .menu-overlay {
+                background: rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         .mobile-lang-switcher .lang-btn {
@@ -4036,24 +4040,6 @@
                 <a href="#" class="logo">i<span>Peptides</span></a>
 
                 <div class="header-right-block">
-                    <nav class="nav">
-                        <a href="#about" data-i18n="nav.about">О компании</a>
-                        <a href="#principles" data-i18n="nav.principles">Принципы</a>
-                        <a href="#scale" data-i18n="nav.scale">Инфраструктура</a>
-                        <a href="#how" data-i18n="nav.process">Процесс</a>
-                        <a href="#quality" data-i18n="nav.quality">Качество</a>
-                        <a href="#production" data-i18n="nav.production">Производство</a>
-                        <a href="#why" data-i18n="nav.why">Почему мы</a>
-                        <a href="#partners" data-i18n="nav.partners">Партнёрам</a>
-                        <a href="#partnership" data-i18n="nav.cooperation">Сотрудничество</a>
-                    </nav>
-                    <div class="lang-switcher">
-                        <button class="lang-btn active" data-lang="ru">RU</button>
-                        <button class="lang-btn" data-lang="en">EN</button>
-                    </div>
-                </div>
-
-                <div class="mobile-controls">
                     <div class="lang-switcher">
                         <button class="lang-btn active" data-lang="ru">RU</button>
                         <button class="lang-btn" data-lang="en">EN</button>
@@ -4066,20 +4052,23 @@
                 </div>
             </div>
         </div>
+
+        <!-- Dropdown Menu -->
+        <nav class="dropdown-menu" id="dropdownMenu">
+            <a href="#about" data-i18n="nav.about">О компании</a>
+            <a href="#principles" data-i18n="nav.principles">Принципы</a>
+            <a href="#scale" data-i18n="nav.scale">Инфраструктура</a>
+            <a href="#how" data-i18n="nav.process">Процесс</a>
+            <a href="#quality" data-i18n="nav.quality">Качество</a>
+            <a href="#production" data-i18n="nav.production">Производство</a>
+            <a href="#why" data-i18n="nav.why">Почему мы</a>
+            <a href="#partners" data-i18n="nav.partners">Партнёрам</a>
+            <a href="#partnership" data-i18n="nav.cooperation">Сотрудничество</a>
+        </nav>
     </header>
 
-    <!-- Mobile Menu -->
-    <nav class="mobile-menu" id="mobileMenu">
-        <a href="#about" data-i18n="nav.about">О компании</a>
-        <a href="#principles" data-i18n="nav.principles">Принципы</a>
-        <a href="#scale" data-i18n="nav.scale">Инфраструктура</a>
-        <a href="#how" data-i18n="nav.process">Процесс</a>
-        <a href="#quality" data-i18n="nav.quality">Качество</a>
-        <a href="#production" data-i18n="nav.production">Производство</a>
-        <a href="#why" data-i18n="nav.why">Почему мы</a>
-        <a href="#partners" data-i18n="nav.partners">Партнёрам</a>
-        <a href="#partnership" data-i18n="nav.cooperation">Сотрудничество</a>
-    </nav>
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- Hero -->
     <section class="hero">
@@ -4939,23 +4928,64 @@
             header.classList.toggle('scrolled', window.pageYOffset > 50);
         });
 
-        // Mobile menu
+        // Dropdown Menu
         const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        function openMenu() {
+            menuToggle.classList.add('active');
+            dropdownMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            // Only lock scroll on mobile
+            if (window.innerWidth < 768) {
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMenu() {
+            menuToggle.classList.remove('active');
+            dropdownMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function toggleMenu() {
+            if (dropdownMenu.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+
+        // Toggle menu on button click
+        menuToggle.addEventListener('click', toggleMenu);
+
+        // Close menu on overlay click (click outside)
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // Close menu on Esc key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && dropdownMenu.classList.contains('active')) {
+                closeMenu();
+            }
         });
 
-        // Close mobile menu on link click
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+        // Close menu on link click
+        dropdownMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Handle resize - close menu if open
+        window.addEventListener('resize', () => {
+            if (dropdownMenu.classList.contains('active')) {
+                // Update body overflow based on new width
+                if (window.innerWidth >= 768) {
+                    document.body.style.overflow = '';
+                } else {
+                    document.body.style.overflow = 'hidden';
+                }
+            }
         });
 
         // Smooth scroll
@@ -5319,9 +5349,8 @@
                 modalOverlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
 
-                // Close mobile menu
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
+                // Close dropdown menu if open
+                closeMenu();
 
                 // Form submit
                 const form = modalContent.querySelector('form');
