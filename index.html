@@ -929,6 +929,33 @@
             padding: var(--section-padding) 0;
         }
 
+        /* Compact sections for Quality + Production */
+        .compact-section {
+            padding: 28px 0;
+        }
+
+        @media (min-width: 768px) {
+            .compact-section {
+                padding: 36px 0;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .compact-section {
+                padding: 48px 0;
+            }
+        }
+
+        .compact-section .section-header {
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .compact-section .section-header {
+                margin-bottom: 24px;
+            }
+        }
+
         .section-header {
             margin-bottom: 40px;
         }
@@ -1851,42 +1878,49 @@
             background: var(--bg-secondary);
         }
 
+        /* Production Layout - two column on desktop with header above list (left column) */
         .production-content {
-            display: grid;
-            gap: 32px;
+            display: block;
         }
 
-        @media (min-width: 768px) {
+        .production-column-left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .production-column-right {
+            display: none;
+        }
+
+        .production-section .section-header {
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        .production-section .section-overlay {
+            text-align: left;
+        }
+
+        .production-section .section-principles {
+            justify-content: flex-start;
+        }
+
+        /* Desktop: two columns, header+list left, empty right */
+        @media (min-width: 1024px) {
             .production-content {
-                grid-template-columns: 1fr 1.2fr;
-                gap: 56px;
+                display: grid;
+                grid-template-columns: 1.2fr 1fr;
+                gap: 48px;
                 align-items: start;
             }
-        }
 
-        /* Desktop 1024px+: reverse order (list left, header right) */
-        @media (min-width: 1024px) {
-            .production-section .production-content {
-                grid-template-columns: 1.2fr 1fr;
-                gap: 64px;
-                align-items: center;
+            .production-column-right {
+                display: block;
             }
 
-            .production-section .production-content > .reveal {
-                order: 2;
-            }
-
-            .production-section .production-content > .production-list {
-                order: 1;
-            }
-
-            .production-section .section-overlay,
-            .production-section .section-principles {
-                text-align: right;
-            }
-
-            .production-section .section-principles {
-                justify-content: flex-end;
+            .production-column-left {
+                gap: 24px;
             }
         }
 
@@ -3168,117 +3202,76 @@
             background: var(--snow-white-pure);
         }
 
-        /* Quality Layout - two column on desktop */
+        /* Quality Layout - two column on desktop with header above panel (right column) */
         .quality-layout {
+            display: block;
+        }
+
+        .quality-column-left {
+            display: none;
+        }
+
+        .quality-column-right {
             display: flex;
             flex-direction: column;
-            gap: 32px;
+            gap: 20px;
         }
 
         .quality-apple .section-header {
-            text-align: center;
+            text-align: left;
             margin-bottom: 0;
         }
 
         .quality-apple .section-overlay {
-            text-align: center;
+            text-align: left;
             margin-bottom: 12px;
         }
 
-        .quality-apple .section-text {
-            max-width: 480px;
-            margin: 0 auto;
-            color: var(--text-secondary);
-            font-size: 0.9375rem;
-            line-height: 1.6;
+        .quality-apple .section-principles {
+            justify-content: flex-start;
         }
 
-        @media (min-width: 768px) {
-            .quality-layout {
-                gap: 40px;
-            }
-
-            .quality-apple .section-text {
-                font-size: 1rem;
-            }
-        }
-
-        /* Desktop: two columns, header left, panel right */
+        /* Desktop: two columns, empty left, header+panel right */
         @media (min-width: 1024px) {
             .quality-layout {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1.2fr;
                 gap: 48px;
-                align-items: center;
+                align-items: start;
             }
 
-            .quality-apple .section-header {
-                text-align: left;
+            .quality-column-left {
+                display: block;
             }
 
-            .quality-apple .section-overlay {
-                text-align: left;
-            }
-
-            .quality-apple .section-principles {
-                justify-content: flex-start;
+            .quality-column-right {
+                gap: 24px;
             }
         }
 
-        /* Glass Panel Container */
+        /* Quality Cards Container - individual cards like Production */
         .quality-glass-panel {
-            max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(165, 196, 212, 0.2);
-            border-radius: 24px;
-            padding: 0;
-            box-shadow:
-                0 4px 24px rgba(165, 196, 212, 0.12),
-                0 1px 3px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        @media (min-width: 768px) {
-            .quality-glass-panel {
-                max-width: 580px;
-                border-radius: 28px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .quality-glass-panel {
-                max-width: none;
-                margin: 0;
-            }
-        }
-
-        /* Quality Item - List Row */
+        /* Quality Item - individual card (unified with Production) */
         .quality-item {
             display: flex;
             align-items: center;
             gap: 14px;
-            padding: 16px 18px;
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(165, 196, 212, 0.08);
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(20px);
             filter: blur(4px);
-            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                        filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                        background 0.25s ease;
-        }
-
-        .quality-item:not(:last-child) {
-            border-bottom: 1px solid rgba(165, 196, 212, 0.15);
-        }
-
-        .quality-item:first-child {
-            border-radius: 24px 24px 0 0;
-        }
-
-        .quality-item:last-child {
-            border-radius: 0 0 24px 24px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .quality-item.revealed {
@@ -3289,25 +3282,33 @@
 
         /* Staggered reveal delays */
         .quality-item:nth-child(1) { transition-delay: 0s; }
-        .quality-item:nth-child(2) { transition-delay: 0.08s; }
-        .quality-item:nth-child(3) { transition-delay: 0.16s; }
-        .quality-item:nth-child(4) { transition-delay: 0.24s; }
+        .quality-item:nth-child(2) { transition-delay: 0.1s; }
+        .quality-item:nth-child(3) { transition-delay: 0.2s; }
+        .quality-item:nth-child(4) { transition-delay: 0.3s; }
 
-        /* Quality Item Icon */
+        .quality-item:hover {
+            background: rgba(255, 255, 255, 0.65);
+            border-color: rgba(165, 196, 212, 0.3);
+            box-shadow: 0 4px 16px rgba(165, 196, 212, 0.12);
+            transform: translateY(-2px);
+        }
+
+        /* Quality Item Icon - unified with Production */
         .quality-item-icon {
             flex-shrink: 0;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(165, 196, 212, 0.16) 0%, rgba(165, 196, 212, 0.06) 100%);
-            border-radius: 9px;
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.15) 0%, rgba(139, 175, 194, 0.1) 100%);
+            border-radius: 10px;
+            border: 1px solid rgba(165, 196, 212, 0.2);
         }
 
         .quality-item-icon svg {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             stroke: var(--ice-flow-deep);
             stroke-width: 1.75;
             fill: none;
@@ -3322,54 +3323,13 @@
             flex: 1;
         }
 
-        /* Desktop hover and sizing */
         @media (min-width: 768px) {
-            .quality-glass-panel {
-                max-width: 560px;
-            }
-
-            .quality-item {
-                gap: 16px;
-                padding: 18px 24px;
-            }
-
-            .quality-item:first-child {
-                border-radius: 28px 28px 0 0;
-            }
-
-            .quality-item:last-child {
-                border-radius: 0 0 28px 28px;
-            }
-
-            .quality-item:hover {
-                background: rgba(165, 196, 212, 0.06);
-            }
-
-            .quality-item-icon {
-                width: 36px;
-                height: 36px;
-                border-radius: 10px;
-            }
-
-            .quality-item-icon svg {
-                width: 18px;
-                height: 18px;
-            }
-
             .quality-item-title {
                 font-size: 0.9375rem;
             }
         }
 
         @media (min-width: 1024px) {
-            .quality-glass-panel {
-                max-width: 580px;
-            }
-
-            .quality-item {
-                padding: 20px 28px;
-            }
-
             .quality-item-title {
                 font-size: 1rem;
             }
@@ -4175,18 +4135,20 @@
     </section>
 
     <!-- Quality - Premium Glass Panel -->
-    <section id="quality" class="quality-apple">
+    <section id="quality" class="quality-apple compact-section">
         <div class="container">
             <div class="quality-layout">
-                <div class="section-header reveal">
-                    <h2 class="section-overlay">Контроль качества</h2>
-                    <div class="section-principles">
-                        <span>Контроль</span>
-                        <span>Параметры</span>
-                        <span>Соответствие</span>
+                <div class="quality-column-left"></div>
+                <div class="quality-column-right">
+                    <div class="section-header reveal">
+                        <h2 class="section-overlay">Контроль качества</h2>
+                        <div class="section-principles">
+                            <span>Контроль</span>
+                            <span>Параметры</span>
+                            <span>Соответствие</span>
+                        </div>
                     </div>
-                </div>
-                <div class="quality-glass-panel">
+                    <div class="quality-glass-panel">
                     <div class="quality-item">
                         <div class="quality-item-icon">
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -4229,23 +4191,25 @@
                         <span class="quality-item-title">Соблюдение условий хранения и доставки</span>
                     </div>
                 </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Production -->
-    <section id="production" class="production-section">
+    <section id="production" class="production-section compact-section">
         <div class="container">
             <div class="production-content">
-                <div class="reveal">
-                    <h2 class="section-overlay">Производство</h2>
-                    <div class="section-principles">
-                        <span>Процессы</span>
-                        <span>Воспроизводимость</span>
-                        <span>Сроки</span>
+                <div class="production-column-left">
+                    <div class="section-header reveal">
+                        <h2 class="section-overlay">Производство</h2>
+                        <div class="section-principles">
+                            <span>Процессы</span>
+                            <span>Воспроизводимость</span>
+                            <span>Сроки</span>
+                        </div>
                     </div>
-                </div>
-                <div class="production-list">
+                    <div class="production-list">
                     <div class="production-item" data-production="1">
                         <div class="production-item-icon">
                             <!-- Settings/Factory icon -->
@@ -4333,7 +4297,9 @@
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </div>
+                    </div>
                 </div>
+                <div class="production-column-right"></div>
             </div>
         </div>
     </section>
