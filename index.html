@@ -167,6 +167,43 @@
             max-width: 600px;
         }
 
+        /* Section Overlay Title - единый стиль заголовков-оверлайнов */
+        .section-overlay {
+            display: block;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--ice-flow-dark);
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .section-header.center .section-overlay {
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .section-overlay {
+                font-size: 0.75rem;
+                letter-spacing: 0.2em;
+                margin-bottom: 12px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .section-overlay {
+                font-size: 0.8125rem;
+                letter-spacing: 0.22em;
+                margin-bottom: 14px;
+            }
+        }
+
+        /* Dark background variant */
+        .section-overlay.on-dark {
+            color: rgba(165, 196, 212, 0.7);
+        }
+
         @media (min-width: 768px) {
             .section-label { font-size: 0.75rem; margin-bottom: 16px; }
             .section-title { font-size: 2.25rem; margin-bottom: 20px; }
@@ -198,63 +235,241 @@
             }
         }
 
-        /* Scale & Trust section */
-        #scale {
-            background: #1a2a3a;
-        }
-
-        #scale .section-header {
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 24px;
-            padding: 28px 24px;
-            box-shadow:
-                0 8px 32px rgba(165, 196, 212, 0.15),
-                0 2px 8px rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6);
-            max-width: 640px;
+        /* ============================================
+           INFRASTRUCTURE SECTION - Premium Compact
+           ============================================ */
+        .infra-section {
+            background: linear-gradient(180deg, #1a2a3a 0%, #0f1922 100%);
+            padding: 32px 0;
         }
 
         @media (min-width: 768px) {
-            #scale .section-header {
-                background: rgba(255, 255, 255, 0.55);
-                padding: 36px 40px;
-                border-radius: 28px;
-                max-width: 720px;
+            .infra-section {
+                padding: 48px 0;
             }
         }
 
-        #scale .section-title {
-            color: var(--ice-flow-deep);
-        }
-
-        /* Hide description on mobile */
-        #scale .section-text {
-            display: none;
+        /* Compact header badge */
+        .infra-header {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
         }
 
         @media (min-width: 768px) {
-            #scale .section-text {
+            .infra-header {
+                margin-bottom: 32px;
+            }
+        }
+
+        /* Infrastructure section header */
+        .infra-header {
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .infra-header {
+                margin-bottom: 32px;
+            }
+        }
+
+        /* Premium glass cards grid */
+        .infra-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .infra-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+            }
+        }
+
+        /* Infrastructure card */
+        .infra-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @media (min-width: 768px) {
+            .infra-card {
+                padding: 20px;
+                border-radius: 24px;
+                cursor: default;
+            }
+        }
+
+        .infra-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            border-color: rgba(165, 196, 212, 0.4);
+        }
+
+        /* Active state - premium steel-blue highlight (mobile accordion) */
+        .infra-card.active {
+            background: rgba(165, 196, 212, 0.22);
+            border-color: rgba(139, 175, 194, 0.45);
+            box-shadow: 0 6px 24px rgba(110, 140, 160, 0.18);
+        }
+
+        .infra-card.active .infra-card-icon {
+            background: linear-gradient(135deg, rgba(139, 175, 194, 0.35) 0%, rgba(110, 140, 160, 0.2) 100%);
+            border-color: rgba(139, 175, 194, 0.45);
+        }
+
+        .infra-card.active .infra-card-icon svg {
+            color: var(--ice-flow-dark);
+        }
+
+        .infra-card.active .infra-card-title {
+            color: var(--text-dark);
+        }
+
+        /* Card icon */
+        .infra-card-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.2) 0%, rgba(139, 175, 194, 0.1) 100%);
+            border-radius: 10px;
+            border: 1px solid rgba(165, 196, 212, 0.25);
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .infra-card-icon {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        .infra-card-icon svg {
+            width: 18px;
+            height: 18px;
+            color: var(--ice-flow-deep);
+        }
+
+        @media (min-width: 768px) {
+            .infra-card-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        /* Card content */
+        .infra-card-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .infra-card-title {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.3;
+            margin-bottom: 2px;
+        }
+
+        @media (min-width: 768px) {
+            .infra-card-title {
+                font-size: 0.9375rem;
+                margin-bottom: 6px;
+            }
+        }
+
+        /* Short text for desktop */
+        .infra-card-text {
+            display: none;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        @media (min-width: 768px) {
+            .infra-card-text {
                 display: block;
             }
         }
 
-        #scale .card-compact {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            min-height: 120px;
+        /* Details (accordion on mobile) */
+        .infra-card-details {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.35s ease, opacity 0.25s ease, margin 0.35s ease;
+            margin-top: 0;
         }
 
         @media (min-width: 768px) {
-            #scale .card-compact {
-                min-height: 140px;
+            .infra-card-details {
+                display: none;
             }
         }
+
+        .infra-card.active .infra-card-details {
+            max-height: 100px;
+            opacity: 1;
+            margin-top: 8px;
+        }
+
+        /* Chevron for mobile accordion */
+        .infra-card-chevron {
+            position: absolute;
+            top: 16px;
+            right: 12px;
+            width: 14px;
+            height: 14px;
+            color: var(--ice-flow-deep);
+            opacity: 0.5;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .infra-card-chevron {
+                display: none;
+            }
+        }
+
+        .infra-card.active .infra-card-chevron {
+            transform: rotate(180deg);
+            opacity: 0.8;
+        }
+
+        /* Infrastructure cards reveal animation */
+        .infra-card {
+            opacity: 0;
+            transform: translateY(20px);
+            filter: blur(4px);
+        }
+
+        .infra-card.revealed {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
+        .infra-card:nth-child(1) { transition-delay: 0s; }
+        .infra-card:nth-child(2) { transition-delay: 0.08s; }
+        .infra-card:nth-child(3) { transition-delay: 0.16s; }
+        .infra-card:nth-child(4) { transition-delay: 0.24s; }
 
         /* ============================================
            BUTTONS
@@ -381,74 +596,23 @@
             .logo { font-size: 1.5rem; }
         }
 
-        /* Header Right Block */
+        /* Header Right Block - unified for all screen sizes */
         .header-right-block {
-            display: none;
-            align-items: center;
-            gap: 20px;
-            height: 100%;
-        }
-
-        @media (min-width: 1024px) {
-            .header-right-block {
-                display: flex;
-            }
-        }
-
-        /* Desktop Nav */
-        .nav {
-            display: none;
-        }
-
-        @media (min-width: 1024px) {
-            .nav {
-                display: flex;
-                align-items: center;
-                gap: 28px;
-                height: 100%;
-            }
-        }
-
-        .nav a {
             display: flex;
             align-items: center;
-            position: relative;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9375rem;
-            font-weight: 400;
-            line-height: 1;
+            gap: 8px;
             height: 100%;
-            padding: 0;
-            transition: color 0.2s ease;
         }
 
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--ice-flow-dark);
-            border-radius: 1px;
-            transition: width 0.25s ease;
+        @media (min-width: 768px) {
+            .header-right-block {
+                gap: 12px;
+            }
         }
 
-        .nav a:hover {
-            color: var(--ice-flow-dark);
-        }
-
-        .nav a:hover::after {
-            width: 100%;
-        }
-
-        .nav a.active {
-            color: var(--ice-flow-dark);
-        }
-
-        .nav a.active::after {
-            width: 100%;
+        /* Desktop Nav - hidden, replaced by dropdown menu */
+        .nav {
+            display: none;
         }
 
         /* Language Switcher */
@@ -490,21 +654,12 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
-        /* Mobile Controls */
+        /* Mobile Controls - hidden, unified in header-right-block */
         .mobile-controls {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            height: 100%;
+            display: none;
         }
 
-        @media (min-width: 1024px) {
-            .mobile-controls {
-                display: none;
-            }
-        }
-
-        /* Mobile Menu Toggle */
+        /* Menu Toggle - visible on all screen sizes */
         .menu-toggle {
             display: flex;
             flex-direction: column;
@@ -513,23 +668,29 @@
             gap: 5px;
             width: 44px;
             height: 44px;
-            background: none;
+            background: rgba(139, 175, 194, 0.12);
             border: none;
+            border-radius: 12px;
             cursor: pointer;
             padding: 10px;
+            transition: all 0.2s ease;
         }
 
-        @media (min-width: 1024px) {
-            .menu-toggle { display: none; }
+        .menu-toggle:hover {
+            background: rgba(139, 175, 194, 0.2);
         }
 
         .menu-toggle span {
             display: block;
-            width: 20px;
+            width: 18px;
             height: 2px;
             background: var(--text-primary);
             border-radius: 1px;
             transition: all 0.25s ease;
+        }
+
+        .menu-toggle.active {
+            background: rgba(139, 175, 194, 0.25);
         }
 
         .menu-toggle.active span:nth-child(1) {
@@ -540,8 +701,8 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* Mobile Menu */
-        .mobile-menu {
+        /* Dropdown Menu - Premium Glass Panel */
+        .dropdown-menu {
             position: fixed;
             top: 56px;
             left: 0;
@@ -549,55 +710,113 @@
             bottom: 0;
             background: var(--bg-primary);
             z-index: 999;
-            padding: 20px var(--container-padding);
+            padding: 16px var(--container-padding);
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 2px;
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
-            transition: all var(--transition-normal);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Desktop: Premium dropdown panel */
+        @media (min-width: 768px) {
+            .dropdown-menu {
+                position: absolute;
+                top: calc(100% + 8px);
+                left: auto;
+                right: var(--container-padding);
+                bottom: auto;
+                width: 300px;
+                max-height: calc(100vh - 100px);
+                overflow-y: auto;
+                background: rgba(255, 255, 255, 0.65);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                border: 1px solid rgba(255, 255, 255, 0.5);
+                border-radius: 18px;
+                box-shadow:
+                    0 8px 32px rgba(0, 0, 0, 0.08),
+                    0 2px 8px rgba(0, 0, 0, 0.04);
+                padding: 8px;
+                transform: translateY(-8px) scale(0.98);
+            }
         }
 
         @media (min-width: 1024px) {
-            .mobile-menu { top: 64px; }
+            .dropdown-menu {
+                right: var(--container-padding);
+                width: 320px;
+            }
         }
 
-        .mobile-menu.active {
+        @media (min-width: 1280px) {
+            .dropdown-menu {
+                right: max(var(--container-padding), calc((100vw - 1200px) / 2));
+            }
+        }
+
+        .dropdown-menu.active {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
-        .mobile-menu a {
-            display: block;
-            padding: 14px 0;
+        .dropdown-menu a {
+            display: flex;
+            align-items: center;
+            min-height: 44px;
+            padding: 12px 16px;
             color: var(--text-primary);
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 0.9375rem;
             font-weight: 500;
-            border-bottom: 1px solid var(--border-light);
-            transition: color 0.2s ease;
+            border-radius: 12px;
+            transition: all 0.2s ease;
         }
 
-        .mobile-menu a:hover {
+        /* Mobile: border-bottom style */
+        @media (max-width: 767px) {
+            .dropdown-menu a {
+                padding: 14px 4px;
+                border-bottom: 1px solid var(--border-light);
+                border-radius: 0;
+            }
+            .dropdown-menu a:last-child {
+                border-bottom: none;
+            }
+        }
+
+        .dropdown-menu a:hover {
             color: var(--ice-flow-dark);
+            background: rgba(165, 196, 212, 0.12);
         }
 
-        .mobile-menu-footer {
-            margin-top: auto;
-            padding-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+        .dropdown-menu a:active {
+            background: rgba(165, 196, 212, 0.2);
         }
 
-        .mobile-lang-switcher {
-            display: flex;
-            justify-content: center;
-            background: rgba(139, 175, 194, 0.15);
-            border-radius: 24px;
-            padding: 4px;
+        /* Menu overlay for click-outside detection */
+        .menu-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 998;
+            background: transparent;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        @media (max-width: 767px) {
+            .menu-overlay {
+                background: rgba(0, 0, 0, 0.3);
+            }
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         .mobile-lang-switcher .lang-btn {
@@ -794,7 +1013,7 @@
             font-weight: 400;
             color: var(--text-secondary);
             line-height: 1.55;
-            margin-bottom: 32px;
+            margin-bottom: 16px;
             letter-spacing: 0.01em;
         }
 
@@ -805,14 +1024,14 @@
         @media (min-width: 480px) {
             .hero-tagline {
                 font-size: 1rem;
-                margin-bottom: 36px;
+                margin-bottom: 18px;
             }
         }
 
         @media (min-width: 768px) {
             .hero-tagline {
                 font-size: 1.1875rem;
-                margin-bottom: 48px;
+                margin-bottom: 20px;
                 line-height: 1.65;
             }
         }
@@ -820,7 +1039,43 @@
         @media (min-width: 1024px) {
             .hero-tagline {
                 font-size: 1.3125rem;
-                margin-bottom: 52px;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Hero Geo Line */
+        .hero-geo {
+            font-size: 0.625rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 24px;
+            opacity: 0.75;
+            text-align: center;
+        }
+
+        @media (min-width: 480px) {
+            .hero-geo {
+                font-size: 0.6875rem;
+                letter-spacing: 0.14em;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-geo {
+                font-size: 0.75rem;
+                letter-spacing: 0.16em;
+                margin-bottom: 32px;
+                text-align: left;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-geo {
+                font-size: 0.8125rem;
+                letter-spacing: 0.18em;
+                margin-bottom: 36px;
             }
         }
 
@@ -861,6 +1116,33 @@
             padding: var(--section-padding) 0;
         }
 
+        /* Compact sections for Quality + Production */
+        .compact-section {
+            padding: 28px 0;
+        }
+
+        @media (min-width: 768px) {
+            .compact-section {
+                padding: 36px 0;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .compact-section {
+                padding: 48px 0;
+            }
+        }
+
+        .compact-section .section-header {
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .compact-section .section-header {
+                margin-bottom: 24px;
+            }
+        }
+
         .section-header {
             margin-bottom: 40px;
         }
@@ -880,6 +1162,91 @@
 
         .bg-white { background: var(--bg-secondary); }
         .bg-accent { background: var(--bg-accent); }
+
+        /* ============================================
+           SHARED VIDEO BACKGROUND - Quality + Production
+           ============================================ */
+        .shared-video-wrap {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5faff 0%, #e8f2f8 100%);
+        }
+
+        .shared-video-wrap .video-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .shared-video-wrap .shared-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Убираем старые фоны у секций внутри shared-video-wrap */
+        .shared-video-wrap .quality-apple,
+        .shared-video-wrap #production {
+            background: transparent;
+        }
+
+        /* Уменьшаем отступ между блоками внутри общей обертки */
+        .shared-video-wrap .quality-apple {
+            padding-bottom: 16px;
+        }
+
+        .shared-video-wrap #production {
+            padding-top: 16px;
+        }
+
+        @media (min-width: 768px) {
+            .shared-video-wrap .quality-apple {
+                padding-bottom: 20px;
+            }
+            .shared-video-wrap #production {
+                padding-top: 20px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .shared-video-wrap .quality-apple {
+                padding-bottom: 28px;
+            }
+            .shared-video-wrap #production {
+                padding-top: 28px;
+            }
+        }
+
+        /* Усиленный glass-эффект для карточек на видео-фоне */
+        .shared-video-wrap .quality-item,
+        .shared-video-wrap .production-item {
+            background: rgba(255, 255, 255, 0.62);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(110, 140, 160, 0.28);
+            box-shadow:
+                0 4px 20px rgba(110, 140, 160, 0.12),
+                0 1px 3px rgba(110, 140, 160, 0.08);
+        }
+
+        .shared-video-wrap .quality-item:hover,
+        .shared-video-wrap .production-item:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.75);
+            border-color: rgba(139, 175, 194, 0.38);
+            box-shadow:
+                0 6px 28px rgba(110, 140, 160, 0.16),
+                0 2px 6px rgba(110, 140, 160, 0.1);
+        }
+
+        .shared-video-wrap .production-item.active {
+            background: rgba(165, 196, 212, 0.28);
+            border-color: rgba(139, 175, 194, 0.48);
+            box-shadow:
+                0 8px 32px rgba(110, 140, 160, 0.2),
+                0 0 0 1px rgba(139, 175, 194, 0.18);
+        }
 
         /* ============================================
            CARDS
@@ -1013,63 +1380,20 @@
             }
         }
 
-        /* Principles Row - text with bullet separators */
-        .about-principles {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px 16px;
-            margin-bottom: 32px;
-        }
-
-        @media (min-width: 768px) {
-            .about-principles {
-                gap: 12px 24px;
-                margin-bottom: 44px;
-            }
-        }
-
-        .about-principles span {
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            position: relative;
-        }
-
-        .about-principles span:not(:last-child)::after {
-            content: '•';
-            position: absolute;
-            right: -14px;
-            color: var(--ice-flow);
-        }
-
-        @media (min-width: 768px) {
-            .about-principles span {
-                font-size: 0.8125rem;
-            }
-            .about-principles span:not(:last-child)::after {
-                right: -18px;
-            }
-        }
-
-        /* Section Principles - универсальный стиль для шапок с точками */
+        /* Section Principles - единый стиль для строки с точками */
         .section-principles {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 6px 12px;
-            margin-top: 12px;
-            margin-bottom: 0;
+            gap: 4px 14px;
         }
 
         .section-principles span {
-            font-size: 0.625rem;
-            font-weight: 500;
-            color: var(--text-secondary);
+            font-size: 0.6875rem;
+            font-weight: 600;
+            color: var(--text-dark);
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.1em;
             position: relative;
             white-space: nowrap;
         }
@@ -1083,26 +1407,37 @@
 
         @media (min-width: 768px) {
             .section-principles {
-                gap: 8px 20px;
-                margin-top: 14px;
+                gap: 4px 18px;
             }
             .section-principles span {
-                font-size: 0.6875rem;
-                letter-spacing: 0.15em;
+                font-size: 0.75rem;
+                letter-spacing: 0.12em;
             }
             .section-principles span:not(:last-child)::after {
-                right: -14px;
+                right: -13px;
             }
         }
 
         @media (min-width: 1024px) {
+            .section-principles {
+                gap: 4px 22px;
+            }
             .section-principles span {
-                font-size: 0.75rem;
-                letter-spacing: 0.18em;
+                font-size: 0.8125rem;
+                letter-spacing: 0.15em;
             }
             .section-principles span:not(:last-child)::after {
-                right: -16px;
+                right: -15px;
             }
+        }
+
+        /* Dark background variant */
+        .section-principles.on-dark span {
+            color: rgba(255, 255, 255, 0.92);
+        }
+
+        .section-principles.on-dark span:not(:last-child)::after {
+            color: rgba(165, 196, 212, 0.5);
         }
 
         /* Facts Grid */
@@ -1535,26 +1870,44 @@
         /* ============================================
            TIMELINE (How We Work) - Premium Glassmorphism
            ============================================ */
-        /* Mobile: 2x2 grid layout */
+
+        /* Section specific container padding for mobile */
+        #how .container {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        /* Section header for Process */
+        #how .section-header {
+            margin-bottom: 18px;
+        }
+
+        /* Mobile: 2x2 grid layout - strict parameters */
         .timeline {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            padding: 4px 0;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+            align-items: stretch;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .timeline-card {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            box-sizing: border-box;
+            height: 100%;
             background: rgba(255, 255, 255, 0.62);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(140, 170, 190, 0.18);
             border-radius: 18px;
             padding: 14px;
-            box-shadow:
-                0 4px 16px rgba(165, 196, 212, 0.12),
-                0 1px 4px rgba(0, 0, 0, 0.03),
-                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             /* Premium reveal animation */
             opacity: 0;
             transform: translateY(12px);
@@ -1579,25 +1932,20 @@
         .timeline-card:nth-child(3) { transition-delay: 0.12s; }
         .timeline-card:nth-child(4) { transition-delay: 0.18s; }
 
-        /* Mobile: Icon on top, then number + title in row below */
+        /* Mobile: Icon left, title center, number right */
         .timeline-header {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            grid-template-rows: auto auto;
-            gap: 6px 6px;
-            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
         }
 
         .timeline-icon {
-            grid-column: 1 / -1;
-            width: 30px;
-            height: 30px;
-            padding: 6px;
-            background: linear-gradient(135deg, rgba(165, 196, 212, 0.18) 0%, rgba(165, 196, 212, 0.06) 100%);
-            border-radius: 10px;
+            flex: 0 0 20px;
+            width: 20px;
+            height: 20px;
             opacity: 0.9;
             transition: transform 0.3s ease, opacity 0.3s ease;
-            margin-bottom: 4px;
         }
 
         .timeline-icon svg {
@@ -1605,32 +1953,73 @@
             height: 100%;
         }
 
-        .timeline-number {
-            font-size: 0.5625rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            color: var(--snow-white-pure);
-            background: linear-gradient(135deg, var(--ice-flow-deep) 0%, var(--ice-flow-dark) 100%);
-            padding: 2px 6px;
-            border-radius: 4px;
-            line-height: 1.2;
-            align-self: center;
-        }
-
         .timeline-title {
-            font-size: 0.8125rem;
+            flex: 1;
+            min-width: 0;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--text-dark);
             letter-spacing: -0.01em;
-            line-height: 1.25;
-            align-self: center;
+            line-height: 1.2;
+        }
+
+        .timeline-number {
+            flex: 0 0 auto;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: var(--ice-flow-dark);
+            background: rgba(165, 196, 212, 0.15);
+            padding: 4px 10px;
+            border-radius: 999px;
+            line-height: 1;
+            opacity: 0.9;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        /* Mobile ≤480px: Hide icons, show only number badge + title */
+        @media (max-width: 480px) {
+            .timeline-icon {
+                display: none;
+            }
+
+            .timeline-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .timeline-title {
+                flex: 1;
+                font-size: 0.9375rem;
+                order: 1;
+            }
+
+            .timeline-number {
+                order: 2;
+                font-size: 0.6875rem;
+                font-weight: 700;
+                padding: 5px 10px;
+                background: linear-gradient(135deg, rgba(165, 196, 212, 0.25) 0%, rgba(139, 175, 194, 0.18) 100%);
+                border: 1px solid rgba(165, 196, 212, 0.2);
+                color: var(--ice-flow-deep);
+            }
+
+            .timeline-card:hover .timeline-number,
+            .timeline-card:active .timeline-number {
+                background: linear-gradient(135deg, rgba(139, 175, 194, 0.35) 0%, rgba(110, 140, 160, 0.25) 100%);
+                color: var(--ice-flow-dark);
+                transform: scale(1.05);
+            }
         }
 
         .timeline-text {
-            font-size: 0.6875rem;
+            margin-top: 8px;
+            font-size: 0.8125rem;
             color: var(--text-secondary);
-            line-height: 1.4;
-            margin: 0;
+            line-height: 1.35;
+            opacity: 0.85;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -1657,11 +2046,19 @@
         }
 
         @media (min-width: 768px) {
+            #how .container {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            #how .section-header {
+                margin-bottom: 32px;
+            }
+
             .timeline {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
                 gap: 20px;
-                padding: 8px 0;
             }
 
             .timeline-card {
@@ -1682,42 +2079,31 @@
 
             .timeline-header {
                 display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 14px;
-                margin-bottom: 16px;
-            }
-
-            .timeline-number {
-                font-size: 0.8125rem;
-                background: none;
-                color: var(--ice-flow-deep);
-                padding: 0;
-                opacity: 0.7;
-                order: 0;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 14px;
             }
 
             .timeline-icon {
                 width: 22px;
                 height: 22px;
-                padding: 0;
-                background: none;
-                border-radius: 0;
-                margin-bottom: 0;
-                order: 0;
             }
 
             .timeline-title {
                 font-size: 1rem;
-                line-height: 1.35;
+                line-height: 1.3;
+            }
+
+            .timeline-number {
+                font-size: 0.6875rem;
+                padding: 4px 10px;
+                border-radius: 12px;
             }
 
             .timeline-text {
-                font-size: 0.875rem;
+                font-size: 0.8125rem;
                 line-height: 1.55;
-                -webkit-line-clamp: unset;
-                display: block;
-                overflow: visible;
+                -webkit-line-clamp: 2;
             }
 
             .timeline-dots {
@@ -1731,33 +2117,56 @@
             }
 
             .timeline-card {
-                padding: 32px 28px;
-                min-height: 200px;
+                padding: 24px 24px;
+                min-height: 140px;
+            }
+
+            .timeline-header {
+                gap: 14px;
+                margin-bottom: 12px;
             }
 
             .timeline-icon {
-                width: 24px;
-                height: 24px;
+                width: 22px;
+                height: 22px;
+            }
+
+            .timeline-title {
+                font-size: 1.0625rem;
+            }
+
+            .timeline-text {
+                font-size: 0.875rem;
+                line-height: 1.5;
             }
         }
 
         /* Premium hover effect - PC only */
         @media (hover: hover) and (min-width: 768px) {
+            .timeline-card {
+                transition:
+                    opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                    filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                    box-shadow 0.3s ease,
+                    border-color 0.3s ease;
+            }
+
             .timeline-card:hover {
-                transform: translateY(-6px);
+                transform: translateY(-4px);
                 box-shadow:
-                    0 16px 40px rgba(165, 196, 212, 0.2),
-                    0 8px 20px rgba(90, 122, 138, 0.08),
+                    0 12px 32px rgba(165, 196, 212, 0.18),
+                    0 6px 16px rgba(90, 122, 138, 0.06),
                     inset 0 1px 0 rgba(255, 255, 255, 0.8);
-                border-color: rgba(255, 255, 255, 0.6);
+                border-color: rgba(255, 255, 255, 0.65);
             }
 
             .timeline-card:hover .timeline-number {
-                opacity: 1;
+                background: rgba(165, 196, 212, 0.25);
             }
 
             .timeline-card:hover .timeline-icon {
-                transform: scale(1.1);
+                transform: scale(1.08);
                 opacity: 1;
             }
         }
@@ -1776,16 +2185,41 @@
             background: var(--bg-secondary);
         }
 
+        /* Production Layout - two column on desktop with header above list (left column) */
         .production-content {
-            display: grid;
-            gap: 32px;
+            display: block;
         }
 
-        @media (min-width: 768px) {
+        .production-column-left {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .production-column-right {
+            display: none;
+        }
+
+        .production-section .section-header {
+            text-align: center;
+            margin-bottom: 0;
+        }
+
+        /* Desktop: two columns, header+list left, empty right */
+        @media (min-width: 1024px) {
             .production-content {
-                grid-template-columns: 1fr 1.2fr;
-                gap: 56px;
+                display: grid;
+                grid-template-columns: 1.2fr 1fr;
+                gap: 48px;
                 align-items: start;
+            }
+
+            .production-column-right {
+                display: block;
+            }
+
+            .production-column-left {
+                gap: 24px;
             }
         }
 
@@ -1884,13 +2318,13 @@
         .production-item:nth-child(3) { transition-delay: 0.2s; }
         .production-item:nth-child(4) { transition-delay: 0.3s; }
 
-        /* Active state - premium highlight */
+        /* Active state - premium steel-blue highlight */
         .production-item.active {
-            background: rgba(255, 255, 255, 0.75);
-            border-color: rgba(165, 196, 212, 0.4);
+            background: rgba(165, 196, 212, 0.22);
+            border-color: rgba(139, 175, 194, 0.45);
             box-shadow:
-                0 4px 20px rgba(165, 196, 212, 0.15),
-                0 0 0 1px rgba(165, 196, 212, 0.1);
+                0 6px 24px rgba(110, 140, 160, 0.18),
+                0 0 0 1px rgba(139, 175, 194, 0.15);
             transform: translateY(-2px);
         }
 
@@ -2471,7 +2905,11 @@
             opacity: 0;
             transform: translateY(10px);
             transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+                        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+                        background 0.2s ease,
+                        border-color 0.2s ease,
+                        padding 0.2s ease,
+                        margin 0.2s ease;
             cursor: pointer;
             position: relative;
         }
@@ -2583,11 +3021,42 @@
 
         .benefit-item.active .benefit-chevron {
             transform: rotate(180deg);
+            stroke: var(--ice-flow-dark);
+        }
+
+        /* Active state - premium steel-blue highlight (mobile accordion) */
+        .benefit-item.active {
+            background: rgba(165, 196, 212, 0.15);
+            border-radius: 12px;
+            margin: 0 -12px;
+            padding: 14px 12px;
+            border-bottom-color: transparent;
+        }
+
+        .benefit-item.active .benefit-icon {
+            background: linear-gradient(135deg, rgba(139, 175, 194, 0.35) 0%, rgba(110, 140, 160, 0.2) 100%);
+            border-color: rgba(139, 175, 194, 0.45);
+        }
+
+        .benefit-item.active .benefit-icon svg {
+            stroke: var(--ice-flow-dark);
+        }
+
+        .benefit-item.active .benefit-title {
+            color: var(--text-dark);
         }
 
         @media (min-width: 1024px) {
             .benefit-chevron {
                 display: none;
+            }
+
+            .benefit-item.active {
+                background: transparent;
+                margin: 0;
+                padding: 16px 0;
+                border-radius: 0;
+                border-bottom-color: rgba(165, 196, 212, 0.18);
             }
         }
 
@@ -2799,100 +3268,134 @@
         }
 
         /* ============================================
-           FOOTER - Minimal Bottom Line
+           FOOTER - Premium Glass Panel
            ============================================ */
         .footer {
-            background: var(--snow-white-pure);
-            border-top: 1px solid var(--border-light);
-            padding: 24px 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.65) 0%, rgba(248,250,252,0.85) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(139, 175, 194, 0.15);
+            padding: 20px 0;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(139, 175, 194, 0.3) 50%, transparent 100%);
         }
 
         .footer-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 16px;
+            text-align: center;
         }
 
         @media (min-width: 768px) {
             .footer-inner {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
+                grid-template-columns: auto auto 1fr;
                 gap: 24px;
+                align-items: center;
+                text-align: left;
             }
         }
 
-        .footer-contacts {
-            display: flex;
-            flex-direction: column;
+        /* Footer Contact Link */
+        .footer-link {
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+            padding: 6px 0;
         }
 
         @media (min-width: 768px) {
-            .footer-contacts {
-                flex-direction: row;
-                gap: 24px;
+            .footer-link {
+                justify-content: flex-start;
+            }
+
+            .footer-link.telegram {
+                justify-content: center;
             }
         }
 
-        .footer-contacts a {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .footer-contacts a:hover {
+        .footer-link:hover {
             color: var(--ice-flow-dark);
         }
 
-        .footer-contacts .separator {
-            display: none;
-            color: var(--border-chrome);
+        .footer-link:hover .footer-icon {
+            color: var(--ice-flow-dark);
+            transform: scale(1.05);
         }
 
-        @media (min-width: 768px) {
-            .footer-contacts .separator {
-                display: inline;
-            }
+        .footer-icon {
+            width: 15px;
+            height: 15px;
+            color: var(--ice-flow);
+            flex-shrink: 0;
+            transition: all var(--transition-fast);
         }
 
+        .footer-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.75;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Footer Legal */
         .footer-legal {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 4px;
             text-align: center;
         }
 
         @media (min-width: 768px) {
             .footer-legal {
-                flex-direction: row;
-                text-align: left;
-                gap: 16px;
+                align-items: flex-end;
+                text-align: right;
             }
         }
 
         .footer-copyright {
-            font-size: 0.75rem;
-            color: var(--text-light);
+            font-size: 0.6875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 0.08em;
             line-height: 1.4;
-            white-space: nowrap;
         }
 
         .footer-disclaimer {
-            font-size: 0.6875rem;
+            font-size: 0.625rem;
             color: var(--text-light);
             line-height: 1.5;
-            max-width: 400px;
+            max-width: 280px;
+            opacity: 0.85;
         }
 
         @media (min-width: 768px) {
+            .footer-disclaimer {
+                max-width: 320px;
+                font-size: 0.6875rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
             .footer-disclaimer {
                 max-width: none;
             }
@@ -3033,80 +3536,67 @@
             background: var(--snow-white-pure);
         }
 
+        /* Quality Layout - two column on desktop with header above panel (right column) */
+        .quality-layout {
+            display: block;
+        }
+
+        .quality-column-left {
+            display: none;
+        }
+
+        .quality-column-right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
         .quality-apple .section-header {
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 0;
         }
 
-        .quality-apple .section-title {
-            margin-bottom: 12px;
-        }
-
-        .quality-apple .section-text {
-            max-width: 480px;
-            margin: 0 auto;
-            color: var(--text-secondary);
-            font-size: 0.9375rem;
-            line-height: 1.6;
-        }
-
-        @media (min-width: 768px) {
-            .quality-apple .section-header {
-                margin-bottom: 40px;
+        /* Desktop: two columns, empty left, header+panel right */
+        @media (min-width: 1024px) {
+            .quality-layout {
+                display: grid;
+                grid-template-columns: 1fr 1.2fr;
+                gap: 48px;
+                align-items: start;
             }
 
-            .quality-apple .section-text {
-                font-size: 1rem;
+            .quality-column-left {
+                display: block;
+            }
+
+            .quality-column-right {
+                gap: 24px;
             }
         }
 
-        /* Glass Panel Container */
+        /* Quality Cards Container - individual cards like Production */
         .quality-glass-panel {
-            max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(165, 196, 212, 0.2);
-            border-radius: 24px;
-            padding: 0;
-            box-shadow:
-                0 4px 24px rgba(165, 196, 212, 0.12),
-                0 1px 3px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        @media (min-width: 768px) {
-            .quality-glass-panel {
-                max-width: 580px;
-                border-radius: 28px;
-            }
-        }
-
-        /* Quality Item - List Row */
+        /* Quality Item - individual card (unified with Production) */
         .quality-item {
             display: flex;
             align-items: center;
             gap: 14px;
-            padding: 16px 18px;
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(165, 196, 212, 0.08);
             opacity: 0;
-            transform: translateY(10px);
+            transform: translateY(20px);
             filter: blur(4px);
-            transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                        filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                        background 0.25s ease;
-        }
-
-        .quality-item:not(:last-child) {
-            border-bottom: 1px solid rgba(165, 196, 212, 0.15);
-        }
-
-        .quality-item:first-child {
-            border-radius: 24px 24px 0 0;
-        }
-
-        .quality-item:last-child {
-            border-radius: 0 0 24px 24px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .quality-item.revealed {
@@ -3117,98 +3607,70 @@
 
         /* Staggered reveal delays */
         .quality-item:nth-child(1) { transition-delay: 0s; }
-        .quality-item:nth-child(2) { transition-delay: 0.08s; }
-        .quality-item:nth-child(3) { transition-delay: 0.16s; }
-        .quality-item:nth-child(4) { transition-delay: 0.24s; }
+        .quality-item:nth-child(2) { transition-delay: 0.1s; }
+        .quality-item:nth-child(3) { transition-delay: 0.2s; }
+        .quality-item:nth-child(4) { transition-delay: 0.3s; }
 
-        /* Quality Item Icon */
+        .quality-item:hover {
+            background: rgba(255, 255, 255, 0.65);
+            border-color: rgba(165, 196, 212, 0.3);
+            box-shadow: 0 4px 16px rgba(165, 196, 212, 0.12);
+            transform: translateY(-2px);
+        }
+
+        /* Quality Item Icon - unified with Production */
         .quality-item-icon {
             flex-shrink: 0;
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(165, 196, 212, 0.16) 0%, rgba(165, 196, 212, 0.06) 100%);
-            border-radius: 9px;
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.15) 0%, rgba(139, 175, 194, 0.1) 100%);
+            border-radius: 10px;
+            border: 1px solid rgba(165, 196, 212, 0.2);
         }
 
         .quality-item-icon svg {
-            width: 16px;
-            height: 16px;
+            width: 18px;
+            height: 18px;
             stroke: var(--ice-flow-deep);
             stroke-width: 1.75;
             fill: none;
         }
 
+        /* Typography unified with production-item-title */
         .quality-item-title {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            letter-spacing: -0.01em;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--text-primary);
             line-height: 1.4;
             flex: 1;
-        }
-
-        /* Desktop hover and sizing */
-        @media (min-width: 768px) {
-            .quality-glass-panel {
-                max-width: 560px;
-            }
-
-            .quality-item {
-                gap: 16px;
-                padding: 18px 24px;
-            }
-
-            .quality-item:first-child {
-                border-radius: 28px 28px 0 0;
-            }
-
-            .quality-item:last-child {
-                border-radius: 0 0 28px 28px;
-            }
-
-            .quality-item:hover {
-                background: rgba(165, 196, 212, 0.06);
-            }
-
-            .quality-item-icon {
-                width: 36px;
-                height: 36px;
-                border-radius: 10px;
-            }
-
-            .quality-item-icon svg {
-                width: 18px;
-                height: 18px;
-            }
-
-            .quality-item-title {
-                font-size: 0.9375rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .quality-glass-panel {
-                max-width: 580px;
-            }
-
-            .quality-item {
-                padding: 20px 28px;
-            }
-
-            .quality-item-title {
-                font-size: 1rem;
-            }
         }
 
         /* ============================================
            WHY IPEPTIDES - Premium Compact Apple-style
            ============================================ */
         .why-premium {
-            background: var(--bg-secondary);
+            position: relative;
+            background: linear-gradient(135deg, #f5faff 0%, #e8f2f8 100%);
             overflow: hidden;
+        }
+
+        /* Video background for Why section */
+        .why-premium .video-bg-why {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        /* Content above video */
+        .why-premium .container {
+            position: relative;
+            z-index: 1;
         }
 
         .why-premium .section-header {
@@ -3222,19 +3684,19 @@
             }
         }
 
-        /* Glass Panel Container */
+        /* Glass Panel Container - enhanced for video background */
         .why-glass-panel {
             max-width: 680px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.72);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(165, 196, 212, 0.22);
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(110, 140, 160, 0.28);
             border-radius: 24px;
             padding: 0;
             box-shadow:
-                0 4px 24px rgba(165, 196, 212, 0.1),
-                0 1px 3px rgba(0, 0, 0, 0.04);
+                0 8px 32px rgba(110, 140, 160, 0.15),
+                0 2px 8px rgba(0, 0, 0, 0.06);
             opacity: 0;
             transform: translateY(16px);
             transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
@@ -3382,10 +3844,10 @@
         }
 
         /* ============================================
-           PARTNERS SECTION - Premium B2B
+           PARTNERS SECTION - Premium B2B (Dark theme like Infrastructure)
            ============================================ */
         .partners-premium {
-            background: linear-gradient(180deg, var(--snow-white-pure) 0%, var(--bg-accent) 100%);
+            background: linear-gradient(180deg, #1a2a3a 0%, #0f1922 100%);
             overflow: hidden;
         }
 
@@ -3397,6 +3859,7 @@
         .partners-premium .section-text {
             max-width: 480px;
             margin: 0 auto;
+            color: rgba(255, 255, 255, 0.75);
         }
 
         /* Mobile Carousel Container */
@@ -3422,15 +3885,15 @@
             display: none;
         }
 
-        /* Premium B2B Card */
+        /* Premium B2B Card - Glass on dark background */
         .partner-card {
             flex: 0 0 calc(85% - 8px);
             min-width: calc(85% - 8px);
             scroll-snap-align: center;
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(165, 196, 212, 0.25);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 24px;
             padding: 28px 24px;
             display: flex;
@@ -3442,8 +3905,9 @@
                         transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                         filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
                         box-shadow 0.35s ease,
-                        border-color 0.35s ease;
-            box-shadow: 0 4px 24px rgba(165, 196, 212, 0.12);
+                        border-color 0.35s ease,
+                        background 0.35s ease;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
         }
 
         .partner-card.revealed {
@@ -3452,13 +3916,13 @@
             filter: blur(0);
         }
 
-        /* Card Badge */
+        /* Card Badge - Light on dark */
         .partner-badge {
             font-size: 0.625rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.18em;
-            color: var(--ice-flow-dark);
+            color: rgba(165, 196, 212, 0.9);
             margin-bottom: 16px;
             display: flex;
             align-items: center;
@@ -3469,17 +3933,17 @@
             content: '';
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, rgba(165, 196, 212, 0.4) 0%, transparent 100%);
+            background: linear-gradient(90deg, rgba(165, 196, 212, 0.35) 0%, transparent 100%);
         }
 
-        /* Card Icon */
+        /* Card Icon - Light on dark */
         .partner-icon {
             width: 40px;
             height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(165, 196, 212, 0.15) 0%, rgba(165, 196, 212, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.18) 0%, rgba(165, 196, 212, 0.08) 100%);
             border-radius: 12px;
             margin-bottom: 16px;
             transition: background 0.3s ease, transform 0.3s ease;
@@ -3488,7 +3952,7 @@
         .partner-icon svg {
             width: 20px;
             height: 20px;
-            stroke: var(--ice-flow-deep);
+            stroke: rgba(165, 196, 212, 0.95);
             stroke-width: 1.75;
             fill: none;
             transition: stroke 0.3s ease;
@@ -3497,7 +3961,7 @@
         .partner-card-title {
             font-size: 1.0625rem;
             font-weight: 600;
-            color: var(--text-dark);
+            color: rgba(255, 255, 255, 0.95);
             margin-bottom: 8px;
             letter-spacing: -0.01em;
             line-height: 1.35;
@@ -3505,12 +3969,12 @@
 
         .partner-card-text {
             font-size: 0.9375rem;
-            color: var(--text-secondary);
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
             margin-top: auto;
         }
 
-        /* Carousel Dots */
+        /* Carousel Dots - Light on dark */
         .partners-dots {
             display: flex;
             justify-content: center;
@@ -3522,8 +3986,8 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: var(--chrome);
-            opacity: 0.4;
+            background: rgba(255, 255, 255, 0.3);
+            opacity: 1;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
@@ -3531,7 +3995,7 @@
         }
 
         .partners-dots .dot.active {
-            background: var(--ice-flow-deep);
+            background: rgba(165, 196, 212, 0.9);
             opacity: 1;
             width: 20px;
             border-radius: 3px;
@@ -3573,17 +4037,18 @@
 
             .partner-card:hover {
                 transform: translateY(-4px);
-                box-shadow: 0 12px 40px rgba(165, 196, 212, 0.22);
-                border-color: rgba(165, 196, 212, 0.45);
+                background: rgba(255, 255, 255, 0.12);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+                border-color: rgba(165, 196, 212, 0.35);
             }
 
             .partner-card:hover .partner-icon {
-                background: linear-gradient(135deg, rgba(165, 196, 212, 0.25) 0%, rgba(165, 196, 212, 0.1) 100%);
+                background: linear-gradient(135deg, rgba(165, 196, 212, 0.28) 0%, rgba(165, 196, 212, 0.12) 100%);
                 transform: scale(1.05);
             }
 
             .partner-card:hover .partner-icon svg {
-                stroke: var(--ice-flow-dark);
+                stroke: rgba(165, 196, 212, 1);
             }
 
             .partners-dots {
@@ -3680,19 +4145,6 @@
                 <a href="#" class="logo">i<span>Peptides</span></a>
 
                 <div class="header-right-block">
-                    <nav class="nav">
-                        <a href="#about" data-lang-key="nav.about">О компании</a>
-                        <a href="#production" data-lang-key="nav.production">Производство</a>
-                        <a href="#quality" data-lang-key="nav.quality">Качество</a>
-                        <a href="#partners" data-lang-key="nav.partners">Партнёрам</a>
-                    </nav>
-                    <div class="lang-switcher">
-                        <button class="lang-btn active" data-lang="ru">RU</button>
-                        <button class="lang-btn" data-lang="en">EN</button>
-                    </div>
-                </div>
-
-                <div class="mobile-controls">
                     <div class="lang-switcher">
                         <button class="lang-btn active" data-lang="ru">RU</button>
                         <button class="lang-btn" data-lang="en">EN</button>
@@ -3705,15 +4157,23 @@
                 </div>
             </div>
         </div>
+
+        <!-- Dropdown Menu -->
+        <nav class="dropdown-menu" id="dropdownMenu">
+            <a href="#about" data-i18n="nav.about">О компании</a>
+            <a href="#principles" data-i18n="nav.principles">Принципы</a>
+            <a href="#scale" data-i18n="nav.scale">Инфраструктура</a>
+            <a href="#how" data-i18n="nav.process">Процесс</a>
+            <a href="#quality" data-i18n="nav.quality">Качество</a>
+            <a href="#production" data-i18n="nav.production">Производство</a>
+            <a href="#why" data-i18n="nav.why">Почему мы</a>
+            <a href="#partners" data-i18n="nav.partners">Партнёрам</a>
+            <a href="#partnership" data-i18n="nav.cooperation">Сотрудничество</a>
+        </nav>
     </header>
 
-    <!-- Mobile Menu -->
-    <nav class="mobile-menu" id="mobileMenu">
-        <a href="#about" data-lang-key="nav.about">О компании</a>
-        <a href="#production" data-lang-key="nav.production">Производство</a>
-        <a href="#quality" data-lang-key="nav.quality">Качество</a>
-        <a href="#partners" data-lang-key="nav.partners">Партнёрам</a>
-    </nav>
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- Hero -->
     <section class="hero">
@@ -3722,14 +4182,15 @@
         </video>
         <div class="hero-content">
             <div class="hero-text-panel">
-                <p class="hero-label">Manufacturer & Global Supplier • B2B Solutions</p>
+                <p class="hero-label" data-i18n="hero.label">Manufacturer & Global Supplier • B2B Solutions</p>
                 <h1 class="hero-brand">i<span>Peptides</span></h1>
                 <p class="hero-tagline">
-                    <span data-lang-key="hero.tagline1">Ведущий производитель и поставщик</span>
-                    <span data-lang-key="hero.tagline2">пептидных решений премиум-класса</span>
+                    <span data-i18n="hero.tagline1">Ведущий производитель и поставщик</span>
+                    <span data-i18n="hero.tagline2">пептидных решений премиум-класса</span>
                 </p>
+                <p class="hero-geo">Russia • CIS • Europe • MENA • Asia</p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary" data-modal data-lang-key="hero.cta">Стать партнёром</button>
+                    <button class="btn btn-primary" data-modal data-i18n="hero.cta">Стать партнёром</button>
                 </div>
             </div>
         </div>
@@ -3738,16 +4199,13 @@
     <!-- About -->
     <section id="about" class="bg-white">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label">About iPeptides</span>
-                <h2 class="section-title">iPeptides — компания, выстроенная вокруг точности и доверия</h2>
-            </div>
-
-            <div class="about-principles reveal">
-                <span>Производство</span>
-                <span>Контроль партии</span>
-                <span>Документация</span>
-                <span>Логистика</span>
+            <div class="section-header center reveal">
+                <h2 class="section-overlay" data-i18n="about.title">О компании</h2>
+                <div class="section-principles">
+                    <span data-i18n="about.tag1">Производство</span>
+                    <span data-i18n="about.tag2">Документация</span>
+                    <span data-i18n="about.tag3">Логистика</span>
+                </div>
             </div>
 
             <div class="facts-grid reveal">
@@ -3759,8 +4217,8 @@
                             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                         </svg>
                     </div>
-                    <h3 class="fact-tile-title">B2B-поставки</h3>
-                    <p class="fact-tile-text">Россия и международные направления</p>
+                    <h3 class="fact-tile-title" data-i18n="about.fact1.title">B2B-поставки</h3>
+                    <p class="fact-tile-text" data-i18n="about.fact1.text">Россия и международные направления</p>
                 </div>
                 <div class="fact-tile">
                     <div class="fact-tile-icon">
@@ -3771,8 +4229,8 @@
                             <path d="M8 11h6"/>
                         </svg>
                     </div>
-                    <h3 class="fact-tile-title">Прослеживаемость партии</h3>
-                    <p class="fact-tile-text">Сопровождение по запросу партнёра</p>
+                    <h3 class="fact-tile-title" data-i18n="about.fact2.title">Прослеживаемость партии</h3>
+                    <p class="fact-tile-text" data-i18n="about.fact2.text">Сопровождение по запросу партнёра</p>
                 </div>
                 <div class="fact-tile">
                     <div class="fact-tile-icon">
@@ -3781,8 +4239,8 @@
                             <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
                         </svg>
                     </div>
-                    <h3 class="fact-tile-title">Производственный цикл</h3>
-                    <p class="fact-tile-text">Стандартизация ключевых этапов</p>
+                    <h3 class="fact-tile-title" data-i18n="about.fact3.title">Производственный цикл</h3>
+                    <p class="fact-tile-text" data-i18n="about.fact3.text">Стандартизация ключевых этапов</p>
                 </div>
                 <div class="fact-tile">
                     <div class="fact-tile-icon">
@@ -3791,8 +4249,8 @@
                             <path d="M9 12l2 2 4-4"/>
                         </svg>
                     </div>
-                    <h3 class="fact-tile-title">Системный контроль</h3>
-                    <p class="fact-tile-text">Параметры партии перед отгрузкой</p>
+                    <h3 class="fact-tile-title" data-i18n="about.fact4.title">Системный контроль</h3>
+                    <p class="fact-tile-text" data-i18n="about.fact4.text">Параметры партии перед отгрузкой</p>
                 </div>
                 <div class="fact-tile">
                     <div class="fact-tile-icon">
@@ -3802,8 +4260,8 @@
                             <line x1="12" y1="22.08" x2="12" y2="12"/>
                         </svg>
                     </div>
-                    <h3 class="fact-tile-title">Упаковка и маркировка</h3>
-                    <p class="fact-tile-text">Под требования партнёров</p>
+                    <h3 class="fact-tile-title" data-i18n="about.fact5.title">Упаковка и маркировка</h3>
+                    <p class="fact-tile-text" data-i18n="about.fact5.text">Под требования партнёров</p>
                 </div>
                 <div class="fact-tile">
                     <div class="fact-tile-icon">
@@ -3814,8 +4272,8 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
                     </div>
-                    <h3 class="fact-tile-title">Партнёрский формат</h3>
-                    <p class="fact-tile-text">Долгосрочные условия</p>
+                    <h3 class="fact-tile-title" data-i18n="about.fact6.title">Партнёрский формат</h3>
+                    <p class="fact-tile-text" data-i18n="about.fact6.text">Долгосрочные условия</p>
                 </div>
             </div>
 
@@ -3836,12 +4294,11 @@
     <section id="principles" class="bg-accent">
         <div class="container">
             <div class="section-header center reveal">
-                <span class="section-label">Our Principles</span>
-                <h2 class="section-title">Принципы iPeptides</h2>
+                <h2 class="section-overlay" data-i18n="principles.title">Принципы</h2>
                 <div class="section-principles">
-                    <span>Точность</span>
-                    <span>Воспроизводимость</span>
-                    <span>Доверие</span>
+                    <span data-i18n="principles.tag1">Точность</span>
+                    <span data-i18n="principles.tag2">Воспроизводимость</span>
+                    <span data-i18n="principles.tag3">Доверие</span>
                 </div>
             </div>
             <div class="principles-grid">
@@ -3857,8 +4314,8 @@
                             <line x1="20" y1="12" x2="22" y2="12"/>
                         </svg>
                     </div>
-                    <h3 class="principle-title">Точность</h3>
-                    <p class="principle-text">Стандартизация процедур и контроль на ключевых этапах.</p>
+                    <h3 class="principle-title" data-i18n="principles.card1.title">Точность</h3>
+                    <p class="principle-text" data-i18n="principles.card1.text">Стандартизация процедур и контроль на ключевых этапах.</p>
                 </div>
                 <div class="principle-card-premium">
                     <div class="principle-icon">
@@ -3868,8 +4325,8 @@
                             <path d="M12 16h.01"/>
                         </svg>
                     </div>
-                    <h3 class="principle-title">Стабильность</h3>
-                    <p class="principle-text">Повторяемость характеристик партии и прозрачность процессов.</p>
+                    <h3 class="principle-title" data-i18n="principles.card2.title">Стабильность</h3>
+                    <p class="principle-text" data-i18n="principles.card2.text">Повторяемость характеристик партии и прозрачность процессов.</p>
                 </div>
                 <div class="principle-card-premium">
                     <div class="principle-icon">
@@ -3880,8 +4337,8 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
                     </div>
-                    <h3 class="principle-title">Партнёрство</h3>
-                    <p class="principle-text">Гибкие форматы работы и сопровождение под задачи бизнеса.</p>
+                    <h3 class="principle-title" data-i18n="principles.card3.title">Партнёрство</h3>
+                    <p class="principle-text" data-i18n="principles.card3.text">Гибкие форматы работы и сопровождение под задачи бизнеса.</p>
                 </div>
             </div>
             <!-- Mobile pagination dots -->
@@ -3893,35 +4350,89 @@
         </div>
     </section>
 
-    <!-- Scale & Trust -->
-    <section id="scale">
+    <!-- Infrastructure - Premium Compact -->
+    <section id="scale" class="infra-section">
         <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label">Scale & Trust</span>
-                <h2 class="section-title">Масштаб и доверие</h2>
-                <p class="coverage-line">Russia • CIS • Europe • MENA • Asia</p>
-                <div class="section-principles">
-                    <span>Надёжность</span>
-                    <span>Прозрачность</span>
-                    <span>Логистика</span>
+            <!-- Compact header -->
+            <div class="infra-header">
+                <div class="section-header center reveal">
+                    <h2 class="section-overlay on-dark" data-i18n="scale.title">Инфраструктура</h2>
+                    <div class="section-principles on-dark">
+                        <span data-i18n="scale.tag1">Надёжность</span>
+                        <span data-i18n="scale.tag2">Прозрачность</span>
+                        <span data-i18n="scale.tag3">Логистика</span>
+                    </div>
                 </div>
             </div>
-            <div class="cards-grid cards-grid-4 reveal">
-                <div class="card card-compact">
-                    <h3 class="card-title">География поставок</h3>
-                    <p class="card-text">Логистика, выстроенная под задачи партнёров и регулярные отгрузки.</p>
+            <!-- Premium glass cards grid -->
+            <div class="infra-grid">
+                <div class="infra-card" data-infra="1">
+                    <div class="infra-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <div class="infra-card-content">
+                        <h3 class="infra-card-title" data-i18n="scale.card1.title">География поставок</h3>
+                        <p class="infra-card-text" data-i18n="scale.card1.text">Логистика под задачи партнёров.</p>
+                        <p class="infra-card-details" data-i18n="scale.card1.details">Выстроенные маршруты и регулярные отгрузки в нужные регионы.</p>
+                    </div>
+                    <svg class="infra-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
                 </div>
-                <div class="card card-compact">
-                    <h3 class="card-title">B2B-инфраструктура</h3>
-                    <p class="card-text">Процессы, упаковка и сопровождение в едином стандарте.</p>
+                <div class="infra-card" data-infra="2">
+                    <div class="infra-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <div class="infra-card-content">
+                        <h3 class="infra-card-title" data-i18n="scale.card2.title">B2B-инфраструктура</h3>
+                        <p class="infra-card-text" data-i18n="scale.card2.text">Процессы в едином стандарте.</p>
+                        <p class="infra-card-details" data-i18n="scale.card2.details">Упаковка, маркировка и сопровождение по корпоративным требованиям.</p>
+                    </div>
+                    <svg class="infra-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
                 </div>
-                <div class="card card-compact">
-                    <h3 class="card-title">Контроль партии</h3>
-                    <p class="card-text">Контроль параметров и повторяемость характеристик от партии к партии.</p>
+                <div class="infra-card" data-infra="3">
+                    <div class="infra-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <div class="infra-card-content">
+                        <h3 class="infra-card-title" data-i18n="scale.card3.title">Контроль партии</h3>
+                        <p class="infra-card-text" data-i18n="scale.card3.text">Повторяемость параметров.</p>
+                        <p class="infra-card-details" data-i18n="scale.card3.details">Контроль характеристик от партии к партии — стабильный результат.</p>
+                    </div>
+                    <svg class="infra-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
                 </div>
-                <div class="card card-compact">
-                    <h3 class="card-title">Документация</h3>
-                    <p class="card-text">Сопровождение партии и материалы по запросу партнёра: состав, спецификации, контроль.</p>
+                <div class="infra-card" data-infra="4">
+                    <div class="infra-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                    </div>
+                    <div class="infra-card-content">
+                        <h3 class="infra-card-title" data-i18n="scale.card4.title">Документация</h3>
+                        <p class="infra-card-text" data-i18n="scale.card4.text">Материалы по запросу.</p>
+                        <p class="infra-card-details" data-i18n="scale.card4.details">Состав, спецификации, сертификаты — полное сопровождение партии.</p>
+                    </div>
+                    <svg class="infra-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
                 </div>
             </div>
         </div>
@@ -3931,27 +4442,29 @@
     <section id="how" class="bg-accent">
         <div class="container">
             <div class="section-header center reveal">
-                <span class="section-label">How We Work</span>
-                <h2 class="section-title">Как мы работаем</h2>
-                <p class="section-text">Чёткий цикл взаимодействия — от запроса до отгрузки. Без лишних действий.</p>
+                <h2 class="section-overlay" data-i18n="process.title">Процесс</h2>
+                <div class="section-principles">
+                    <span data-i18n="process.tag1">Запрос</span>
+                    <span data-i18n="process.tag2">Согласование</span>
+                    <span data-i18n="process.tag3">Отгрузка</span>
+                </div>
             </div>
             <div class="timeline">
                 <div class="timeline-card">
                     <div class="timeline-header">
-                        <span class="timeline-number">01</span>
                         <div class="timeline-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                                 <line x1="9" y1="10" x2="15" y2="10"/>
                             </svg>
                         </div>
-                        <h3 class="timeline-title">Запрос</h3>
+                        <h3 class="timeline-title" data-i18n="process.step1.title">Запрос</h3>
+                        <span class="timeline-number">01</span>
                     </div>
-                    <p class="timeline-text">Фиксируем задачу, объёмы и формат поставки.</p>
+                    <p class="timeline-text" data-i18n="process.step1.text">Фиксируем задачу, объёмы и формат поставки.</p>
                 </div>
                 <div class="timeline-card">
                     <div class="timeline-header">
-                        <span class="timeline-number">02</span>
                         <div class="timeline-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -3959,26 +4472,26 @@
                                 <path d="M9 15l2 2 4-4"/>
                             </svg>
                         </div>
-                        <h3 class="timeline-title">Согласование</h3>
+                        <h3 class="timeline-title" data-i18n="process.step2.title">Согласование</h3>
+                        <span class="timeline-number">02</span>
                     </div>
-                    <p class="timeline-text">Подтверждаем сроки, упаковку и логистику.</p>
+                    <p class="timeline-text" data-i18n="process.step2.text">Подтверждаем сроки, упаковку и логистику.</p>
                 </div>
                 <div class="timeline-card">
                     <div class="timeline-header">
-                        <span class="timeline-number">03</span>
                         <div class="timeline-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="3"/>
                                 <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
                             </svg>
                         </div>
-                        <h3 class="timeline-title">Подготовка</h3>
+                        <h3 class="timeline-title" data-i18n="process.step3.title">Подготовка</h3>
+                        <span class="timeline-number">03</span>
                     </div>
-                    <p class="timeline-text">Контроль партии и готовность к отгрузке.</p>
+                    <p class="timeline-text" data-i18n="process.step3.text">Контроль партии и готовность к отгрузке.</p>
                 </div>
                 <div class="timeline-card">
                     <div class="timeline-header">
-                        <span class="timeline-number">04</span>
                         <div class="timeline-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="1" y="3" width="15" height="13" rx="2" ry="2"/>
@@ -3987,9 +4500,10 @@
                                 <circle cx="18.5" cy="18.5" r="2.5"/>
                             </svg>
                         </div>
-                        <h3 class="timeline-title">Отгрузка</h3>
+                        <h3 class="timeline-title" data-i18n="process.step4.title">Отгрузка</h3>
+                        <span class="timeline-number">04</span>
                     </div>
-                    <p class="timeline-text">Передача партии и дальнейшее сопровождение.</p>
+                    <p class="timeline-text" data-i18n="process.step4.text">Передача партии и дальнейшее сопровождение.</p>
                 </div>
             </div>
             <!-- Mobile pagination dots -->
@@ -4002,27 +4516,91 @@
         </div>
     </section>
 
-    <!-- Production -->
-    <section id="production">
+    <!-- Shared Video Background Wrapper: Quality + Production -->
+    <div class="shared-video-wrap">
+        <!-- Video Background -->
+        <video class="video-bg" autoplay muted loop playsinline preload="metadata" poster="fondoverie.jpeg">
+            <source src="fon1.mp4" type="video/mp4">
+        </video>
+        <!-- Content -->
+        <div class="shared-content">
+
+    <!-- Quality - Premium Glass Panel -->
+    <section id="quality" class="quality-apple compact-section">
         <div class="container">
-            <div class="production-content">
-                <div class="reveal">
-                    <div class="production-badge">
-                        <span class="production-badge-marker"></span>
-                        <span>Production System</span>
+            <div class="quality-layout">
+                <div class="quality-column-left"></div>
+                <div class="quality-column-right">
+                    <div class="section-header reveal">
+                        <h2 class="section-overlay" data-i18n="quality.title">Контроль качества</h2>
+                        <div class="section-principles">
+                            <span data-i18n="quality.tag1">Контроль</span>
+                            <span data-i18n="quality.tag2">Параметры</span>
+                            <span data-i18n="quality.tag3">Соответствие</span>
+                        </div>
                     </div>
-                    <h2 class="section-title">Производство полного цикла</h2>
-                    <p class="section-text">Производственные процессы выстроены вокруг стабильности качества, воспроизводимости партий и соблюдения сроков поставок.</p>
-                    <div class="production-tagline">
-                        <span class="production-tagline-marker"></span>
-                        <span class="production-tagline-text">Full-cycle</span>
-                        <span>•</span>
-                        <span class="production-tagline-text">Quality Control</span>
-                        <span>•</span>
-                        <span class="production-tagline-text">Logistics</span>
+                    <div class="quality-glass-panel">
+                    <div class="quality-item">
+                        <div class="quality-item-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="quality-item-title" data-i18n="quality.item1">Входной контроль сырья и материалов</span>
+                    </div>
+                    <div class="quality-item">
+                        <div class="quality-item-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="quality-item-title" data-i18n="quality.item2">Контроль партии перед отгрузкой</span>
+                    </div>
+                    <div class="quality-item">
+                        <div class="quality-item-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="quality-item-title" data-i18n="quality.item3">Документация по запросу партнёра</span>
+                    </div>
+                    <div class="quality-item">
+                        <div class="quality-item-icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="1" y="3" width="15" height="13" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="5.5" cy="18.5" r="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="18.5" cy="18.5" r="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="quality-item-title" data-i18n="quality.item4">Соблюдение условий хранения и доставки</span>
                     </div>
                 </div>
-                <div class="production-list">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Production -->
+    <section id="production" class="production-section compact-section">
+        <div class="container">
+            <div class="production-content">
+                <div class="production-column-left">
+                    <div class="section-header reveal">
+                        <h2 class="section-overlay" data-i18n="production.title">Производство</h2>
+                        <div class="section-principles">
+                            <span data-i18n="production.tag1">Процессы</span>
+                            <span data-i18n="production.tag2">Воспроизводимость</span>
+                            <span data-i18n="production.tag3">Сроки</span>
+                        </div>
+                    </div>
+                    <div class="production-list">
                     <div class="production-item" data-production="1">
                         <div class="production-item-icon">
                             <!-- Settings/Factory icon -->
@@ -4034,10 +4612,10 @@
                         <div class="card-number">01</div>
                         <div class="production-item-content">
                             <div class="production-item-header">
-                                <span class="production-item-title">Технологичные линии</span>
+                                <span class="production-item-title" data-i18n="production.item1.title">Технологичные линии</span>
                             </div>
                             <div class="production-item-details">
-                                <p>Стандартизированные процедуры и современное оборудование для стабильного выпуска партий.</p>
+                                <p data-i18n="production.item1.text">Стандартизированные процедуры и современное оборудование для стабильного выпуска партий.</p>
                             </div>
                         </div>
                         <svg class="production-item-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -4055,10 +4633,10 @@
                         <div class="card-number">02</div>
                         <div class="production-item-content">
                             <div class="production-item-header">
-                                <span class="production-item-title">Контроль качества</span>
+                                <span class="production-item-title" data-i18n="production.item2.title">Контроль качества</span>
                             </div>
                             <div class="production-item-details">
-                                <p>Многоуровневая проверка параметров на ключевых этапах производственного цикла.</p>
+                                <p data-i18n="production.item2.text">Многоуровневая проверка параметров на ключевых этапах производственного цикла.</p>
                             </div>
                         </div>
                         <svg class="production-item-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -4077,10 +4655,10 @@
                         <div class="card-number">03</div>
                         <div class="production-item-content">
                             <div class="production-item-header">
-                                <span class="production-item-title">Упаковка и маркировка</span>
+                                <span class="production-item-title" data-i18n="production.item3.title">Упаковка и маркировка</span>
                             </div>
                             <div class="production-item-details">
-                                <p>Индивидуальная упаковка и маркировка под требования партнёров и рынков сбыта.</p>
+                                <p data-i18n="production.item3.text">Индивидуальная упаковка и маркировка под требования партнёров и рынков сбыта.</p>
                             </div>
                         </div>
                         <svg class="production-item-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -4100,81 +4678,32 @@
                         <div class="card-number">04</div>
                         <div class="production-item-content">
                             <div class="production-item-header">
-                                <span class="production-item-title">Логистика и отгрузка</span>
+                                <span class="production-item-title" data-i18n="production.item4.title">Логистика и отгрузка</span>
                             </div>
                             <div class="production-item-details">
-                                <p>Соблюдение сроков поставок и условий хранения на всех этапах доставки.</p>
+                                <p data-i18n="production.item4.text">Соблюдение сроков поставок и условий хранения на всех этапах доставки.</p>
                             </div>
                         </div>
                         <svg class="production-item-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
                     </div>
+                    </div>
                 </div>
+                <div class="production-column-right"></div>
             </div>
         </div>
     </section>
 
-    <!-- Quality - Premium Glass Panel -->
-    <section id="quality" class="quality-apple">
-        <div class="container">
-            <div class="section-header reveal">
-                <h2 class="section-title">Контроль качества</h2>
-                <p class="section-text">Единый стандарт контроля от сырья до отгрузки.</p>
-            </div>
-            <div class="quality-glass-panel">
-                <div class="quality-item">
-                    <div class="quality-item-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
-                            <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <span class="quality-item-title">Входной контроль сырья и материалов</span>
-                </div>
-                <div class="quality-item">
-                    <div class="quality-item-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke-linecap="round" stroke-linejoin="round"/>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke-linecap="round" stroke-linejoin="round"/>
-                            <line x1="12" y1="22.08" x2="12" y2="12" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <span class="quality-item-title">Контроль партии перед отгрузкой</span>
-                </div>
-                <div class="quality-item">
-                    <div class="quality-item-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
-                            <polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/>
-                            <line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round" stroke-linejoin="round"/>
-                            <line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <span class="quality-item-title">Документация по запросу партнёра</span>
-                </div>
-                <div class="quality-item">
-                    <div class="quality-item-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="1" y="3" width="15" height="13" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="5.5" cy="18.5" r="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="18.5" cy="18.5" r="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <span class="quality-item-title">Соблюдение условий хранения и доставки</span>
-                </div>
-            </div>
-        </div>
-    </section>
+        </div><!-- /.shared-content -->
+    </div><!-- /.shared-video-wrap -->
 
     <!-- Partners - Premium B2B -->
     <section id="partners" class="partners-premium">
         <div class="container">
             <div class="section-header reveal">
-                <span class="section-label">B2B Cooperation</span>
-                <h2 class="section-title">Партнёрам</h2>
-                <p class="section-text">Форматы партнёрства под задачи бизнеса.</p>
+                <h2 class="section-overlay on-dark" data-i18n="partners.title">Партнёрам</h2>
+            </div>
             </div>
             <div class="partners-carousel-wrapper">
                 <div class="partners-carousel">
@@ -4188,8 +4717,8 @@
                                 <line x1="12" y1="22.08" x2="12" y2="12"></line>
                             </svg>
                         </div>
-                        <h3 class="partner-card-title">Дистрибьюторы и реселлеры</h3>
-                        <p class="partner-card-text">Оптовые поставки и масштабируемые объёмы.</p>
+                        <h3 class="partner-card-title" data-i18n="partners.card1.title">Дистрибьюторы и реселлеры</h3>
+                        <p class="partner-card-text" data-i18n="partners.card1.text">Оптовые поставки и масштабируемые объёмы.</p>
                     </div>
                     <!-- Card 2: Professional -->
                     <div class="partner-card" data-partner-index="1">
@@ -4200,8 +4729,8 @@
                                 <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
                             </svg>
                         </div>
-                        <h3 class="partner-card-title">Профессиональный сегмент</h3>
-                        <p class="partner-card-text">Решения для специалистов и клиник.</p>
+                        <h3 class="partner-card-title" data-i18n="partners.card2.title">Профессиональный сегмент</h3>
+                        <p class="partner-card-text" data-i18n="partners.card2.text">Решения для специалистов и клиник.</p>
                     </div>
                     <!-- Card 3: Private Label -->
                     <div class="partner-card" data-partner-index="2">
@@ -4212,8 +4741,8 @@
                                 <line x1="7" y1="7" x2="7.01" y2="7"></line>
                             </svg>
                         </div>
-                        <h3 class="partner-card-title">Private Label</h3>
-                        <p class="partner-card-text">Производство под ваш бренд и формат.</p>
+                        <h3 class="partner-card-title" data-i18n="partners.card3.title">Private Label</h3>
+                        <p class="partner-card-text" data-i18n="partners.card3.text">Производство под ваш бренд и формат.</p>
                     </div>
                     <!-- Card 4: Online Channels -->
                     <div class="partner-card" data-partner-index="3">
@@ -4225,8 +4754,8 @@
                                 <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
                             </svg>
                         </div>
-                        <h3 class="partner-card-title">Онлайн-каналы</h3>
-                        <p class="partner-card-text">Стабильные отгрузки для e-commerce.</p>
+                        <h3 class="partner-card-title" data-i18n="partners.card4.title">Онлайн-каналы</h3>
+                        <p class="partner-card-text" data-i18n="partners.card4.text">Стабильные отгрузки для e-commerce.</p>
                     </div>
                 </div>
                 <!-- Dots Pagination -->
@@ -4242,10 +4771,13 @@
 
     <!-- Why Choose - Premium Compact Apple-style -->
     <section id="why" class="why-premium">
+        <!-- Video Background -->
+        <video class="video-bg-why" autoplay muted loop playsinline preload="metadata" poster="fondoverie.jpeg">
+            <source src="fon2.mp4" type="video/mp4">
+        </video>
         <div class="container">
             <div class="section-header center reveal">
-                <span class="section-label">Why iPeptides</span>
-                <h2 class="section-title">Почему выбирают iPeptides</h2>
+                <h2 class="section-overlay" data-i18n="why.title">Почему iPeptides</h2>
             </div>
             <div class="why-glass-panel">
                 <div class="why-item">
@@ -4257,8 +4789,8 @@
                         </svg>
                     </div>
                     <div class="why-item-content">
-                        <h3 class="why-item-title">Повторяемость партии</h3>
-                        <p class="why-item-text">Стабильные параметры и воспроизводимость результата.</p>
+                        <h3 class="why-item-title" data-i18n="why.item1.title">Повторяемость партии</h3>
+                        <p class="why-item-text" data-i18n="why.item1.text">Стабильные параметры и воспроизводимость результата.</p>
                     </div>
                 </div>
                 <div class="why-item">
@@ -4269,8 +4801,8 @@
                         </svg>
                     </div>
                     <div class="why-item-content">
-                        <h3 class="why-item-title">Коммерческая надёжность</h3>
-                        <p class="why-item-text">Предсказуемые сроки и прозрачные условия работы.</p>
+                        <h3 class="why-item-title" data-i18n="why.item2.title">Коммерческая надёжность</h3>
+                        <p class="why-item-text" data-i18n="why.item2.text">Предсказуемые сроки и прозрачные условия работы.</p>
                     </div>
                 </div>
                 <div class="why-item">
@@ -4283,8 +4815,8 @@
                         </svg>
                     </div>
                     <div class="why-item-content">
-                        <h3 class="why-item-title">Документация и сопровождение</h3>
-                        <p class="why-item-text">Материалы и подтверждения по запросу партнёра.</p>
+                        <h3 class="why-item-title" data-i18n="why.item3.title">Документация и сопровождение</h3>
+                        <p class="why-item-text" data-i18n="why.item3.text">Материалы и подтверждения по запросу партнёра.</p>
                     </div>
                 </div>
                 <div class="why-item">
@@ -4297,8 +4829,8 @@
                         </svg>
                     </div>
                     <div class="why-item-content">
-                        <h3 class="why-item-title">Гибкие форматы сотрудничества</h3>
-                        <p class="why-item-text">B2B-поставки, проф-сегмент, private label и e-commerce.</p>
+                        <h3 class="why-item-title" data-i18n="why.item4.title">Гибкие форматы сотрудничества</h3>
+                        <p class="why-item-text" data-i18n="why.item4.text">B2B-поставки, проф-сегмент, private label и e-commerce.</p>
                     </div>
                 </div>
             </div>
@@ -4310,9 +4842,7 @@
         <div class="container">
             <!-- Section Header -->
             <div class="section-header center reveal">
-                <span class="section-label">Partnership</span>
-                <h2 class="section-title">Сотрудничество с iPeptides</h2>
-                <p class="section-text" style="margin: 0 auto;">B2B-инфраструктура для масштабирования вашего бизнеса</p>
+                <h2 class="section-overlay" data-i18n="cooperation.title">Сотрудничество</h2>
             </div>
 
             <!-- Two-Column Layout -->
@@ -4331,14 +4861,14 @@
                         </div>
                         <div class="benefit-content">
                             <div class="benefit-header">
-                                <h3 class="benefit-title">B2B Partnership</h3>
+                                <h3 class="benefit-title" data-i18n="cooperation.benefit1.title">B2B Partnership</h3>
                                 <span class="benefit-chevron">
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </span>
                             </div>
-                            <p class="benefit-text">Форматы сотрудничества под задачи бизнеса.</p>
+                            <p class="benefit-text" data-i18n="cooperation.benefit1.text">Форматы сотрудничества под задачи бизнеса.</p>
                         </div>
                     </div>
 
@@ -4353,14 +4883,14 @@
                         </div>
                         <div class="benefit-content">
                             <div class="benefit-header">
-                                <h3 class="benefit-title">Global Delivery</h3>
+                                <h3 class="benefit-title" data-i18n="cooperation.benefit2.title">Global Delivery</h3>
                                 <span class="benefit-chevron">
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </span>
                             </div>
-                            <p class="benefit-text">Поставки по России и международным направлениям.</p>
+                            <p class="benefit-text" data-i18n="cooperation.benefit2.text">Поставки по России и международным направлениям.</p>
                         </div>
                     </div>
 
@@ -4375,14 +4905,14 @@
                         </div>
                         <div class="benefit-content">
                             <div class="benefit-header">
-                                <h3 class="benefit-title">Batch Consistency</h3>
+                                <h3 class="benefit-title" data-i18n="cooperation.benefit3.title">Batch Consistency</h3>
                                 <span class="benefit-chevron">
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </span>
                             </div>
-                            <p class="benefit-text">Стабильность характеристик от партии к партии.</p>
+                            <p class="benefit-text" data-i18n="cooperation.benefit3.text">Стабильность характеристик от партии к партии.</p>
                         </div>
                     </div>
 
@@ -4398,14 +4928,14 @@
                         </div>
                         <div class="benefit-content">
                             <div class="benefit-header">
-                                <h3 class="benefit-title">Documentation Support</h3>
+                                <h3 class="benefit-title" data-i18n="cooperation.benefit4.title">Documentation Support</h3>
                                 <span class="benefit-chevron">
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                         <polyline points="6 9 12 15 18 9" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </span>
                             </div>
-                            <p class="benefit-text">Материалы и сопровождение по запросу партнёра.</p>
+                            <p class="benefit-text" data-i18n="cooperation.benefit4.text">Материалы и сопровождение по запросу партнёра.</p>
                         </div>
                     </div>
                 </div>
@@ -4419,17 +4949,17 @@
                 <!-- Right: Partnership Form -->
                 <div class="partnership-form-column">
                     <div class="partnership-form-wrapper">
-                        <h3 class="partnership-form-title">Оставить заявку</h3>
-                        <p class="partnership-form-subtitle">Заполните форму и мы свяжемся с вами</p>
+                        <h3 class="partnership-form-title" data-i18n="form.title">Оставить заявку</h3>
+                        <p class="partnership-form-subtitle" data-i18n="form.subtitle">Заполните форму и мы свяжемся с вами</p>
                         <form class="form partnership-form" id="partnershipForm">
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label class="form-label">Имя</label>
-                                    <input type="text" class="form-input" placeholder="Ваше имя" required>
+                                    <label class="form-label" data-i18n="form.name">Имя</label>
+                                    <input type="text" class="form-input" data-i18n-placeholder="form.namePlaceholder" placeholder="Ваше имя" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="form-label">Компания</label>
-                                    <input type="text" class="form-input" placeholder="Название">
+                                    <label class="form-label" data-i18n="form.company">Компания</label>
+                                    <input type="text" class="form-input" data-i18n-placeholder="form.companyPlaceholder" placeholder="Название">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -4437,10 +4967,10 @@
                                 <input type="email" class="form-input" placeholder="email@company.com" required>
                             </div>
                             <div class="form-group">
-                                <label class="form-label">Сообщение</label>
-                                <textarea class="form-input" placeholder="Опишите ваш запрос" rows="2"></textarea>
+                                <label class="form-label" data-i18n="form.message">Сообщение</label>
+                                <textarea class="form-input" data-i18n-placeholder="form.messagePlaceholder" placeholder="Опишите ваш запрос" rows="2"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Отправить запрос</button>
+                            <button type="submit" class="btn btn-primary" data-i18n="form.submit">Отправить запрос</button>
                         </form>
                     </div>
                 </div>
@@ -4452,14 +4982,31 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-inner">
-                <div class="footer-contacts">
-                    <a href="mailto:contact@ipeptides.com">contact@ipeptides.com</a>
-                    <span class="separator">|</span>
-                    <a href="https://t.me/peptidesandhealth" target="_blank">Telegram: @peptidesandhealth</a>
-                </div>
+                <!-- Email -->
+                <a href="mailto:contact@ipeptides.com" class="footer-link email">
+                    <span class="footer-icon">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="M22 6l-10 7L2 6"/>
+                        </svg>
+                    </span>
+                    contact@ipeptides.com
+                </a>
+
+                <!-- Telegram -->
+                <a href="https://t.me/peptidesandhealth" target="_blank" class="footer-link telegram">
+                    <span class="footer-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M21.2 4.4L2.4 11.1c-.8.3-.8 1.5.1 1.7l4.6 1.4 1.7 5.4c.2.6.9.8 1.4.4l2.4-2 4.6 3.4c.6.4 1.4.1 1.6-.6L22.9 5.5c.2-.9-.6-1.6-1.4-1.3zM8.4 13.6l8.5-5.3-6.5 6.1-.5 3.1-1.5-3.9z"/>
+                        </svg>
+                    </span>
+                    @peptidesandhealth
+                </a>
+
+                <!-- Legal -->
                 <div class="footer-legal">
                     <p class="footer-copyright">© 2025 iPeptides</p>
-                    <p class="footer-disclaimer">Информация на сайте носит ознакомительный характер. Не является публичной офертой.</p>
+                    <p class="footer-disclaimer" data-i18n="footer.disclaimer">Информация на сайте носит ознакомительный характер. Не является публичной офертой.</p>
                 </div>
             </div>
         </div>
@@ -4470,26 +5017,26 @@
         <div class="modal">
             <button class="modal-close" id="modalClose"></button>
             <div id="modalContent">
-                <h3 class="modal-title">Оставить заявку</h3>
-                <p class="modal-subtitle">Заполните форму и мы свяжемся с вами</p>
+                <h3 class="modal-title" data-i18n="form.title">Оставить заявку</h3>
+                <p class="modal-subtitle" data-i18n="form.subtitle">Заполните форму и мы свяжемся с вами</p>
                 <form class="form" id="modalForm">
                     <div class="form-group">
-                        <label class="form-label">Имя</label>
-                        <input type="text" class="form-input" placeholder="Ваше имя" required>
+                        <label class="form-label" data-i18n="form.name">Имя</label>
+                        <input type="text" class="form-input" data-i18n-placeholder="form.namePlaceholder" placeholder="Ваше имя" required>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Компания</label>
-                        <input type="text" class="form-input" placeholder="Название">
+                        <label class="form-label" data-i18n="form.company">Компания</label>
+                        <input type="text" class="form-input" data-i18n-placeholder="form.companyPlaceholder" placeholder="Название">
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email</label>
                         <input type="email" class="form-input" placeholder="email@company.com" required>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Сообщение</label>
-                        <textarea class="form-input" placeholder="Опишите ваш запрос"></textarea>
+                        <label class="form-label" data-i18n="form.message">Сообщение</label>
+                        <textarea class="form-input" data-i18n-placeholder="form.messagePlaceholder" placeholder="Опишите ваш запрос"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить заявку</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="form.submitModal">Отправить заявку</button>
                 </form>
             </div>
         </div>
@@ -4502,23 +5049,64 @@
             header.classList.toggle('scrolled', window.pageYOffset > 50);
         });
 
-        // Mobile menu
+        // Dropdown Menu
         const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        function openMenu() {
+            menuToggle.classList.add('active');
+            dropdownMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            // Only lock scroll on mobile
+            if (window.innerWidth < 768) {
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeMenu() {
+            menuToggle.classList.remove('active');
+            dropdownMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function toggleMenu() {
+            if (dropdownMenu.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        }
+
+        // Toggle menu on button click
+        menuToggle.addEventListener('click', toggleMenu);
+
+        // Close menu on overlay click (click outside)
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // Close menu on Esc key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && dropdownMenu.classList.contains('active')) {
+                closeMenu();
+            }
         });
 
-        // Close mobile menu on link click
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+        // Close menu on link click
+        dropdownMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Handle resize - close menu if open
+        window.addEventListener('resize', () => {
+            if (dropdownMenu.classList.contains('active')) {
+                // Update body overflow based on new width
+                if (window.innerWidth >= 768) {
+                    document.body.style.overflow = '';
+                } else {
+                    document.body.style.overflow = 'hidden';
+                }
+            }
         });
 
         // Smooth scroll
@@ -4578,6 +5166,27 @@
         };
         window.addEventListener('scroll', revealPrincipleCards);
         window.addEventListener('load', revealPrincipleCards);
+
+        // Infrastructure cards staggered reveal
+        const infraCardsForReveal = document.querySelectorAll('.infra-card');
+        let infraRevealed = false;
+        const revealInfraCards = () => {
+            if (infraRevealed) return;
+            const infraSection = document.querySelector('.infra-section');
+            if (infraSection) {
+                const sectionTop = infraSection.getBoundingClientRect().top;
+                if (sectionTop < window.innerHeight - 80) {
+                    infraRevealed = true;
+                    infraCardsForReveal.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('revealed');
+                        }, index * 80);
+                    });
+                }
+            }
+        };
+        window.addEventListener('scroll', revealInfraCards);
+        window.addEventListener('load', revealInfraCards);
 
         // Quality items staggered reveal (Premium glass panel)
         const qualityItems = document.querySelectorAll('.quality-item');
@@ -4808,6 +5417,25 @@
             });
         });
 
+        // Infrastructure cards accordion (mobile only)
+        const infraCards = document.querySelectorAll('.infra-card');
+        infraCards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Only work on mobile (< 768px)
+                if (window.innerWidth >= 768) return;
+
+                const isActive = card.classList.contains('active');
+
+                // Close all cards
+                infraCards.forEach(c => c.classList.remove('active'));
+
+                // Open clicked if it wasn't active
+                if (!isActive) {
+                    card.classList.add('active');
+                }
+            });
+        });
+
         // Modal
         const modalOverlay = document.getElementById('modalOverlay');
         const modalContent = document.getElementById('modalContent');
@@ -4815,35 +5443,42 @@
 
         const formHTML = modalContent.innerHTML;
 
-        const successHTML = `
-            <div class="success-message">
-                <div class="success-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
+        // Function to get success HTML with current language
+        function getSuccessHTML() {
+            const t = i18n[currentLang] || i18n.ru;
+            return `
+                <div class="success-message">
+                    <div class="success-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="success-title">${t['success.title']}</h3>
+                    <p class="success-text">${t['success.text']}</p>
                 </div>
-                <h3 class="success-title">Заявка отправлена</h3>
-                <p class="success-text">Мы свяжемся с вами в ближайшее время</p>
-            </div>
-        `;
+            `;
+        }
 
         // Open modal
         document.querySelectorAll('[data-modal]').forEach(btn => {
             btn.addEventListener('click', () => {
                 modalContent.innerHTML = formHTML;
+                // Apply current language to modal form
+                if (typeof setLanguage === 'function') {
+                    setTimeout(() => setLanguage(currentLang), 0);
+                }
                 modalOverlay.classList.add('active');
                 document.body.style.overflow = 'hidden';
 
-                // Close mobile menu
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
+                // Close dropdown menu if open
+                closeMenu();
 
                 // Form submit
                 const form = modalContent.querySelector('form');
                 if (form) {
                     form.addEventListener('submit', (e) => {
                         e.preventDefault();
-                        modalContent.innerHTML = successHTML;
+                        modalContent.innerHTML = getSuccessHTML();
                         setTimeout(() => closeModal(), 2500);
                     });
                 }
@@ -4869,6 +5504,7 @@
         if (partnershipForm) {
             partnershipForm.addEventListener('submit', function(e) {
                 e.preventDefault();
+                const t = i18n[currentLang] || i18n.ru;
                 this.innerHTML = `
                     <div class="success-message" style="text-align: center; padding: 20px 0;">
                         <div class="success-icon" style="width: 48px; height: 48px; margin: 0 auto 16px; background: var(--ice-flow-light); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
@@ -4876,32 +5512,326 @@
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
                         </div>
-                        <h3 style="font-size: 1.125rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">Заявка отправлена</h3>
-                        <p style="font-size: 0.875rem; color: var(--text-secondary);">Мы свяжемся с вами в ближайшее время</p>
+                        <h3 style="font-size: 1.125rem; font-weight: 600; color: var(--text-dark); margin-bottom: 8px;">${t['success.title']}</h3>
+                        <p style="font-size: 0.875rem; color: var(--text-secondary);">${t['success.text']}</p>
                     </div>
                 `;
             });
         }
 
-        // Language Switcher
-        const translations = {
+        // Language Switcher - Comprehensive i18n System
+        const i18n = {
             ru: {
+                // Navigation
                 'nav.about': 'О компании',
-                'nav.production': 'Производство',
+                'nav.principles': 'Принципы',
+                'nav.scale': 'Инфраструктура',
+                'nav.process': 'Процесс',
                 'nav.quality': 'Качество',
+                'nav.production': 'Производство',
+                'nav.why': 'Почему мы',
                 'nav.partners': 'Партнёрам',
+                'nav.cooperation': 'Сотрудничество',
+
+                // Hero
+                'hero.label': 'Manufacturer & Global Supplier • B2B Solutions',
                 'hero.tagline1': 'Ведущий производитель и поставщик',
                 'hero.tagline2': 'пептидных решений премиум-класса',
-                'hero.cta': 'Стать партнёром'
+                'hero.cta': 'Стать партнёром',
+
+                // About Section
+                'about.title': 'О компании',
+                'about.tag1': 'Производство',
+                'about.tag2': 'Документация',
+                'about.tag3': 'Логистика',
+                'about.fact1.title': 'B2B-поставки',
+                'about.fact1.text': 'Россия и международные направления',
+                'about.fact2.title': 'Прослеживаемость партии',
+                'about.fact2.text': 'Сопровождение по запросу партнёра',
+                'about.fact3.title': 'Производственный цикл',
+                'about.fact3.text': 'Стандартизация ключевых этапов',
+                'about.fact4.title': 'Системный контроль',
+                'about.fact4.text': 'Параметры партии перед отгрузкой',
+                'about.fact5.title': 'Упаковка и маркировка',
+                'about.fact5.text': 'Под требования партнёров',
+                'about.fact6.title': 'Партнёрский формат',
+                'about.fact6.text': 'Долгосрочные условия',
+
+                // Principles Section
+                'principles.title': 'Принципы',
+                'principles.tag1': 'Точность',
+                'principles.tag2': 'Воспроизводимость',
+                'principles.tag3': 'Доверие',
+                'principles.card1.title': 'Точность',
+                'principles.card1.text': 'Стандартизация процедур и контроль на ключевых этапах.',
+                'principles.card2.title': 'Стабильность',
+                'principles.card2.text': 'Повторяемость характеристик партии и прозрачность процессов.',
+                'principles.card3.title': 'Партнёрство',
+                'principles.card3.text': 'Гибкие форматы работы и сопровождение под задачи бизнеса.',
+
+                // Scale/Infrastructure Section
+                'scale.title': 'Инфраструктура',
+                'scale.tag1': 'Надёжность',
+                'scale.tag2': 'Прозрачность',
+                'scale.tag3': 'Логистика',
+                'scale.card1.title': 'География поставок',
+                'scale.card1.text': 'Логистика под задачи партнёров.',
+                'scale.card1.details': 'Выстроенные маршруты и регулярные отгрузки в нужные регионы.',
+                'scale.card2.title': 'B2B-инфраструктура',
+                'scale.card2.text': 'Процессы в едином стандарте.',
+                'scale.card2.details': 'Упаковка, маркировка и сопровождение по корпоративным требованиям.',
+                'scale.card3.title': 'Контроль партии',
+                'scale.card3.text': 'Повторяемость параметров.',
+                'scale.card3.details': 'Контроль характеристик от партии к партии — стабильный результат.',
+                'scale.card4.title': 'Документация',
+                'scale.card4.text': 'Материалы по запросу.',
+                'scale.card4.details': 'Состав, спецификации, сертификаты — полное сопровождение партии.',
+
+                // Process Section
+                'process.title': 'Процесс',
+                'process.tag1': 'Запрос',
+                'process.tag2': 'Согласование',
+                'process.tag3': 'Отгрузка',
+                'process.step1.title': 'Запрос',
+                'process.step1.text': 'Фиксируем задачу, объёмы и формат поставки.',
+                'process.step2.title': 'Согласование',
+                'process.step2.text': 'Подтверждаем сроки, упаковку и логистику.',
+                'process.step3.title': 'Подготовка',
+                'process.step3.text': 'Контроль партии и готовность к отгрузке.',
+                'process.step4.title': 'Отгрузка',
+                'process.step4.text': 'Передача партии и дальнейшее сопровождение.',
+
+                // Quality Section
+                'quality.title': 'Контроль качества',
+                'quality.tag1': 'Контроль',
+                'quality.tag2': 'Параметры',
+                'quality.tag3': 'Соответствие',
+                'quality.item1': 'Входной контроль сырья и материалов',
+                'quality.item2': 'Контроль партии перед отгрузкой',
+                'quality.item3': 'Документация по запросу партнёра',
+                'quality.item4': 'Соблюдение условий хранения и доставки',
+
+                // Production Section
+                'production.title': 'Производство',
+                'production.tag1': 'Процессы',
+                'production.tag2': 'Воспроизводимость',
+                'production.tag3': 'Сроки',
+                'production.item1.title': 'Технологичные линии',
+                'production.item1.text': 'Стандартизированные процедуры и современное оборудование для стабильного выпуска партий.',
+                'production.item2.title': 'Контроль качества',
+                'production.item2.text': 'Многоуровневая проверка параметров на ключевых этапах производственного цикла.',
+                'production.item3.title': 'Упаковка и маркировка',
+                'production.item3.text': 'Индивидуальная упаковка и маркировка под требования партнёров и рынков сбыта.',
+                'production.item4.title': 'Логистика и отгрузка',
+                'production.item4.text': 'Соблюдение сроков поставок и условий хранения на всех этапах доставки.',
+
+                // Partners Section
+                'partners.title': 'Партнёрам',
+                'partners.card1.title': 'Дистрибьюторы и реселлеры',
+                'partners.card1.text': 'Оптовые поставки и масштабируемые объёмы.',
+                'partners.card2.title': 'Профессиональный сегмент',
+                'partners.card2.text': 'Решения для специалистов и клиник.',
+                'partners.card3.title': 'Private Label',
+                'partners.card3.text': 'Производство под ваш бренд и формат.',
+                'partners.card4.title': 'Онлайн-каналы',
+                'partners.card4.text': 'Стабильные отгрузки для e-commerce.',
+
+                // Why Section
+                'why.title': 'Почему iPeptides',
+                'why.item1.title': 'Повторяемость партии',
+                'why.item1.text': 'Стабильные параметры и воспроизводимость результата.',
+                'why.item2.title': 'Коммерческая надёжность',
+                'why.item2.text': 'Предсказуемые сроки и прозрачные условия работы.',
+                'why.item3.title': 'Документация и сопровождение',
+                'why.item3.text': 'Материалы и подтверждения по запросу партнёра.',
+                'why.item4.title': 'Гибкие форматы сотрудничества',
+                'why.item4.text': 'B2B-поставки, проф-сегмент, private label и e-commerce.',
+
+                // Cooperation Section
+                'cooperation.title': 'Сотрудничество',
+                'cooperation.benefit1.title': 'B2B Partnership',
+                'cooperation.benefit1.text': 'Форматы сотрудничества под задачи бизнеса.',
+                'cooperation.benefit2.title': 'Global Delivery',
+                'cooperation.benefit2.text': 'Поставки по России и международным направлениям.',
+                'cooperation.benefit3.title': 'Batch Consistency',
+                'cooperation.benefit3.text': 'Стабильность характеристик от партии к партии.',
+                'cooperation.benefit4.title': 'Documentation Support',
+                'cooperation.benefit4.text': 'Материалы и сопровождение по запросу партнёра.',
+
+                // Form
+                'form.title': 'Оставить заявку',
+                'form.subtitle': 'Заполните форму и мы свяжемся с вами',
+                'form.name': 'Имя',
+                'form.namePlaceholder': 'Ваше имя',
+                'form.company': 'Компания',
+                'form.companyPlaceholder': 'Название',
+                'form.message': 'Сообщение',
+                'form.messagePlaceholder': 'Опишите ваш запрос',
+                'form.submit': 'Отправить запрос',
+                'form.submitModal': 'Отправить заявку',
+
+                // Footer
+                'footer.disclaimer': 'Информация на сайте носит ознакомительный характер. Не является публичной офертой.',
+
+                // Success messages
+                'success.title': 'Заявка отправлена',
+                'success.text': 'Мы свяжемся с вами в ближайшее время'
             },
             en: {
+                // Navigation
                 'nav.about': 'About',
-                'nav.production': 'Production',
+                'nav.principles': 'Principles',
+                'nav.scale': 'Infrastructure',
+                'nav.process': 'Process',
                 'nav.quality': 'Quality',
+                'nav.production': 'Production',
+                'nav.why': 'Why Us',
                 'nav.partners': 'Partners',
+                'nav.cooperation': 'Cooperation',
+
+                // Hero
+                'hero.label': 'Manufacturer & Global Supplier • B2B Solutions',
                 'hero.tagline1': 'Leading manufacturer and supplier',
                 'hero.tagline2': 'of premium peptide solutions',
-                'hero.cta': 'Become a Partner'
+                'hero.cta': 'Become a Partner',
+
+                // About Section
+                'about.title': 'About Company',
+                'about.tag1': 'Production',
+                'about.tag2': 'Documentation',
+                'about.tag3': 'Logistics',
+                'about.fact1.title': 'B2B Supplies',
+                'about.fact1.text': 'Russia and international destinations',
+                'about.fact2.title': 'Batch Traceability',
+                'about.fact2.text': 'Support on partner request',
+                'about.fact3.title': 'Production Cycle',
+                'about.fact3.text': 'Standardization of key stages',
+                'about.fact4.title': 'System Control',
+                'about.fact4.text': 'Batch parameters before shipment',
+                'about.fact5.title': 'Packaging & Labeling',
+                'about.fact5.text': 'To partner requirements',
+                'about.fact6.title': 'Partnership Format',
+                'about.fact6.text': 'Long-term conditions',
+
+                // Principles Section
+                'principles.title': 'Principles',
+                'principles.tag1': 'Precision',
+                'principles.tag2': 'Reproducibility',
+                'principles.tag3': 'Trust',
+                'principles.card1.title': 'Precision',
+                'principles.card1.text': 'Standardization of procedures and control at key stages.',
+                'principles.card2.title': 'Stability',
+                'principles.card2.text': 'Reproducibility of batch characteristics and process transparency.',
+                'principles.card3.title': 'Partnership',
+                'principles.card3.text': 'Flexible work formats and support for business needs.',
+
+                // Scale/Infrastructure Section
+                'scale.title': 'Infrastructure',
+                'scale.tag1': 'Reliability',
+                'scale.tag2': 'Transparency',
+                'scale.tag3': 'Logistics',
+                'scale.card1.title': 'Delivery Geography',
+                'scale.card1.text': 'Logistics for partner needs.',
+                'scale.card1.details': 'Established routes and regular shipments to required regions.',
+                'scale.card2.title': 'B2B Infrastructure',
+                'scale.card2.text': 'Processes in a unified standard.',
+                'scale.card2.details': 'Packaging, labeling and support according to corporate requirements.',
+                'scale.card3.title': 'Batch Control',
+                'scale.card3.text': 'Parameter reproducibility.',
+                'scale.card3.details': 'Control of characteristics from batch to batch — stable result.',
+                'scale.card4.title': 'Documentation',
+                'scale.card4.text': 'Materials on request.',
+                'scale.card4.details': 'Composition, specifications, certificates — full batch support.',
+
+                // Process Section
+                'process.title': 'Process',
+                'process.tag1': 'Request',
+                'process.tag2': 'Approval',
+                'process.tag3': 'Shipment',
+                'process.step1.title': 'Request',
+                'process.step1.text': 'We fix the task, volumes and delivery format.',
+                'process.step2.title': 'Approval',
+                'process.step2.text': 'We confirm deadlines, packaging and logistics.',
+                'process.step3.title': 'Preparation',
+                'process.step3.text': 'Batch control and readiness for shipment.',
+                'process.step4.title': 'Shipment',
+                'process.step4.text': 'Batch handover and further support.',
+
+                // Quality Section
+                'quality.title': 'Quality Control',
+                'quality.tag1': 'Control',
+                'quality.tag2': 'Parameters',
+                'quality.tag3': 'Compliance',
+                'quality.item1': 'Incoming control of raw materials',
+                'quality.item2': 'Batch control before shipment',
+                'quality.item3': 'Documentation on partner request',
+                'quality.item4': 'Compliance with storage and delivery conditions',
+
+                // Production Section
+                'production.title': 'Production',
+                'production.tag1': 'Processes',
+                'production.tag2': 'Reproducibility',
+                'production.tag3': 'Deadlines',
+                'production.item1.title': 'Technological Lines',
+                'production.item1.text': 'Standardized procedures and modern equipment for stable batch production.',
+                'production.item2.title': 'Quality Control',
+                'production.item2.text': 'Multi-level parameter verification at key stages of the production cycle.',
+                'production.item3.title': 'Packaging & Labeling',
+                'production.item3.text': 'Individual packaging and labeling to partner and market requirements.',
+                'production.item4.title': 'Logistics & Shipment',
+                'production.item4.text': 'Meeting delivery deadlines and storage conditions at all delivery stages.',
+
+                // Partners Section
+                'partners.title': 'For Partners',
+                'partners.card1.title': 'Distributors & Resellers',
+                'partners.card1.text': 'Wholesale supplies and scalable volumes.',
+                'partners.card2.title': 'Professional Segment',
+                'partners.card2.text': 'Solutions for specialists and clinics.',
+                'partners.card3.title': 'Private Label',
+                'partners.card3.text': 'Production under your brand and format.',
+                'partners.card4.title': 'Online Channels',
+                'partners.card4.text': 'Stable shipments for e-commerce.',
+
+                // Why Section
+                'why.title': 'Why iPeptides',
+                'why.item1.title': 'Batch Reproducibility',
+                'why.item1.text': 'Stable parameters and result reproducibility.',
+                'why.item2.title': 'Commercial Reliability',
+                'why.item2.text': 'Predictable deadlines and transparent working conditions.',
+                'why.item3.title': 'Documentation & Support',
+                'why.item3.text': 'Materials and confirmations on partner request.',
+                'why.item4.title': 'Flexible Cooperation Formats',
+                'why.item4.text': 'B2B supplies, professional segment, private label and e-commerce.',
+
+                // Cooperation Section
+                'cooperation.title': 'Cooperation',
+                'cooperation.benefit1.title': 'B2B Partnership',
+                'cooperation.benefit1.text': 'Cooperation formats for business needs.',
+                'cooperation.benefit2.title': 'Global Delivery',
+                'cooperation.benefit2.text': 'Deliveries to Russia and international destinations.',
+                'cooperation.benefit3.title': 'Batch Consistency',
+                'cooperation.benefit3.text': 'Stability of characteristics from batch to batch.',
+                'cooperation.benefit4.title': 'Documentation Support',
+                'cooperation.benefit4.text': 'Materials and support on partner request.',
+
+                // Form
+                'form.title': 'Submit Request',
+                'form.subtitle': 'Fill out the form and we will contact you',
+                'form.name': 'Name',
+                'form.namePlaceholder': 'Your name',
+                'form.company': 'Company',
+                'form.companyPlaceholder': 'Company name',
+                'form.message': 'Message',
+                'form.messagePlaceholder': 'Describe your request',
+                'form.submit': 'Send Request',
+                'form.submitModal': 'Submit Request',
+
+                // Footer
+                'footer.disclaimer': 'Information on the website is for informational purposes only. Not a public offer.',
+
+                // Success messages
+                'success.title': 'Request Sent',
+                'success.text': 'We will contact you shortly'
             }
         };
 
@@ -4909,12 +5839,21 @@
 
         function setLanguage(lang) {
             currentLang = lang;
+            const t = i18n[lang];
 
-            // Update all text elements with data-lang-key
-            document.querySelectorAll('[data-lang-key]').forEach(el => {
-                const key = el.getAttribute('data-lang-key');
-                if (translations[lang][key]) {
-                    el.textContent = translations[lang][key];
+            // Update all text elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (t[key]) {
+                    el.placeholder = t[key];
                 }
             });
 
@@ -4922,6 +5861,9 @@
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
             });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
 
             // Save preference
             localStorage.setItem('lang', lang);
@@ -4934,9 +5876,9 @@
             });
         });
 
-        // Load saved language preference
+        // Load saved language preference on page load
         const savedLang = localStorage.getItem('lang');
-        if (savedLang && translations[savedLang]) {
+        if (savedLang && i18n[savedLang]) {
             setLanguage(savedLang);
         }
     </script>
