@@ -1024,38 +1024,124 @@
             background: var(--bg-accent);
         }
 
-        .principles-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
+        /* Mobile Carousel Container */
+        .principles-carousel-wrapper {
+            position: relative;
+            margin: 0 calc(-1 * var(--container-padding));
+            padding: 0 var(--container-padding);
         }
 
-        @media (min-width: 768px) {
-            .principles-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
+        .principles-carousel {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 8px 0 16px;
+        }
+
+        .principles-carousel::-webkit-scrollbar {
+            display: none;
         }
 
         .principle-card {
+            flex: 0 0 calc(85% - 8px);
+            min-width: calc(85% - 8px);
+            scroll-snap-align: center;
             text-align: center;
             padding: 28px 20px;
+            background: var(--bg-white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
         }
 
         .principle-card .icon-badge {
             margin: 0 auto 16px;
+            width: 48px;
+            height: 48px;
+            background: rgba(165, 196, 212, 0.12);
+            border-radius: var(--radius-sm);
+        }
+
+        .principle-card .icon-badge .icon {
+            width: 22px;
+            height: 22px;
+            stroke: var(--ice-flow-deep);
         }
 
         .principle-card .card-title {
             margin-bottom: 8px;
         }
 
+        /* Principles Dots - Mobile */
+        .principles-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .principles-dots .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(165, 196, 212, 0.35);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            padding: 0;
+        }
+
+        .principles-dots .dot.active {
+            background: var(--ice-flow-deep);
+            width: 20px;
+            border-radius: 3px;
+        }
+
+        /* Desktop: 3-column grid */
         @media (min-width: 768px) {
-            .principle-card {
-                padding: 32px 24px;
+            .principles-carousel-wrapper {
+                margin: 0;
+                padding: 0;
             }
+
+            .principles-carousel {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+                overflow: visible;
+                padding: 8px;
+            }
+
+            .principle-card {
+                flex: none;
+                min-width: 0;
+                padding: 32px 24px;
+                min-height: 200px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .principle-card:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-lg);
+            }
+
             .principle-card .icon-badge {
+                width: 52px;
+                height: 52px;
                 margin-bottom: 20px;
+            }
+
+            .principle-card .icon-badge .icon {
+                width: 24px;
+                height: 24px;
+            }
+
+            .principles-dots {
+                display: none;
             }
         }
 
@@ -2493,27 +2579,34 @@
                     <span data-i18n="principles.tag3">Доверие</span>
                 </div>
             </div>
-            <div class="principles-grid">
-                <div class="card principle-card reveal-card">
-                    <div class="icon-badge">
-                        <svg class="icon"><use href="assets/icons.svg#icon-target"></use></svg>
+            <div class="principles-carousel-wrapper">
+                <div class="principles-carousel">
+                    <div class="card principle-card reveal-card">
+                        <div class="icon-badge">
+                            <svg class="icon"><use href="assets/icons.svg#icon-target"></use></svg>
+                        </div>
+                        <h3 class="card-title" data-i18n="principles.card1.title">Точность</h3>
+                        <p class="card-text" data-i18n="principles.card1.text">Стандартизация процедур и контроль на ключевых этапах.</p>
                     </div>
-                    <h3 class="card-title" data-i18n="principles.card1.title">Точность</h3>
-                    <p class="card-text" data-i18n="principles.card1.text">Стандартизация процедур и контроль на ключевых этапах.</p>
+                    <div class="card principle-card reveal-card">
+                        <div class="icon-badge">
+                            <svg class="icon"><use href="assets/icons.svg#icon-layers"></use></svg>
+                        </div>
+                        <h3 class="card-title" data-i18n="principles.card2.title">Стабильность</h3>
+                        <p class="card-text" data-i18n="principles.card2.text">Повторяемость характеристик партии и прозрачность процессов.</p>
+                    </div>
+                    <div class="card principle-card reveal-card">
+                        <div class="icon-badge">
+                            <svg class="icon"><use href="assets/icons.svg#icon-handshake"></use></svg>
+                        </div>
+                        <h3 class="card-title" data-i18n="principles.card3.title">Партнёрство</h3>
+                        <p class="card-text" data-i18n="principles.card3.text">Гибкие форматы работы и сопровождение под задачи бизнеса.</p>
+                    </div>
                 </div>
-                <div class="card principle-card reveal-card">
-                    <div class="icon-badge">
-                        <svg class="icon"><use href="assets/icons.svg#icon-shield-check"></use></svg>
-                    </div>
-                    <h3 class="card-title" data-i18n="principles.card2.title">Стабильность</h3>
-                    <p class="card-text" data-i18n="principles.card2.text">Повторяемость характеристик партии и прозрачность процессов.</p>
-                </div>
-                <div class="card principle-card reveal-card">
-                    <div class="icon-badge">
-                        <svg class="icon"><use href="assets/icons.svg#icon-handshake"></use></svg>
-                    </div>
-                    <h3 class="card-title" data-i18n="principles.card3.title">Партнёрство</h3>
-                    <p class="card-text" data-i18n="principles.card3.text">Гибкие форматы работы и сопровождение под задачи бизнеса.</p>
+                <div class="principles-dots">
+                    <button class="dot active" data-index="0"></button>
+                    <button class="dot" data-index="1"></button>
+                    <button class="dot" data-index="2"></button>
                 </div>
             </div>
         </div>
@@ -3346,6 +3439,41 @@
                     dot.addEventListener('click', () => {
                         const cardWidth = partnerCards[0].offsetWidth + 16;
                         partnersCarousel.scrollTo({
+                            left: i * cardWidth,
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+            }
+        }
+
+        // ============================================
+        // PRINCIPLES CAROUSEL
+        // ============================================
+        const principlesCarousel = document.querySelector('.principles-carousel');
+        const principleCards = document.querySelectorAll('.principle-card');
+        const principleDots = document.querySelectorAll('.principles-dots .dot');
+
+        if (principlesCarousel && principleCards.length) {
+            // Dots pagination for mobile
+            if (principleDots.length) {
+                let principlesScrollTimeout;
+                principlesCarousel.addEventListener('scroll', () => {
+                    clearTimeout(principlesScrollTimeout);
+                    principlesScrollTimeout = setTimeout(() => {
+                        const scrollLeft = principlesCarousel.scrollLeft;
+                        const cardWidth = principleCards[0].offsetWidth + 16;
+                        const activeIndex = Math.round(scrollLeft / cardWidth);
+                        principleDots.forEach((dot, i) => {
+                            dot.classList.toggle('active', i === activeIndex);
+                        });
+                    }, 50);
+                });
+
+                principleDots.forEach((dot, i) => {
+                    dot.addEventListener('click', () => {
+                        const cardWidth = principleCards[0].offsetWidth + 16;
+                        principlesCarousel.scrollTo({
                             left: i * cardWidth,
                             behavior: 'smooth'
                         });
