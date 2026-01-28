@@ -1219,33 +1219,32 @@
             }
         }
 
-        /* Усиленный glass-эффект для карточек на видео-фоне */
-        .shared-video-wrap .quality-item,
-        .shared-video-wrap .production-item {
-            background: rgba(255, 255, 255, 0.62);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(110, 140, 160, 0.28);
+        /* Enhanced glass effect for unified cards on video background */
+        .shared-video-wrap .unified-card {
+            background: rgba(255, 255, 255, 0.68);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(110, 140, 160, 0.25);
             box-shadow:
                 0 4px 20px rgba(110, 140, 160, 0.12),
                 0 1px 3px rgba(110, 140, 160, 0.08);
         }
 
-        .shared-video-wrap .quality-item:hover,
-        .shared-video-wrap .production-item:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.75);
-            border-color: rgba(139, 175, 194, 0.38);
+        .shared-video-wrap .unified-card:hover {
+            background: rgba(255, 255, 255, 0.78);
+            border-color: rgba(139, 175, 194, 0.35);
             box-shadow:
                 0 6px 28px rgba(110, 140, 160, 0.16),
                 0 2px 6px rgba(110, 140, 160, 0.1);
         }
 
-        .shared-video-wrap .production-item.active {
-            background: rgba(165, 196, 212, 0.28);
+        .shared-video-wrap .unified-card:active,
+        .shared-video-wrap .unified-card.active {
+            background: rgba(165, 196, 212, 0.32);
             border-color: rgba(139, 175, 194, 0.48);
             box-shadow:
-                0 8px 32px rgba(110, 140, 160, 0.2),
-                0 0 0 1px rgba(139, 175, 194, 0.18);
+                0 2px 12px rgba(110, 140, 160, 0.18),
+                inset 0 1px 2px rgba(255, 255, 255, 0.5);
         }
 
         /* ============================================
@@ -2179,302 +2178,10 @@
         }
 
         /* ============================================
-           PRODUCTION SECTION - Premium Glassmorphism
+           PRODUCTION SECTION - Uses Unified Styles
            ============================================ */
         #production {
-            background: var(--bg-secondary);
-        }
-
-        /* Production Layout - two column on desktop with header above list (left column) */
-        .production-content {
-            display: block;
-        }
-
-        .production-column-left {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .production-column-right {
-            display: none;
-        }
-
-        .production-section .section-header {
-            text-align: center;
-            margin-bottom: 0;
-        }
-
-        /* Desktop: two columns, header+list left, empty right */
-        @media (min-width: 1024px) {
-            .production-content {
-                display: grid;
-                grid-template-columns: 1.2fr 1fr;
-                gap: 48px;
-                align-items: start;
-            }
-
-            .production-column-right {
-                display: block;
-            }
-
-            .production-column-left {
-                gap: 24px;
-            }
-        }
-
-        /* Premium badge label */
-        .production-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.6875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--ice-flow-dark);
-            margin-bottom: 16px;
-        }
-
-        .production-badge-marker {
-            width: 6px;
-            height: 6px;
-            background: linear-gradient(135deg, var(--ice-flow) 0%, var(--ice-flow-dark) 100%);
-            border-radius: 50%;
-            animation: pulse-marker 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse-marker {
-            0%, 100% { opacity: 0.7; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.15); }
-        }
-
-        /* Corporate tagline */
-        .production-tagline {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--ice-flow-dark);
-        }
-
-        .production-tagline-marker {
-            width: 6px;
-            height: 6px;
-            background: linear-gradient(135deg, #8BAFC2 0%, #5a7a8a 100%);
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .production-tagline span {
-            opacity: 0.6;
-        }
-
-        .production-tagline-text {
-            opacity: 1 !important;
-        }
-
-        /* Production list */
-        .production-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        /* Premium glassmorphism production item */
-        .production-item {
-            position: relative;
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            padding: 18px 20px;
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 16px;
-            cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 2px 12px rgba(165, 196, 212, 0.08);
-            /* Premium reveal animation initial state */
-            opacity: 0;
-            transform: translateY(20px);
-            filter: blur(4px);
-        }
-
-        .production-item.revealed {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-        }
-
-        /* Staggered reveal delays */
-        .production-item:nth-child(1) { transition-delay: 0s; }
-        .production-item:nth-child(2) { transition-delay: 0.1s; }
-        .production-item:nth-child(3) { transition-delay: 0.2s; }
-        .production-item:nth-child(4) { transition-delay: 0.3s; }
-
-        /* Active state - premium steel-blue highlight */
-        .production-item.active {
-            background: rgba(165, 196, 212, 0.22);
-            border-color: rgba(139, 175, 194, 0.45);
-            box-shadow:
-                0 6px 24px rgba(110, 140, 160, 0.18),
-                0 0 0 1px rgba(139, 175, 194, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .production-item:hover:not(.active) {
-            background: rgba(255, 255, 255, 0.65);
-            border-color: rgba(165, 196, 212, 0.3);
-            box-shadow: 0 4px 16px rgba(165, 196, 212, 0.12);
-            transform: translateY(-2px);
-        }
-
-        /* Icon container */
-        .production-item-icon {
-            flex-shrink: 0;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(165, 196, 212, 0.15) 0%, rgba(139, 175, 194, 0.1) 100%);
-            border-radius: 10px;
-            border: 1px solid rgba(165, 196, 212, 0.2);
-        }
-
-        .production-item-icon svg {
-            width: 18px;
-            height: 18px;
-            color: var(--ice-flow-deep);
-            stroke-width: 1.75;
-        }
-
-        .production-item.active .production-item-icon {
-            background: linear-gradient(135deg, rgba(165, 196, 212, 0.25) 0%, rgba(139, 175, 194, 0.15) 100%);
-            border-color: rgba(165, 196, 212, 0.35);
-        }
-
-        .production-item.active .production-item-icon svg {
-            color: var(--ice-flow-dark);
-        }
-
-        /* Number badge */
-        .production-item .card-number {
-            margin-bottom: 0;
-            flex-shrink: 0;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--ice-flow-deep);
-            opacity: 0.7;
-            min-width: 20px;
-        }
-
-        .production-item.active .card-number {
-            opacity: 1;
-            color: var(--ice-flow-dark);
-        }
-
-        /* Content area */
-        .production-item-content {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .production-item-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .production-item-title {
-            font-size: 0.9375rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            line-height: 1.4;
-        }
-
-        .production-item.active .production-item-title {
-            color: var(--text-dark);
-        }
-
-        /* Expanded details */
-        .production-item-details {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                        opacity 0.3s ease,
-                        margin-top 0.3s ease;
-            margin-top: 0;
-        }
-
-        .production-item.active .production-item-details {
-            max-height: 80px;
-            opacity: 1;
-            margin-top: 10px;
-        }
-
-        .production-item-details p {
-            font-size: 0.8125rem;
-            color: var(--text-secondary);
-            line-height: 1.55;
-        }
-
-        /* Chevron indicator */
-        .production-item-chevron {
-            flex-shrink: 0;
-            width: 16px;
-            height: 16px;
-            color: var(--ice-flow-dark);
-            opacity: 0.5;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            margin-left: auto;
-            align-self: center;
-        }
-
-        .production-item.active .production-item-chevron {
-            transform: rotate(180deg);
-            opacity: 0.8;
-        }
-
-        /* Mobile accordion adjustments */
-        @media (max-width: 767px) {
-            .production-content {
-                gap: 28px;
-            }
-
-            .production-item {
-                padding: 16px 18px;
-            }
-
-            .production-item-icon {
-                width: 32px;
-                height: 32px;
-            }
-
-            .production-item-icon svg {
-                width: 16px;
-                height: 16px;
-            }
-
-            .production-item-title {
-                font-size: 0.875rem;
-            }
-
-            .production-item-details p {
-                font-size: 0.8125rem;
-            }
-
-            .production-tagline {
-                flex-wrap: wrap;
-                gap: 6px;
-            }
+            background: transparent;
         }
 
         /* Disable hover transforms on touch devices */
@@ -3546,122 +3253,170 @@
         }
 
         /* ============================================
-           QUALITY SECTION - Premium Glass Panel
+           UNIFIED QC & PRODUCTION - Premium Compact Grid
            ============================================ */
-        .quality-apple {
-            background: var(--snow-white-pure);
+
+        /* Shared Section Styles */
+        .quality-apple,
+        .production-section {
+            background: transparent;
         }
 
-        /* Quality Layout - two column on desktop with header above panel (right column) */
-        .quality-layout {
-            display: block;
-        }
-
-        .quality-column-left {
-            display: none;
-        }
-
-        .quality-column-right {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .quality-apple .section-header {
+        .quality-apple .section-header,
+        .production-section .section-header {
             text-align: center;
-            margin-bottom: 0;
+            margin-bottom: 24px;
         }
 
-        /* Desktop: two columns, empty left, header+panel right */
+        @media (min-width: 768px) {
+            .quality-apple .section-header,
+            .production-section .section-header {
+                margin-bottom: 28px;
+            }
+        }
+
         @media (min-width: 1024px) {
-            .quality-layout {
-                display: grid;
-                grid-template-columns: 1fr 1.2fr;
-                gap: 48px;
-                align-items: start;
-            }
-
-            .quality-column-left {
-                display: block;
-            }
-
-            .quality-column-right {
-                gap: 24px;
+            .quality-apple .section-header,
+            .production-section .section-header {
+                margin-bottom: 32px;
             }
         }
 
-        /* Quality Cards Container - individual cards like Production */
-        .quality-glass-panel {
+        /* Unified Cards Grid - 2x2 mobile/tablet, 4 columns desktop */
+        .unified-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .unified-cards-grid {
+                gap: 16px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .unified-cards-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 16px;
+                max-width: 1000px;
+            }
+        }
+
+        /* Unified Card - Premium Compact */
+        .unified-card {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-        }
-
-        /* Quality Item - individual card (unified with Production) */
-        .quality-item {
-            display: flex;
             align-items: center;
-            gap: 14px;
-            padding: 18px 20px;
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            justify-content: center;
+            text-align: center;
+            min-height: 90px;
+            padding: 20px 14px;
+            background: rgba(255, 255, 255, 0.62);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(165, 196, 212, 0.22);
             border-radius: 16px;
-            box-shadow: 0 2px 12px rgba(165, 196, 212, 0.08);
+            box-shadow: 0 2px 12px rgba(110, 140, 160, 0.08);
+            cursor: pointer;
+            /* Premium reveal animation */
             opacity: 0;
-            transform: translateY(20px);
-            filter: blur(4px);
+            transform: translateY(12px);
+            filter: blur(3px);
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .quality-item.revealed {
+        @media (min-width: 768px) {
+            .unified-card {
+                min-height: 100px;
+                padding: 22px 16px;
+                border-radius: 18px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .unified-card {
+                min-height: 110px;
+                padding: 24px 18px;
+                border-radius: 20px;
+            }
+        }
+
+        .unified-card.revealed {
             opacity: 1;
             transform: translateY(0);
             filter: blur(0);
         }
 
         /* Staggered reveal delays */
-        .quality-item:nth-child(1) { transition-delay: 0s; }
-        .quality-item:nth-child(2) { transition-delay: 0.1s; }
-        .quality-item:nth-child(3) { transition-delay: 0.2s; }
-        .quality-item:nth-child(4) { transition-delay: 0.3s; }
+        .unified-card:nth-child(1) { transition-delay: 0s; }
+        .unified-card:nth-child(2) { transition-delay: 0.08s; }
+        .unified-card:nth-child(3) { transition-delay: 0.16s; }
+        .unified-card:nth-child(4) { transition-delay: 0.24s; }
 
-        .quality-item:hover {
-            background: rgba(255, 255, 255, 0.65);
-            border-color: rgba(165, 196, 212, 0.3);
-            box-shadow: 0 4px 16px rgba(165, 196, 212, 0.12);
-            transform: translateY(-2px);
+        /* Hover state - subtle lift */
+        .unified-card:hover {
+            background: rgba(255, 255, 255, 0.72);
+            border-color: rgba(165, 196, 212, 0.32);
+            box-shadow: 0 4px 18px rgba(110, 140, 160, 0.12);
+            transform: translateY(-3px);
         }
 
-        /* Quality Item Icon - unified with Production */
-        .quality-item-icon {
-            flex-shrink: 0;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(165, 196, 212, 0.15) 0%, rgba(139, 175, 194, 0.1) 100%);
-            border-radius: 10px;
-            border: 1px solid rgba(165, 196, 212, 0.2);
+        /* Active/Focus state - premium steel-blue tint */
+        .unified-card:active,
+        .unified-card.active {
+            background: rgba(165, 196, 212, 0.25);
+            border-color: rgba(139, 175, 194, 0.45);
+            box-shadow:
+                0 2px 8px rgba(110, 140, 160, 0.15),
+                inset 0 1px 2px rgba(255, 255, 255, 0.4);
+            transform: translateY(0);
         }
 
-        .quality-item-icon svg {
-            width: 18px;
-            height: 18px;
-            stroke: var(--ice-flow-deep);
-            stroke-width: 1.75;
-            fill: none;
+        /* Card Title - CAPS style */
+        .unified-card-title {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-dark);
+            line-height: 1.35;
+            margin: 0;
         }
 
-        /* Typography unified with production-item-title */
-        .quality-item-title {
-            font-size: 0.9375rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            line-height: 1.4;
-            flex: 1;
+        @media (min-width: 768px) {
+            .unified-card-title {
+                font-size: 0.75rem;
+                letter-spacing: 0.1em;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .unified-card-title {
+                font-size: 0.8125rem;
+            }
+        }
+
+        .unified-card:active .unified-card-title,
+        .unified-card.active .unified-card-title {
+            color: var(--ice-flow-dark);
+        }
+
+        /* Remove old layout classes - backward compatibility */
+        .quality-layout,
+        .quality-column-left,
+        .quality-column-right,
+        .quality-glass-panel {
+            display: contents;
+        }
+
+        .production-content,
+        .production-column-left,
+        .production-column-right,
+        .production-list {
+            display: contents;
         }
 
         /* ============================================
@@ -4541,172 +4296,62 @@
         <!-- Content -->
         <div class="shared-content">
 
-    <!-- Quality - Premium Glass Panel -->
+    <!-- Quality Control - Premium Compact Grid -->
     <section id="quality" class="quality-apple compact-section">
         <div class="container">
-            <div class="quality-layout">
-                <div class="quality-column-left"></div>
-                <div class="quality-column-right">
-                    <div class="section-header reveal">
-                        <h2 class="section-overlay" data-i18n="quality.title">Контроль качества</h2>
-                        <div class="section-principles">
-                            <span data-i18n="quality.tag1">Контроль</span>
-                            <span data-i18n="quality.tag2">Параметры</span>
-                            <span data-i18n="quality.tag3">Соответствие</span>
-                        </div>
-                    </div>
-                    <div class="quality-glass-panel">
-                    <div class="quality-item">
-                        <div class="quality-item-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M22 11.08V12a10 10 0 11-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
-                                <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <span class="quality-item-title" data-i18n="quality.item1">Входной контроль сырья и материалов</span>
-                    </div>
-                    <div class="quality-item">
-                        <div class="quality-item-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z" stroke-linecap="round" stroke-linejoin="round"/>
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke-linecap="round" stroke-linejoin="round"/>
-                                <line x1="12" y1="22.08" x2="12" y2="12" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <span class="quality-item-title" data-i18n="quality.item2">Контроль партии перед отгрузкой</span>
-                    </div>
-                    <div class="quality-item">
-                        <div class="quality-item-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
-                                <polyline points="14 2 14 8 20 8" stroke-linecap="round" stroke-linejoin="round"/>
-                                <line x1="16" y1="13" x2="8" y2="13" stroke-linecap="round" stroke-linejoin="round"/>
-                                <line x1="16" y1="17" x2="8" y2="17" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <span class="quality-item-title" data-i18n="quality.item3">Документация по запросу партнёра</span>
-                    </div>
-                    <div class="quality-item">
-                        <div class="quality-item-icon">
-                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="1" y="3" width="15" height="13" rx="2" ry="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" stroke-linecap="round" stroke-linejoin="round"/>
-                                <circle cx="5.5" cy="18.5" r="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                <circle cx="18.5" cy="18.5" r="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <span class="quality-item-title" data-i18n="quality.item4">Соблюдение условий хранения и доставки</span>
-                    </div>
+            <!-- Section Header - centered above grid -->
+            <div class="section-header center reveal">
+                <h2 class="section-overlay" data-i18n="quality.title">Контроль качества</h2>
+                <div class="section-principles">
+                    <span data-i18n="quality.tag1">Контроль</span>
+                    <span data-i18n="quality.tag2">Параметры</span>
+                    <span data-i18n="quality.tag3">Соответствие</span>
                 </div>
+            </div>
+            <!-- 4 Cards Grid -->
+            <div class="unified-cards-grid">
+                <div class="unified-card">
+                    <h3 class="unified-card-title" data-i18n="quality.item1">СЫРЬЕ И МАТЕРИАЛЫ</h3>
+                </div>
+                <div class="unified-card">
+                    <h3 class="unified-card-title" data-i18n="quality.item2">ОТГРУЗКА ПАРТИИ</h3>
+                </div>
+                <div class="unified-card">
+                    <h3 class="unified-card-title" data-i18n="quality.item3">ДОКУМЕНТАЦИЯ ПРОДУКЦИИ</h3>
+                </div>
+                <div class="unified-card">
+                    <h3 class="unified-card-title" data-i18n="quality.item4">ХРАНЕНИЕ И ДОСТАВКА</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Production -->
+    <!-- Production - Premium Compact Grid -->
     <section id="production" class="production-section compact-section">
         <div class="container">
-            <div class="production-content">
-                <div class="production-column-left">
-                    <div class="section-header reveal">
-                        <h2 class="section-overlay" data-i18n="production.title">Производство</h2>
-                        <div class="section-principles">
-                            <span data-i18n="production.tag1">Процессы</span>
-                            <span data-i18n="production.tag2">Воспроизводимость</span>
-                            <span data-i18n="production.tag3">Сроки</span>
-                        </div>
-                    </div>
-                    <div class="production-list">
-                    <div class="production-item" data-production="1">
-                        <div class="production-item-icon">
-                            <!-- Settings/Factory icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="3"></circle>
-                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                            </svg>
-                        </div>
-                        <div class="card-number">01</div>
-                        <div class="production-item-content">
-                            <div class="production-item-header">
-                                <span class="production-item-title" data-i18n="production.item1.title">Технологичные линии</span>
-                            </div>
-                            <div class="production-item-details">
-                                <p data-i18n="production.item1.text">Стандартизированные процедуры и современное оборудование для стабильного выпуска партий.</p>
-                            </div>
-                        </div>
-                        <svg class="production-item-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </div>
-                    <div class="production-item" data-production="2">
-                        <div class="production-item-icon">
-                            <!-- Shield/Check icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                <polyline points="9 12 11 14 15 10"></polyline>
-                            </svg>
-                        </div>
-                        <div class="card-number">02</div>
-                        <div class="production-item-content">
-                            <div class="production-item-header">
-                                <span class="production-item-title" data-i18n="production.item2.title">Контроль качества</span>
-                            </div>
-                            <div class="production-item-details">
-                                <p data-i18n="production.item2.text">Многоуровневая проверка параметров на ключевых этапах производственного цикла.</p>
-                            </div>
-                        </div>
-                        <svg class="production-item-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </div>
-                    <div class="production-item" data-production="3">
-                        <div class="production-item-icon">
-                            <!-- Box/Package icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                            </svg>
-                        </div>
-                        <div class="card-number">03</div>
-                        <div class="production-item-content">
-                            <div class="production-item-header">
-                                <span class="production-item-title" data-i18n="production.item3.title">Упаковка и маркировка</span>
-                            </div>
-                            <div class="production-item-details">
-                                <p data-i18n="production.item3.text">Индивидуальная упаковка и маркировка под требования партнёров и рынков сбыта.</p>
-                            </div>
-                        </div>
-                        <svg class="production-item-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </div>
-                    <div class="production-item" data-production="4">
-                        <div class="production-item-icon">
-                            <!-- Truck/Route icon -->
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="1" y="3" width="15" height="13"></rect>
-                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                            </svg>
-                        </div>
-                        <div class="card-number">04</div>
-                        <div class="production-item-content">
-                            <div class="production-item-header">
-                                <span class="production-item-title" data-i18n="production.item4.title">Логистика и отгрузка</span>
-                            </div>
-                            <div class="production-item-details">
-                                <p data-i18n="production.item4.text">Соблюдение сроков поставок и условий хранения на всех этапах доставки.</p>
-                            </div>
-                        </div>
-                        <svg class="production-item-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="6 9 12 15 18 9"></polyline>
-                        </svg>
-                    </div>
-                    </div>
+            <!-- Section Header - centered above grid -->
+            <div class="section-header center reveal">
+                <h2 class="section-overlay" data-i18n="production.title">Производство</h2>
+                <div class="section-principles">
+                    <span data-i18n="production.tag1">Процессы</span>
+                    <span data-i18n="production.tag2">Воспроизводимость</span>
+                    <span data-i18n="production.tag3">Сроки</span>
                 </div>
-                <div class="production-column-right"></div>
+            </div>
+            <!-- 4 Cards Grid -->
+            <div class="unified-cards-grid">
+                <div class="unified-card">
+                    <h3 class="unified-card-title" data-i18n="production.item1">ТЕХНОЛОГИЧЕСКИЕ ЛИНИИ</h3>
+                </div>
+                <div class="unified-card">
+                    <h3 class="unified-card-title" data-i18n="production.item2">СТАНДАРТИЗАЦИЯ ПРОЦЕССОВ</h3>
+                </div>
+                <div class="unified-card">
+                    <h3 class="unified-card-title" data-i18n="production.item3">УПАКОВКА И МАРКИРОВКА</h3>
+                </div>
+                <div class="unified-card">
+                    <h3 class="unified-card-title" data-i18n="production.item4">ЛОГИСТИКА И СРОКИ</h3>
+                </div>
             </div>
         </div>
     </section>
@@ -5204,26 +4849,22 @@
         window.addEventListener('scroll', revealInfraCards);
         window.addEventListener('load', revealInfraCards);
 
-        // Quality items staggered reveal (Premium glass panel)
-        const qualityItems = document.querySelectorAll('.quality-item');
-        let qualityRevealed = false;
-        const revealQualityItems = () => {
-            if (qualityRevealed) return;
-            const qualityPanel = document.querySelector('.quality-glass-panel');
-            if (qualityPanel) {
-                const panelTop = qualityPanel.getBoundingClientRect().top;
-                if (panelTop < window.innerHeight - 80) {
-                    qualityRevealed = true;
-                    qualityItems.forEach((item, index) => {
+        // Unified Cards staggered reveal (QC & Production)
+        const revealUnifiedCards = () => {
+            document.querySelectorAll('.unified-cards-grid').forEach(grid => {
+                const gridTop = grid.getBoundingClientRect().top;
+                if (gridTop < window.innerHeight - 60) {
+                    const cards = grid.querySelectorAll('.unified-card:not(.revealed)');
+                    cards.forEach((card, index) => {
                         setTimeout(() => {
-                            item.classList.add('revealed');
-                        }, index * 100);
+                            card.classList.add('revealed');
+                        }, index * 80);
                     });
                 }
-            }
+            });
         };
-        window.addEventListener('scroll', revealQualityItems);
-        window.addEventListener('load', revealQualityItems);
+        window.addEventListener('scroll', revealUnifiedCards);
+        window.addEventListener('load', revealUnifiedCards);
 
         // Partner cards staggered reveal (Premium B2B)
         const partnerCards = document.querySelectorAll('.partner-card');
@@ -5402,36 +5043,7 @@
             });
         }
 
-        // Premium reveal for production items (blur-to-sharp + lift + stagger)
-        const productionItems = document.querySelectorAll('.production-item');
-        const revealProductionItems = () => {
-            const productionList = document.querySelector('.production-list');
-            if (productionList) {
-                const listTop = productionList.getBoundingClientRect().top;
-                if (listTop < window.innerHeight - 80) {
-                    productionItems.forEach(item => {
-                        item.classList.add('revealed');
-                    });
-                }
-            }
-        };
-        window.addEventListener('scroll', revealProductionItems);
-        window.addEventListener('load', revealProductionItems);
-
-        // Production accordion functionality
-        productionItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-
-                // Close all items
-                productionItems.forEach(i => i.classList.remove('active'));
-
-                // Open clicked if it wasn't active
-                if (!isActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
+        // Note: Production uses unified cards now - see revealUnifiedCards above
 
         // Infrastructure cards accordion (mobile only)
         const infraCards = document.querySelectorAll('.infra-card');
@@ -5622,24 +5234,20 @@
                 'quality.tag1': 'Контроль',
                 'quality.tag2': 'Параметры',
                 'quality.tag3': 'Соответствие',
-                'quality.item1': 'Входной контроль сырья и материалов',
-                'quality.item2': 'Контроль партии перед отгрузкой',
-                'quality.item3': 'Документация по запросу партнёра',
-                'quality.item4': 'Соблюдение условий хранения и доставки',
+                'quality.item1': 'СЫРЬЕ И МАТЕРИАЛЫ',
+                'quality.item2': 'ОТГРУЗКА ПАРТИИ',
+                'quality.item3': 'ДОКУМЕНТАЦИЯ ПРОДУКЦИИ',
+                'quality.item4': 'ХРАНЕНИЕ И ДОСТАВКА',
 
                 // Production Section
                 'production.title': 'Производство',
                 'production.tag1': 'Процессы',
                 'production.tag2': 'Воспроизводимость',
                 'production.tag3': 'Сроки',
-                'production.item1.title': 'Технологичные линии',
-                'production.item1.text': 'Стандартизированные процедуры и современное оборудование для стабильного выпуска партий.',
-                'production.item2.title': 'Контроль качества',
-                'production.item2.text': 'Многоуровневая проверка параметров на ключевых этапах производственного цикла.',
-                'production.item3.title': 'Упаковка и маркировка',
-                'production.item3.text': 'Индивидуальная упаковка и маркировка под требования партнёров и рынков сбыта.',
-                'production.item4.title': 'Логистика и отгрузка',
-                'production.item4.text': 'Соблюдение сроков поставок и условий хранения на всех этапах доставки.',
+                'production.item1': 'ТЕХНОЛОГИЧЕСКИЕ ЛИНИИ',
+                'production.item2': 'СТАНДАРТИЗАЦИЯ ПРОЦЕССОВ',
+                'production.item3': 'УПАКОВКА И МАРКИРОВКА',
+                'production.item4': 'ЛОГИСТИКА И СРОКИ',
 
                 // Partners Section
                 'partners.title': 'Партнёрам',
@@ -5778,24 +5386,20 @@
                 'quality.tag1': 'Control',
                 'quality.tag2': 'Parameters',
                 'quality.tag3': 'Compliance',
-                'quality.item1': 'Incoming control of raw materials',
-                'quality.item2': 'Batch control before shipment',
-                'quality.item3': 'Documentation on partner request',
-                'quality.item4': 'Compliance with storage and delivery conditions',
+                'quality.item1': 'RAW MATERIALS',
+                'quality.item2': 'BATCH SHIPMENT',
+                'quality.item3': 'PRODUCT DOCUMENTATION',
+                'quality.item4': 'STORAGE & DELIVERY',
 
                 // Production Section
                 'production.title': 'Production',
                 'production.tag1': 'Processes',
                 'production.tag2': 'Reproducibility',
                 'production.tag3': 'Deadlines',
-                'production.item1.title': 'Technological Lines',
-                'production.item1.text': 'Standardized procedures and modern equipment for stable batch production.',
-                'production.item2.title': 'Quality Control',
-                'production.item2.text': 'Multi-level parameter verification at key stages of the production cycle.',
-                'production.item3.title': 'Packaging & Labeling',
-                'production.item3.text': 'Individual packaging and labeling to partner and market requirements.',
-                'production.item4.title': 'Logistics & Shipment',
-                'production.item4.text': 'Meeting delivery deadlines and storage conditions at all delivery stages.',
+                'production.item1': 'TECHNOLOGICAL LINES',
+                'production.item2': 'PROCESS STANDARDIZATION',
+                'production.item3': 'PACKAGING & LABELING',
+                'production.item4': 'LOGISTICS & DEADLINES',
 
                 // Partners Section
                 'partners.title': 'For Partners',
