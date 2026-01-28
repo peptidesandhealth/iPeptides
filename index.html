@@ -1463,71 +1463,49 @@
             }
         }
 
-        /* Mobile: Premium horizontal carousel - 1 card + peek */
+        /* Principles Grid - 2 columns mobile, 3 columns desktop */
         .principles-grid {
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 16px;
-            margin: 0 calc(-1 * var(--container-padding));
-            padding-left: var(--container-padding);
-            padding-right: 15vw;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
 
-        .principles-grid::-webkit-scrollbar {
-            display: none;
-        }
-
-        .principles-grid {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        /* Third card spans full width and centers on mobile */
+        .principles-grid .principle-card-premium:nth-child(3) {
+            grid-column: 1 / -1;
+            max-width: 280px;
+            justify-self: center;
         }
 
         @media (min-width: 768px) {
             .principles-grid {
-                display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 gap: 24px;
-                overflow-x: visible;
-                margin: 0;
-                padding-left: 0;
-                padding-right: 0;
-                padding-bottom: 0;
+            }
+
+            .principles-grid .principle-card-premium:nth-child(3) {
+                grid-column: auto;
+                max-width: none;
+                justify-self: auto;
             }
         }
 
-        /* Premium Glass Card - Mobile: Large single card */
+        /* Premium Glass Card - Unified style */
         .principle-card-premium {
             position: relative;
-            background: rgba(255, 255, 255, 0.55);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.45);
-            border-radius: 22px;
-            padding: 24px 20px;
+            background: rgba(255, 255, 255, 0.62);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(165, 196, 212, 0.22);
+            border-radius: 16px;
+            padding: 20px 16px;
             text-align: center;
-            box-shadow:
-                0 8px 28px rgba(165, 196, 212, 0.15),
-                0 2px 8px rgba(0, 0, 0, 0.04),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6);
-            /* Mobile carousel: 80vw width for 1 card + peek */
-            width: 80vw;
-            min-width: 280px;
-            max-width: 320px;
-            flex-shrink: 0;
-            scroll-snap-align: start;
+            box-shadow: 0 2px 12px rgba(110, 140, 160, 0.08);
             /* Premium reveal animation */
             opacity: 0;
-            transform: translateY(24px);
-            filter: blur(4px);
-            transition:
-                opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.35s ease,
-                border-color 0.35s ease;
+            transform: translateY(12px);
+            filter: blur(3px);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .principle-card-premium.revealed {
@@ -1538,38 +1516,41 @@
 
         /* Staggered reveal delays */
         .principle-card-premium:nth-child(1) { transition-delay: 0s; }
-        .principle-card-premium:nth-child(2) { transition-delay: 0.12s; }
-        .principle-card-premium:nth-child(3) { transition-delay: 0.24s; }
+        .principle-card-premium:nth-child(2) { transition-delay: 0.08s; }
+        .principle-card-premium:nth-child(3) { transition-delay: 0.16s; }
 
         @media (min-width: 768px) {
             .principle-card-premium {
-                padding: 40px 32px;
-                border-radius: 28px;
-                width: auto;
-                min-width: auto;
-                max-width: none;
-                box-shadow:
-                    0 8px 32px rgba(165, 196, 212, 0.15),
-                    0 2px 8px rgba(0, 0, 0, 0.04),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+                padding: 32px 24px;
+                border-radius: 18px;
             }
         }
 
-        /* Premium hover effect - PC only */
-        @media (hover: hover) {
-            .principle-card-premium:hover {
-                transform: translateY(-8px);
-                box-shadow:
-                    0 20px 48px rgba(165, 196, 212, 0.22),
-                    0 8px 24px rgba(90, 122, 138, 0.1),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-                border-color: rgba(255, 255, 255, 0.6);
+        @media (min-width: 1024px) {
+            .principle-card-premium {
+                padding: 36px 28px;
+                border-radius: 20px;
             }
+        }
 
-            .principle-card-premium:hover .principle-icon {
-                transform: scale(1.1);
-                opacity: 1;
-            }
+        /* Hover state - subtle lift */
+        .principle-card-premium:hover {
+            background: rgba(255, 255, 255, 0.72);
+            border-color: rgba(165, 196, 212, 0.32);
+            box-shadow: 0 4px 18px rgba(110, 140, 160, 0.12);
+            transform: translateY(-3px);
+        }
+
+        .principle-card-premium:hover .principle-icon {
+            transform: scale(1.08);
+            opacity: 1;
+        }
+
+        /* Active state - premium steel-blue tint */
+        .principle-card-premium:active,
+        .principle-card-premium.active {
+            background: rgba(165, 196, 212, 0.25);
+            border-color: rgba(139, 175, 194, 0.4);
         }
 
         /* Icon */
@@ -1627,42 +1608,17 @@
             }
         }
 
-        /* Pagination dots - Mobile only */
+        /* Pagination dots - Hidden (grid layout used instead of carousel) */
         .principles-dots {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 16px;
+            display: none;
         }
 
-        .principles-dots .dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(165, 196, 212, 0.35);
-            transition: all 0.3s ease;
-        }
-
-        .principles-dots .dot.active {
-            background: var(--ice-flow-deep);
-            width: 24px;
-            border-radius: 4px;
-        }
-
-        @media (min-width: 768px) {
-            .principles-dots {
-                display: none;
-            }
-        }
-
-        /* Disable hover on touch */
+        /* Disable hover effects on touch devices */
         @media (hover: none) {
             .principle-card-premium:hover {
                 transform: none;
-                box-shadow:
-                    0 8px 28px rgba(165, 196, 212, 0.15),
-                    0 2px 8px rgba(0, 0, 0, 0.04),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+                background: rgba(255, 255, 255, 0.62);
+                box-shadow: 0 2px 12px rgba(110, 140, 160, 0.08);
             }
         }
 
