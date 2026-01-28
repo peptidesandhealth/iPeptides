@@ -849,6 +849,12 @@
             height: 100%;
             object-fit: cover;
             z-index: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .hero-video.is-ready {
+            opacity: 1;
         }
 
         .hero-content {
@@ -1175,6 +1181,12 @@
             height: 100%;
             object-fit: cover;
             z-index: 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .shared-video-wrap .video-bg.is-ready {
+            opacity: 1;
         }
 
         .shared-video-wrap .shared-content {
@@ -3613,7 +3625,7 @@
 
     <!-- Hero -->
     <section class="hero">
-        <video class="hero-video" autoplay muted loop playsinline>
+        <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" poster="fotofon.jpeg">
             <source src="hero.mp4" type="video/mp4">
         </video>
         <div class="hero-content">
@@ -3890,8 +3902,8 @@
     <!-- Shared Video Background Wrapper: Production + Quality Control -->
     <div class="shared-video-wrap">
         <!-- Video Background -->
-        <video class="video-bg" autoplay muted loop playsinline preload="metadata" poster="fondoverie.jpeg">
-            <source src="fon1.mp4" type="video/mp4">
+        <video id="sharedVideoBg" class="video-bg" muted loop playsinline preload="none" poster="fondoverie.jpeg">
+            <source data-src="fon1.mp4" type="video/mp4">
         </video>
         <!-- Content -->
         <div class="shared-content">
@@ -4213,6 +4225,79 @@
     </div>
 
     <script>
+        // ============================================
+        // VIDEO LOADING - Prevent flash of wrong video
+        // ============================================
+
+        // Hero video - show when ready
+        const heroVideo = document.getElementById('heroVideo');
+        if (heroVideo) {
+            const showHeroVideo = () => {
+                heroVideo.classList.add('is-ready');
+            };
+
+            // Check if already ready (cached)
+            if (heroVideo.readyState >= 3) {
+                showHeroVideo();
+            } else {
+                heroVideo.addEventListener('canplay', showHeroVideo, { once: true });
+            }
+        }
+
+        // Shared video (Production/Quality) - lazy load with IntersectionObserver
+        const sharedVideo = document.getElementById('sharedVideoBg');
+        if (sharedVideo) {
+            let sharedVideoLoaded = false;
+
+            const loadSharedVideo = () => {
+                if (sharedVideoLoaded) return;
+                sharedVideoLoaded = true;
+
+                const source = sharedVideo.querySelector('source[data-src]');
+                if (source) {
+                    source.src = source.dataset.src;
+                    sharedVideo.load();
+                    sharedVideo.play().catch(() => {});
+
+                    const showSharedVideo = () => {
+                        sharedVideo.classList.add('is-ready');
+                    };
+
+                    if (sharedVideo.readyState >= 3) {
+                        showSharedVideo();
+                    } else {
+                        sharedVideo.addEventListener('canplay', showSharedVideo, { once: true });
+                    }
+                }
+            };
+
+            // Use IntersectionObserver for lazy loading
+            if ('IntersectionObserver' in window) {
+                const videoObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            loadSharedVideo();
+                            videoObserver.disconnect();
+                        }
+                    });
+                }, {
+                    rootMargin: '300px 0px',
+                    threshold: 0
+                });
+
+                videoObserver.observe(sharedVideo.closest('.shared-video-wrap') || sharedVideo);
+            } else {
+                // Fallback: load after hero video is ready
+                if (heroVideo) {
+                    heroVideo.addEventListener('canplay', () => {
+                        setTimeout(loadSharedVideo, 1000);
+                    }, { once: true });
+                } else {
+                    setTimeout(loadSharedVideo, 2000);
+                }
+            }
+        }
+
         // Header scroll effect
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
