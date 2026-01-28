@@ -1146,70 +1146,6 @@
         }
 
         /* ============================================
-           WHY iPEPTIDES SECTION
-           ============================================ */
-        .why-section {
-            background: var(--bg-white);
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        @media (min-width: 768px) {
-            .why-grid {
-                gap: 20px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .why-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        .why-card {
-            padding: 20px 16px;
-            cursor: pointer;
-        }
-
-        .why-card .icon-badge {
-            margin-bottom: 14px;
-        }
-
-        .why-card .card-title {
-            font-size: 0.875rem;
-            margin-bottom: 6px;
-        }
-
-        .why-card .card-text {
-            font-size: 0.75rem;
-            line-height: 1.45;
-            display: none;
-        }
-
-        /* Mobile: show text on tap */
-        .why-card.expanded .card-text {
-            display: block;
-            margin-top: 8px;
-        }
-
-        @media (min-width: 768px) {
-            .why-card {
-                padding: 24px 20px;
-            }
-            .why-card .card-title {
-                font-size: 1rem;
-            }
-            .why-card .card-text {
-                display: block;
-                font-size: 0.8125rem;
-            }
-        }
-
-        /* ============================================
            INFRASTRUCTURE SECTION
            ============================================ */
         .infra-section {
@@ -2506,7 +2442,6 @@
         <nav class="dropdown-menu" id="dropdownMenu">
             <a href="#directions" data-i18n="nav.directions">Направления</a>
             <a href="#principles" data-i18n="nav.principles">Принципы</a>
-            <a href="#why" data-i18n="nav.why">Почему мы</a>
             <a href="#infrastructure" data-i18n="nav.infrastructure">Инфраструктура</a>
             <a href="#process" data-i18n="nav.process">Процесс</a>
             <a href="#production" data-i18n="nav.production">Производство</a>
@@ -2613,50 +2548,6 @@
                     <button class="dot active" data-index="0"></button>
                     <button class="dot" data-index="1"></button>
                     <button class="dot" data-index="2"></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why iPEPTIDES Section -->
-    <section id="why" class="why-section">
-        <div class="container">
-            <div class="section-header center reveal">
-                <span class="section-overline" data-i18n="why.overline">ПОЧЕМУ iPEPTIDES</span>
-                <div class="section-tags">
-                    <span data-i18n="why.tag1">Стабильность</span>
-                    <span data-i18n="why.tag2">Партнёрство</span>
-                    <span data-i18n="why.tag3">Поддержка</span>
-                </div>
-            </div>
-            <div class="why-grid">
-                <div class="card why-card reveal-card" data-expandable>
-                    <div class="icon-badge">
-                        <svg class="icon"><use href="assets/icons.svg#icon-layers-check"></use></svg>
-                    </div>
-                    <h3 class="card-title" data-i18n="why.card1.title">Повторяемость партии</h3>
-                    <p class="card-text" data-i18n="why.card1.text">Стабильные параметры и контроль качества.</p>
-                </div>
-                <div class="card why-card reveal-card" data-expandable>
-                    <div class="icon-badge">
-                        <svg class="icon"><use href="assets/icons.svg#icon-calendar-check"></use></svg>
-                    </div>
-                    <h3 class="card-title" data-i18n="why.card2.title">Коммерческая надёжность</h3>
-                    <p class="card-text" data-i18n="why.card2.text">Предсказуемые сроки и условия.</p>
-                </div>
-                <div class="card why-card reveal-card" data-expandable>
-                    <div class="icon-badge">
-                        <svg class="icon"><use href="assets/icons.svg#icon-file-check"></use></svg>
-                    </div>
-                    <h3 class="card-title" data-i18n="why.card3.title">Документация</h3>
-                    <p class="card-text" data-i18n="why.card3.text">Материалы и подтверждения по запросу.</p>
-                </div>
-                <div class="card why-card reveal-card" data-expandable>
-                    <div class="icon-badge">
-                        <svg class="icon"><use href="assets/icons.svg#icon-handshake"></use></svg>
-                    </div>
-                    <h3 class="card-title" data-i18n="why.card4.title">Форматы сотрудничества</h3>
-                    <p class="card-text" data-i18n="why.card4.text">B2B, проф-сегмент, private label, e-commerce.</p>
                 </div>
             </div>
         </div>
@@ -3548,7 +3439,6 @@
             ru: {
                 'nav.directions': 'Направления',
                 'nav.principles': 'Принципы',
-                'nav.why': 'Почему мы',
                 'nav.infrastructure': 'Инфраструктура',
                 'nav.process': 'Процесс',
                 'nav.production': 'Производство',
@@ -3574,18 +3464,6 @@
                 'principles.card2.text': 'Повторяемость характеристик партии и прозрачность процессов.',
                 'principles.card3.title': 'Партнёрство',
                 'principles.card3.text': 'Гибкие форматы работы и сопровождение под задачи бизнеса.',
-                'why.overline': 'ПОЧЕМУ iPEPTIDES',
-                'why.tag1': 'Стабильность',
-                'why.tag2': 'Партнёрство',
-                'why.tag3': 'Поддержка',
-                'why.card1.title': 'Повторяемость партии',
-                'why.card1.text': 'Стабильные параметры и контроль качества.',
-                'why.card2.title': 'Коммерческая надёжность',
-                'why.card2.text': 'Предсказуемые сроки и условия.',
-                'why.card3.title': 'Документация',
-                'why.card3.text': 'Материалы и подтверждения по запросу.',
-                'why.card4.title': 'Форматы сотрудничества',
-                'why.card4.text': 'B2B, проф-сегмент, private label, e-commerce.',
                 'infra.overline': 'ИНФРАСТРУКТУРА',
                 'infra.tag1': 'Прозрачность',
                 'infra.tag2': 'Логистика',
@@ -3665,7 +3543,6 @@
             en: {
                 'nav.directions': 'Directions',
                 'nav.principles': 'Principles',
-                'nav.why': 'Why Us',
                 'nav.infrastructure': 'Infrastructure',
                 'nav.process': 'Process',
                 'nav.production': 'Production',
@@ -3691,18 +3568,6 @@
                 'principles.card2.text': 'Batch reproducibility and process transparency.',
                 'principles.card3.title': 'Partnership',
                 'principles.card3.text': 'Flexible formats and support for business needs.',
-                'why.overline': 'WHY iPEPTIDES',
-                'why.tag1': 'Stability',
-                'why.tag2': 'Partnership',
-                'why.tag3': 'Support',
-                'why.card1.title': 'Batch Reproducibility',
-                'why.card1.text': 'Stable parameters and quality control.',
-                'why.card2.title': 'Commercial Reliability',
-                'why.card2.text': 'Predictable timelines and terms.',
-                'why.card3.title': 'Documentation',
-                'why.card3.text': 'Materials and confirmations on request.',
-                'why.card4.title': 'Cooperation Formats',
-                'why.card4.text': 'B2B, professional segment, private label, e-commerce.',
                 'infra.overline': 'INFRASTRUCTURE',
                 'infra.tag1': 'Transparency',
                 'infra.tag2': 'Logistics',
