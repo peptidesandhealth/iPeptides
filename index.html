@@ -1963,9 +1963,9 @@
             padding-top: 40px;
             padding-bottom: 40px;
             background:
-                radial-gradient(900px 500px at 50% 35%, rgba(255,255,255,0.55), rgba(255,255,255,0) 60%),
-                radial-gradient(700px 420px at 20% 65%, rgba(210,220,230,0.35), rgba(210,220,230,0) 60%),
-                linear-gradient(to bottom, #e7ecef 0%, #cfd7dd 55%, #b8c1c9 100%);
+                radial-gradient(800px 400px at 30% 20%, rgba(255,255,255,0.08), transparent 50%),
+                radial-gradient(600px 350px at 70% 80%, rgba(0,0,0,0.15), transparent 50%),
+                linear-gradient(to bottom, #8a9baa 0%, #7a8a9a 40%, #6a7a8a 100%);
         }
 
         @media (min-width: 768px) {
@@ -1982,27 +1982,38 @@
             }
         }
 
-        /* Soft haze overlay */
-        .partnership-section::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            pointer-events: none;
-            background: radial-gradient(1200px 700px at 50% 50%, rgba(0,0,0,0.04), rgba(0,0,0,0) 55%);
-            opacity: 0.7;
-        }
-
-        /* Text colors for foggy background */
+        /* Text colors for dark background */
         .partnership-section .section-overline {
-            color: #3a4a5a;
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        .partnership-section .section-tags span {
-            color: #4a5a6a;
+        .partnership-section .benefit-title {
+            color: rgba(255, 255, 255, 0.95);
         }
 
-        .partnership-section .section-tags span:not(:first-child)::before {
-            color: #6a7a8a;
+        .partnership-section .benefit-text {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .partnership-section .benefit-icon {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .partnership-section .benefit-icon svg {
+            stroke: rgba(255, 255, 255, 0.8);
+        }
+
+        .partnership-section .benefit-item {
+            border-bottom-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .partnership-section .benefit-item.active {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .partnership-section .benefit-chevron svg {
+            stroke: rgba(255, 255, 255, 0.6);
         }
 
         /* Two-Column Layout Container */
