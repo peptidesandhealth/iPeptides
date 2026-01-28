@@ -1435,202 +1435,6 @@
             color: rgba(165, 196, 212, 0.5);
         }
 
-        /* Facts Grid */
-        .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-        }
-
-        @media (min-width: 480px) {
-            .facts-grid {
-                gap: 12px;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .facts-grid {
-                gap: 16px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .facts-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
-        }
-
-        /* Fact Tile - Premium with equal height & vertical centering */
-        .fact-tile {
-            padding: 16px 14px;
-            background: var(--bg-accent);
-            border: 1px solid rgba(165, 196, 212, 0.2);
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            min-height: 100px;
-            /* Premium reveal animation initial state */
-            opacity: 0;
-            transform: translateY(24px);
-            filter: blur(4px);
-            transition:
-                opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                filter 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.3s ease,
-                border-color 0.3s ease;
-        }
-
-        .fact-tile.revealed {
-            opacity: 1;
-            transform: translateY(0);
-            filter: blur(0);
-        }
-
-        /* Staggered reveal delays */
-        .fact-tile:nth-child(1) { transition-delay: 0s; }
-        .fact-tile:nth-child(2) { transition-delay: 0.08s; }
-        .fact-tile:nth-child(3) { transition-delay: 0.16s; }
-        .fact-tile:nth-child(4) { transition-delay: 0.24s; }
-        .fact-tile:nth-child(5) { transition-delay: 0.32s; }
-        .fact-tile:nth-child(6) { transition-delay: 0.4s; }
-
-        @media (min-width: 480px) {
-            .fact-tile {
-                padding: 18px 16px;
-                min-height: 110px;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .fact-tile {
-                padding: 24px 20px;
-                min-height: 130px;
-                border-radius: 14px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .fact-tile {
-                padding: 28px 24px;
-                min-height: 140px;
-            }
-        }
-
-        /* Premium hover effect - PC only */
-        @media (hover: hover) {
-            .fact-tile:hover {
-                transform: translateY(-6px);
-                box-shadow:
-                    0 12px 32px rgba(165, 196, 212, 0.2),
-                    0 4px 12px rgba(90, 122, 138, 0.08);
-                border-color: rgba(165, 196, 212, 0.35);
-            }
-        }
-
-        .fact-tile-title {
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 4px;
-            line-height: 1.3;
-        }
-
-        @media (min-width: 480px) {
-            .fact-tile-title {
-                font-size: 0.875rem;
-                margin-bottom: 5px;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .fact-tile-title {
-                font-size: 0.9375rem;
-                margin-bottom: 6px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .fact-tile-title {
-                font-size: 1rem;
-            }
-        }
-
-        .fact-tile-text {
-            font-size: 0.6875rem;
-            color: var(--text-secondary);
-            line-height: 1.45;
-        }
-
-        @media (min-width: 480px) {
-            .fact-tile-text {
-                font-size: 0.75rem;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .fact-tile-text {
-                font-size: 0.8125rem;
-                line-height: 1.5;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .fact-tile-text {
-                font-size: 0.875rem;
-            }
-        }
-
-        /* Fact Tile Icon - Premium Metallic */
-        .fact-tile-icon {
-            width: 18px;
-            height: 18px;
-            margin-bottom: 8px;
-            opacity: 0.85;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .fact-tile-icon svg {
-            width: 100%;
-            height: 100%;
-        }
-
-        @media (min-width: 480px) {
-            .fact-tile-icon {
-                width: 20px;
-                height: 20px;
-                margin-bottom: 10px;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .fact-tile-icon {
-                width: 22px;
-                height: 22px;
-                margin-bottom: 12px;
-            }
-        }
-
-        /* Icon hover glow effect - PC only */
-        @media (hover: hover) {
-            .fact-tile:hover .fact-tile-icon {
-                opacity: 1;
-                transform: scale(1.08);
-            }
-        }
-
-        /* Disable hover on touch */
-        @media (hover: none) {
-            .fact-tile:hover {
-                transform: none;
-                box-shadow: none;
-            }
-        }
-
         /* ============================================
            PRINCIPLES SECTION - Premium Glassmorphism
            ============================================ */
@@ -2987,136 +2791,198 @@
         }
 
         /* ============================================
-           FOOTER - Premium Glass Panel
+           DIRECTIONS SLIDER - Premium Glass Card
            ============================================ */
-        .footer {
-            background: linear-gradient(180deg, rgba(255,255,255,0.65) 0%, rgba(248,250,252,0.85) 100%);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-top: 1px solid rgba(139, 175, 194, 0.15);
-            padding: 20px 0;
+        .slider-glass-card {
             position: relative;
+            max-width: 960px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(165, 196, 212, 0.22);
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(110, 140, 160, 0.1);
+            overflow: hidden;
         }
 
-        .footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent 0%, rgba(139, 175, 194, 0.3) 50%, transparent 100%);
-        }
-
-        .footer-inner {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-            text-align: center;
-        }
-
-        @media (min-width: 768px) {
-            .footer-inner {
-                grid-template-columns: auto auto 1fr;
-                gap: 24px;
-                align-items: center;
-                text-align: left;
-            }
-        }
-
-        /* Footer Contact Link */
-        .footer-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.8125rem;
-            font-weight: 500;
-            color: var(--text-dark);
-            text-decoration: none;
-            transition: all var(--transition-fast);
-            padding: 6px 0;
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            border-radius: 20px;
         }
 
         @media (min-width: 768px) {
-            .footer-link {
-                justify-content: flex-start;
-            }
-
-            .footer-link.telegram {
-                justify-content: center;
-            }
+            .slider-container { height: 380px; }
+            .slider-glass-card { border-radius: 24px; }
         }
 
-        .footer-link:hover {
-            color: var(--ice-flow-dark);
+        @media (min-width: 1024px) {
+            .slider-container { height: 460px; }
         }
 
-        .footer-link:hover .footer-icon {
-            color: var(--ice-flow-dark);
-            transform: scale(1.05);
+        .slider-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .footer-icon {
-            width: 15px;
-            height: 15px;
-            color: var(--ice-flow);
-            flex-shrink: 0;
-            transition: all var(--transition-fast);
+        .slider-slide {
+            min-width: 100%;
+            height: 100%;
         }
 
-        .footer-icon svg {
+        .slider-slide img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Slider Arrows */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(165, 196, 212, 0.25);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            z-index: 3;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .slider-arrow:hover {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+
+        .slider-arrow:active {
+            background: rgba(165, 196, 212, 0.25);
+        }
+
+        .slider-arrow svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text-dark);
+            stroke-width: 2;
             fill: none;
-            stroke: currentColor;
-            stroke-width: 1.75;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
 
-        /* Footer Legal */
-        .footer-legal {
+        .slider-prev { left: 12px; }
+        .slider-next { right: 12px; }
+
+        @media (max-width: 767px) {
+            .slider-arrow { width: 34px; height: 34px; }
+            .slider-arrow svg { width: 16px; height: 16px; }
+            .slider-prev { left: 8px; }
+            .slider-next { right: 8px; }
+        }
+
+        /* Slider Dots */
+        .slider-dots {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 0;
+        }
+
+        .slider-dots .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(165, 196, 212, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .slider-dots .dot.active {
+            background: var(--ice-flow-deep);
+            transform: scale(1.15);
+        }
+
+        /* ============================================
+           FOOTER - Premium Inline
+           ============================================ */
+        .footer-inline {
+            background: linear-gradient(180deg, rgba(255,255,255,0.65) 0%, rgba(248,250,252,0.85) 100%);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-top: 1px solid rgba(139, 175, 194, 0.15);
+            padding: 16px 0;
+            position: relative;
+        }
+
+        .footer-inline::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(139, 175, 194, 0.3) 50%, transparent 100%);
+        }
+
+        .footer-line {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             align-items: center;
-            gap: 4px;
-            text-align: center;
-        }
-
-        @media (min-width: 768px) {
-            .footer-legal {
-                align-items: flex-end;
-                text-align: right;
-            }
-        }
-
-        .footer-copyright {
-            font-size: 0.6875rem;
-            font-weight: 500;
+            gap: 4px 0;
+            font-size: 0.75rem;
             color: var(--text-secondary);
-            letter-spacing: 0.08em;
-            line-height: 1.4;
+            text-align: center;
+            line-height: 1.6;
         }
 
-        .footer-disclaimer {
-            font-size: 0.625rem;
+        .footer-link-inline {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link-inline:hover {
+            color: var(--ice-flow-dark);
+        }
+
+        .footer-sep {
+            margin: 0 8px;
+            color: rgba(139, 175, 194, 0.5);
+        }
+
+        .footer-copy {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .footer-disclaimer-inline {
+            font-size: 0.6875rem;
             color: var(--text-light);
-            line-height: 1.5;
-            max-width: 280px;
             opacity: 0.85;
         }
 
-        @media (min-width: 768px) {
-            .footer-disclaimer {
-                max-width: 320px;
+        @media (max-width: 767px) {
+            .footer-line {
                 font-size: 0.6875rem;
             }
-        }
-
-        @media (min-width: 1024px) {
-            .footer-disclaimer {
-                max-width: none;
+            .footer-sep-legal {
+                display: none;
+            }
+            .footer-disclaimer-inline {
+                display: block;
+                width: 100%;
+                margin-top: 4px;
+                font-size: 0.625rem;
             }
         }
 
@@ -3413,201 +3279,6 @@
         .production-column-right,
         .production-list {
             display: contents;
-        }
-
-        /* ============================================
-           WHY IPEPTIDES - Premium Compact Apple-style
-           ============================================ */
-        .why-premium {
-            position: relative;
-            background: linear-gradient(135deg, #f5faff 0%, #e8f2f8 100%);
-            overflow: hidden;
-        }
-
-        /* Video background for Why section */
-        .why-premium .video-bg-why {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-
-        /* Content above video */
-        .why-premium .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .why-premium .section-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        @media (min-width: 768px) {
-            .why-premium .section-header {
-                margin-bottom: 40px;
-            }
-        }
-
-        /* Glass Panel Container - enhanced for video background */
-        .why-glass-panel {
-            max-width: 680px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.82);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(110, 140, 160, 0.28);
-            border-radius: 24px;
-            padding: 0;
-            box-shadow:
-                0 8px 32px rgba(110, 140, 160, 0.15),
-                0 2px 8px rgba(0, 0, 0, 0.06);
-            opacity: 0;
-            transform: translateY(16px);
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
-                        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .why-glass-panel.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Compact List Item */
-        .why-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            padding: 18px 20px;
-            transition: background 0.25s ease;
-        }
-
-        .why-item:not(:last-child) {
-            border-bottom: 1px solid rgba(165, 196, 212, 0.15);
-        }
-
-        .why-item:first-child {
-            border-radius: 24px 24px 0 0;
-        }
-
-        .why-item:last-child {
-            border-radius: 0 0 24px 24px;
-        }
-
-        .why-item:only-child {
-            border-radius: 24px;
-        }
-
-        /* Compact Icon */
-        .why-item-icon {
-            flex-shrink: 0;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(165, 196, 212, 0.14) 0%, rgba(165, 196, 212, 0.06) 100%);
-            border-radius: 9px;
-            margin-top: 2px;
-        }
-
-        .why-item-icon svg {
-            width: 16px;
-            height: 16px;
-            stroke: var(--ice-flow-deep);
-            stroke-width: 1.75;
-            fill: none;
-        }
-
-        /* Item Content */
-        .why-item-content {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .why-item-title {
-            font-size: 0.9375rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 3px;
-            letter-spacing: -0.01em;
-            line-height: 1.35;
-        }
-
-        .why-item-text {
-            font-size: 0.8125rem;
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        /* Tablet/Desktop adjustments */
-        @media (min-width: 768px) {
-            .why-glass-panel {
-                max-width: 600px;
-                border-radius: 28px;
-            }
-
-            .why-item {
-                gap: 16px;
-                padding: 20px 28px;
-            }
-
-            .why-item:first-child {
-                border-radius: 28px 28px 0 0;
-            }
-
-            .why-item:last-child {
-                border-radius: 0 0 28px 28px;
-            }
-
-            .why-item:only-child {
-                border-radius: 28px;
-            }
-
-            .why-item-icon {
-                width: 36px;
-                height: 36px;
-                border-radius: 10px;
-            }
-
-            .why-item-icon svg {
-                width: 18px;
-                height: 18px;
-            }
-
-            .why-item-title {
-                font-size: 1rem;
-                margin-bottom: 4px;
-            }
-
-            .why-item-text {
-                font-size: 0.875rem;
-            }
-
-            .why-item:hover {
-                background: rgba(165, 196, 212, 0.06);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .why-glass-panel {
-                max-width: 640px;
-            }
-
-            .why-item {
-                padding: 22px 32px;
-            }
-
-            .why-item-title {
-                font-size: 1.0625rem;
-            }
-
-            .why-item-text {
-                font-size: 0.9375rem;
-            }
         }
 
         /* ============================================
@@ -3927,13 +3598,11 @@
 
         <!-- Dropdown Menu -->
         <nav class="dropdown-menu" id="dropdownMenu">
-            <a href="#about" data-i18n="nav.about">О компании</a>
+            <a href="#directions" data-i18n="nav.directions">Направления</a>
             <a href="#principles" data-i18n="nav.principles">Принципы</a>
             <a href="#scale" data-i18n="nav.scale">Инфраструктура</a>
             <a href="#how" data-i18n="nav.process">Процесс</a>
-            <a href="#quality" data-i18n="nav.quality">Качество</a>
             <a href="#production" data-i18n="nav.production">Производство</a>
-            <a href="#why" data-i18n="nav.why">Почему мы</a>
             <a href="#partners" data-i18n="nav.partners">Партнёрам</a>
             <a href="#partnership" data-i18n="nav.cooperation">Сотрудничество</a>
         </nav>
@@ -3963,97 +3632,32 @@
         </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="bg-white">
+    <!-- Наши направления - Premium Slider -->
+    <section id="directions" class="bg-white">
         <div class="container">
             <div class="section-header center reveal">
-                <h2 class="section-overlay" data-i18n="about.title">О компании</h2>
+                <h2 class="section-overlay" data-i18n="directions.title">Наши направления</h2>
                 <div class="section-principles">
-                    <span data-i18n="about.tag1">Производство</span>
-                    <span data-i18n="about.tag2">Документация</span>
-                    <span data-i18n="about.tag3">Логистика</span>
+                    <span data-i18n="directions.tag1">Пептиды</span>
+                    <span data-i18n="directions.tag2">Комплексы</span>
+                    <span data-i18n="directions.tag3">Косметология</span>
+                    <span data-i18n="directions.tag4">Метаболизм</span>
+                    <span data-i18n="directions.tag5">Иммунитет</span>
+                    <span data-i18n="directions.tag6">Сон/Стресс</span>
                 </div>
             </div>
-
-            <div class="facts-grid reveal">
-                <div class="fact-tile">
-                    <div class="fact-tile-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M2 12h20"/>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                        </svg>
-                    </div>
-                    <h3 class="fact-tile-title" data-i18n="about.fact1.title">B2B-поставки</h3>
-                    <p class="fact-tile-text" data-i18n="about.fact1.text">Россия и международные направления</p>
+            <div class="slider-glass-card">
+                <div class="slider-container" id="directionsSlider">
+                    <div class="slider-track" id="sliderTrack"></div>
                 </div>
-                <div class="fact-tile">
-                    <div class="fact-tile-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>
-                            <path d="M21 21l-4.35-4.35"/>
-                            <path d="M11 8v6"/>
-                            <path d="M8 11h6"/>
-                        </svg>
-                    </div>
-                    <h3 class="fact-tile-title" data-i18n="about.fact2.title">Прослеживаемость партии</h3>
-                    <p class="fact-tile-text" data-i18n="about.fact2.text">Сопровождение по запросу партнёра</p>
-                </div>
-                <div class="fact-tile">
-                    <div class="fact-tile-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="3"/>
-                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-                        </svg>
-                    </div>
-                    <h3 class="fact-tile-title" data-i18n="about.fact3.title">Производственный цикл</h3>
-                    <p class="fact-tile-text" data-i18n="about.fact3.text">Стандартизация ключевых этапов</p>
-                </div>
-                <div class="fact-tile">
-                    <div class="fact-tile-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                            <path d="M9 12l2 2 4-4"/>
-                        </svg>
-                    </div>
-                    <h3 class="fact-tile-title" data-i18n="about.fact4.title">Системный контроль</h3>
-                    <p class="fact-tile-text" data-i18n="about.fact4.text">Параметры партии перед отгрузкой</p>
-                </div>
-                <div class="fact-tile">
-                    <div class="fact-tile-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-                            <line x1="12" y1="22.08" x2="12" y2="12"/>
-                        </svg>
-                    </div>
-                    <h3 class="fact-tile-title" data-i18n="about.fact5.title">Упаковка и маркировка</h3>
-                    <p class="fact-tile-text" data-i18n="about.fact5.text">Под требования партнёров</p>
-                </div>
-                <div class="fact-tile">
-                    <div class="fact-tile-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="url(#metallic-gradient)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                    </div>
-                    <h3 class="fact-tile-title" data-i18n="about.fact6.title">Партнёрский формат</h3>
-                    <p class="fact-tile-text" data-i18n="about.fact6.text">Долгосрочные условия</p>
-                </div>
+                <button class="slider-arrow slider-prev" id="sliderPrev" aria-label="Previous">
+                    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button class="slider-arrow slider-next" id="sliderNext" aria-label="Next">
+                    <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+                </button>
+                <div class="slider-dots" id="sliderDots"></div>
             </div>
-
-            <!-- SVG Gradient Definition -->
-            <svg width="0" height="0" style="position:absolute">
-                <defs>
-                    <linearGradient id="metallic-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#8FA7B8"/>
-                        <stop offset="50%" style="stop-color:#6E8A9A"/>
-                        <stop offset="100%" style="stop-color:#5E7788"/>
-                    </linearGradient>
-                </defs>
-            </svg>
         </div>
     </section>
 
@@ -4125,9 +3729,9 @@
                 <div class="section-header center reveal">
                     <h2 class="section-overlay on-dark" data-i18n="scale.title">Инфраструктура</h2>
                     <div class="section-principles on-dark">
-                        <span data-i18n="scale.tag1">Надёжность</span>
-                        <span data-i18n="scale.tag2">Прозрачность</span>
-                        <span data-i18n="scale.tag3">Логистика</span>
+                        <span data-i18n="scale.tag1">Прозрачность</span>
+                        <span data-i18n="scale.tag2">Логистика</span>
+                        <span data-i18n="scale.tag3">Масштаб</span>
                     </div>
                 </div>
             </div>
@@ -4143,7 +3747,7 @@
                     </div>
                     <div class="infra-card-content">
                         <h3 class="infra-card-title" data-i18n="scale.card1.title">География поставок</h3>
-                        <p class="infra-card-text" data-i18n="scale.card1.text">Логистика под задачи партнёров.</p>
+                        <p class="infra-card-text" data-i18n="scale.card1.text">Россия и международные направления</p>
                         <p class="infra-card-details" data-i18n="scale.card1.details">Выстроенные маршруты и регулярные отгрузки в нужные регионы.</p>
                     </div>
                     <svg class="infra-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -4160,7 +3764,7 @@
                     </div>
                     <div class="infra-card-content">
                         <h3 class="infra-card-title" data-i18n="scale.card2.title">B2B-инфраструктура</h3>
-                        <p class="infra-card-text" data-i18n="scale.card2.text">Процессы в едином стандарте.</p>
+                        <p class="infra-card-text" data-i18n="scale.card2.text">Процессы в едином стандарте</p>
                         <p class="infra-card-details" data-i18n="scale.card2.details">Упаковка, маркировка и сопровождение по корпоративным требованиям.</p>
                     </div>
                     <svg class="infra-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -4176,7 +3780,7 @@
                     </div>
                     <div class="infra-card-content">
                         <h3 class="infra-card-title" data-i18n="scale.card3.title">Контроль партии</h3>
-                        <p class="infra-card-text" data-i18n="scale.card3.text">Повторяемость параметров.</p>
+                        <p class="infra-card-text" data-i18n="scale.card3.text">Повторяемость параметров</p>
                         <p class="infra-card-details" data-i18n="scale.card3.details">Контроль характеристик от партии к партии — стабильный результат.</p>
                     </div>
                     <svg class="infra-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -4194,7 +3798,7 @@
                     </div>
                     <div class="infra-card-content">
                         <h3 class="infra-card-title" data-i18n="scale.card4.title">Документация</h3>
-                        <p class="infra-card-text" data-i18n="scale.card4.text">Материалы по запросу.</p>
+                        <p class="infra-card-text" data-i18n="scale.card4.text">Материалы по запросу партнёра</p>
                         <p class="infra-card-details" data-i18n="scale.card4.details">Состав, спецификации, сертификаты — полное сопровождение партии.</p>
                     </div>
                     <svg class="infra-card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -4228,7 +3832,7 @@
                         <h3 class="timeline-title" data-i18n="process.step1.title">Запрос</h3>
                         <span class="timeline-number">01</span>
                     </div>
-                    <p class="timeline-text" data-i18n="process.step1.text">Фиксируем задачу, объёмы и формат поставки.</p>
+                    <p class="timeline-text" data-i18n="process.step1.text">Фиксируем задачу, объёмы и формат.</p>
                 </div>
                 <div class="timeline-card">
                     <div class="timeline-header">
@@ -4242,7 +3846,7 @@
                         <h3 class="timeline-title" data-i18n="process.step2.title">Согласование</h3>
                         <span class="timeline-number">02</span>
                     </div>
-                    <p class="timeline-text" data-i18n="process.step2.text">Подтверждаем сроки, упаковку и логистику.</p>
+                    <p class="timeline-text" data-i18n="process.step2.text">Подтверждаем сроки и спецификацию.</p>
                 </div>
                 <div class="timeline-card">
                     <div class="timeline-header">
@@ -4255,7 +3859,7 @@
                         <h3 class="timeline-title" data-i18n="process.step3.title">Подготовка</h3>
                         <span class="timeline-number">03</span>
                     </div>
-                    <p class="timeline-text" data-i18n="process.step3.text">Контроль партии и готовность к отгрузке.</p>
+                    <p class="timeline-text" data-i18n="process.step3.text">Контроль готовности партии к отгрузке.</p>
                 </div>
                 <div class="timeline-card">
                     <div class="timeline-header">
@@ -4283,7 +3887,7 @@
         </div>
     </section>
 
-    <!-- Shared Video Background Wrapper: Quality + Production -->
+    <!-- Shared Video Background Wrapper: Production + Quality Control -->
     <div class="shared-video-wrap">
         <!-- Video Background -->
         <video class="video-bg" autoplay muted loop playsinline preload="metadata" poster="fondoverie.jpeg">
@@ -4292,10 +3896,37 @@
         <!-- Content -->
         <div class="shared-content">
 
-    <!-- Quality Control - Premium Compact Grid -->
+    <!-- 5A: Production - Premium Compact Grid (first) -->
+    <section id="production" class="production-section compact-section">
+        <div class="container">
+            <div class="section-header center reveal">
+                <h2 class="section-overlay" data-i18n="production.title">Производство</h2>
+                <div class="section-principles">
+                    <span data-i18n="production.tag1">Процессы</span>
+                    <span data-i18n="production.tag2">Воспроизводимость</span>
+                    <span data-i18n="production.tag3">Сроки</span>
+                </div>
+            </div>
+            <div class="unified-cards-grid">
+                <div class="unified-card">
+                    <h3 class="unified-card-title" data-i18n="production.item1">ТЕХНОЛОГИЧЕСКИЕ ЛИНИИ</h3>
+                </div>
+                <div class="unified-card">
+                    <h3 class="unified-card-title" data-i18n="production.item2">СТАНДАРТИЗАЦИЯ ПРОЦЕДУР</h3>
+                </div>
+                <div class="unified-card">
+                    <h3 class="unified-card-title" data-i18n="production.item3">УПАКОВКА И МАРКИРОВКА</h3>
+                </div>
+                <div class="unified-card">
+                    <h3 class="unified-card-title" data-i18n="production.item4">ЛОГИСТИКА И ОТГРУЗКА</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5B: Quality Control - Premium Compact Grid (second) -->
     <section id="quality" class="quality-apple compact-section">
         <div class="container">
-            <!-- Section Header - centered above grid -->
             <div class="section-header center reveal">
                 <h2 class="section-overlay" data-i18n="quality.title">Контроль качества</h2>
                 <div class="section-principles">
@@ -4304,7 +3935,6 @@
                     <span data-i18n="quality.tag3">Соответствие</span>
                 </div>
             </div>
-            <!-- 4 Cards Grid -->
             <div class="unified-cards-grid">
                 <div class="unified-card">
                     <h3 class="unified-card-title" data-i18n="quality.item1">СЫРЬЕ И МАТЕРИАЛЫ</h3>
@@ -4317,36 +3947,6 @@
                 </div>
                 <div class="unified-card">
                     <h3 class="unified-card-title" data-i18n="quality.item4">ХРАНЕНИЕ И ДОСТАВКА</h3>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Production - Premium Compact Grid -->
-    <section id="production" class="production-section compact-section">
-        <div class="container">
-            <!-- Section Header - centered above grid -->
-            <div class="section-header center reveal">
-                <h2 class="section-overlay" data-i18n="production.title">Производство</h2>
-                <div class="section-principles">
-                    <span data-i18n="production.tag1">Процессы</span>
-                    <span data-i18n="production.tag2">Воспроизводимость</span>
-                    <span data-i18n="production.tag3">Сроки</span>
-                </div>
-            </div>
-            <!-- 4 Cards Grid -->
-            <div class="unified-cards-grid">
-                <div class="unified-card">
-                    <h3 class="unified-card-title" data-i18n="production.item1">ТЕХНОЛОГИЧЕСКИЕ ЛИНИИ</h3>
-                </div>
-                <div class="unified-card">
-                    <h3 class="unified-card-title" data-i18n="production.item2">СТАНДАРТИЗАЦИЯ ПРОЦЕССОВ</h3>
-                </div>
-                <div class="unified-card">
-                    <h3 class="unified-card-title" data-i18n="production.item3">УПАКОВКА И МАРКИРОВКА</h3>
-                </div>
-                <div class="unified-card">
-                    <h3 class="unified-card-title" data-i18n="production.item4">ЛОГИСТИКА И СРОКИ</h3>
                 </div>
             </div>
         </div>
@@ -4421,74 +4021,6 @@
                     <button class="dot" data-index="1" aria-label="Card 2"></button>
                     <button class="dot" data-index="2" aria-label="Card 3"></button>
                     <button class="dot" data-index="3" aria-label="Card 4"></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose - Premium Compact Apple-style -->
-    <section id="why" class="why-premium">
-        <!-- Video Background -->
-        <video class="video-bg-why" autoplay muted loop playsinline preload="metadata" poster="fondoverie.jpeg">
-            <source src="fon2.mp4" type="video/mp4">
-        </video>
-        <div class="container">
-            <div class="section-header center reveal">
-                <h2 class="section-overlay" data-i18n="why.title">Почему iPeptides</h2>
-            </div>
-            <div class="why-glass-panel">
-                <div class="why-item">
-                    <div class="why-item-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 17l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 12l10 5 10-5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="why-item-content">
-                        <h3 class="why-item-title" data-i18n="why.item1.title">Повторяемость партии</h3>
-                        <p class="why-item-text" data-i18n="why.item1.text">Стабильные параметры и воспроизводимость результата.</p>
-                    </div>
-                </div>
-                <div class="why-item">
-                    <div class="why-item-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="why-item-content">
-                        <h3 class="why-item-title" data-i18n="why.item2.title">Коммерческая надёжность</h3>
-                        <p class="why-item-text" data-i18n="why.item2.text">Предсказуемые сроки и прозрачные условия работы.</p>
-                    </div>
-                </div>
-                <div class="why-item">
-                    <div class="why-item-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M14 2v6h6" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M10 13a2 2 0 100 4 2 2 0 000-4z" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 15l2 2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="why-item-content">
-                        <h3 class="why-item-title" data-i18n="why.item3.title">Документация и сопровождение</h3>
-                        <p class="why-item-text" data-i18n="why.item3.text">Материалы и подтверждения по запросу партнёра.</p>
-                    </div>
-                </div>
-                <div class="why-item">
-                    <div class="why-item-icon">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="9" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M23 21v-2a4 4 0 00-3-3.87" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M16 3.13a4 4 0 010 7.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="why-item-content">
-                        <h3 class="why-item-title" data-i18n="why.item4.title">Гибкие форматы сотрудничества</h3>
-                        <p class="why-item-text" data-i18n="why.item4.text">B2B-поставки, проф-сегмент, private label и e-commerce.</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -4636,35 +4168,16 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer footer-inline">
         <div class="container">
-            <div class="footer-inner">
-                <!-- Email -->
-                <a href="mailto:contact@ipeptides.com" class="footer-link email">
-                    <span class="footer-icon">
-                        <svg viewBox="0 0 24 24">
-                            <rect x="2" y="4" width="20" height="16" rx="2"/>
-                            <path d="M22 6l-10 7L2 6"/>
-                        </svg>
-                    </span>
-                    contact@ipeptides.com
-                </a>
-
-                <!-- Telegram -->
-                <a href="https://t.me/peptidesandhealth" target="_blank" class="footer-link telegram">
-                    <span class="footer-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M21.2 4.4L2.4 11.1c-.8.3-.8 1.5.1 1.7l4.6 1.4 1.7 5.4c.2.6.9.8 1.4.4l2.4-2 4.6 3.4c.6.4 1.4.1 1.6-.6L22.9 5.5c.2-.9-.6-1.6-1.4-1.3zM8.4 13.6l8.5-5.3-6.5 6.1-.5 3.1-1.5-3.9z"/>
-                        </svg>
-                    </span>
-                    @peptidesandhealth
-                </a>
-
-                <!-- Legal -->
-                <div class="footer-legal">
-                    <p class="footer-copyright">© 2025 iPeptides</p>
-                    <p class="footer-disclaimer" data-i18n="footer.disclaimer">Информация на сайте носит ознакомительный характер. Не является публичной офертой.</p>
-                </div>
+            <div class="footer-line">
+                <a href="mailto:contact@ipeptides.com" class="footer-link-inline">contact@ipeptides.com</a>
+                <span class="footer-sep">•</span>
+                <a href="https://t.me/peptidesandhealth" target="_blank" class="footer-link-inline">Telegram: @peptidesandhealth</a>
+                <span class="footer-sep">•</span>
+                <span class="footer-copy">© iPeptides</span>
+                <span class="footer-sep footer-sep-legal">•</span>
+                <span class="footer-disclaimer-inline" data-i18n="footer.disclaimer">Информация носит ознакомительный характер. Не является публичной офертой.</span>
             </div>
         </div>
     </footer>
@@ -4792,22 +4305,6 @@
         window.addEventListener('scroll', revealOnScroll);
         window.addEventListener('load', revealOnScroll);
 
-        // Premium reveal for fact tiles (blur-to-sharp + lift)
-        const factTiles = document.querySelectorAll('.fact-tile');
-        const revealFactTiles = () => {
-            const factsGrid = document.querySelector('.facts-grid');
-            if (factsGrid) {
-                const gridTop = factsGrid.getBoundingClientRect().top;
-                if (gridTop < window.innerHeight - 60) {
-                    factTiles.forEach(tile => {
-                        tile.classList.add('revealed');
-                    });
-                }
-            }
-        };
-        window.addEventListener('scroll', revealFactTiles);
-        window.addEventListener('load', revealFactTiles);
-
         // Premium reveal for principle cards (blur-to-sharp + lift + stagger)
         const principleCards = document.querySelectorAll('.principle-card-premium');
         const revealPrincipleCards = () => {
@@ -4912,24 +4409,6 @@
                 });
             });
         }
-
-        // Why iPeptides cards staggered reveal (Premium B2B)
-        // Why iPeptides glass panel reveal
-        const whyGlassPanel = document.querySelector('.why-glass-panel');
-        let whyPanelRevealed = false;
-        const revealWhyPanel = () => {
-            if (whyPanelRevealed) return;
-            const whySection = document.querySelector('.why-premium');
-            if (whySection && whyGlassPanel) {
-                const sectionTop = whySection.getBoundingClientRect().top;
-                if (sectionTop < window.innerHeight - 80) {
-                    whyPanelRevealed = true;
-                    whyGlassPanel.classList.add('revealed');
-                }
-            }
-        };
-        window.addEventListener('scroll', revealWhyPanel);
-        window.addEventListener('load', revealWhyPanel);
 
         // Partnership benefit items staggered reveal (Premium compact)
         const benefitItems = document.querySelectorAll('.benefit-item');
@@ -5060,6 +4539,80 @@
             });
         });
 
+        // Directions Photo Slider
+        (function initDirectionsSlider() {
+            const track = document.getElementById('sliderTrack');
+            const dotsContainer = document.getElementById('sliderDots');
+            const prevBtn = document.getElementById('sliderPrev');
+            const nextBtn = document.getElementById('sliderNext');
+            if (!track) return;
+
+            // Slide data — add/remove entries to update the slider
+            const slides = [
+                { src: 'fotofon.jpeg', alt: 'Peptide production' },
+                { src: 'fonwork.jpeg', alt: 'Laboratory' },
+                { src: 'fotofon1.jpeg', alt: 'Quality control' },
+                { src: 'фонпринципы.jpeg', alt: 'Principles' }
+            ];
+
+            if (!slides.length) return;
+
+            // Build slides
+            slides.forEach(s => {
+                const div = document.createElement('div');
+                div.className = 'slider-slide';
+                div.innerHTML = `<img src="${s.src}" alt="${s.alt}" loading="lazy">`;
+                track.appendChild(div);
+            });
+
+            // Build dots
+            slides.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            let current = 0;
+            const total = slides.length;
+
+            function goTo(index) {
+                current = ((index % total) + total) % total;
+                track.style.transform = `translateX(-${current * 100}%)`;
+                dotsContainer.querySelectorAll('.dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === current);
+                });
+            }
+
+            prevBtn.addEventListener('click', () => goTo(current - 1));
+            nextBtn.addEventListener('click', () => goTo(current + 1));
+
+            // Touch / swipe support
+            let startX = 0, isDragging = false;
+            track.addEventListener('touchstart', e => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }, { passive: true });
+            track.addEventListener('touchend', e => {
+                if (!isDragging) return;
+                isDragging = false;
+                const diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 40) {
+                    diff > 0 ? goTo(current + 1) : goTo(current - 1);
+                }
+            }, { passive: true });
+
+            // Auto-advance every 5s
+            let autoTimer = setInterval(() => goTo(current + 1), 5000);
+            const slider = document.getElementById('directionsSlider');
+            if (slider) {
+                slider.addEventListener('mouseenter', () => clearInterval(autoTimer));
+                slider.addEventListener('mouseleave', () => {
+                    autoTimer = setInterval(() => goTo(current + 1), 5000);
+                });
+            }
+        })();
+
         // Modal
         const modalOverlay = document.getElementById('modalOverlay');
         const modalContent = document.getElementById('modalContent');
@@ -5147,13 +4700,11 @@
         const i18n = {
             ru: {
                 // Navigation
-                'nav.about': 'О компании',
+                'nav.directions': 'Направления',
                 'nav.principles': 'Принципы',
                 'nav.scale': 'Инфраструктура',
                 'nav.process': 'Процесс',
-                'nav.quality': 'Качество',
                 'nav.production': 'Производство',
-                'nav.why': 'Почему мы',
                 'nav.partners': 'Партнёрам',
                 'nav.cooperation': 'Сотрудничество',
 
@@ -5163,23 +4714,14 @@
                 'hero.tagline2': 'пептидных решений премиум-класса',
                 'hero.cta': 'Стать партнёром',
 
-                // About Section
-                'about.title': 'О компании',
-                'about.tag1': 'Производство',
-                'about.tag2': 'Документация',
-                'about.tag3': 'Логистика',
-                'about.fact1.title': 'B2B-поставки',
-                'about.fact1.text': 'Россия и международные направления',
-                'about.fact2.title': 'Прослеживаемость партии',
-                'about.fact2.text': 'Сопровождение по запросу партнёра',
-                'about.fact3.title': 'Производственный цикл',
-                'about.fact3.text': 'Стандартизация ключевых этапов',
-                'about.fact4.title': 'Системный контроль',
-                'about.fact4.text': 'Параметры партии перед отгрузкой',
-                'about.fact5.title': 'Упаковка и маркировка',
-                'about.fact5.text': 'Под требования партнёров',
-                'about.fact6.title': 'Партнёрский формат',
-                'about.fact6.text': 'Долгосрочные условия',
+                // Directions Section
+                'directions.title': 'Наши направления',
+                'directions.tag1': 'Пептиды',
+                'directions.tag2': 'Комплексы',
+                'directions.tag3': 'Косметология',
+                'directions.tag4': 'Метаболизм',
+                'directions.tag5': 'Иммунитет',
+                'directions.tag6': 'Сон/Стресс',
 
                 // Principles Section
                 'principles.title': 'Принципы',
@@ -5195,20 +4737,20 @@
 
                 // Scale/Infrastructure Section
                 'scale.title': 'Инфраструктура',
-                'scale.tag1': 'Надёжность',
-                'scale.tag2': 'Прозрачность',
-                'scale.tag3': 'Логистика',
+                'scale.tag1': 'Прозрачность',
+                'scale.tag2': 'Логистика',
+                'scale.tag3': 'Масштаб',
                 'scale.card1.title': 'География поставок',
-                'scale.card1.text': 'Логистика под задачи партнёров.',
+                'scale.card1.text': 'Россия и международные направления',
                 'scale.card1.details': 'Выстроенные маршруты и регулярные отгрузки в нужные регионы.',
                 'scale.card2.title': 'B2B-инфраструктура',
-                'scale.card2.text': 'Процессы в едином стандарте.',
+                'scale.card2.text': 'Процессы в едином стандарте',
                 'scale.card2.details': 'Упаковка, маркировка и сопровождение по корпоративным требованиям.',
                 'scale.card3.title': 'Контроль партии',
-                'scale.card3.text': 'Повторяемость параметров.',
+                'scale.card3.text': 'Повторяемость параметров',
                 'scale.card3.details': 'Контроль характеристик от партии к партии — стабильный результат.',
                 'scale.card4.title': 'Документация',
-                'scale.card4.text': 'Материалы по запросу.',
+                'scale.card4.text': 'Материалы по запросу партнёра',
                 'scale.card4.details': 'Состав, спецификации, сертификаты — полное сопровождение партии.',
 
                 // Process Section
@@ -5217,13 +4759,23 @@
                 'process.tag2': 'Согласование',
                 'process.tag3': 'Отгрузка',
                 'process.step1.title': 'Запрос',
-                'process.step1.text': 'Фиксируем задачу, объёмы и формат поставки.',
+                'process.step1.text': 'Фиксируем задачу, объёмы и формат.',
                 'process.step2.title': 'Согласование',
-                'process.step2.text': 'Подтверждаем сроки, упаковку и логистику.',
+                'process.step2.text': 'Подтверждаем сроки и спецификацию.',
                 'process.step3.title': 'Подготовка',
-                'process.step3.text': 'Контроль партии и готовность к отгрузке.',
+                'process.step3.text': 'Контроль готовности партии к отгрузке.',
                 'process.step4.title': 'Отгрузка',
-                'process.step4.text': 'Передача партии и дальнейшее сопровождение.',
+                'process.step4.text': 'Передача и дальнейшее сопровождение.',
+
+                // Production Section
+                'production.title': 'Производство',
+                'production.tag1': 'Процессы',
+                'production.tag2': 'Воспроизводимость',
+                'production.tag3': 'Сроки',
+                'production.item1': 'ТЕХНОЛОГИЧЕСКИЕ ЛИНИИ',
+                'production.item2': 'СТАНДАРТИЗАЦИЯ ПРОЦЕДУР',
+                'production.item3': 'УПАКОВКА И МАРКИРОВКА',
+                'production.item4': 'ЛОГИСТИКА И ОТГРУЗКА',
 
                 // Quality Section
                 'quality.title': 'Контроль качества',
@@ -5235,16 +4787,6 @@
                 'quality.item3': 'ДОКУМЕНТАЦИЯ ПРОДУКЦИИ',
                 'quality.item4': 'ХРАНЕНИЕ И ДОСТАВКА',
 
-                // Production Section
-                'production.title': 'Производство',
-                'production.tag1': 'Процессы',
-                'production.tag2': 'Воспроизводимость',
-                'production.tag3': 'Сроки',
-                'production.item1': 'ТЕХНОЛОГИЧЕСКИЕ ЛИНИИ',
-                'production.item2': 'СТАНДАРТИЗАЦИЯ ПРОЦЕССОВ',
-                'production.item3': 'УПАКОВКА И МАРКИРОВКА',
-                'production.item4': 'ЛОГИСТИКА И СРОКИ',
-
                 // Partners Section
                 'partners.title': 'Партнёрам',
                 'partners.card1.title': 'Дистрибьюторы и реселлеры',
@@ -5255,17 +4797,6 @@
                 'partners.card3.text': 'Производство под ваш бренд и формат.',
                 'partners.card4.title': 'Онлайн-каналы',
                 'partners.card4.text': 'Стабильные отгрузки для e-commerce.',
-
-                // Why Section
-                'why.title': 'Почему iPeptides',
-                'why.item1.title': 'Повторяемость партии',
-                'why.item1.text': 'Стабильные параметры и воспроизводимость результата.',
-                'why.item2.title': 'Коммерческая надёжность',
-                'why.item2.text': 'Предсказуемые сроки и прозрачные условия работы.',
-                'why.item3.title': 'Документация и сопровождение',
-                'why.item3.text': 'Материалы и подтверждения по запросу партнёра.',
-                'why.item4.title': 'Гибкие форматы сотрудничества',
-                'why.item4.text': 'B2B-поставки, проф-сегмент, private label и e-commerce.',
 
                 // Cooperation Section
                 'cooperation.title': 'Сотрудничество',
@@ -5291,7 +4822,7 @@
                 'form.submitModal': 'Отправить заявку',
 
                 // Footer
-                'footer.disclaimer': 'Информация на сайте носит ознакомительный характер. Не является публичной офертой.',
+                'footer.disclaimer': 'Информация носит ознакомительный характер. Не является публичной офертой.',
 
                 // Success messages
                 'success.title': 'Заявка отправлена',
@@ -5299,13 +4830,11 @@
             },
             en: {
                 // Navigation
-                'nav.about': 'About',
+                'nav.directions': 'Directions',
                 'nav.principles': 'Principles',
                 'nav.scale': 'Infrastructure',
                 'nav.process': 'Process',
-                'nav.quality': 'Quality',
                 'nav.production': 'Production',
-                'nav.why': 'Why Us',
                 'nav.partners': 'Partners',
                 'nav.cooperation': 'Cooperation',
 
@@ -5315,23 +4844,14 @@
                 'hero.tagline2': 'of premium peptide solutions',
                 'hero.cta': 'Become a Partner',
 
-                // About Section
-                'about.title': 'About Company',
-                'about.tag1': 'Production',
-                'about.tag2': 'Documentation',
-                'about.tag3': 'Logistics',
-                'about.fact1.title': 'B2B Supplies',
-                'about.fact1.text': 'Russia and international destinations',
-                'about.fact2.title': 'Batch Traceability',
-                'about.fact2.text': 'Support on partner request',
-                'about.fact3.title': 'Production Cycle',
-                'about.fact3.text': 'Standardization of key stages',
-                'about.fact4.title': 'System Control',
-                'about.fact4.text': 'Batch parameters before shipment',
-                'about.fact5.title': 'Packaging & Labeling',
-                'about.fact5.text': 'To partner requirements',
-                'about.fact6.title': 'Partnership Format',
-                'about.fact6.text': 'Long-term conditions',
+                // Directions Section
+                'directions.title': 'Our Directions',
+                'directions.tag1': 'Peptides',
+                'directions.tag2': 'Complexes',
+                'directions.tag3': 'Cosmetology',
+                'directions.tag4': 'Metabolism',
+                'directions.tag5': 'Immunity',
+                'directions.tag6': 'Sleep/Stress',
 
                 // Principles Section
                 'principles.title': 'Principles',
@@ -5347,20 +4867,20 @@
 
                 // Scale/Infrastructure Section
                 'scale.title': 'Infrastructure',
-                'scale.tag1': 'Reliability',
-                'scale.tag2': 'Transparency',
-                'scale.tag3': 'Logistics',
+                'scale.tag1': 'Transparency',
+                'scale.tag2': 'Logistics',
+                'scale.tag3': 'Scale',
                 'scale.card1.title': 'Delivery Geography',
-                'scale.card1.text': 'Logistics for partner needs.',
+                'scale.card1.text': 'Russia and international destinations',
                 'scale.card1.details': 'Established routes and regular shipments to required regions.',
                 'scale.card2.title': 'B2B Infrastructure',
-                'scale.card2.text': 'Processes in a unified standard.',
+                'scale.card2.text': 'Processes in a unified standard',
                 'scale.card2.details': 'Packaging, labeling and support according to corporate requirements.',
                 'scale.card3.title': 'Batch Control',
-                'scale.card3.text': 'Parameter reproducibility.',
+                'scale.card3.text': 'Parameter reproducibility',
                 'scale.card3.details': 'Control of characteristics from batch to batch — stable result.',
                 'scale.card4.title': 'Documentation',
-                'scale.card4.text': 'Materials on request.',
+                'scale.card4.text': 'Materials on partner request',
                 'scale.card4.details': 'Composition, specifications, certificates — full batch support.',
 
                 // Process Section
@@ -5369,13 +4889,23 @@
                 'process.tag2': 'Approval',
                 'process.tag3': 'Shipment',
                 'process.step1.title': 'Request',
-                'process.step1.text': 'We fix the task, volumes and delivery format.',
+                'process.step1.text': 'We fix the task, volumes and format.',
                 'process.step2.title': 'Approval',
-                'process.step2.text': 'We confirm deadlines, packaging and logistics.',
+                'process.step2.text': 'We confirm deadlines and specification.',
                 'process.step3.title': 'Preparation',
-                'process.step3.text': 'Batch control and readiness for shipment.',
+                'process.step3.text': 'Batch readiness control for shipment.',
                 'process.step4.title': 'Shipment',
-                'process.step4.text': 'Batch handover and further support.',
+                'process.step4.text': 'Handover and further support.',
+
+                // Production Section
+                'production.title': 'Production',
+                'production.tag1': 'Processes',
+                'production.tag2': 'Reproducibility',
+                'production.tag3': 'Deadlines',
+                'production.item1': 'TECHNOLOGICAL LINES',
+                'production.item2': 'PROCEDURE STANDARDIZATION',
+                'production.item3': 'PACKAGING & LABELING',
+                'production.item4': 'LOGISTICS & SHIPMENT',
 
                 // Quality Section
                 'quality.title': 'Quality Control',
@@ -5387,16 +4917,6 @@
                 'quality.item3': 'PRODUCT DOCUMENTATION',
                 'quality.item4': 'STORAGE & DELIVERY',
 
-                // Production Section
-                'production.title': 'Production',
-                'production.tag1': 'Processes',
-                'production.tag2': 'Reproducibility',
-                'production.tag3': 'Deadlines',
-                'production.item1': 'TECHNOLOGICAL LINES',
-                'production.item2': 'PROCESS STANDARDIZATION',
-                'production.item3': 'PACKAGING & LABELING',
-                'production.item4': 'LOGISTICS & DEADLINES',
-
                 // Partners Section
                 'partners.title': 'For Partners',
                 'partners.card1.title': 'Distributors & Resellers',
@@ -5407,17 +4927,6 @@
                 'partners.card3.text': 'Production under your brand and format.',
                 'partners.card4.title': 'Online Channels',
                 'partners.card4.text': 'Stable shipments for e-commerce.',
-
-                // Why Section
-                'why.title': 'Why iPeptides',
-                'why.item1.title': 'Batch Reproducibility',
-                'why.item1.text': 'Stable parameters and result reproducibility.',
-                'why.item2.title': 'Commercial Reliability',
-                'why.item2.text': 'Predictable deadlines and transparent working conditions.',
-                'why.item3.title': 'Documentation & Support',
-                'why.item3.text': 'Materials and confirmations on partner request.',
-                'why.item4.title': 'Flexible Cooperation Formats',
-                'why.item4.text': 'B2B supplies, professional segment, private label and e-commerce.',
 
                 // Cooperation Section
                 'cooperation.title': 'Cooperation',
@@ -5443,7 +4952,7 @@
                 'form.submitModal': 'Submit Request',
 
                 // Footer
-                'footer.disclaimer': 'Information on the website is for informational purposes only. Not a public offer.',
+                'footer.disclaimer': 'Information is for informational purposes only. Not a public offer.',
 
                 // Success messages
                 'success.title': 'Request Sent',
