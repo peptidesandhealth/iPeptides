@@ -911,6 +911,29 @@
             opacity: 0.6;
         }
 
+        /* Mobile: 2 lines layout (ПЕПТИДЫ • ВИТАМИНЫ | КОМПЛЕКСЫ • КОСМЕТОЛОГИЯ) */
+        @media (max-width: 767px) {
+            .directions-tags-vertical {
+                display: grid;
+                grid-template-columns: auto auto;
+                justify-content: center;
+                gap: 8px 0;
+            }
+            /* Remove default dot separators for odd items (1st and 3rd) */
+            .directions-tags-vertical span:nth-child(1)::before,
+            .directions-tags-vertical span:nth-child(3)::before {
+                content: none !important;
+            }
+            /* Keep dot only between pairs */
+            .directions-tags-vertical span:nth-child(2)::before,
+            .directions-tags-vertical span:nth-child(4)::before {
+                content: " • ";
+                margin: 0 6px;
+                color: var(--text-secondary);
+                opacity: 0.6;
+            }
+        }
+
         @media (min-width: 768px) and (max-width: 1023px) {
             .directions-tags-vertical span {
                 font-size: 0.6875rem;
@@ -1964,8 +1987,8 @@
             padding-bottom: 40px;
             background:
                 radial-gradient(800px 400px at 30% 20%, rgba(255,255,255,0.08), transparent 50%),
-                radial-gradient(600px 350px at 70% 80%, rgba(0,0,0,0.15), transparent 50%),
-                linear-gradient(to bottom, #8a9baa 0%, #7a8a9a 40%, #6a7a8a 100%);
+                radial-gradient(600px 350px at 70% 80%, rgba(0,0,0,0.1), transparent 50%),
+                linear-gradient(to bottom, #a5a5a5 0%, #959595 40%, #888888 100%);
         }
 
         @media (min-width: 768px) {
