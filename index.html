@@ -4548,11 +4548,13 @@
             if (!track) return;
 
             // Slide data — add/remove entries to update the slider
+            // Images are located in /assets/capabilities/
             const slides = [
-                { src: 'fotofon.jpeg', alt: 'Peptide production' },
-                { src: 'fonwork.jpeg', alt: 'Laboratory' },
-                { src: 'fotofon1.jpeg', alt: 'Quality control' },
-                { src: 'фонпринципы.jpeg', alt: 'Principles' }
+                { src: 'assets/capabilities/fotofon.jpeg', alt: 'Peptide production' },
+                { src: 'assets/capabilities/fonwork.jpeg', alt: 'Laboratory' },
+                { src: 'assets/capabilities/fotofon1.jpeg', alt: 'Quality control' },
+                { src: 'assets/capabilities/фонпринципы.jpeg', alt: 'Principles' }
+                // Add more slides here: { src: 'assets/capabilities/your-image.jpeg', alt: 'Description' }
             ];
 
             if (!slides.length) return;
