@@ -1502,30 +1502,8 @@
         }
 
         .production-quality-section .video-bg.is-ready {
-            opacity: 0.18;
+            opacity: 1;
             visibility: visible;
-        }
-
-        /* Overlay for text readability */
-        .production-quality-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg,
-                rgba(245, 247, 249, 0.92) 0%,
-                rgba(240, 242, 244, 0.95) 100%
-            );
-            z-index: 1;
-        }
-
-        /* Mobile: stronger overlay for readability */
-        @media (max-width: 768px) {
-            .production-quality-section::before {
-                background: linear-gradient(180deg,
-                    rgba(245, 247, 249, 0.94) 0%,
-                    rgba(240, 242, 244, 0.97) 100%
-                );
-            }
         }
 
         .production-quality-content {
