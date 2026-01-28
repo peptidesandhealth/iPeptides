@@ -828,14 +828,20 @@
            DIRECTIONS SECTION - Baccarat Style
            ============================================ */
         .directions-section {
-            background:
-                radial-gradient(ellipse 120% 80% at 20% 10%, rgba(255,255,255,0.25), transparent 60%),
-                radial-gradient(ellipse 100% 60% at 80% 90%, rgba(100,120,140,0.15), transparent 50%),
-                linear-gradient(to bottom, #c8d4dc 0%, #b0c0cc 35%, #94a8b8 70%, #7a90a4 100%);
+            background: linear-gradient(
+                115deg,
+                #e8e8e8 0%,
+                #f5f5f5 15%,
+                #d0d0d0 30%,
+                #e0e0e0 45%,
+                #c8c8c8 60%,
+                #b8b8b8 75%,
+                #a8a8a8 100%
+            );
         }
 
         .directions-section .section-overline {
-            color: #4a5a6a;
+            color: #3a3a3a;
         }
 
         .directions-layout {
@@ -898,7 +904,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            color: #2a3a4a;
+            color: #2a2a2a;
             padding: 0;
             background: none;
             border-radius: 0;
@@ -910,8 +916,7 @@
         .directions-tags-vertical span:not(:first-child)::before {
             content: " • ";
             margin: 0 6px;
-            color: #5a7080;
-            opacity: 0.8;
+            color: #505050;
         }
 
         /* Mobile: 2 lines layout (ПЕПТИДЫ • ВИТАМИНЫ | КОМПЛЕКСЫ • КОСМЕТОЛОГИЯ) */
@@ -932,8 +937,7 @@
             .directions-tags-vertical span:nth-child(4)::before {
                 content: " • ";
                 margin: 0 6px;
-                color: #5a7080;
-                opacity: 0.8;
+                color: #505050;
             }
         }
 
@@ -957,8 +961,7 @@
             .directions-tags-vertical span::before {
                 content: "•";
                 margin-right: 12px;
-                color: #5a7080;
-                opacity: 0.9;
+                color: #505050;
             }
             .directions-tags-vertical span:not(:first-child)::before {
                 content: "•";
@@ -1988,10 +1991,16 @@
             overflow: hidden;
             padding-top: 40px;
             padding-bottom: 40px;
-            background:
-                radial-gradient(ellipse 120% 80% at 20% 10%, rgba(255,255,255,0.25), transparent 60%),
-                radial-gradient(ellipse 100% 60% at 80% 90%, rgba(100,120,140,0.15), transparent 50%),
-                linear-gradient(to bottom, #c8d4dc 0%, #b0c0cc 35%, #94a8b8 70%, #7a90a4 100%);
+            background: linear-gradient(
+                115deg,
+                #e8e8e8 0%,
+                #f5f5f5 15%,
+                #d0d0d0 30%,
+                #e0e0e0 45%,
+                #c8c8c8 60%,
+                #b8b8b8 75%,
+                #a8a8a8 100%
+            );
         }
 
         @media (min-width: 768px) {
@@ -2008,40 +2017,40 @@
             }
         }
 
-        /* Text colors for gradient background */
+        /* Text colors for metallic background */
         .partnership-section .section-overline {
-            color: #4a5a6a;
+            color: #3a3a3a;
         }
 
         .partnership-section .benefit-title {
-            color: #2a3a4a;
+            color: #2a2a2a;
             font-weight: 600;
         }
 
         .partnership-section .benefit-text {
-            color: #4a5a6a;
+            color: #404040;
         }
 
         .partnership-section .benefit-icon {
-            background: rgba(90, 112, 128, 0.12);
-            border: 1px solid rgba(90, 112, 128, 0.25);
+            background: rgba(60, 60, 60, 0.08);
+            border: 1px solid rgba(60, 60, 60, 0.2);
         }
 
         .partnership-section .benefit-icon svg {
-            stroke: #5a7080;
+            stroke: #404040;
             stroke-width: 2;
         }
 
         .partnership-section .benefit-item {
-            border-bottom-color: rgba(90, 112, 128, 0.2);
+            border-bottom-color: rgba(60, 60, 60, 0.15);
         }
 
         .partnership-section .benefit-item.active {
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(255, 255, 255, 0.3);
         }
 
         .partnership-section .benefit-chevron svg {
-            stroke: #5a7080;
+            stroke: #505050;
         }
 
         /* Two-Column Layout Container */
@@ -2348,21 +2357,16 @@
             max-width: 100%;
             margin: 0 auto;
             padding: 16px;
-            background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 18px;
-            box-shadow:
-                0 4px 24px rgba(90, 112, 128, 0.12),
-                0 2px 8px rgba(0, 0, 0, 0.04);
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            box-shadow: none;
         }
 
         @media (min-width: 768px) {
             .partnership-form-wrapper {
                 max-width: 420px;
                 padding: 20px;
-                border-radius: 20px;
             }
         }
 
@@ -2372,10 +2376,6 @@
                 max-width: none;
                 margin: 0;
                 padding: 20px 24px;
-                border-radius: 22px;
-                box-shadow:
-                    0 6px 32px rgba(90, 112, 128, 0.14),
-                    0 3px 12px rgba(0, 0, 0, 0.04);
             }
         }
 
@@ -2407,7 +2407,7 @@
         .partnership-form-title {
             font-size: 1.0625rem;
             font-weight: 600;
-            color: var(--text-dark);
+            color: #2a2a2a;
             margin-bottom: 2px;
             text-align: center;
             letter-spacing: -0.01em;
@@ -2415,7 +2415,7 @@
 
         .partnership-form-subtitle {
             font-size: 0.75rem;
-            color: var(--text-secondary);
+            color: #505050;
             margin-bottom: 12px;
             text-align: center;
         }
