@@ -1235,6 +1235,82 @@
         }
 
         /* ============================================
+           PHOTO BREAK - Premium Visual Divider
+           ============================================ */
+        .photo-break {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .photo-break-header {
+            background: var(--bg-white);
+            padding: 24px 0;
+            text-align: center;
+        }
+
+        .photo-break-header .section-overline {
+            margin-bottom: 10px;
+        }
+
+        .photo-break-image {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+        }
+
+        .photo-break-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        /* Subtle gradient overlay */
+        .photo-break-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(165, 196, 212, 0.08) 0%,
+                rgba(15, 25, 34, 0.15) 100%
+            );
+            pointer-events: none;
+        }
+
+        @media (min-width: 768px) {
+            .photo-break-header {
+                padding: 32px 0;
+            }
+
+            .photo-break-image {
+                height: 480px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .photo-break-header {
+                padding: 40px 0;
+            }
+
+            .photo-break-image {
+                height: 580px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .photo-break-image {
+                height: 640px;
+            }
+        }
+
+        /* ============================================
            PROCESS SECTION
            ============================================ */
         .process-section {
@@ -2605,6 +2681,24 @@
         </div>
     </section>
 
+    <!-- Photo Break - Premium Visual Divider -->
+    <section class="photo-break">
+        <div class="photo-break-header">
+            <div class="container">
+                <span class="section-overline" data-i18n="approach.overline">ПОДХОД</span>
+                <div class="section-tags">
+                    <span data-i18n="approach.tag1">Аккуратность</span>
+                    <span data-i18n="approach.tag2">Детали</span>
+                    <span data-i18n="approach.tag3">Результат</span>
+                </div>
+            </div>
+        </div>
+        <div class="photo-break-image">
+            <!-- Replace with your image: assets/photo-break.jpg -->
+            <img src="assets/capabilities/fonwork.jpeg" alt="iPeptides Production" loading="lazy">
+        </div>
+    </section>
+
     <!-- Process Section -->
     <section id="process" class="process-section">
         <div class="container">
@@ -3490,6 +3584,10 @@
                 'infra.card4.title': 'Документация',
                 'infra.card4.text': 'Материалы по запросу партнёра',
                 'infra.card4.details': 'Состав, спецификации, сертификаты — полное сопровождение партии.',
+                'approach.overline': 'ПОДХОД',
+                'approach.tag1': 'Аккуратность',
+                'approach.tag2': 'Детали',
+                'approach.tag3': 'Результат',
                 'process.overline': 'ПРОЦЕСС',
                 'process.tag1': 'Запрос',
                 'process.tag2': 'Согласование',
@@ -3600,6 +3698,10 @@
                 'infra.card4.title': 'Documentation',
                 'infra.card4.text': 'Materials on partner request',
                 'infra.card4.details': 'Composition, specifications, certificates — full batch support.',
+                'approach.overline': 'APPROACH',
+                'approach.tag1': 'Precision',
+                'approach.tag2': 'Details',
+                'approach.tag3': 'Results',
                 'process.overline': 'PROCESS',
                 'process.tag1': 'Request',
                 'process.tag2': 'Approval',
