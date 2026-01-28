@@ -1484,6 +1484,8 @@
         .production-quality-section {
             position: relative;
             overflow: hidden;
+            /* Fallback background while video loads */
+            background: linear-gradient(180deg, #f5f7f9 0%, #eef1f4 100%);
         }
 
         .production-quality-section .video-bg {
@@ -1496,23 +1498,34 @@
             z-index: 0;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
         .production-quality-section .video-bg.is-ready {
-            opacity: 0.15;
+            opacity: 0.18;
             visibility: visible;
         }
 
+        /* Overlay for text readability */
         .production-quality-section::before {
             content: '';
             position: absolute;
             inset: 0;
             background: linear-gradient(180deg,
-                rgba(245, 247, 249, 0.95) 0%,
-                rgba(240, 242, 244, 0.98) 100%
+                rgba(245, 247, 249, 0.92) 0%,
+                rgba(240, 242, 244, 0.95) 100%
             );
             z-index: 1;
+        }
+
+        /* Mobile: stronger overlay for readability */
+        @media (max-width: 768px) {
+            .production-quality-section::before {
+                background: linear-gradient(180deg,
+                    rgba(245, 247, 249, 0.94) 0%,
+                    rgba(240, 242, 244, 0.97) 100%
+                );
+            }
         }
 
         .production-quality-content {
@@ -2956,8 +2969,8 @@
 
     <!-- Production + Quality Control Unified Section -->
     <section id="production" class="production-quality-section">
-        <video id="sharedVideoBg" class="video-bg" muted loop playsinline preload="none">
-            <source data-src="fon1.mp4" type="video/mp4">
+        <video id="sharedVideoBg" class="video-bg" autoplay muted loop playsinline preload="auto" poster="fotofon.jpeg">
+            <source src="fonvideo.mp4" type="video/mp4">
         </video>
         <div class="production-quality-content">
             <!-- Production Subsection - Left aligned on desktop -->
@@ -3326,33 +3339,19 @@
 
         const sharedVideo = document.getElementById('sharedVideoBg');
         if (sharedVideo) {
-            let sharedVideoLoaded = false;
-            const loadSharedVideo = () => {
-                if (sharedVideoLoaded) return;
-                sharedVideoLoaded = true;
-                const source = sharedVideo.querySelector('source[data-src]');
-                if (source) {
-                    source.src = source.dataset.src;
-                    sharedVideo.load();
-                    sharedVideo.play().catch(() => {});
-                    const showSharedVideo = () => sharedVideo.classList.add('is-ready');
-                    if (sharedVideo.readyState >= 3) showSharedVideo();
-                    else sharedVideo.addEventListener('canplay', showSharedVideo, { once: true });
-                }
+            const showSharedVideo = () => {
+                sharedVideo.classList.add('is-ready');
             };
-            if ('IntersectionObserver' in window) {
-                const videoObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            loadSharedVideo();
-                            videoObserver.disconnect();
-                        }
-                    });
-                }, { rootMargin: '300px 0px', threshold: 0 });
-                videoObserver.observe(sharedVideo.closest('.production-quality-section') || sharedVideo);
+            // Check if already loaded
+            if (sharedVideo.readyState >= 3) {
+                showSharedVideo();
             } else {
-                setTimeout(loadSharedVideo, 2000);
+                // Wait for video to be ready before showing
+                sharedVideo.addEventListener('canplay', showSharedVideo, { once: true });
+                sharedVideo.addEventListener('loadeddata', showSharedVideo, { once: true });
             }
+            // Try to play (may be blocked on mobile without user interaction)
+            sharedVideo.play().catch(() => {});
         }
 
         // ============================================
