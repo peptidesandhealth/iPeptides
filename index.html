@@ -1462,68 +1462,169 @@
 
         /* Subsection spacing */
         .production-subsection {
-            margin-bottom: 48px;
+            padding: 32px 0;
+        }
+
+        .production-subsection:first-child {
+            padding-top: 48px;
         }
 
         .production-subsection:last-child {
-            margin-bottom: 0;
+            padding-bottom: 48px;
         }
 
-        @media (min-width: 768px) {
-            .production-subsection {
-                margin-bottom: 56px;
-            }
-        }
-
-        /* Production/Quality Cards Grid */
-        .pq-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        @media (min-width: 768px) {
-            .pq-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 16px;
-            }
-        }
-
-        .pq-card {
-            padding: 18px 14px;
+        /* Chess layout content wrapper */
+        .pq-content {
             text-align: center;
         }
 
-        .pq-card .icon-badge {
-            margin: 0 auto 12px;
-            width: 40px;
-            height: 40px;
+        .pq-content .section-header {
+            margin-bottom: 20px;
         }
 
-        .pq-card .icon-badge .icon {
-            width: 20px;
-            height: 20px;
+        /* Desktop: Chess layout */
+        @media (min-width: 1024px) {
+            .production-subsection {
+                padding: 40px 0;
+            }
+
+            .production-subsection:first-child {
+                padding-top: 64px;
+            }
+
+            .production-subsection:last-child {
+                padding-bottom: 64px;
+            }
+
+            .pq-content {
+                max-width: 420px;
+            }
+
+            .pq-left .pq-content {
+                text-align: left;
+                margin-right: auto;
+            }
+
+            .pq-left .pq-content .section-header {
+                text-align: left;
+            }
+
+            .pq-right .pq-content {
+                text-align: right;
+                margin-left: auto;
+            }
+
+            .pq-right .pq-content .section-header {
+                text-align: right;
+            }
+
+            .pq-right .section-tags {
+                justify-content: flex-end;
+            }
         }
 
-        .pq-card .card-title {
+        /* Production/Quality List */
+        .pq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* Mobile: Glass strips */
+        .pq-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(165, 196, 212, 0.3);
+            border-radius: var(--radius-md);
+            transition: all 0.25s ease;
+        }
+
+        .pq-item:hover,
+        .pq-item:active {
+            background: rgba(165, 196, 212, 0.25);
+            border-color: rgba(165, 196, 212, 0.5);
+        }
+
+        /* Hide icons on mobile */
+        .pq-item .icon-badge {
+            display: none;
+        }
+
+        .pq-item .item-title {
             font-size: 0.6875rem;
+            font-weight: 500;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            line-height: 1.35;
+            letter-spacing: 0.08em;
+            color: var(--text-primary);
+            margin: 0;
+            white-space: nowrap;
         }
 
+        /* Tablet and up */
         @media (min-width: 768px) {
-            .pq-card {
-                padding: 22px 18px;
+            .pq-list {
+                gap: 10px;
             }
-            .pq-card .icon-badge {
-                width: 44px;
-                height: 44px;
-                margin-bottom: 14px;
+
+            .pq-item {
+                padding: 16px 20px;
             }
-            .pq-card .card-title {
+
+            .pq-item .item-title {
                 font-size: 0.75rem;
-                letter-spacing: 0.08em;
+                letter-spacing: 0.1em;
+            }
+        }
+
+        /* Desktop: Show icons, cards layout */
+        @media (min-width: 1024px) {
+            .pq-list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .pq-item {
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 20px 16px;
+                text-align: center;
+                background: rgba(255, 255, 255, 0.75);
+            }
+
+            .pq-item .icon-badge {
+                display: flex;
+                margin: 0 auto 12px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .pq-item .icon-badge .icon {
+                width: 18px;
+                height: 18px;
+            }
+
+            .pq-item .item-title {
+                font-size: 0.6875rem;
+                letter-spacing: 0.06em;
+                line-height: 1.4;
+                white-space: normal;
+            }
+
+            .pq-item:hover {
+                background: rgba(165, 196, 212, 0.2);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            }
+
+            /* Right-aligned items text */
+            .pq-right .pq-item {
+                text-align: center;
             }
         }
 
@@ -2786,78 +2887,82 @@
             <source data-src="fon1.mp4" type="video/mp4">
         </video>
         <div class="production-quality-content">
-            <!-- Production Subsection -->
-            <div class="container production-subsection">
-                <div class="section-header center reveal">
-                    <span class="section-overline" data-i18n="production.overline">ПРОИЗВОДСТВО</span>
-                    <div class="section-tags">
-                        <span data-i18n="production.tag1">Процессы</span>
-                        <span data-i18n="production.tag2">Воспроизводимость</span>
-                        <span data-i18n="production.tag3">Сроки</span>
-                    </div>
-                </div>
-                <div class="pq-grid">
-                    <div class="card pq-card reveal-card">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-gear"></use></svg>
+            <!-- Production Subsection - Left aligned on desktop -->
+            <div class="container production-subsection pq-left">
+                <div class="pq-content">
+                    <div class="section-header reveal">
+                        <span class="section-overline" data-i18n="production.overline">ПРОИЗВОДСТВО</span>
+                        <div class="section-tags">
+                            <span data-i18n="production.tag1">Процессы</span>
+                            <span data-i18n="production.tag2">Воспроизводимость</span>
+                            <span data-i18n="production.tag3">Сроки</span>
                         </div>
-                        <h3 class="card-title caps" data-i18n="production.item1">ТЕХНОЛОГИЧЕСКИЕ ЛИНИИ</h3>
                     </div>
-                    <div class="card pq-card reveal-card">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-checklist"></use></svg>
+                    <div class="pq-list">
+                        <div class="pq-item reveal-card">
+                            <div class="icon-badge">
+                                <svg class="icon"><use href="assets/icons.svg#icon-gear"></use></svg>
+                            </div>
+                            <h3 class="item-title" data-i18n="production.item1">ТЕХНОЛОГИЧЕСКИЕ ЛИНИИ</h3>
                         </div>
-                        <h3 class="card-title caps" data-i18n="production.item2">СТАНДАРТИЗАЦИЯ ПРОЦЕДУР</h3>
-                    </div>
-                    <div class="card pq-card reveal-card">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-box-tag"></use></svg>
+                        <div class="pq-item reveal-card">
+                            <div class="icon-badge">
+                                <svg class="icon"><use href="assets/icons.svg#icon-checklist"></use></svg>
+                            </div>
+                            <h3 class="item-title" data-i18n="production.item2">СТАНДАРТИЗАЦИЯ ПРОЦЕДУР</h3>
                         </div>
-                        <h3 class="card-title caps" data-i18n="production.item3">УПАКОВКА И МАРКИРОВКА</h3>
-                    </div>
-                    <div class="card pq-card reveal-card">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-truck"></use></svg>
+                        <div class="pq-item reveal-card">
+                            <div class="icon-badge">
+                                <svg class="icon"><use href="assets/icons.svg#icon-box-tag"></use></svg>
+                            </div>
+                            <h3 class="item-title" data-i18n="production.item3">УПАКОВКА И МАРКИРОВКА</h3>
                         </div>
-                        <h3 class="card-title caps" data-i18n="production.item4">ЛОГИСТИКА И ОТГРУЗКА</h3>
+                        <div class="pq-item reveal-card">
+                            <div class="icon-badge">
+                                <svg class="icon"><use href="assets/icons.svg#icon-truck"></use></svg>
+                            </div>
+                            <h3 class="item-title" data-i18n="production.item4">ЛОГИСТИКА И ОТГРУЗКА</h3>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Quality Control Subsection -->
-            <div class="container production-subsection">
-                <div class="section-header center reveal">
-                    <span class="section-overline" data-i18n="quality.overline">КОНТРОЛЬ КАЧЕСТВА</span>
-                    <div class="section-tags">
-                        <span data-i18n="quality.tag1">Контроль</span>
-                        <span data-i18n="quality.tag2">Параметры</span>
-                        <span data-i18n="quality.tag3">Соответствие</span>
-                    </div>
-                </div>
-                <div class="pq-grid">
-                    <div class="card pq-card reveal-card">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-check-circle"></use></svg>
+            <!-- Quality Control Subsection - Right aligned on desktop -->
+            <div class="container production-subsection pq-right">
+                <div class="pq-content">
+                    <div class="section-header reveal">
+                        <span class="section-overline" data-i18n="quality.overline">КОНТРОЛЬ КАЧЕСТВА</span>
+                        <div class="section-tags">
+                            <span data-i18n="quality.tag1">Контроль</span>
+                            <span data-i18n="quality.tag2">Параметры</span>
+                            <span data-i18n="quality.tag3">Соответствие</span>
                         </div>
-                        <h3 class="card-title caps" data-i18n="quality.item1">СЫРЬЕ И МАТЕРИАЛЫ</h3>
                     </div>
-                    <div class="card pq-card reveal-card">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-package-arrow"></use></svg>
+                    <div class="pq-list">
+                        <div class="pq-item reveal-card">
+                            <div class="icon-badge">
+                                <svg class="icon"><use href="assets/icons.svg#icon-check-circle"></use></svg>
+                            </div>
+                            <h3 class="item-title" data-i18n="quality.item1">СЫРЬЕ И МАТЕРИАЛЫ</h3>
                         </div>
-                        <h3 class="card-title caps" data-i18n="quality.item2">ОТГРУЗКА ПАРТИИ</h3>
-                    </div>
-                    <div class="card pq-card reveal-card">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-file"></use></svg>
+                        <div class="pq-item reveal-card">
+                            <div class="icon-badge">
+                                <svg class="icon"><use href="assets/icons.svg#icon-package-arrow"></use></svg>
+                            </div>
+                            <h3 class="item-title" data-i18n="quality.item2">ОТГРУЗКА ПАРТИИ</h3>
                         </div>
-                        <h3 class="card-title caps" data-i18n="quality.item3">ДОКУМЕНТАЦИЯ ПРОДУКЦИИ</h3>
-                    </div>
-                    <div class="card pq-card reveal-card">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-warehouse-truck"></use></svg>
+                        <div class="pq-item reveal-card">
+                            <div class="icon-badge">
+                                <svg class="icon"><use href="assets/icons.svg#icon-file"></use></svg>
+                            </div>
+                            <h3 class="item-title" data-i18n="quality.item3">ДОКУМЕНТАЦИЯ ПРОДУКЦИИ</h3>
                         </div>
-                        <h3 class="card-title caps" data-i18n="quality.item4">ХРАНЕНИЕ И ДОСТАВКА</h3>
+                        <div class="pq-item reveal-card">
+                            <div class="icon-badge">
+                                <svg class="icon"><use href="assets/icons.svg#icon-warehouse-truck"></use></svg>
+                            </div>
+                            <h3 class="item-title" data-i18n="quality.item4">ХРАНЕНИЕ И ДОСТАВКА</h3>
+                        </div>
                     </div>
                 </div>
             </div>
