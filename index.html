@@ -1967,6 +1967,7 @@
 
         .benefit-item.active .benefit-chevron {
             transform: rotate(180deg);
+            stroke: var(--ice-flow-dark);
         }
 
         /* Active state - premium steel-blue highlight */
@@ -1980,10 +1981,15 @@
 
         .benefit-item.active .benefit-icon {
             background: linear-gradient(135deg, rgba(139, 175, 194, 0.35) 0%, rgba(110, 140, 160, 0.2) 100%);
+            border-color: rgba(139, 175, 194, 0.45);
         }
 
         .benefit-item.active .benefit-icon svg {
             stroke: var(--ice-flow-dark);
+        }
+
+        .benefit-item.active .benefit-title {
+            color: var(--text-dark);
         }
 
         @media (min-width: 1024px) {
