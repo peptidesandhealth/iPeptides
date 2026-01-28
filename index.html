@@ -1967,11 +1967,14 @@
            PARTNERSHIP SECTION - Two-Column Layout
            ============================================ */
         .partnership-section {
-            background: linear-gradient(180deg, var(--bg-accent) 0%, var(--ice-flow-light) 100%);
             position: relative;
             overflow: hidden;
             padding-top: 40px;
             padding-bottom: 40px;
+            background:
+                radial-gradient(900px 500px at 50% 35%, rgba(255,255,255,0.55), rgba(255,255,255,0) 60%),
+                radial-gradient(700px 420px at 20% 65%, rgba(210,220,230,0.35), rgba(210,220,230,0) 60%),
+                linear-gradient(to bottom, #e7ecef 0%, #cfd7dd 55%, #b8c1c9 100%);
         }
 
         @media (min-width: 768px) {
@@ -1988,16 +1991,27 @@
             }
         }
 
+        /* Soft haze overlay */
         .partnership-section::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 400px;
-            background: radial-gradient(ellipse, rgba(255,255,255,0.4) 0%, transparent 70%);
+            inset: -2px;
             pointer-events: none;
+            background: radial-gradient(1200px 700px at 50% 50%, rgba(0,0,0,0.04), rgba(0,0,0,0) 55%);
+            opacity: 0.7;
+        }
+
+        /* Text colors for foggy background */
+        .partnership-section .section-overline {
+            color: #3a4a5a;
+        }
+
+        .partnership-section .section-tags span {
+            color: #4a5a6a;
+        }
+
+        .partnership-section .section-tags span:not(:first-child)::before {
+            color: #6a7a8a;
         }
 
         /* Two-Column Layout Container */
