@@ -1182,11 +1182,13 @@
             object-fit: cover;
             z-index: 0;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
         }
 
         .shared-video-wrap .video-bg.is-ready {
             opacity: 1;
+            visibility: visible;
         }
 
         .shared-video-wrap .shared-content {
@@ -3902,7 +3904,7 @@
     <!-- Shared Video Background Wrapper: Production + Quality Control -->
     <div class="shared-video-wrap">
         <!-- Video Background -->
-        <video id="sharedVideoBg" class="video-bg" muted loop playsinline preload="none" poster="fondoverie.jpeg">
+        <video id="sharedVideoBg" class="video-bg" muted loop playsinline preload="none" style="opacity:0;visibility:hidden">
             <source data-src="fon1.mp4" type="video/mp4">
         </video>
         <!-- Content -->
