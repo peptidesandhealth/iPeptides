@@ -723,7 +723,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.10);
+            background: rgba(45, 50, 55, 0.16);
             z-index: 1;
             pointer-events: none;
         }
@@ -1533,6 +1533,15 @@
         .production-quality-section .video-bg.is-ready {
             opacity: 1;
             visibility: visible;
+        }
+
+        .production-quality-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(45, 50, 55, 0.16);
+            z-index: 1;
+            pointer-events: none;
         }
 
         .production-quality-content {
