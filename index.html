@@ -1313,73 +1313,85 @@
         .photo-break {
             position: relative;
             width: 100%;
+            min-height: 280px;
+            background-image: url('assets/capabilities/fotofon200.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
         }
 
-        .photo-break-header {
-            background: var(--bg-white);
-            padding: 24px 0;
-            text-align: center;
-        }
-
-        .photo-break-header .section-overline {
-            margin-bottom: 10px;
-        }
-
-        .photo-break-image {
-            position: relative;
-            width: 100%;
-            height: 320px;
-            overflow: hidden;
-        }
-
-        .photo-break-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-        }
-
-        /* Subtle gradient overlay */
-        .photo-break-image::after {
+        /* Subtle overlay for text readability */
+        .photo-break::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: linear-gradient(
                 180deg,
-                rgba(165, 196, 212, 0.08) 0%,
-                rgba(15, 25, 34, 0.15) 100%
+                rgba(15, 25, 34, 0.2) 0%,
+                rgba(15, 25, 34, 0.35) 50%,
+                rgba(15, 25, 34, 0.2) 100%
             );
             pointer-events: none;
         }
 
+        .photo-break-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 48px 20px;
+        }
+
+        .photo-break-content .section-tags {
+            justify-content: center;
+        }
+
+        .photo-break-content .section-tags span {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.6875rem;
+            letter-spacing: 0.14em;
+        }
+
+        .photo-break-content .section-tags span:not(:first-child)::before {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
         @media (min-width: 768px) {
-            .photo-break-header {
-                padding: 32px 0;
+            .photo-break {
+                min-height: 360px;
             }
 
-            .photo-break-image {
-                height: 480px;
+            .photo-break-content {
+                padding: 64px 24px;
+            }
+
+            .photo-break-content .section-tags span {
+                font-size: 0.75rem;
+                letter-spacing: 0.16em;
             }
         }
 
         @media (min-width: 1024px) {
-            .photo-break-header {
-                padding: 40px 0;
+            .photo-break {
+                min-height: 420px;
             }
 
-            .photo-break-image {
-                height: 580px;
+            .photo-break-content {
+                padding: 80px 32px;
+            }
+
+            .photo-break-content .section-tags span {
+                font-size: 0.8125rem;
+                letter-spacing: 0.18em;
             }
         }
 
         @media (min-width: 1280px) {
-            .photo-break-image {
-                height: 640px;
+            .photo-break {
+                min-height: 480px;
             }
         }
 
@@ -2863,19 +2875,12 @@
 
     <!-- Photo Break - Premium Visual Divider -->
     <section class="photo-break">
-        <div class="photo-break-header">
-            <div class="container">
-                <span class="section-overline" data-i18n="approach.overline">ПОДХОД</span>
-                <div class="section-tags">
-                    <span data-i18n="approach.tag1">Аккуратность</span>
-                    <span data-i18n="approach.tag2">Детали</span>
-                    <span data-i18n="approach.tag3">Результат</span>
-                </div>
+        <div class="photo-break-content">
+            <div class="section-tags">
+                <span data-i18n="approach.tag1">Аккуратность</span>
+                <span data-i18n="approach.tag2">Детали</span>
+                <span data-i18n="approach.tag3">Результат</span>
             </div>
-        </div>
-        <div class="photo-break-image">
-            <!-- Replace with your image: assets/photo-break.jpg -->
-            <img src="assets/capabilities/fonwork.jpeg" alt="iPeptides Production" loading="lazy">
         </div>
     </section>
 
@@ -3764,7 +3769,6 @@
                 'infra.card4.title': 'Документация',
                 'infra.card4.text': 'Материалы по запросу партнёра',
                 'infra.card4.details': 'Состав, спецификации, сертификаты — полное сопровождение партии.',
-                'approach.overline': 'ПОДХОД',
                 'approach.tag1': 'Аккуратность',
                 'approach.tag2': 'Детали',
                 'approach.tag3': 'Результат',
@@ -3875,7 +3879,6 @@
                 'infra.card4.title': 'Documentation',
                 'infra.card4.text': 'Materials on partner request',
                 'infra.card4.details': 'Composition, specifications, certificates — full batch support.',
-                'approach.overline': 'APPROACH',
                 'approach.tag1': 'Precision',
                 'approach.tag2': 'Details',
                 'approach.tag3': 'Results',
