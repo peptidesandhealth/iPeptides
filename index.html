@@ -834,6 +834,7 @@
             min-height: 100dvh;
             background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-accent) 100%);
             position: relative;
+            z-index: 1;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -1183,12 +1184,14 @@
             z-index: 0;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
+            display: none;
         }
 
         .shared-video-wrap .video-bg.is-ready {
+            display: block;
             opacity: 1;
             visibility: visible;
+            transition: opacity 0.4s ease;
         }
 
         .shared-video-wrap .shared-content {
