@@ -855,12 +855,13 @@
         }
 
         .directions-text .section-overline {
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         @media (min-width: 1024px) {
             .directions-text .section-overline {
                 text-align: left;
+                margin-bottom: 0;
             }
         }
 
@@ -873,7 +874,10 @@
 
         @media (min-width: 1024px) {
             .directions-tags-vertical {
-                justify-content: flex-start;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                margin-top: 24px;
             }
         }
 
@@ -887,8 +891,10 @@
             background: none;
             border-radius: 0;
             white-space: nowrap;
+            line-height: 1.4;
         }
 
+        /* Mobile: inline with dot separators */
         .directions-tags-vertical span:not(:first-child)::before {
             content: " • ";
             margin: 0 6px;
@@ -896,13 +902,32 @@
             opacity: 0.6;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 768px) and (max-width: 1023px) {
             .directions-tags-vertical span {
                 font-size: 0.6875rem;
                 letter-spacing: 0.14em;
             }
             .directions-tags-vertical span:not(:first-child)::before {
                 margin: 0 8px;
+            }
+        }
+
+        /* Desktop: vertical list with bullet markers */
+        @media (min-width: 1024px) {
+            .directions-tags-vertical span {
+                font-size: 0.75rem;
+                letter-spacing: 0.14em;
+                line-height: 1.8;
+            }
+            .directions-tags-vertical span::before {
+                content: "•";
+                margin-right: 12px;
+                color: var(--text-secondary);
+                opacity: 0.7;
+            }
+            .directions-tags-vertical span:not(:first-child)::before {
+                content: "•";
+                margin: 0 12px 0 0;
             }
         }
 
