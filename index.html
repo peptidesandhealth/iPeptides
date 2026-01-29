@@ -2188,8 +2188,22 @@
             border-bottom-color: rgba(60, 60, 60, 0.15);
         }
 
-        .partnership-section .benefit-item.active {
-            background: rgba(255, 255, 255, 0.3);
+        /* Mobile only: subtle highlight for active accordion item */
+        @media (max-width: 1023px) {
+            .partnership-section .benefit-item.active {
+                background: rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        /* Desktop: no background on benefit items */
+        @media (min-width: 1024px) {
+            .partnership-section .benefit-item,
+            .partnership-section .benefit-item.active {
+                background: transparent !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                box-shadow: none !important;
+            }
         }
 
         .partnership-section .benefit-chevron svg {
