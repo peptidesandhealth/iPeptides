@@ -1002,40 +1002,16 @@
             color: #ffffff;
         }
 
-        /* Mobile: 2 lines layout with aligned dots (3-column grid) */
+        /* Mobile: 2 rows × 3 columns grid with centered dots */
         @media (max-width: 767px) {
             .directions-tags-vertical {
                 display: grid;
-                grid-template-columns: max-content 16px max-content;
-                column-gap: 10px;
+                grid-template-columns: 1fr 18px 1fr;
                 row-gap: 12px;
                 justify-content: center;
                 align-items: center;
-                width: fit-content;
+                max-width: 340px;
                 margin: 0 auto;
-                text-align: center;
-            }
-
-            /* Position words in grid columns 1 and 3 */
-            .directions-tags-vertical span:nth-child(1) {
-                grid-column: 1;
-                grid-row: 1;
-                text-align: right;
-            }
-            .directions-tags-vertical span:nth-child(2) {
-                grid-column: 3;
-                grid-row: 1;
-                text-align: left;
-            }
-            .directions-tags-vertical span:nth-child(3) {
-                grid-column: 1;
-                grid-row: 2;
-                text-align: right;
-            }
-            .directions-tags-vertical span:nth-child(4) {
-                grid-column: 3;
-                grid-row: 2;
-                text-align: left;
             }
 
             /* Remove all ::before pseudo-elements on mobile */
@@ -1043,23 +1019,58 @@
                 content: none !important;
             }
 
-            /* Add dot after first word in each row via ::after */
-            .directions-tags-vertical span:nth-child(1)::after,
-            .directions-tags-vertical span:nth-child(3)::after {
-                content: "•";
-                position: absolute;
-                right: -18px;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 16px;
-                text-align: center;
+            /* Remove ::after pseudo-elements on mobile */
+            .directions-tags-vertical span::after {
+                content: none !important;
+            }
+
+            /* Row 1 */
+            .directions-tags-vertical span[data-i18n="directions.tag1"] {
+                grid-column: 1;
+                grid-row: 1;
+                justify-self: end;
+                text-align: right;
+            }
+            .directions-tags-vertical span[data-i18n="directions.tag2"] {
+                grid-column: 3;
+                grid-row: 1;
+                justify-self: start;
+                text-align: left;
+            }
+
+            /* Row 2 */
+            .directions-tags-vertical span[data-i18n="directions.tag3"] {
+                grid-column: 1;
+                grid-row: 2;
+                justify-self: end;
+                text-align: right;
+            }
+            .directions-tags-vertical span[data-i18n="directions.tag4"] {
+                grid-column: 3;
+                grid-row: 2;
+                justify-self: start;
+                text-align: left;
+            }
+
+            /* Dots in center column */
+            .directions-dot {
+                grid-column: 2;
+                justify-self: center;
                 color: #ffffff;
                 opacity: 0.9;
             }
+            .directions-dot:nth-of-type(1) {
+                grid-row: 1;
+            }
+            .directions-dot:nth-of-type(2) {
+                grid-row: 2;
+            }
+        }
 
-            .directions-tags-vertical span:nth-child(1),
-            .directions-tags-vertical span:nth-child(3) {
-                position: relative;
+        /* Hide dot elements on tablet/desktop (use ::before instead) */
+        @media (min-width: 768px) {
+            .directions-dot {
+                display: none;
             }
         }
 
@@ -2935,8 +2946,10 @@
                 <div class="directions-text reveal">
                     <div class="directions-tags-vertical">
                         <span data-i18n="directions.tag1">ПЕПТИДЫ</span>
+                        <span class="directions-dot" aria-hidden="true">•</span>
                         <span data-i18n="directions.tag2">ВИТАМИНЫ</span>
                         <span data-i18n="directions.tag3">КОМПЛЕКСЫ</span>
+                        <span class="directions-dot" aria-hidden="true">•</span>
                         <span data-i18n="directions.tag4">КОСМЕТОЛОГИЯ</span>
                     </div>
                 </div>
