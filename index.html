@@ -3529,6 +3529,35 @@
 
     <script>
         // ============================================
+        // SCROLL RESET - Always start from Hero
+        // ============================================
+        // Disable browser's automatic scroll restoration
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+
+        // Reset scroll on page load (unless navigating to specific anchor)
+        function resetScrollToTop() {
+            // Only reset if no hash in URL (not navigating to anchor)
+            if (!window.location.hash) {
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // Run on initial load
+        window.addEventListener('load', resetScrollToTop);
+
+        // Run on back/forward navigation (bfcache)
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted) {
+                resetScrollToTop();
+            }
+        });
+
+        // Also run immediately for faster reset
+        resetScrollToTop();
+
+        // ============================================
         // VIDEO LOADING
         // ============================================
         const heroVideo = document.getElementById('heroVideo');
