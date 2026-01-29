@@ -609,7 +609,7 @@
 
         /* Menu Toggle */
         .menu-toggle {
-            width: 32px;
+            width: 36px;
             height: 32px;
             display: flex;
             flex-direction: column;
@@ -621,7 +621,7 @@
 
         .menu-toggle span {
             display: block;
-            width: 20px;
+            width: 26px;
             height: 2px;
             background: white;
             border-radius: 1px;
@@ -644,120 +644,100 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* Dropdown Menu - Mobile: dropdown, PC: side drawer */
+        /* Side Drawer Menu - slides from RIGHT */
         .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
+            position: fixed;
+            top: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.98);
+            left: auto;
+            bottom: 0;
+            width: 85vw;
+            max-width: 380px;
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            padding: 16px 20px;
+            border-left: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: -4px 0 40px rgba(0, 0, 0, 0.15);
+            padding: 80px 24px 40px;
             display: flex;
             flex-direction: column;
             gap: 4px;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease;
+            transform: translateX(100%);
+            transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.28s ease,
+                        visibility 0.28s ease;
+            z-index: 1001;
         }
 
         .dropdown-menu.active {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translateX(0);
         }
 
-        /* PC: Side drawer from left */
+        /* Close button - always visible */
+        .dropdown-menu .menu-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.06);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-menu .menu-close-btn:hover {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-menu .menu-close-btn svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text-dark);
+            stroke-width: 2;
+        }
+
+        /* Language switcher in menu - always visible */
+        .dropdown-menu .menu-lang-switcher {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .dropdown-menu .menu-lang-btn {
+            padding: 8px 16px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            background: rgba(0, 0, 0, 0.04);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-menu .menu-lang-btn.active {
+            background: var(--ice-flow-light);
+            color: var(--ice-flow-deep);
+        }
+
+        /* PC: wider panel */
         @media (min-width: 1024px) {
             .dropdown-menu {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: auto;
-                bottom: 0;
-                width: 320px;
-                max-width: 85vw;
-                background: rgba(255, 255, 255, 0.75);
-                backdrop-filter: blur(14px);
-                -webkit-backdrop-filter: blur(14px);
-                border-right: 1px solid rgba(255, 255, 255, 0.5);
-                box-shadow: 4px 0 40px rgba(0, 0, 0, 0.15);
-                padding: 80px 28px 40px;
+                width: 380px;
+                max-width: 420px;
+                padding: 80px 32px 40px;
                 gap: 6px;
-                transform: translateX(-100%);
-                z-index: 1001;
-            }
-
-            .dropdown-menu.active {
-                transform: translateX(0);
-            }
-
-            .dropdown-menu .menu-close-btn {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: rgba(0, 0, 0, 0.06);
-                border: none;
-                border-radius: 10px;
-                cursor: pointer;
-                transition: all 0.2s ease;
-            }
-
-            .dropdown-menu .menu-close-btn:hover {
-                background: rgba(0, 0, 0, 0.1);
-            }
-
-            .dropdown-menu .menu-close-btn svg {
-                width: 20px;
-                height: 20px;
-                stroke: var(--text-dark);
-                stroke-width: 2;
-            }
-
-            .dropdown-menu .menu-lang-switcher {
-                display: flex;
-                gap: 8px;
-                margin-bottom: 24px;
-                padding-bottom: 20px;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-            }
-
-            .dropdown-menu .menu-lang-btn {
-                padding: 8px 16px;
-                font-size: 0.8125rem;
-                font-weight: 600;
-                color: var(--text-secondary);
-                background: rgba(0, 0, 0, 0.04);
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-                transition: all 0.2s ease;
-            }
-
-            .dropdown-menu .menu-lang-btn.active {
-                background: var(--ice-flow-light);
-                color: var(--ice-flow-deep);
-            }
-        }
-
-        /* Hide close btn and menu lang on mobile */
-        .dropdown-menu .menu-close-btn,
-        .dropdown-menu .menu-lang-switcher {
-            display: none;
-        }
-
-        @media (min-width: 1024px) {
-            .dropdown-menu .menu-close-btn,
-            .dropdown-menu .menu-lang-switcher {
-                display: flex;
             }
         }
 
@@ -788,20 +768,13 @@
         .menu-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(10, 18, 28, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 999;
-        }
-
-        @media (min-width: 1024px) {
-            .menu-overlay {
-                background: rgba(0, 0, 0, 0.35);
-                backdrop-filter: blur(4px);
-                -webkit-backdrop-filter: blur(4px);
-                z-index: 1000;
-            }
+            transition: opacity 0.28s ease, visibility 0.28s ease;
+            z-index: 1000;
         }
 
         .menu-overlay.active {
