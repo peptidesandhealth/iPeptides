@@ -1029,29 +1029,64 @@
             color: #ffffff;
         }
 
-        /* Mobile: 2 lines layout (ПЕПТИДЫ • ВИТАМИНЫ | КОМПЛЕКСЫ • КОСМЕТОЛОГИЯ) */
+        /* Mobile: 2 lines layout with aligned dots (3-column grid) */
         @media (max-width: 767px) {
             .directions-tags-vertical {
                 display: grid;
-                grid-template-columns: auto auto;
+                grid-template-columns: max-content 16px max-content;
+                column-gap: 10px;
+                row-gap: 12px;
                 justify-content: center;
-                justify-items: center;
                 align-items: center;
-                gap: 8px 0;
-                width: 100%;
+                width: fit-content;
+                margin: 0 auto;
                 text-align: center;
             }
-            /* Remove default dot separators for odd items (1st and 3rd) */
-            .directions-tags-vertical span:nth-child(1)::before,
-            .directions-tags-vertical span:nth-child(3)::before {
+
+            /* Position words in grid columns 1 and 3 */
+            .directions-tags-vertical span:nth-child(1) {
+                grid-column: 1;
+                grid-row: 1;
+                text-align: right;
+            }
+            .directions-tags-vertical span:nth-child(2) {
+                grid-column: 3;
+                grid-row: 1;
+                text-align: left;
+            }
+            .directions-tags-vertical span:nth-child(3) {
+                grid-column: 1;
+                grid-row: 2;
+                text-align: right;
+            }
+            .directions-tags-vertical span:nth-child(4) {
+                grid-column: 3;
+                grid-row: 2;
+                text-align: left;
+            }
+
+            /* Remove all ::before pseudo-elements on mobile */
+            .directions-tags-vertical span::before {
                 content: none !important;
             }
-            /* Keep dot only between pairs */
-            .directions-tags-vertical span:nth-child(2)::before,
-            .directions-tags-vertical span:nth-child(4)::before {
-                content: " • ";
-                margin: 0 6px;
+
+            /* Add dot after first word in each row via ::after */
+            .directions-tags-vertical span:nth-child(1)::after,
+            .directions-tags-vertical span:nth-child(3)::after {
+                content: "•";
+                position: absolute;
+                right: -18px;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 16px;
+                text-align: center;
                 color: #ffffff;
+                opacity: 0.9;
+            }
+
+            .directions-tags-vertical span:nth-child(1),
+            .directions-tags-vertical span:nth-child(3) {
+                position: relative;
             }
         }
 
