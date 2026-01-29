@@ -773,7 +773,7 @@
             color: #1f2a33;
         }
 
-        /* Overlay disabled - transparent, no interaction */
+        /* Overlay - transparent but clickable for closing menu */
         .menu-overlay {
             position: fixed;
             inset: 0;
@@ -787,9 +787,9 @@
         }
 
         .menu-overlay.active {
-            opacity: 0;
+            opacity: 1;
             visibility: visible;
-            pointer-events: none;
+            pointer-events: auto;
         }
 
         /* ============================================
@@ -2929,7 +2929,6 @@
                 <button class="menu-lang-btn" data-lang="en">EN</button>
             </div>
             <a href="#directions" data-i18n="nav.directions">Направления</a>
-            <a href="#approach" data-i18n="nav.approach">Подход</a>
             <a href="#principles" data-i18n="nav.principles">Принципы</a>
             <a href="#infrastructure" data-i18n="nav.infrastructure">Инфраструктура</a>
             <a href="#process" data-i18n="nav.process">Процесс</a>
