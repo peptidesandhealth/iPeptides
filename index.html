@@ -560,6 +560,13 @@
             gap: 16px;
         }
 
+        @media (min-width: 1024px) {
+            .header-right-block {
+                margin-right: 0;
+                gap: 20px;
+            }
+        }
+
         /* Language Switcher */
         .lang-switcher {
             display: flex;
@@ -634,7 +641,7 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* Dropdown Menu */
+        /* Dropdown Menu - Mobile: dropdown, PC: side drawer */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -660,6 +667,97 @@
             transform: translateY(0);
         }
 
+        /* PC: Side drawer from left */
+        @media (min-width: 1024px) {
+            .dropdown-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: auto;
+                bottom: 0;
+                width: 320px;
+                max-width: 85vw;
+                background: rgba(255, 255, 255, 0.75);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                border-right: 1px solid rgba(255, 255, 255, 0.5);
+                box-shadow: 4px 0 40px rgba(0, 0, 0, 0.15);
+                padding: 80px 28px 40px;
+                gap: 6px;
+                transform: translateX(-100%);
+                z-index: 1001;
+            }
+
+            .dropdown-menu.active {
+                transform: translateX(0);
+            }
+
+            .dropdown-menu .menu-close-btn {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(0, 0, 0, 0.06);
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .dropdown-menu .menu-close-btn:hover {
+                background: rgba(0, 0, 0, 0.1);
+            }
+
+            .dropdown-menu .menu-close-btn svg {
+                width: 20px;
+                height: 20px;
+                stroke: var(--text-dark);
+                stroke-width: 2;
+            }
+
+            .dropdown-menu .menu-lang-switcher {
+                display: flex;
+                gap: 8px;
+                margin-bottom: 24px;
+                padding-bottom: 20px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            }
+
+            .dropdown-menu .menu-lang-btn {
+                padding: 8px 16px;
+                font-size: 0.8125rem;
+                font-weight: 600;
+                color: var(--text-secondary);
+                background: rgba(0, 0, 0, 0.04);
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+
+            .dropdown-menu .menu-lang-btn.active {
+                background: var(--ice-flow-light);
+                color: var(--ice-flow-deep);
+            }
+        }
+
+        /* Hide close btn and menu lang on mobile */
+        .dropdown-menu .menu-close-btn,
+        .dropdown-menu .menu-lang-switcher {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .dropdown-menu .menu-close-btn,
+            .dropdown-menu .menu-lang-switcher {
+                display: flex;
+            }
+        }
+
         .dropdown-menu a {
             display: block;
             padding: 12px 16px;
@@ -668,6 +766,15 @@
             color: var(--text-dark);
             border-radius: 10px;
             transition: all 0.2s ease;
+        }
+
+        @media (min-width: 1024px) {
+            .dropdown-menu a {
+                padding: 14px 18px;
+                font-size: 1rem;
+                font-weight: 500;
+                letter-spacing: -0.01em;
+            }
         }
 
         .dropdown-menu a:hover {
@@ -683,6 +790,15 @@
             visibility: hidden;
             transition: all 0.3s ease;
             z-index: 999;
+        }
+
+        @media (min-width: 1024px) {
+            .menu-overlay {
+                background: rgba(0, 0, 0, 0.35);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                z-index: 1000;
+            }
         }
 
         .menu-overlay.active {
@@ -2757,12 +2873,23 @@
             </div>
         </div>
         <nav class="dropdown-menu" id="dropdownMenu">
+            <button class="menu-close-btn" id="menuCloseBtn" aria-label="Закрыть меню">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <div class="menu-lang-switcher">
+                <button class="menu-lang-btn active" data-lang="ru">RU</button>
+                <button class="menu-lang-btn" data-lang="en">EN</button>
+            </div>
             <a href="#directions" data-i18n="nav.directions">Направления</a>
+            <a href="#approach" data-i18n="nav.approach">Подход</a>
             <a href="#principles" data-i18n="nav.principles">Принципы</a>
             <a href="#infrastructure" data-i18n="nav.infrastructure">Инфраструктура</a>
             <a href="#process" data-i18n="nav.process">Процесс</a>
             <a href="#production" data-i18n="nav.production">Производство</a>
-            <a href="#partners" data-i18n="nav.partners">Партнёрам</a>
+            <a href="#quality" data-i18n="nav.quality">Контроль качества</a>
+            <a href="#partnership" data-i18n="nav.partnership">Сотрудничество</a>
         </nav>
     </header>
 
@@ -3380,6 +3507,7 @@
         const menuToggle = document.getElementById('menuToggle');
         const dropdownMenu = document.getElementById('dropdownMenu');
         const menuOverlay = document.getElementById('menuOverlay');
+        const menuCloseBtn = document.getElementById('menuCloseBtn');
 
         function closeMenu() {
             menuToggle.classList.remove('active');
@@ -3392,16 +3520,34 @@
             const isActive = dropdownMenu.classList.toggle('active');
             menuToggle.classList.toggle('active', isActive);
             menuOverlay.classList.toggle('active', isActive);
-            document.body.style.overflow = isActive && window.innerWidth < 768 ? 'hidden' : '';
+            document.body.style.overflow = isActive ? 'hidden' : '';
         }
 
         menuToggle.addEventListener('click', toggleMenu);
         menuOverlay.addEventListener('click', closeMenu);
+        if (menuCloseBtn) {
+            menuCloseBtn.addEventListener('click', closeMenu);
+        }
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeMenu();
         });
         dropdownMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', closeMenu);
+        });
+
+        // Menu language switcher sync with header
+        const menuLangBtns = dropdownMenu.querySelectorAll('.menu-lang-btn');
+        const headerLangBtns = document.querySelectorAll('.lang-switcher .lang-btn');
+
+        menuLangBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                menuLangBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+                headerLangBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+                // Trigger language change
+                const event = new CustomEvent('languageChange', { detail: { lang } });
+                document.dispatchEvent(event);
+            });
         });
 
         // Smooth scroll
