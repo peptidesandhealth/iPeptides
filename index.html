@@ -644,50 +644,53 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* Side Drawer Menu - slides from RIGHT */
+        /* Side Drawer Menu - Glass Panel */
         .dropdown-menu {
             position: fixed;
-            top: 0;
-            right: 0;
+            top: 16px;
+            right: 16px;
             left: auto;
-            bottom: 0;
+            bottom: auto;
             width: 85vw;
-            max-width: 380px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-left: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: -4px 0 40px rgba(0, 0, 0, 0.15);
-            padding: 80px 24px 40px;
+            max-width: 320px;
+            max-height: calc(100vh - 32px);
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(14px) saturate(120%);
+            -webkit-backdrop-filter: blur(14px) saturate(120%);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.10);
+            border-radius: 20px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             gap: 4px;
             opacity: 0;
             visibility: hidden;
-            transform: translateX(100%);
-            transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
-                        opacity 0.28s ease,
-                        visibility 0.28s ease;
+            transform: translateX(20px) scale(0.96);
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.25s ease,
+                        visibility 0.25s ease;
             z-index: 1001;
         }
 
         .dropdown-menu.active {
             opacity: 1;
             visibility: visible;
-            transform: translateX(0);
+            transform: translateX(0) scale(1);
         }
 
-        /* Close button - always visible */
+        /* Close button - top right corner of panel */
         .dropdown-menu .menu-close-btn {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.06);
+            background: rgba(31, 42, 51, 0.08);
             border: none;
             border-radius: 10px;
             cursor: pointer;
@@ -695,91 +698,98 @@
         }
 
         .dropdown-menu .menu-close-btn:hover {
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(120, 150, 170, 0.18);
         }
 
         .dropdown-menu .menu-close-btn svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--text-dark);
+            width: 18px;
+            height: 18px;
+            stroke: #1f2a33;
             stroke-width: 2;
         }
 
-        /* Language switcher in menu - always visible */
+        /* Language switcher in menu */
         .dropdown-menu .menu-lang-switcher {
             display: flex;
             gap: 8px;
-            margin-bottom: 20px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            margin-top: 40px;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(31, 42, 51, 0.1);
         }
 
         .dropdown-menu .menu-lang-btn {
-            padding: 8px 16px;
+            padding: 6px 14px;
             font-size: 0.8125rem;
             font-weight: 600;
-            color: var(--text-secondary);
-            background: rgba(0, 0, 0, 0.04);
+            color: #1f2a33;
+            background: rgba(31, 42, 51, 0.06);
             border: none;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
-        .dropdown-menu .menu-lang-btn.active {
-            background: var(--ice-flow-light);
-            color: var(--ice-flow-deep);
+        .dropdown-menu .menu-lang-btn:hover {
+            background: rgba(120, 150, 170, 0.18);
         }
 
-        /* PC: wider panel */
+        .dropdown-menu .menu-lang-btn.active {
+            background: rgba(120, 150, 170, 0.25);
+            color: #1f2a33;
+        }
+
+        /* PC: slightly wider panel */
         @media (min-width: 1024px) {
             .dropdown-menu {
-                width: 380px;
-                max-width: 420px;
-                padding: 80px 32px 40px;
-                gap: 6px;
+                width: 340px;
+                max-width: 380px;
+                padding: 24px;
+                gap: 4px;
             }
         }
 
         .dropdown-menu a {
             display: block;
-            padding: 12px 16px;
+            padding: 12px 14px;
             font-size: 0.9375rem;
             font-weight: 500;
-            color: var(--text-dark);
+            color: #1f2a33;
             border-radius: 10px;
             transition: all 0.2s ease;
         }
 
         @media (min-width: 1024px) {
             .dropdown-menu a {
-                padding: 14px 18px;
-                font-size: 1rem;
+                padding: 14px 16px;
+                font-size: 0.9375rem;
                 font-weight: 500;
                 letter-spacing: -0.01em;
             }
         }
 
         .dropdown-menu a:hover {
-            background: var(--ice-flow-light);
-            color: var(--ice-flow-deep);
+            background: rgba(120, 150, 170, 0.18);
+            color: #1f2a33;
         }
 
+        /* Overlay disabled - transparent, no interaction */
         .menu-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(10, 18, 28, 0.4);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.28s ease, visibility 0.28s ease;
+            pointer-events: none;
             z-index: 1000;
         }
 
         .menu-overlay.active {
-            opacity: 1;
+            opacity: 0;
             visibility: visible;
+            pointer-events: none;
         }
 
         /* ============================================
@@ -1002,40 +1012,16 @@
             color: #ffffff;
         }
 
-        /* Mobile: 2 lines layout with aligned dots (3-column grid) */
+        /* Mobile: 2 rows × 3 columns grid with centered dots */
         @media (max-width: 767px) {
             .directions-tags-vertical {
                 display: grid;
-                grid-template-columns: max-content 16px max-content;
-                column-gap: 10px;
+                grid-template-columns: 1fr 18px 1fr;
                 row-gap: 12px;
                 justify-content: center;
                 align-items: center;
-                width: fit-content;
+                max-width: 340px;
                 margin: 0 auto;
-                text-align: center;
-            }
-
-            /* Position words in grid columns 1 and 3 */
-            .directions-tags-vertical span:nth-child(1) {
-                grid-column: 1;
-                grid-row: 1;
-                text-align: right;
-            }
-            .directions-tags-vertical span:nth-child(2) {
-                grid-column: 3;
-                grid-row: 1;
-                text-align: left;
-            }
-            .directions-tags-vertical span:nth-child(3) {
-                grid-column: 1;
-                grid-row: 2;
-                text-align: right;
-            }
-            .directions-tags-vertical span:nth-child(4) {
-                grid-column: 3;
-                grid-row: 2;
-                text-align: left;
             }
 
             /* Remove all ::before pseudo-elements on mobile */
@@ -1043,23 +1029,58 @@
                 content: none !important;
             }
 
-            /* Add dot after first word in each row via ::after */
-            .directions-tags-vertical span:nth-child(1)::after,
-            .directions-tags-vertical span:nth-child(3)::after {
-                content: "•";
-                position: absolute;
-                right: -18px;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 16px;
-                text-align: center;
+            /* Remove ::after pseudo-elements on mobile */
+            .directions-tags-vertical span::after {
+                content: none !important;
+            }
+
+            /* Row 1 */
+            .directions-tags-vertical span[data-i18n="directions.tag1"] {
+                grid-column: 1;
+                grid-row: 1;
+                justify-self: end;
+                text-align: right;
+            }
+            .directions-tags-vertical span[data-i18n="directions.tag2"] {
+                grid-column: 3;
+                grid-row: 1;
+                justify-self: start;
+                text-align: left;
+            }
+
+            /* Row 2 */
+            .directions-tags-vertical span[data-i18n="directions.tag3"] {
+                grid-column: 1;
+                grid-row: 2;
+                justify-self: end;
+                text-align: right;
+            }
+            .directions-tags-vertical span[data-i18n="directions.tag4"] {
+                grid-column: 3;
+                grid-row: 2;
+                justify-self: start;
+                text-align: left;
+            }
+
+            /* Dots in center column */
+            .directions-dot {
+                grid-column: 2;
+                justify-self: center;
                 color: #ffffff;
                 opacity: 0.9;
             }
+            .directions-dot:nth-of-type(1) {
+                grid-row: 1;
+            }
+            .directions-dot:nth-of-type(2) {
+                grid-row: 2;
+            }
+        }
 
-            .directions-tags-vertical span:nth-child(1),
-            .directions-tags-vertical span:nth-child(3) {
-                position: relative;
+        /* Hide dot elements on tablet/desktop (use ::before instead) */
+        @media (min-width: 768px) {
+            .directions-dot {
+                display: none;
             }
         }
 
@@ -2935,8 +2956,10 @@
                 <div class="directions-text reveal">
                     <div class="directions-tags-vertical">
                         <span data-i18n="directions.tag1">ПЕПТИДЫ</span>
+                        <span class="directions-dot" aria-hidden="true">•</span>
                         <span data-i18n="directions.tag2">ВИТАМИНЫ</span>
                         <span data-i18n="directions.tag3">КОМПЛЕКСЫ</span>
+                        <span class="directions-dot" aria-hidden="true">•</span>
                         <span data-i18n="directions.tag4">КОСМЕТОЛОГИЯ</span>
                     </div>
                 </div>
