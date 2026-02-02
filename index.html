@@ -958,11 +958,25 @@
             overflow: hidden;
         }
 
+        /* Section Header */
+        .directions-header {
+            text-align: center;
+            padding: 48px var(--container-padding) 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 992px) {
+            .directions-header {
+                padding: 64px var(--container-padding) 32px;
+            }
+        }
+
         .directions-wrapper {
             display: flex;
             flex-direction: column;
             gap: 24px;
-            padding: 48px var(--container-padding);
+            padding: 0 var(--container-padding) 16px;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -972,7 +986,7 @@
                 flex-direction: row;
                 align-items: stretch;
                 gap: 0;
-                padding-right: 0; /* Gallery extends to edge */
+                padding: 0 0 0 var(--container-padding);
             }
         }
 
@@ -983,10 +997,12 @@
 
         @media (min-width: 992px) {
             .directions-content {
-                flex: 0 0 380px;
+                flex: 0 0 40%;
                 padding-right: 48px;
                 display: flex;
-                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
             }
         }
 
@@ -1174,15 +1190,14 @@
         @media (max-width: 991px) {
             .directions-gallery {
                 margin: 0 calc(-1 * var(--container-padding));
-                padding-bottom: 20px;
+                padding-bottom: 6px;
             }
         }
 
         @media (min-width: 992px) {
             .directions-gallery {
-                /* Extend to right edge */
-                margin-right: calc(50% - 50vw);
-                height: 420px;
+                flex: 0 0 60%;
+                height: 480px;
             }
         }
 
@@ -1194,7 +1209,7 @@
 
         @media (max-width: 991px) {
             .gallery-track {
-                height: 280px;
+                height: 240px;
             }
         }
 
@@ -1202,6 +1217,7 @@
             flex: 0 0 100%;
             width: 100%;
             height: 100%;
+            position: relative;
         }
 
         .gallery-slide img {
@@ -1211,15 +1227,31 @@
             display: block;
         }
 
-        /* Gallery Controls - Minimal */
+        /* Glass overlay effect on slides */
+        .gallery-slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(1px);
+            -webkit-backdrop-filter: blur(1px);
+            pointer-events: none;
+        }
+
+        /* Gallery Controls - Glass style */
         .gallery-controls {
             position: absolute;
-            bottom: 12px;
+            bottom: 8px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
             align-items: center;
             gap: 10px;
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         @media (min-width: 992px) {
@@ -1227,6 +1259,7 @@
                 bottom: 20px;
                 left: 24px;
                 transform: none;
+                padding: 10px 16px;
             }
         }
 
@@ -1236,16 +1269,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.35);
-            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 0;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .gallery-arrow:hover {
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.35);
             color: #ffffff;
         }
 
@@ -3096,6 +3130,9 @@
 
     <!-- Directions Section - Text carousel + Image gallery, no title -->
     <section id="directions" class="directions-section-new">
+        <div class="directions-header">
+            <span class="section-overline on-dark" data-i18n="directions.overline">НАШИ НАПРАВЛЕНИЯ</span>
+        </div>
         <div class="directions-wrapper">
             <!-- Left: Text Content -->
             <div class="directions-content">
@@ -4331,6 +4368,7 @@
                 'hero.tagline1': 'Ведущий производитель и поставщик',
                 'hero.tagline2': 'пептидных решений премиум-класса',
                 'hero.cta': 'Стать партнёром',
+                'directions.overline': 'НАШИ НАПРАВЛЕНИЯ',
                 'directions.tag1': 'ПЕПТИДЫ',
                 'directions.tag2': 'ВИТАМИНЫ',
                 'directions.tag3': 'КОМПЛЕКСЫ',
@@ -4437,6 +4475,7 @@
                 'hero.tagline1': 'Leading manufacturer and supplier',
                 'hero.tagline2': 'of premium peptide solutions',
                 'hero.cta': 'Become a Partner',
+                'directions.overline': 'OUR DIRECTIONS',
                 'directions.tag1': 'PEPTIDES',
                 'directions.tag2': 'VITAMINS',
                 'directions.tag3': 'COMPLEXES',
