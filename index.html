@@ -2053,6 +2053,48 @@
             margin-top: auto;
         }
 
+        /* Decorative top line (replaces badge text) */
+        .card-topline {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(165, 196, 212, 0.4) 0%, transparent 70%);
+            margin-bottom: 16px;
+        }
+
+        /* Infrastructure card specific styles */
+        .infra-card .partner-card-title {
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            hyphens: none;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+
+        .infra-card .partner-card-text {
+            font-size: 0.8125rem;
+            line-height: 1.55;
+            hyphens: none;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+
+        /* Desktop: larger text for infra cards */
+        @media (min-width: 768px) {
+            .infra-card .partner-card-title {
+                font-size: 0.9375rem;
+                letter-spacing: 0.1em;
+                margin-bottom: 12px;
+            }
+
+            .infra-card .partner-card-text {
+                font-size: 0.875rem;
+                line-height: 1.6;
+            }
+        }
+
         /* Carousel Dots */
         .partners-dots {
             display: flex;
@@ -3098,14 +3140,14 @@
     <section id="infrastructure" class="partners-premium infra-premium">
         <div class="container">
             <div class="section-header center reveal">
-                <span class="section-overline on-dark" data-i18n="infra.overline">ИНФРАСТРУКТУРА</span>
+                <span class="section-overline on-dark" data-i18n="infra.overline">ОПЕРАЦИОННАЯ МОДЕЛЬ</span>
             </div>
         </div>
         <div class="partners-carousel-wrapper">
             <div class="partners-carousel infra-carousel">
                 <!-- Card 1: Geography -->
-                <div class="partner-card" data-partner-index="0">
-                    <span class="partner-badge">Infra 01</span>
+                <div class="partner-card infra-card" data-partner-index="0">
+                    <div class="card-topline"></div>
                     <div class="partner-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -3114,11 +3156,11 @@
                         </svg>
                     </div>
                     <h3 class="partner-card-title" data-i18n="infra.card1.title">География поставок</h3>
-                    <p class="partner-card-text" data-i18n="infra.card1.text">Россия и международные направления</p>
+                    <p class="partner-card-text" data-i18n="infra.card1.text">Локальные и международные направления. Подбираем схему доставки и формат передачи партии под сроки, условия и объёмы.</p>
                 </div>
                 <!-- Card 2: B2B Infrastructure -->
-                <div class="partner-card" data-partner-index="1">
-                    <span class="partner-badge">Infra 02</span>
+                <div class="partner-card infra-card" data-partner-index="1">
+                    <div class="card-topline"></div>
                     <div class="partner-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="3"></circle>
@@ -3126,11 +3168,11 @@
                         </svg>
                     </div>
                     <h3 class="partner-card-title" data-i18n="infra.card2.title">B2B-инфраструктура</h3>
-                    <p class="partner-card-text" data-i18n="infra.card2.text">Процессы в едином стандарте</p>
+                    <p class="partner-card-text" data-i18n="infra.card2.text">Операционный контур для партнёров: согласование требований, стандарты упаковки/маркировки и понятное сопровождение на каждом шаге.</p>
                 </div>
                 <!-- Card 3: Batch Control -->
-                <div class="partner-card" data-partner-index="2">
-                    <span class="partner-badge">Infra 03</span>
+                <div class="partner-card infra-card" data-partner-index="2">
+                    <div class="card-topline"></div>
                     <div class="partner-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -3138,11 +3180,11 @@
                         </svg>
                     </div>
                     <h3 class="partner-card-title" data-i18n="infra.card3.title">Контроль партии</h3>
-                    <p class="partner-card-text" data-i18n="infra.card3.text">Повторяемость параметров</p>
+                    <p class="partner-card-text" data-i18n="infra.card3.text">Верификация партии перед отгрузкой: контроль параметров, отслеживание соответствия спецификации и стабильности характеристик.</p>
                 </div>
                 <!-- Card 4: Documentation -->
-                <div class="partner-card" data-partner-index="3">
-                    <span class="partner-badge">Infra 04</span>
+                <div class="partner-card infra-card" data-partner-index="3">
+                    <div class="card-topline"></div>
                     <div class="partner-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -3153,7 +3195,7 @@
                         </svg>
                     </div>
                     <h3 class="partner-card-title" data-i18n="infra.card4.title">Документация</h3>
-                    <p class="partner-card-text" data-i18n="infra.card4.text">Материалы по запросу партнёра</p>
+                    <p class="partner-card-text" data-i18n="infra.card4.text">Документы и подтверждения для бизнеса: от базовых материалов до расширенного пакета по запросу и под регламенты партнёра.</p>
                 </div>
             </div>
             <!-- Dots Pagination -->
@@ -4266,21 +4308,21 @@
                 'principles.card2.text': 'Стандартизация процедур и контроль на ключевых этапах. Работаем по единому стандарту: входной контроль, контроль продукции, упаковка/маркировка и подтверждения по запросу.',
                 'principles.card3.title': 'Стабильность',
                 'principles.card3.text': 'Повторяемость характеристик продукции и прозрачность процессов. Держим единый уровень параметров и сроков, чтобы каждая поставка соответствовала параметрам спецификации.',
-                'infra.overline': 'ИНФРАСТРУКТУРА',
+                'infra.overline': 'ОПЕРАЦИОННАЯ МОДЕЛЬ',
                 'infra.tag1': 'Прозрачность',
                 'infra.tag2': 'Логистика',
                 'infra.tag3': 'Масштаб',
                 'infra.card1.title': 'География поставок',
-                'infra.card1.text': 'Россия и международные направления',
+                'infra.card1.text': 'Локальные и международные направления. Подбираем схему доставки и формат передачи партии под сроки, условия и объёмы.',
                 'infra.card1.details': 'Выстроенные маршруты и регулярные отгрузки в нужные регионы.',
                 'infra.card2.title': 'B2B-инфраструктура',
-                'infra.card2.text': 'Процессы в едином стандарте',
+                'infra.card2.text': 'Операционный контур для партнёров: согласование требований, стандарты упаковки/маркировки и понятное сопровождение на каждом шаге.',
                 'infra.card2.details': 'Упаковка, маркировка и сопровождение по корпоративным требованиям.',
                 'infra.card3.title': 'Контроль партии',
-                'infra.card3.text': 'Повторяемость параметров',
+                'infra.card3.text': 'Верификация партии перед отгрузкой: контроль параметров, отслеживание соответствия спецификации и стабильности характеристик.',
                 'infra.card3.details': 'Контроль характеристик от партии к партии — стабильный результат.',
                 'infra.card4.title': 'Документация',
-                'infra.card4.text': 'Материалы по запросу партнёра',
+                'infra.card4.text': 'Документы и подтверждения для бизнеса: от базовых материалов до расширенного пакета по запросу и под регламенты партнёра.',
                 'infra.card4.details': 'Состав, спецификации, сертификаты — полное сопровождение партии.',
                 'approach.tag1': 'Аккуратность',
                 'approach.tag2': 'Детали',
@@ -4372,21 +4414,21 @@
                 'principles.card2.text': 'Standardized procedures and control at key stages. We follow a unified standard: incoming inspection, product control, packaging/labeling, and confirmations on request.',
                 'principles.card3.title': 'Stability',
                 'principles.card3.text': 'Product consistency and process transparency. We maintain uniform parameters and timelines so every delivery meets specification requirements.',
-                'infra.overline': 'INFRASTRUCTURE',
+                'infra.overline': 'OPERATIONAL MODEL',
                 'infra.tag1': 'Transparency',
                 'infra.tag2': 'Logistics',
                 'infra.tag3': 'Scale',
                 'infra.card1.title': 'Delivery Geography',
-                'infra.card1.text': 'Russia and international destinations',
+                'infra.card1.text': 'Local and international destinations. We select delivery scheme and batch transfer format based on timelines, conditions and volumes.',
                 'infra.card1.details': 'Established routes and regular shipments to required regions.',
                 'infra.card2.title': 'B2B Infrastructure',
-                'infra.card2.text': 'Processes in unified standard',
+                'infra.card2.text': 'Operational framework for partners: requirements alignment, packaging/labeling standards, and clear support at every step.',
                 'infra.card2.details': 'Packaging, labeling and support per corporate requirements.',
                 'infra.card3.title': 'Batch Control',
-                'infra.card3.text': 'Parameter reproducibility',
+                'infra.card3.text': 'Batch verification before shipment: parameter control, specification compliance tracking, and characteristic stability.',
                 'infra.card3.details': 'Characteristic control from batch to batch — stable results.',
                 'infra.card4.title': 'Documentation',
-                'infra.card4.text': 'Materials on partner request',
+                'infra.card4.text': 'Documents and confirmations for business: from basic materials to extended packages on request and per partner regulations.',
                 'infra.card4.details': 'Composition, specifications, certificates — full batch support.',
                 'approach.tag1': 'Precision',
                 'approach.tag2': 'Details',
