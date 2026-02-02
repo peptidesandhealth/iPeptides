@@ -375,12 +375,25 @@
         /* ============================================
            UNIFIED CARD SYSTEM
            ============================================ */
+
+        /* Global: Remove border-radius from all cards */
+        .card,
+        .infra-card,
+        .partner-card,
+        .principle-card,
+        .process-card,
+        .benefit-item,
+        .pq-item,
+        .slider-glass-card {
+            border-radius: 0 !important;
+        }
+
         .card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(165, 196, 212, 0.2);
-            border-radius: var(--radius-lg);
+            border-radius: 0;
             padding: 20px;
             box-shadow: var(--shadow-card);
             transition: all var(--transition-medium);
@@ -3015,11 +3028,6 @@
         <div class="container">
             <div class="section-header center reveal">
                 <span class="section-overline" data-i18n="principles.overline">ПРИНЦИПЫ</span>
-                <div class="section-tags">
-                    <span data-i18n="principles.tag1">Точность</span>
-                    <span data-i18n="principles.tag2">Воспроизводимость</span>
-                    <span data-i18n="principles.tag3">Доверие</span>
-                </div>
             </div>
             <div class="principles-carousel-wrapper">
                 <div class="principles-carousel">
@@ -3059,11 +3067,6 @@
         <div class="container">
             <div class="section-header center reveal">
                 <span class="section-overline on-dark" data-i18n="infra.overline">ИНФРАСТРУКТУРА</span>
-                <div class="section-tags on-dark">
-                    <span data-i18n="infra.tag1">Прозрачность</span>
-                    <span data-i18n="infra.tag2">Логистика</span>
-                    <span data-i18n="infra.tag3">Масштаб</span>
-                </div>
             </div>
             <div class="infra-grid">
                 <div class="card on-dark infra-card reveal-card" data-expandable>
@@ -3109,11 +3112,6 @@
     <!-- Photo Break - Premium Visual Divider -->
     <section class="photo-break">
         <div class="photo-break-content">
-            <div class="section-tags">
-                <span data-i18n="approach.tag1">Аккуратность</span>
-                <span data-i18n="approach.tag2">Детали</span>
-                <span data-i18n="approach.tag3">Соответствие</span>
-            </div>
         </div>
     </section>
 
@@ -3122,11 +3120,6 @@
         <div class="container">
             <div class="section-header center reveal">
                 <span class="section-overline" data-i18n="process.overline">ПРОЦЕСС</span>
-                <div class="section-tags">
-                    <span data-i18n="process.tag1">Запрос</span>
-                    <span data-i18n="process.tag2">Согласование</span>
-                    <span data-i18n="process.tag3">Отгрузка</span>
-                </div>
             </div>
             <div class="process-grid">
                 <div class="card process-card reveal-card">
@@ -3175,20 +3168,12 @@
 
     <!-- Production + Quality Control Unified Section -->
     <section id="production" class="production-quality-section">
-        <video id="sharedVideoBg" class="video-bg" autoplay muted loop playsinline preload="auto" poster="fotofon.jpeg">
-            <source src="fonvideo.mp4" type="video/mp4">
-        </video>
         <div class="production-quality-content">
             <!-- Production Subsection - Left aligned on desktop -->
             <div class="container production-subsection pq-left">
                 <div class="pq-content">
                     <div class="section-header reveal">
                         <span class="section-overline" data-i18n="production.overline">ПРОИЗВОДСТВО</span>
-                        <div class="section-tags">
-                            <span data-i18n="production.tag1">Процессы</span>
-                            <span data-i18n="production.tag2">Воспроизводимость</span>
-                            <span data-i18n="production.tag3">Сроки</span>
-                        </div>
                     </div>
                     <div class="pq-list">
                         <div class="pq-item reveal-card">
@@ -3224,11 +3209,6 @@
                 <div class="pq-content">
                     <div class="section-header reveal">
                         <span class="section-overline" data-i18n="quality.overline">КОНТРОЛЬ КАЧЕСТВА</span>
-                        <div class="section-tags">
-                            <span data-i18n="quality.tag1">Контроль</span>
-                            <span data-i18n="quality.tag2">Параметры</span>
-                            <span data-i18n="quality.tag3">Соответствие</span>
-                        </div>
                     </div>
                     <div class="pq-list">
                         <div class="pq-item reveal-card">
@@ -3266,11 +3246,6 @@
         <div class="container">
             <div class="section-header center reveal">
                 <span class="section-overline on-dark" data-i18n="partners.overline">ПАРТНЁРАМ</span>
-                <div class="section-tags on-dark">
-                    <span data-i18n="partners.tag1">B2B</span>
-                    <span data-i18n="partners.tag2">Private Label</span>
-                    <span data-i18n="partners.tag3">E-commerce</span>
-                </div>
             </div>
         </div>
         <div class="partners-carousel-wrapper">
@@ -3565,23 +3540,6 @@
             const showHeroVideo = () => heroVideo.classList.add('is-ready');
             if (heroVideo.readyState >= 3) showHeroVideo();
             else heroVideo.addEventListener('canplay', showHeroVideo, { once: true });
-        }
-
-        const sharedVideo = document.getElementById('sharedVideoBg');
-        if (sharedVideo) {
-            const showSharedVideo = () => {
-                sharedVideo.classList.add('is-ready');
-            };
-            // Check if already loaded
-            if (sharedVideo.readyState >= 3) {
-                showSharedVideo();
-            } else {
-                // Wait for video to be ready before showing
-                sharedVideo.addEventListener('canplay', showSharedVideo, { once: true });
-                sharedVideo.addEventListener('loadeddata', showSharedVideo, { once: true });
-            }
-            // Try to play (may be blocked on mobile without user interaction)
-            sharedVideo.play().catch(() => {});
         }
 
         // ============================================
