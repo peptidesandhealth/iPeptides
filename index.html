@@ -1578,304 +1578,324 @@
         }
 
         /* ============================================
-           PROCESS SECTION
+           PRODUCTION CYCLE SECTION - Premium Timeline
            ============================================ */
-        .process-section {
+        .production-cycle-section {
             background: var(--bg-accent);
+            overflow: hidden;
         }
 
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+        .production-cycle-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
         }
 
-        @media (min-width: 768px) {
-            .process-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 20px;
+        @media (min-width: 992px) {
+            .production-cycle-wrapper {
+                flex-direction: row;
+                min-height: 600px;
             }
         }
 
-        .process-card {
-            padding: 18px 14px;
+        /* === Left Column: Timeline === */
+        .cycle-timeline-column {
+            flex: 1;
+            padding: 48px var(--container-padding);
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        .process-card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 10px;
+        @media (min-width: 992px) {
+            .cycle-timeline-column {
+                flex: 0 0 55%;
+                padding: 64px 48px 64px var(--container-padding);
+                max-width: none;
+                margin: 0;
+            }
         }
 
-        /* Mobile: show number, hide icon */
-        .process-card .icon-badge {
+        /* Section Header */
+        .cycle-header {
+            margin-bottom: 32px;
+        }
+
+        @media (min-width: 992px) {
+            .cycle-header {
+                margin-bottom: 48px;
+            }
+        }
+
+        /* === Desktop Timeline === */
+        .cycle-timeline {
             display: none;
         }
 
-        .process-number {
-            font-size: 0.6875rem;
-            font-weight: 700;
-            color: var(--ice-flow-deep);
-            background: rgba(165, 196, 212, 0.15);
-            padding: 5px 10px;
-            border-radius: 20px;
-            letter-spacing: 0.03em;
-        }
-
-        .process-card .card-title {
-            font-size: 0.9375rem;
-            margin-bottom: 6px;
-        }
-
-        .process-card .card-text {
-            font-size: 0.75rem;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        @media (min-width: 768px) {
-            .process-card {
-                padding: 24px 20px;
-            }
-            .process-card .icon-badge {
-                display: flex;
-                margin-bottom: 0;
-            }
-            .process-card-header {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 14px;
-            }
-            .process-card .card-title {
-                font-size: 1rem;
-            }
-            .process-card .card-text {
-                font-size: 0.8125rem;
-                -webkit-line-clamp: 3;
+        @media (min-width: 992px) {
+            .cycle-timeline {
+                display: block;
+                position: relative;
             }
         }
 
-        /* ============================================
-           PRODUCTION + QUALITY UNIFIED SECTION
-           ============================================ */
-        .production-quality-section {
-            position: relative;
-            overflow: hidden;
-            /* Fallback background while video loads */
-            background: linear-gradient(180deg, #f5f7f9 0%, #eef1f4 100%);
-        }
-
-        .production-quality-section .video-bg {
+        /* Timeline Track (vertical line) */
+        .timeline-track {
             position: absolute;
+            left: 28px;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg,
+                rgba(165, 196, 212, 0.4) 0%,
+                rgba(165, 196, 212, 0.2) 100%);
         }
 
-        .production-quality-section .video-bg.is-ready {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .production-quality-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(45, 50, 55, 0.16);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .production-quality-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Subsection spacing */
-        .production-subsection {
-            padding: 32px 0;
-        }
-
-        .production-subsection:first-child {
-            padding-top: 48px;
-        }
-
-        .production-subsection:last-child {
-            padding-bottom: 48px;
-        }
-
-        /* Chess layout content wrapper */
-        .pq-content {
-            text-align: center;
-        }
-
-        .pq-content .section-header {
-            margin-bottom: 20px;
-        }
-
-        /* Desktop: Chess layout */
-        @media (min-width: 1024px) {
-            .production-subsection {
-                padding: 40px 0;
-            }
-
-            .production-subsection:first-child {
-                padding-top: 64px;
-            }
-
-            .production-subsection:last-child {
-                padding-bottom: 64px;
-            }
-
-            .pq-content {
-                max-width: 420px;
-            }
-
-            .pq-left .pq-content {
-                text-align: left;
-                margin-right: auto;
-                margin-left: 0;
-            }
-
-            .pq-left .pq-content .section-header {
-                text-align: left;
-            }
-
-            .pq-left .pq-content .section-overline {
-                text-align: left;
-            }
-
-            .pq-left .section-tags {
-                justify-content: flex-start;
-            }
-
-            .pq-right .pq-content {
-                text-align: right;
-                margin-left: auto;
-            }
-
-            .pq-right .pq-content .section-header {
-                text-align: right;
-            }
-
-            .pq-right .section-tags {
-                justify-content: flex-end;
-            }
-        }
-
-        /* Production/Quality List */
-        .pq-list {
+        /* Timeline Item */
+        .timeline-item {
             display: flex;
-            flex-direction: column;
-            gap: 8px;
+            align-items: flex-start;
+            gap: 24px;
+            padding: 20px 0;
+            position: relative;
         }
 
-        /* Mobile: Glass strips */
-        .pq-item {
+        .timeline-item:first-child {
+            padding-top: 0;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        /* Step Number */
+        .timeline-number {
+            flex: 0 0 56px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: rgba(165, 196, 212, 0.5);
+            letter-spacing: -0.02em;
+            line-height: 1;
+            padding-top: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Step Content */
+        .timeline-content {
+            flex: 1;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        /* Step Icon */
+        .timeline-icon {
+            flex: 0 0 36px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 18px;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(165, 196, 212, 0.3);
-            border-radius: var(--radius-md);
-            transition: all 0.25s ease;
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.15) 0%, rgba(165, 196, 212, 0.05) 100%);
+            border: 1px solid rgba(165, 196, 212, 0.25);
+            border-radius: 0;
+            transition: all 0.3s ease;
         }
 
-        .pq-item:hover,
-        .pq-item:active {
-            background: rgba(165, 196, 212, 0.25);
-            border-color: rgba(165, 196, 212, 0.5);
+        .timeline-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: rgba(165, 196, 212, 0.9);
+            stroke-width: 1.75;
+            fill: none;
         }
 
-        /* Hide icons on mobile */
-        .pq-item .icon-badge {
+        .timeline-item:hover .timeline-icon {
+            background: linear-gradient(135deg, rgba(165, 196, 212, 0.25) 0%, rgba(165, 196, 212, 0.1) 100%);
+            border-color: rgba(165, 196, 212, 0.4);
+        }
+
+        .timeline-item:hover .timeline-icon svg {
+            stroke: rgba(165, 196, 212, 1);
+        }
+
+        /* Step Text */
+        .timeline-text {
+            flex: 1;
+            padding-top: 6px;
+        }
+
+        .timeline-title {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .timeline-desc {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* === Mobile Accordion === */
+        .cycle-accordion {
+            display: block;
+        }
+
+        @media (min-width: 992px) {
+            .cycle-accordion {
+                display: none;
+            }
+        }
+
+        .cycle-accordion-item {
+            border-bottom: 1px solid rgba(165, 196, 212, 0.2);
+        }
+
+        .cycle-accordion-item:first-child {
+            border-top: 1px solid rgba(165, 196, 212, 0.2);
+        }
+
+        .cycle-accordion-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 0;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .cycle-accordion-header:hover {
+            background: rgba(165, 196, 212, 0.05);
+            margin: 0 -16px;
+            padding: 16px;
+        }
+
+        .cycle-accordion-number {
+            flex: 0 0 32px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: rgba(165, 196, 212, 0.7);
+            letter-spacing: -0.02em;
+        }
+
+        .cycle-accordion-title {
+            flex: 1;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .cycle-accordion-chevron {
+            flex: 0 0 18px;
+            width: 18px;
+            height: 18px;
+            color: rgba(165, 196, 212, 0.6);
+            transition: transform 0.25s ease;
+        }
+
+        .cycle-accordion-item.active .cycle-accordion-chevron {
+            transform: rotate(180deg);
+        }
+
+        .cycle-accordion-item.active .cycle-accordion-title {
+            color: var(--ice-flow-deep);
+        }
+
+        .cycle-accordion-item.active .cycle-accordion-number {
+            color: var(--ice-flow-deep);
+        }
+
+        .cycle-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .cycle-accordion-desc {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            padding: 0 0 16px 44px;
+        }
+
+        /* === Right Column: Visual === */
+        .cycle-visual-column {
             display: none;
         }
 
-        .pq-item .item-title {
-            font-size: 0.6875rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-primary);
-            margin: 0;
-            white-space: nowrap;
-        }
-
-        /* Tablet and up */
-        @media (min-width: 768px) {
-            .pq-list {
-                gap: 10px;
+        @media (min-width: 992px) {
+            .cycle-visual-column {
+                display: block;
+                flex: 0 0 45%;
+                position: relative;
+                background: linear-gradient(135deg, #1a2a3a 0%, #0f1922 100%);
+                overflow: hidden;
             }
 
-            .pq-item {
-                padding: 16px 20px;
-            }
-
-            .pq-item .item-title {
-                font-size: 0.75rem;
-                letter-spacing: 0.1em;
-            }
-        }
-
-        /* Desktop: Show icons, cards layout */
-        @media (min-width: 1024px) {
-            .pq-list {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-
-            .pq-item {
-                flex-direction: column;
-                justify-content: flex-start;
-                padding: 20px 16px;
-                text-align: center;
-                background: rgba(255, 255, 255, 0.75);
-            }
-
-            .pq-item .icon-badge {
+            /* Sticky behavior */
+            .cycle-visual-inner {
+                position: sticky;
+                top: 0;
+                height: 100vh;
                 display: flex;
-                margin: 0 auto 12px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Decorative gradient overlay */
+            .cycle-visual-column::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(135deg,
+                    rgba(165, 196, 212, 0.08) 0%,
+                    rgba(165, 196, 212, 0.02) 50%,
+                    transparent 100%);
+                pointer-events: none;
+            }
+
+            /* Decorative accent lines */
+            .cycle-visual-column::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 280px;
+                height: 280px;
+                border: 1px solid rgba(165, 196, 212, 0.12);
+                border-radius: 0;
+                pointer-events: none;
+            }
+
+            /* Central decorative element */
+            .cycle-visual-accent {
+                width: 120px;
+                height: 120px;
+                border: 1px solid rgba(165, 196, 212, 0.2);
+                background: linear-gradient(135deg, rgba(165, 196, 212, 0.1) 0%, transparent 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                z-index: 1;
+            }
+
+            .cycle-visual-accent svg {
                 width: 40px;
                 height: 40px;
-            }
-
-            .pq-item .icon-badge .icon {
-                width: 18px;
-                height: 18px;
-            }
-
-            .pq-item .item-title {
-                font-size: 0.6875rem;
-                letter-spacing: 0.06em;
-                line-height: 1.4;
-                white-space: normal;
-            }
-
-            .pq-item:hover {
-                background: rgba(165, 196, 212, 0.2);
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-            }
-
-            /* Right-aligned items text */
-            .pq-right .pq-item {
-                text-align: center;
+                stroke: rgba(165, 196, 212, 0.5);
+                stroke-width: 1.5;
+                fill: none;
             }
         }
 
@@ -2947,9 +2967,7 @@
         <a href="#directions" data-i18n="nav.directions">Направления</a>
         <a href="#principles" data-i18n="nav.principles">Принципы</a>
         <a href="#infrastructure" data-i18n="nav.infrastructure">Инфраструктура</a>
-        <a href="#process" data-i18n="nav.process">Процесс</a>
-        <a href="#production" data-i18n="nav.production">Производство</a>
-        <a href="#quality" data-i18n="nav.quality">Контроль качества</a>
+        <a href="#production-cycle" data-i18n="nav.cycle">Цикл производства</a>
         <a href="#partnership" data-i18n="nav.partnership">Сотрудничество</a>
     </aside>
 
@@ -3128,126 +3146,158 @@
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section id="process" class="process-section">
-        <div class="container">
-            <div class="section-header center reveal">
-                <span class="section-overline" data-i18n="process.overline">ПРОЦЕСС</span>
-            </div>
-            <div class="process-grid">
-                <div class="card process-card reveal-card">
-                    <div class="process-card-header">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-message"></use></svg>
-                        </div>
-                        <span class="process-number">01</span>
-                    </div>
-                    <h3 class="card-title" data-i18n="process.card1.title">Запрос</h3>
-                    <p class="card-text" data-i18n="process.card1.text">Фиксируем задачу, объёмы и формат.</p>
-                </div>
-                <div class="card process-card reveal-card">
-                    <div class="process-card-header">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-file-check"></use></svg>
-                        </div>
-                        <span class="process-number">02</span>
-                    </div>
-                    <h3 class="card-title" data-i18n="process.card2.title">Согласование</h3>
-                    <p class="card-text" data-i18n="process.card2.text">Подтверждаем сроки и спецификацию.</p>
-                </div>
-                <div class="card process-card reveal-card">
-                    <div class="process-card-header">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-gear"></use></svg>
-                        </div>
-                        <span class="process-number">03</span>
-                    </div>
-                    <h3 class="card-title" data-i18n="process.card3.title">Подготовка</h3>
-                    <p class="card-text" data-i18n="process.card3.text">Контроль готовности партии к отгрузке.</p>
-                </div>
-                <div class="card process-card reveal-card">
-                    <div class="process-card-header">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-truck"></use></svg>
-                        </div>
-                        <span class="process-number">04</span>
-                    </div>
-                    <h3 class="card-title" data-i18n="process.card4.title">Отгрузка</h3>
-                    <p class="card-text" data-i18n="process.card4.text">Передача партии и дальнейшее сопровождение.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Production + Quality Control Unified Section -->
-    <section id="production" class="production-quality-section">
-        <div class="production-quality-content">
-            <!-- Production Subsection - Left aligned on desktop -->
-            <div class="container production-subsection pq-left">
-                <div class="pq-content">
+    <!-- Production Cycle Section - Premium Timeline -->
+    <section id="production-cycle" class="production-cycle-section">
+        <div class="production-cycle-wrapper">
+            <!-- Left Column: Timeline Content -->
+            <div class="cycle-timeline-column">
+                <div class="cycle-header">
                     <div class="section-header reveal">
-                        <span class="section-overline" data-i18n="production.overline">ПРОИЗВОДСТВО</span>
+                        <span class="section-overline">ЦИКЛ ПРОИЗВОДСТВА</span>
                     </div>
-                    <div class="pq-list">
-                        <div class="pq-item reveal-card">
-                            <div class="icon-badge">
-                                <svg class="icon"><use href="assets/icons.svg#icon-gear"></use></svg>
+                </div>
+
+                <!-- Desktop: Vertical Timeline -->
+                <div class="cycle-timeline">
+                    <div class="timeline-track"></div>
+
+                    <!-- Step 1 -->
+                    <div class="timeline-item">
+                        <span class="timeline-number">01</span>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
                             </div>
-                            <h3 class="item-title" data-i18n="production.item1">ТЕХНОЛОГИЧЕСКИЕ ЛИНИИ</h3>
+                            <div class="timeline-text">
+                                <h3 class="timeline-title">ТЕХНИЧЕСКОЕ ЗАДАНИЕ</h3>
+                                <p class="timeline-desc">Получаем вводные, требования и формат продукта.</p>
+                            </div>
                         </div>
-                        <div class="pq-item reveal-card">
-                            <div class="icon-badge">
-                                <svg class="icon"><use href="assets/icons.svg#icon-checklist"></use></svg>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="timeline-item">
+                        <span class="timeline-number">02</span>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <polyline points="9 15 11 17 15 13"></polyline>
+                                </svg>
                             </div>
-                            <h3 class="item-title" data-i18n="production.item2">СТАНДАРТИЗАЦИЯ ПРОЦЕДУР</h3>
+                            <div class="timeline-text">
+                                <h3 class="timeline-title">ФИКСАЦИЯ ЗАДАЧИ</h3>
+                                <p class="timeline-desc">Закрепляем объёмы, сроки, упаковку и документацию.</p>
+                            </div>
                         </div>
-                        <div class="pq-item reveal-card">
-                            <div class="icon-badge">
-                                <svg class="icon"><use href="assets/icons.svg#icon-box-tag"></use></svg>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="timeline-item">
+                        <span class="timeline-number">03</span>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                </svg>
                             </div>
-                            <h3 class="item-title" data-i18n="production.item3">УПАКОВКА И МАРКИРОВКА</h3>
+                            <div class="timeline-text">
+                                <h3 class="timeline-title">КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ</h3>
+                                <p class="timeline-desc">Готовим спецификацию и подтверждаем условия.</p>
+                            </div>
                         </div>
-                        <div class="pq-item reveal-card">
-                            <div class="icon-badge">
-                                <svg class="icon"><use href="assets/icons.svg#icon-truck"></use></svg>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="timeline-item">
+                        <span class="timeline-number">04</span>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                                </svg>
                             </div>
-                            <h3 class="item-title" data-i18n="production.item4">ЛОГИСТИКА И ОТГРУЗКА</h3>
+                            <div class="timeline-text">
+                                <h3 class="timeline-title">ПРОИЗВОДСТВО</h3>
+                                <p class="timeline-desc">Запуск партии по согласованному протоколу и стандарту.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 5 -->
+                    <div class="timeline-item">
+                        <span class="timeline-number">05</span>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    <polyline points="9 12 11 14 15 10"></polyline>
+                                </svg>
+                            </div>
+                            <div class="timeline-text">
+                                <h3 class="timeline-title">КОНТРОЛЬ КАЧЕСТВА</h3>
+                                <p class="timeline-desc">Проверка параметров, соответствия и стабильности продукции.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 6 -->
+                    <div class="timeline-item">
+                        <span class="timeline-number">06</span>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="timeline-text">
+                                <h3 class="timeline-title">ПОДГОТОВКА К ОТГРУЗКЕ</h3>
+                                <p class="timeline-desc">Маркировка, комплектация, документы и упаковка.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 7 -->
+                    <div class="timeline-item">
+                        <span class="timeline-number">07</span>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="3" width="15" height="13"></rect>
+                                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                                </svg>
+                            </div>
+                            <div class="timeline-text">
+                                <h3 class="timeline-title">ОТГРУЗКА И СОПРОВОЖДЕНИЕ</h3>
+                                <p class="timeline-desc">Передача продукции и дальнейшее сопровождение партнёра.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Mobile: Accordion -->
+                <div class="cycle-accordion" id="cycleAccordion"></div>
             </div>
 
-            <!-- Quality Control Subsection - Right aligned on desktop -->
-            <div class="container production-subsection pq-right">
-                <div class="pq-content">
-                    <div class="section-header reveal">
-                        <span class="section-overline" data-i18n="quality.overline">КОНТРОЛЬ КАЧЕСТВА</span>
-                    </div>
-                    <div class="pq-list">
-                        <div class="pq-item reveal-card">
-                            <div class="icon-badge">
-                                <svg class="icon"><use href="assets/icons.svg#icon-check-circle"></use></svg>
-                            </div>
-                            <h3 class="item-title" data-i18n="quality.item1">СЫРЬЕ И МАТЕРИАЛЫ</h3>
-                        </div>
-                        <div class="pq-item reveal-card">
-                            <div class="icon-badge">
-                                <svg class="icon"><use href="assets/icons.svg#icon-package-arrow"></use></svg>
-                            </div>
-                            <h3 class="item-title" data-i18n="quality.item2">ОТГРУЗКА ПАРТИИ</h3>
-                        </div>
-                        <div class="pq-item reveal-card">
-                            <div class="icon-badge">
-                                <svg class="icon"><use href="assets/icons.svg#icon-file"></use></svg>
-                            </div>
-                            <h3 class="item-title" data-i18n="quality.item3">ДОКУМЕНТАЦИЯ ПРОДУКЦИИ</h3>
-                        </div>
-                        <div class="pq-item reveal-card">
-                            <div class="icon-badge">
-                                <svg class="icon"><use href="assets/icons.svg#icon-warehouse-truck"></use></svg>
-                            </div>
-                            <h3 class="item-title" data-i18n="quality.item4">ХРАНЕНИЕ И ДОСТАВКА</h3>
-                        </div>
+            <!-- Right Column: Visual -->
+            <div class="cycle-visual-column">
+                <div class="cycle-visual-inner">
+                    <div class="cycle-visual-accent">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -3715,6 +3765,61 @@
         window.addEventListener('load', handleBenefitResize);
 
         // ============================================
+        // PRODUCTION CYCLE - Mobile Accordion
+        // ============================================
+        (function initCycleAccordion() {
+            const accordion = document.getElementById('cycleAccordion');
+            if (!accordion) return;
+
+            // Data for production cycle steps
+            const cycleSteps = [
+                { num: '01', title: 'ТЕХНИЧЕСКОЕ ЗАДАНИЕ', desc: 'Получаем вводные, требования и формат продукта.' },
+                { num: '02', title: 'ФИКСАЦИЯ ЗАДАЧИ', desc: 'Закрепляем объёмы, сроки, упаковку и документацию.' },
+                { num: '03', title: 'КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ', desc: 'Готовим спецификацию и подтверждаем условия.' },
+                { num: '04', title: 'ПРОИЗВОДСТВО', desc: 'Запуск партии по согласованному протоколу и стандарту.' },
+                { num: '05', title: 'КОНТРОЛЬ КАЧЕСТВА', desc: 'Проверка параметров, соответствия и стабильности продукции.' },
+                { num: '06', title: 'ПОДГОТОВКА К ОТГРУЗКЕ', desc: 'Маркировка, комплектация, документы и упаковка.' },
+                { num: '07', title: 'ОТГРУЗКА И СОПРОВОЖДЕНИЕ', desc: 'Передача продукции и дальнейшее сопровождение партнёра.' }
+            ];
+
+            // Build accordion items
+            cycleSteps.forEach((step, i) => {
+                const item = document.createElement('div');
+                item.className = 'cycle-accordion-item';
+                item.innerHTML = `
+                    <div class="cycle-accordion-header">
+                        <span class="cycle-accordion-number">${step.num}</span>
+                        <span class="cycle-accordion-title">${step.title}</span>
+                        <svg class="cycle-accordion-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="cycle-accordion-content">
+                        <p class="cycle-accordion-desc">${step.desc}</p>
+                    </div>
+                `;
+                accordion.appendChild(item);
+
+                const header = item.querySelector('.cycle-accordion-header');
+                const content = item.querySelector('.cycle-accordion-content');
+
+                header.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    // Close all others
+                    accordion.querySelectorAll('.cycle-accordion-item').forEach(el => {
+                        el.classList.remove('active');
+                        el.querySelector('.cycle-accordion-content').style.maxHeight = '0';
+                    });
+                    // Toggle current
+                    if (!isActive) {
+                        item.classList.add('active');
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+                });
+            });
+        })();
+
+        // ============================================
         // DIRECTIONS SECTION - NEW DESIGN
         // Text carousel (desktop) + Accordion (mobile) + Image Gallery
         // ============================================
@@ -4115,8 +4220,7 @@
                 'nav.directions': 'Направления',
                 'nav.principles': 'Принципы',
                 'nav.infrastructure': 'Инфраструктура',
-                'nav.process': 'Процесс',
-                'nav.production': 'Производство',
+                'nav.cycle': 'Цикл производства',
                 'nav.partners': 'Партнёрам',
                 'hero.label': 'Manufacturer & Global Supplier • B2B Solutions',
                 'hero.tagline1': 'Ведущий производитель и поставщик',
@@ -4222,8 +4326,7 @@
                 'nav.directions': 'Directions',
                 'nav.principles': 'Principles',
                 'nav.infrastructure': 'Infrastructure',
-                'nav.process': 'Process',
-                'nav.production': 'Production',
+                'nav.cycle': 'Production Cycle',
                 'nav.partners': 'Partners',
                 'hero.label': 'Manufacturer & Global Supplier • B2B Solutions',
                 'hero.tagline1': 'Leading manufacturer and supplier',
