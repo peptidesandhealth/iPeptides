@@ -1328,7 +1328,19 @@
         }
 
         .principle-card .card-title {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .principle-card .card-text {
+            font-size: 0.75rem;
+            line-height: 1.5;
+            color: var(--text-muted);
+            hyphens: none;
+            word-break: keep-all;
         }
 
         /* Principles Dots - Mobile */
@@ -1393,6 +1405,17 @@
             .principle-card .icon-badge .icon {
                 width: 24px;
                 height: 24px;
+            }
+
+            .principle-card .card-title {
+                font-size: 0.9375rem;
+                letter-spacing: 0.1em;
+                margin-bottom: 12px;
+            }
+
+            .principle-card .card-text {
+                font-size: 0.8125rem;
+                line-height: 1.6;
             }
 
             .principles-dots {
@@ -3033,30 +3056,33 @@
     <section id="principles" class="principles-section">
         <div class="container">
             <div class="section-header center reveal">
-                <span class="section-overline" data-i18n="principles.overline">ПРИНЦИПЫ</span>
+                <span class="section-overline" data-i18n="principles.overline">ПРИНЦИПЫ СОТРУДНИЧЕСТВА</span>
             </div>
             <div class="principles-carousel-wrapper">
                 <div class="principles-carousel">
-                    <div class="card principle-card reveal-card">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-target"></use></svg>
-                        </div>
-                        <h3 class="card-title" data-i18n="principles.card1.title">Точность</h3>
-                        <p class="card-text" data-i18n="principles.card1.text">Стандартизация процедур и контроль на ключевых этапах.</p>
-                    </div>
-                    <div class="card principle-card reveal-card">
-                        <div class="icon-badge">
-                            <svg class="icon"><use href="assets/icons.svg#icon-layers"></use></svg>
-                        </div>
-                        <h3 class="card-title" data-i18n="principles.card2.title">Стабильность</h3>
-                        <p class="card-text" data-i18n="principles.card2.text">Повторяемость характеристик партии и прозрачность процессов.</p>
-                    </div>
+                    <!-- Card 1: Partnership -->
                     <div class="card principle-card reveal-card">
                         <div class="icon-badge">
                             <svg class="icon"><use href="assets/icons.svg#icon-handshake"></use></svg>
                         </div>
-                        <h3 class="card-title" data-i18n="principles.card3.title">Партнёрство</h3>
-                        <p class="card-text" data-i18n="principles.card3.text">Гибкие форматы работы и сопровождение под задачи бизнеса.</p>
+                        <h3 class="card-title" data-i18n="principles.card1.title">Партнёрство</h3>
+                        <p class="card-text" data-i18n="principles.card1.text">Гибкие форматы работы и сопровождение под задачи бизнеса. Выстроенная модель взаимодействия: от первичного запроса до готовой продукции и документов.</p>
+                    </div>
+                    <!-- Card 2: Precision -->
+                    <div class="card principle-card reveal-card">
+                        <div class="icon-badge">
+                            <svg class="icon"><use href="assets/icons.svg#icon-target"></use></svg>
+                        </div>
+                        <h3 class="card-title" data-i18n="principles.card2.title">Точность</h3>
+                        <p class="card-text" data-i18n="principles.card2.text">Стандартизация процедур и контроль на ключевых этапах. Работаем по единому стандарту: входной контроль, контроль продукции, упаковка/маркировка и подтверждения по запросу.</p>
+                    </div>
+                    <!-- Card 3: Stability -->
+                    <div class="card principle-card reveal-card">
+                        <div class="icon-badge">
+                            <svg class="icon"><use href="assets/icons.svg#icon-layers"></use></svg>
+                        </div>
+                        <h3 class="card-title" data-i18n="principles.card3.title">Стабильность</h3>
+                        <p class="card-text" data-i18n="principles.card3.text">Повторяемость характеристик продукции и прозрачность процессов. Держим единый уровень параметров и сроков, чтобы каждая поставка соответствовала параметрам спецификации.</p>
                     </div>
                 </div>
                 <div class="principles-dots">
@@ -4230,16 +4256,16 @@
                 'directions.tag2': 'ВИТАМИНЫ',
                 'directions.tag3': 'КОМПЛЕКСЫ',
                 'directions.tag4': 'КОСМЕТОЛОГИЯ',
-                'principles.overline': 'ПРИНЦИПЫ',
-                'principles.tag1': 'Точность',
-                'principles.tag2': 'Воспроизводимость',
-                'principles.tag3': 'Доверие',
-                'principles.card1.title': 'Точность',
-                'principles.card1.text': 'Стандартизация процедур и контроль на ключевых этапах.',
-                'principles.card2.title': 'Стабильность',
-                'principles.card2.text': 'Повторяемость характеристик партии и прозрачность процессов.',
-                'principles.card3.title': 'Партнёрство',
-                'principles.card3.text': 'Гибкие форматы работы и сопровождение под задачи бизнеса.',
+                'principles.overline': 'ПРИНЦИПЫ СОТРУДНИЧЕСТВА',
+                'principles.tag1': 'Партнёрство',
+                'principles.tag2': 'Точность',
+                'principles.tag3': 'Стабильность',
+                'principles.card1.title': 'Партнёрство',
+                'principles.card1.text': 'Гибкие форматы работы и сопровождение под задачи бизнеса. Выстроенная модель взаимодействия: от первичного запроса до готовой продукции и документов.',
+                'principles.card2.title': 'Точность',
+                'principles.card2.text': 'Стандартизация процедур и контроль на ключевых этапах. Работаем по единому стандарту: входной контроль, контроль продукции, упаковка/маркировка и подтверждения по запросу.',
+                'principles.card3.title': 'Стабильность',
+                'principles.card3.text': 'Повторяемость характеристик продукции и прозрачность процессов. Держим единый уровень параметров и сроков, чтобы каждая поставка соответствовала параметрам спецификации.',
                 'infra.overline': 'ИНФРАСТРУКТУРА',
                 'infra.tag1': 'Прозрачность',
                 'infra.tag2': 'Логистика',
@@ -4336,16 +4362,16 @@
                 'directions.tag2': 'VITAMINS',
                 'directions.tag3': 'COMPLEXES',
                 'directions.tag4': 'COSMETOLOGY',
-                'principles.overline': 'PRINCIPLES',
-                'principles.tag1': 'Precision',
-                'principles.tag2': 'Reproducibility',
-                'principles.tag3': 'Trust',
-                'principles.card1.title': 'Precision',
-                'principles.card1.text': 'Standardized procedures and control at key stages.',
-                'principles.card2.title': 'Stability',
-                'principles.card2.text': 'Batch reproducibility and process transparency.',
-                'principles.card3.title': 'Partnership',
-                'principles.card3.text': 'Flexible formats and support for business needs.',
+                'principles.overline': 'PRINCIPLES OF PARTNERSHIP',
+                'principles.tag1': 'Partnership',
+                'principles.tag2': 'Precision',
+                'principles.tag3': 'Stability',
+                'principles.card1.title': 'Partnership',
+                'principles.card1.text': 'Flexible work formats and support tailored to business needs. A structured interaction model: from initial inquiry to finished products and documentation.',
+                'principles.card2.title': 'Precision',
+                'principles.card2.text': 'Standardized procedures and control at key stages. We follow a unified standard: incoming inspection, product control, packaging/labeling, and confirmations on request.',
+                'principles.card3.title': 'Stability',
+                'principles.card3.text': 'Product consistency and process transparency. We maintain uniform parameters and timelines so every delivery meets specification requirements.',
                 'infra.overline': 'INFRASTRUCTURE',
                 'infra.tag1': 'Transparency',
                 'infra.tag2': 'Logistics',
