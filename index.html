@@ -950,33 +950,33 @@
         }
 
         /* ============================================
-           DIRECTIONS SECTION - NEW DESIGN
-           Text carousel + Image gallery, no title
+           DIRECTIONS SECTION - UNIFIED DESIGN
+           Synced text + image carousel, no accordion
            ============================================ */
         .directions-section-new {
             background: var(--brand-hero-title);
             overflow: hidden;
         }
 
-        /* Section Header */
+        /* Section Header - Compact */
         .directions-header {
             text-align: center;
-            padding: 48px var(--container-padding) 24px;
+            padding: 32px var(--container-padding) 16px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         @media (min-width: 992px) {
             .directions-header {
-                padding: 64px var(--container-padding) 32px;
+                padding: 40px var(--container-padding) 20px;
             }
         }
 
         .directions-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            padding: 0 var(--container-padding) 16px;
+            gap: 16px;
+            padding: 0 var(--container-padding) 8px;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -986,7 +986,7 @@
                 flex-direction: row;
                 align-items: stretch;
                 gap: 0;
-                padding: 0 0 0 var(--container-padding);
+                padding: 0 0 24px var(--container-padding);
             }
         }
 
@@ -1006,21 +1006,20 @@
             }
         }
 
-        /* === Desktop: Text Carousel (no cards/borders) === */
+        /* === Text Carousel (works on both mobile and desktop) === */
         .directions-carousel {
-            display: none;
-        }
-
-        @media (min-width: 992px) {
-            .directions-carousel {
-                display: block;
-                width: 100%;
-            }
+            width: 100%;
         }
 
         .directions-carousel-track {
             position: relative;
-            min-height: 180px;
+            min-height: 100px;
+        }
+
+        @media (min-width: 992px) {
+            .directions-carousel-track {
+                min-height: 140px;
+            }
         }
 
         .dir-carousel-item {
@@ -1029,8 +1028,8 @@
             left: 0;
             width: 100%;
             opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(8px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
             pointer-events: none;
         }
 
@@ -1041,42 +1040,58 @@
         }
 
         .dir-carousel-title {
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #ffffff;
             text-transform: uppercase;
             letter-spacing: 0.08em;
-            margin-bottom: 16px;
-            transition: color 0.2s ease;
-            cursor: default;
+            margin-bottom: 10px;
         }
 
-        .dir-carousel-title:hover {
-            color: rgba(165, 196, 212, 1);
+        @media (min-width: 992px) {
+            .dir-carousel-title {
+                font-size: 1.25rem;
+                margin-bottom: 16px;
+            }
         }
 
         .dir-carousel-text {
-            font-size: 0.9375rem;
+            font-size: 0.8125rem;
             color: rgba(255, 255, 255, 0.75);
-            line-height: 1.7;
+            line-height: 1.6;
+        }
+
+        @media (min-width: 992px) {
+            .dir-carousel-text {
+                font-size: 0.9375rem;
+                line-height: 1.7;
+            }
         }
 
         /* Carousel Navigation */
         .directions-carousel-nav {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-top: 32px;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        @media (min-width: 992px) {
+            .directions-carousel-nav {
+                justify-content: flex-start;
+                margin-top: 24px;
+            }
         }
 
         .dir-nav-arrow {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 0;
             color: rgba(255, 255, 255, 0.6);
             cursor: pointer;
@@ -1084,13 +1099,13 @@
         }
 
         .dir-nav-arrow:hover {
-            border-color: rgba(255, 255, 255, 0.4);
-            color: rgba(255, 255, 255, 0.9);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.95);
         }
 
         .dir-carousel-dots {
             display: flex;
-            gap: 8px;
+            gap: 6px;
         }
 
         .dir-carousel-dots .dot {
@@ -1108,75 +1123,7 @@
 
         .dir-carousel-dots .dot.active {
             background: rgba(255, 255, 255, 0.9);
-            width: 18px;
-        }
-
-        /* === Mobile: Accordion === */
-        .directions-accordion {
-            display: block;
-        }
-
-        @media (min-width: 992px) {
-            .directions-accordion {
-                display: none;
-            }
-        }
-
-        .dir-accordion-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .dir-accordion-item:first-child {
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .dir-accordion-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 0;
-            cursor: pointer;
-            transition: background 0.2s ease;
-        }
-
-        .dir-accordion-header:hover {
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .dir-accordion-title {
-            font-size: 0.8125rem;
-            font-weight: 600;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .dir-accordion-chevron {
-            width: 18px;
-            height: 18px;
-            color: rgba(255, 255, 255, 0.5);
-            transition: transform 0.25s ease;
-        }
-
-        .dir-accordion-item.active .dir-accordion-chevron {
-            transform: rotate(180deg);
-        }
-
-        .dir-accordion-item.active .dir-accordion-title {
-            color: rgba(165, 196, 212, 1);
-        }
-
-        .dir-accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .dir-accordion-text {
-            font-size: 0.8125rem;
-            color: rgba(255, 255, 255, 0.65);
-            line-height: 1.6;
-            padding-bottom: 16px;
+            width: 16px;
         }
 
         /* === Image Gallery === */
@@ -1185,31 +1132,33 @@
             flex: 1;
             min-width: 0;
             overflow: hidden;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         @media (max-width: 991px) {
             .directions-gallery {
                 margin: 0 calc(-1 * var(--container-padding));
-                padding-bottom: 6px;
+                padding-bottom: 4px;
             }
         }
 
         @media (min-width: 992px) {
             .directions-gallery {
                 flex: 0 0 60%;
-                height: 480px;
+                height: 420px;
             }
         }
 
         .gallery-track {
             display: flex;
             height: 100%;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         @media (max-width: 991px) {
             .gallery-track {
-                height: 240px;
+                height: 200px;
             }
         }
 
@@ -1227,18 +1176,7 @@
             display: block;
         }
 
-        /* Glass overlay effect on slides */
-        .gallery-slide::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(1px);
-            -webkit-backdrop-filter: blur(1px);
-            pointer-events: none;
-        }
-
-        /* Gallery Controls - Glass style */
+        /* Gallery Controls - Minimal, no blur */
         .gallery-controls {
             position: absolute;
             bottom: 8px;
@@ -1246,26 +1184,24 @@
             transform: translateX(-50%);
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 8px 14px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            gap: 8px;
+            padding: 6px 12px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         @media (min-width: 992px) {
             .gallery-controls {
-                bottom: 20px;
-                left: 24px;
+                bottom: 16px;
+                left: 20px;
                 transform: none;
-                padding: 10px 16px;
+                padding: 8px 14px;
             }
         }
 
         .gallery-arrow {
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1279,13 +1215,12 @@
 
         .gallery-arrow:hover {
             background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.35);
             color: #ffffff;
         }
 
         .gallery-dots {
             display: flex;
-            gap: 6px;
+            gap: 5px;
         }
 
         .gallery-dots .dot {
@@ -3256,26 +3191,23 @@
             <span class="section-overline on-dark" data-i18n="directions.overline">НАШИ НАПРАВЛЕНИЯ</span>
         </div>
         <div class="directions-wrapper">
-            <!-- Left: Text Content -->
+            <!-- Text Content (carousel on both mobile and desktop) -->
             <div class="directions-content">
-                <!-- Desktop: Text Carousel -->
-                <div class="directions-carousel" id="directionsTextCarousel">
+                <div class="directions-carousel" id="directionsCarousel">
                     <div class="directions-carousel-track" id="directionsCarouselTrack"></div>
                     <div class="directions-carousel-nav">
-                        <button class="dir-nav-arrow dir-prev" id="dirTextPrev" aria-label="Previous">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <button class="dir-nav-arrow dir-prev" id="dirPrev" aria-label="Previous">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
                         </button>
-                        <div class="dir-carousel-dots" id="dirTextDots"></div>
-                        <button class="dir-nav-arrow dir-next" id="dirTextNext" aria-label="Next">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        <div class="dir-carousel-dots" id="dirDots"></div>
+                        <button class="dir-nav-arrow dir-next" id="dirNext" aria-label="Next">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
                         </button>
                     </div>
                 </div>
-                <!-- Mobile: Accordion -->
-                <div class="directions-accordion" id="directionsAccordion"></div>
             </div>
-            <!-- Right: Image Gallery -->
-            <div class="directions-gallery">
+            <!-- Image Gallery -->
+            <div class="directions-gallery" id="directionsGallery">
                 <div class="gallery-track" id="galleryTrack"></div>
                 <div class="gallery-controls">
                     <button class="gallery-arrow gallery-prev" id="galleryPrev" aria-label="Previous">
@@ -4099,11 +4031,14 @@
         })();
 
         // ============================================
-        // DIRECTIONS SECTION - NEW DESIGN
-        // Text carousel (desktop) + Accordion (mobile) + Image Gallery
+        // DIRECTIONS SECTION - UNIFIED SYNCHRONIZED DESIGN
+        // Single currentIndex, synchronized text carousel + image gallery
         // ============================================
         (function initDirectionsSection() {
-            // Data for directions
+            // Configuration
+            const autoplayDelay = 4500; // ms - single tempo for both text and images
+
+            // Data arrays
             const directionsData = [
                 {
                     title: 'ПЕПТИДЫ',
@@ -4127,7 +4062,6 @@
                 }
             ];
 
-            // Gallery images
             const galleryImages = [
                 { src: 'foto1.jpeg', alt: 'Peptides production' },
                 { src: 'foto2.jpeg', alt: 'Laboratory equipment' },
@@ -4135,162 +4069,170 @@
                 { src: 'foto4.jpeg', alt: 'Manufacturing process' }
             ];
 
-            // ==== Desktop: Text Carousel ====
+            // Single source of truth
+            let currentIndex = 0;
+            let autoplayTimer = null;
+            const totalSlides = directionsData.length;
+
+            // DOM elements - Text Carousel
             const carouselTrack = document.getElementById('directionsCarouselTrack');
-            const carouselDots = document.getElementById('dirTextDots');
-            const carouselPrev = document.getElementById('dirTextPrev');
-            const carouselNext = document.getElementById('dirTextNext');
+            const carouselDots = document.getElementById('dirDots');
+            const carouselPrev = document.getElementById('dirPrev');
+            const carouselNext = document.getElementById('dirNext');
+            const carouselEl = document.getElementById('directionsCarousel');
 
-            if (carouselTrack && carouselDots) {
-                // Build carousel items
-                directionsData.forEach((item, i) => {
-                    const div = document.createElement('div');
-                    div.className = 'dir-carousel-item' + (i === 0 ? ' active' : '');
-                    div.innerHTML = `
-                        <h3 class="dir-carousel-title">${item.title}</h3>
-                        <p class="dir-carousel-text">${item.text}</p>
-                    `;
-                    carouselTrack.appendChild(div);
-
-                    const dot = document.createElement('span');
-                    dot.className = 'dot' + (i === 0 ? ' active' : '');
-                    dot.addEventListener('click', () => goToCarousel(i));
-                    carouselDots.appendChild(dot);
-                });
-
-                let carouselCurrent = 0;
-                const carouselTotal = directionsData.length;
-
-                function goToCarousel(index) {
-                    carouselCurrent = ((index % carouselTotal) + carouselTotal) % carouselTotal;
-                    carouselTrack.querySelectorAll('.dir-carousel-item').forEach((item, i) => {
-                        item.classList.toggle('active', i === carouselCurrent);
-                    });
-                    carouselDots.querySelectorAll('.dot').forEach((d, i) => {
-                        d.classList.toggle('active', i === carouselCurrent);
-                    });
-                }
-
-                if (carouselPrev) carouselPrev.addEventListener('click', () => goToCarousel(carouselCurrent - 1));
-                if (carouselNext) carouselNext.addEventListener('click', () => goToCarousel(carouselCurrent + 1));
-
-                // Auto-advance every 5 seconds
-                let carouselTimer = setInterval(() => goToCarousel(carouselCurrent + 1), 5000);
-                const carouselEl = document.getElementById('directionsTextCarousel');
-                if (carouselEl) {
-                    carouselEl.addEventListener('mouseenter', () => clearInterval(carouselTimer));
-                    carouselEl.addEventListener('mouseleave', () => {
-                        carouselTimer = setInterval(() => goToCarousel(carouselCurrent + 1), 5000);
-                    });
-                }
-            }
-
-            // ==== Mobile: Accordion ====
-            const accordion = document.getElementById('directionsAccordion');
-            if (accordion) {
-                directionsData.forEach((item, i) => {
-                    const div = document.createElement('div');
-                    div.className = 'dir-accordion-item';
-                    div.innerHTML = `
-                        <div class="dir-accordion-header">
-                            <span class="dir-accordion-title">${item.title}</span>
-                            <svg class="dir-accordion-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </div>
-                        <div class="dir-accordion-content">
-                            <p class="dir-accordion-text">${item.text}</p>
-                        </div>
-                    `;
-                    accordion.appendChild(div);
-
-                    const header = div.querySelector('.dir-accordion-header');
-                    const content = div.querySelector('.dir-accordion-content');
-
-                    header.addEventListener('click', () => {
-                        const isActive = div.classList.contains('active');
-                        // Close all others
-                        accordion.querySelectorAll('.dir-accordion-item').forEach(item => {
-                            item.classList.remove('active');
-                            item.querySelector('.dir-accordion-content').style.maxHeight = '0';
-                        });
-                        // Toggle current
-                        if (!isActive) {
-                            div.classList.add('active');
-                            content.style.maxHeight = content.scrollHeight + 'px';
-                        }
-                    });
-                });
-            }
-
-            // ==== Image Gallery ====
+            // DOM elements - Image Gallery
             const galleryTrack = document.getElementById('galleryTrack');
             const galleryDots = document.getElementById('galleryDots');
             const galleryPrev = document.getElementById('galleryPrev');
             const galleryNext = document.getElementById('galleryNext');
+            const galleryEl = document.getElementById('directionsGallery');
 
-            if (galleryTrack && galleryDots) {
-                // Build gallery slides
-                galleryImages.forEach((img, i) => {
-                    const div = document.createElement('div');
-                    div.className = 'gallery-slide';
-                    const imgEl = document.createElement('img');
-                    imgEl.src = img.src;
-                    imgEl.alt = img.alt;
-                    imgEl.loading = 'lazy';
-                    imgEl.onerror = function() {
-                        this.style.background = 'linear-gradient(135deg, #1a2a3a, #0d1a24)';
-                        this.style.minHeight = '100%';
-                    };
-                    div.appendChild(imgEl);
-                    galleryTrack.appendChild(div);
+            if (!carouselTrack || !galleryTrack) return;
 
+            // Build text carousel items
+            directionsData.forEach((item, i) => {
+                const div = document.createElement('div');
+                div.className = 'dir-carousel-item' + (i === 0 ? ' active' : '');
+                div.innerHTML = `
+                    <h3 class="dir-carousel-title">${item.title}</h3>
+                    <p class="dir-carousel-text">${item.text}</p>
+                `;
+                carouselTrack.appendChild(div);
+
+                if (carouselDots) {
                     const dot = document.createElement('span');
                     dot.className = 'dot' + (i === 0 ? ' active' : '');
-                    dot.addEventListener('click', () => goToGallery(i));
+                    dot.addEventListener('click', () => goTo(i));
+                    carouselDots.appendChild(dot);
+                }
+            });
+
+            // Build gallery slides
+            galleryImages.forEach((img, i) => {
+                const div = document.createElement('div');
+                div.className = 'gallery-slide';
+                const imgEl = document.createElement('img');
+                imgEl.src = img.src;
+                imgEl.alt = img.alt;
+                imgEl.loading = 'lazy';
+                imgEl.onerror = function() {
+                    this.style.background = 'linear-gradient(135deg, #1a2a3a, #0d1a24)';
+                    this.style.minHeight = '100%';
+                };
+                div.appendChild(imgEl);
+                galleryTrack.appendChild(div);
+
+                if (galleryDots) {
+                    const dot = document.createElement('span');
+                    dot.className = 'dot' + (i === 0 ? ' active' : '');
+                    dot.addEventListener('click', () => goTo(i));
                     galleryDots.appendChild(dot);
+                }
+            });
+
+            // Core render function - updates BOTH text and images simultaneously
+            function render(index) {
+                // Normalize index based on total slides (directions count)
+                currentIndex = ((index % totalSlides) + totalSlides) % totalSlides;
+                // For images, cycle through available images
+                const imageIndex = currentIndex % galleryImages.length;
+
+                // Update text carousel
+                carouselTrack.querySelectorAll('.dir-carousel-item').forEach((item, i) => {
+                    item.classList.toggle('active', i === currentIndex);
                 });
-
-                let galleryCurrent = 0;
-                const galleryTotal = galleryImages.length;
-
-                function goToGallery(index) {
-                    galleryCurrent = ((index % galleryTotal) + galleryTotal) % galleryTotal;
-                    galleryTrack.style.transform = `translateX(-${galleryCurrent * 100}%)`;
-                    galleryDots.querySelectorAll('.dot').forEach((d, i) => {
-                        d.classList.toggle('active', i === galleryCurrent);
+                if (carouselDots) {
+                    carouselDots.querySelectorAll('.dot').forEach((d, i) => {
+                        d.classList.toggle('active', i === currentIndex);
                     });
                 }
 
-                if (galleryPrev) galleryPrev.addEventListener('click', () => goToGallery(galleryCurrent - 1));
-                if (galleryNext) galleryNext.addEventListener('click', () => goToGallery(galleryCurrent + 1));
-
-                // Touch/swipe support
-                let startX = 0, isDragging = false;
-                galleryTrack.addEventListener('touchstart', e => {
-                    startX = e.touches[0].clientX;
-                    isDragging = true;
-                }, { passive: true });
-
-                galleryTrack.addEventListener('touchend', e => {
-                    if (!isDragging) return;
-                    isDragging = false;
-                    const diff = startX - e.changedTouches[0].clientX;
-                    if (Math.abs(diff) > 40) {
-                        diff > 0 ? goToGallery(galleryCurrent + 1) : goToGallery(galleryCurrent - 1);
-                    }
-                }, { passive: true });
-
-                // Auto-advance gallery
-                let galleryTimer = setInterval(() => goToGallery(galleryCurrent + 1), 4000);
-                const galleryEl = document.querySelector('.directions-gallery');
-                if (galleryEl) {
-                    galleryEl.addEventListener('mouseenter', () => clearInterval(galleryTimer));
-                    galleryEl.addEventListener('mouseleave', () => {
-                        galleryTimer = setInterval(() => goToGallery(galleryCurrent + 1), 4000);
+                // Update image gallery
+                galleryTrack.style.transform = `translateX(-${imageIndex * 100}%)`;
+                if (galleryDots) {
+                    galleryDots.querySelectorAll('.dot').forEach((d, i) => {
+                        d.classList.toggle('active', i === imageIndex);
                     });
                 }
             }
+
+            // Navigation functions
+            function goTo(index) {
+                render(index);
+                resetAutoplay();
+            }
+
+            function next() {
+                goTo(currentIndex + 1);
+            }
+
+            function prev() {
+                goTo(currentIndex - 1);
+            }
+
+            // Autoplay functions
+            function startAutoplay() {
+                stopAutoplay();
+                autoplayTimer = setInterval(() => {
+                    render(currentIndex + 1);
+                }, autoplayDelay);
+            }
+
+            function stopAutoplay() {
+                if (autoplayTimer) {
+                    clearInterval(autoplayTimer);
+                    autoplayTimer = null;
+                }
+            }
+
+            function resetAutoplay() {
+                stopAutoplay();
+                startAutoplay();
+            }
+
+            // Event listeners - Navigation buttons (all call same functions)
+            if (carouselPrev) carouselPrev.addEventListener('click', prev);
+            if (carouselNext) carouselNext.addEventListener('click', next);
+            if (galleryPrev) galleryPrev.addEventListener('click', prev);
+            if (galleryNext) galleryNext.addEventListener('click', next);
+
+            // Pause autoplay on hover (either element)
+            [carouselEl, galleryEl].forEach(el => {
+                if (el) {
+                    el.addEventListener('mouseenter', stopAutoplay);
+                    el.addEventListener('mouseleave', startAutoplay);
+                }
+            });
+
+            // Touch/swipe support - shared handlers
+            let startX = 0, isDragging = false;
+
+            function handleTouchStart(e) {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            }
+
+            function handleTouchEnd(e) {
+                if (!isDragging) return;
+                isDragging = false;
+                const diff = startX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 40) {
+                    diff > 0 ? next() : prev();
+                }
+            }
+
+            // Add touch listeners to both carousel and gallery
+            [carouselTrack, galleryTrack].forEach(el => {
+                if (el) {
+                    el.addEventListener('touchstart', handleTouchStart, { passive: true });
+                    el.addEventListener('touchend', handleTouchEnd, { passive: true });
+                }
+            });
+
+            // Initialize
+            render(0);
+            startAutoplay();
         })();
 
         // ============================================
