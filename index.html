@@ -2095,6 +2095,40 @@
             }
         }
 
+        /* Format card specific styles (Partners section) */
+        .format-card .partner-card-title {
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            hyphens: none;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+
+        .format-card .partner-card-text {
+            font-size: 0.75rem;
+            line-height: 1.55;
+            hyphens: none;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+
+        /* Desktop: larger text for format cards */
+        @media (min-width: 768px) {
+            .format-card .partner-card-title {
+                font-size: 0.9375rem;
+                letter-spacing: 0.1em;
+                margin-bottom: 14px;
+            }
+
+            .format-card .partner-card-text {
+                font-size: 0.8125rem;
+                line-height: 1.6;
+            }
+        }
+
         /* Carousel Dots */
         .partners-dots {
             display: flex;
@@ -3108,7 +3142,7 @@
                             <svg class="icon"><use href="assets/icons.svg#icon-handshake"></use></svg>
                         </div>
                         <h3 class="card-title" data-i18n="principles.card1.title">Партнёрство</h3>
-                        <p class="card-text" data-i18n="principles.card1.text">Гибкие форматы работы и сопровождение под задачи бизнеса. Выстроенная модель взаимодействия: от первичного запроса до готовой продукции и документов.</p>
+                        <p class="card-text" data-i18n="principles.card1.text">Гибкие форматы работы и сопровождение под задачи бизнеса на каждом шаге. Выстроенная модель взаимодействия: от первичного запроса до готовой продукции и документов.</p>
                     </div>
                     <!-- Card 2: Precision -->
                     <div class="card principle-card reveal-card">
@@ -3376,14 +3410,14 @@
     <section id="partners" class="partners-premium">
         <div class="container">
             <div class="section-header center reveal">
-                <span class="section-overline on-dark" data-i18n="partners.overline">ПАРТНЁРАМ</span>
+                <span class="section-overline on-dark" data-i18n="partners.overline">ФОРМАТЫ СОТРУДНИЧЕСТВА</span>
             </div>
         </div>
         <div class="partners-carousel-wrapper">
                 <div class="partners-carousel">
                     <!-- Card 1: Distributors -->
-                    <div class="partner-card" data-partner-index="0">
-                        <span class="partner-badge">Format 01</span>
+                    <div class="partner-card format-card" data-partner-index="0">
+                        <div class="card-topline"></div>
                         <div class="partner-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
@@ -3392,11 +3426,11 @@
                             </svg>
                         </div>
                         <h3 class="partner-card-title" data-i18n="partners.card1.title">Дистрибьюторы и реселлеры</h3>
-                        <p class="partner-card-text" data-i18n="partners.card1.text">Оптовые поставки и масштабируемые объёмы.</p>
+                        <p class="partner-card-text" data-i18n="partners.card1.text">Дистрибьюторы / оптовые компании / региональные представители<br>Дилерские сети / реселлеры / торговые партнёры<br>Отделы закупок / снабжение / коммерческие отделы</p>
                     </div>
                     <!-- Card 2: Professional -->
-                    <div class="partner-card" data-partner-index="1">
-                        <span class="partner-badge">Format 02</span>
+                    <div class="partner-card format-card" data-partner-index="1">
+                        <div class="card-topline"></div>
                         <div class="partner-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
@@ -3404,23 +3438,23 @@
                             </svg>
                         </div>
                         <h3 class="partner-card-title" data-i18n="partners.card2.title">Профессиональный сегмент</h3>
-                        <p class="partner-card-text" data-i18n="partners.card2.text">Решения для специалистов и клиник.</p>
+                        <p class="partner-card-text" data-i18n="partners.card2.text">Клиники / медицинские центры / частные практики<br>Врачи / специалисты / профессиональные кабинеты<br>Косметологические клиники / эстетические центры / wellness-форматы</p>
                     </div>
                     <!-- Card 3: Private Label -->
-                    <div class="partner-card" data-partner-index="2">
-                        <span class="partner-badge">Format 03</span>
+                    <div class="partner-card format-card" data-partner-index="2">
+                        <div class="card-topline"></div>
                         <div class="partner-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
                                 <line x1="7" y1="7" x2="7.01" y2="7"></line>
                             </svg>
                         </div>
-                        <h3 class="partner-card-title" data-i18n="partners.card3.title">Private Label</h3>
-                        <p class="partner-card-text" data-i18n="partners.card3.text">Производство под ваш бренд и формат.</p>
+                        <h3 class="partner-card-title" data-i18n="partners.card3.title">Производство под ваш бренд</h3>
+                        <p class="partner-card-text" data-i18n="partners.card3.text">Бренды / владельцы СТМ / продуктовые команды<br>Компании, запускающие линейку / расширяющие ассортимент / создающие новую марку<br>Проекты под собственную упаковку / маркировку / формат</p>
                     </div>
                     <!-- Card 4: Online Channels -->
-                    <div class="partner-card" data-partner-index="3">
-                        <span class="partner-badge">Format 04</span>
+                    <div class="partner-card format-card" data-partner-index="3">
+                        <div class="card-topline"></div>
                         <div class="partner-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
@@ -3429,7 +3463,7 @@
                             </svg>
                         </div>
                         <h3 class="partner-card-title" data-i18n="partners.card4.title">Онлайн-каналы</h3>
-                        <p class="partner-card-text" data-i18n="partners.card4.text">Стабильные отгрузки для e-commerce.</p>
+                        <p class="partner-card-text" data-i18n="partners.card4.text">Интернет-магазины / e-commerce бренды / D2C-проекты<br>Продавцы маркетплейсов / онлайн-витрины / каталожные продажи<br>Онлайн-магазины в соцсетях / Telegram-магазины / продажи через сайт</p>
                     </div>
                 </div>
                 <!-- Dots Pagination -->
@@ -4303,7 +4337,7 @@
                 'principles.tag2': 'Точность',
                 'principles.tag3': 'Стабильность',
                 'principles.card1.title': 'Партнёрство',
-                'principles.card1.text': 'Гибкие форматы работы и сопровождение под задачи бизнеса. Выстроенная модель взаимодействия: от первичного запроса до готовой продукции и документов.',
+                'principles.card1.text': 'Гибкие форматы работы и сопровождение под задачи бизнеса на каждом шаге. Выстроенная модель взаимодействия: от первичного запроса до готовой продукции и документов.',
                 'principles.card2.title': 'Точность',
                 'principles.card2.text': 'Стандартизация процедур и контроль на ключевых этапах. Работаем по единому стандарту: входной контроль, контроль продукции, упаковка/маркировка и подтверждения по запросу.',
                 'principles.card3.title': 'Стабильность',
@@ -4355,18 +4389,18 @@
                 'quality.item2': 'ОТГРУЗКА ПАРТИИ',
                 'quality.item3': 'ДОКУМЕНТАЦИЯ ПРОДУКЦИИ',
                 'quality.item4': 'ХРАНЕНИЕ И ДОСТАВКА',
-                'partners.overline': 'ПАРТНЁРАМ',
+                'partners.overline': 'ФОРМАТЫ СОТРУДНИЧЕСТВА',
                 'partners.tag1': 'B2B',
                 'partners.tag2': 'Private Label',
                 'partners.tag3': 'E-commerce',
                 'partners.card1.title': 'Дистрибьюторы и реселлеры',
-                'partners.card1.text': 'Оптовые поставки и масштабируемые объёмы.',
+                'partners.card1.text': 'Дистрибьюторы / оптовые компании / региональные представители\nДилерские сети / реселлеры / торговые партнёры\nОтделы закупок / снабжение / коммерческие отделы',
                 'partners.card2.title': 'Профессиональный сегмент',
-                'partners.card2.text': 'Решения для специалистов и клиник.',
-                'partners.card3.title': 'Private Label',
-                'partners.card3.text': 'Производство под ваш бренд и формат.',
+                'partners.card2.text': 'Клиники / медицинские центры / частные практики\nВрачи / специалисты / профессиональные кабинеты\nКосметологические клиники / эстетические центры / wellness-форматы',
+                'partners.card3.title': 'Производство под ваш бренд',
+                'partners.card3.text': 'Бренды / владельцы СТМ / продуктовые команды\nКомпании, запускающие линейку / расширяющие ассортимент / создающие новую марку\nПроекты под собственную упаковку / маркировку / формат',
                 'partners.card4.title': 'Онлайн-каналы',
-                'partners.card4.text': 'Стабильные отгрузки для e-commerce.',
+                'partners.card4.text': 'Интернет-магазины / e-commerce бренды / D2C-проекты\nПродавцы маркетплейсов / онлайн-витрины / каталожные продажи\nОнлайн-магазины в соцсетях / Telegram-магазины / продажи через сайт',
                 'cooperation.overline': 'СОТРУДНИЧЕСТВО',
                 'cooperation.benefit1.title': 'B2B Partnership',
                 'cooperation.benefit1.text': 'Форматы сотрудничества под задачи бизнеса.',
@@ -4409,7 +4443,7 @@
                 'principles.tag2': 'Precision',
                 'principles.tag3': 'Stability',
                 'principles.card1.title': 'Partnership',
-                'principles.card1.text': 'Flexible work formats and support tailored to business needs. A structured interaction model: from initial inquiry to finished products and documentation.',
+                'principles.card1.text': 'Flexible work formats and support tailored to business needs at every step. A structured interaction model: from initial inquiry to finished products and documentation.',
                 'principles.card2.title': 'Precision',
                 'principles.card2.text': 'Standardized procedures and control at key stages. We follow a unified standard: incoming inspection, product control, packaging/labeling, and confirmations on request.',
                 'principles.card3.title': 'Stability',
@@ -4461,18 +4495,18 @@
                 'quality.item2': 'BATCH SHIPMENT',
                 'quality.item3': 'PRODUCT DOCUMENTATION',
                 'quality.item4': 'STORAGE AND DELIVERY',
-                'partners.overline': 'PARTNERS',
+                'partners.overline': 'PARTNERSHIP FORMATS',
                 'partners.tag1': 'B2B',
                 'partners.tag2': 'Private Label',
                 'partners.tag3': 'E-commerce',
                 'partners.card1.title': 'Distributors & Resellers',
-                'partners.card1.text': 'Wholesale supply and scalable volumes.',
+                'partners.card1.text': 'Distributors / wholesale companies / regional representatives\nDealer networks / resellers / trading partners\nProcurement / supply departments / commercial teams',
                 'partners.card2.title': 'Professional Segment',
-                'partners.card2.text': 'Solutions for specialists and clinics.',
-                'partners.card3.title': 'Private Label',
-                'partners.card3.text': 'Manufacturing under your brand and format.',
+                'partners.card2.text': 'Clinics / medical centers / private practices\nDoctors / specialists / professional offices\nCosmetology clinics / aesthetic centers / wellness formats',
+                'partners.card3.title': 'Manufacturing for Your Brand',
+                'partners.card3.text': 'Brands / private label owners / product teams\nCompanies launching lines / expanding range / creating new brands\nProjects for custom packaging / labeling / format',
                 'partners.card4.title': 'Online Channels',
-                'partners.card4.text': 'Stable shipments for e-commerce.',
+                'partners.card4.text': 'Online stores / e-commerce brands / D2C projects\nMarketplace sellers / online showcases / catalog sales\nSocial media stores / Telegram shops / website sales',
                 'cooperation.overline': 'COOPERATION',
                 'cooperation.benefit1.title': 'B2B Partnership',
                 'cooperation.benefit1.text': 'Cooperation formats for business needs.',
