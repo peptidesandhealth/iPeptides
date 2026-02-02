@@ -961,22 +961,22 @@
         /* Section Header - Compact */
         .directions-header {
             text-align: center;
-            padding: 32px var(--container-padding) 16px;
+            padding: 20px var(--container-padding) 12px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         @media (min-width: 992px) {
             .directions-header {
-                padding: 40px var(--container-padding) 20px;
+                padding: 24px var(--container-padding) 16px;
             }
         }
 
         .directions-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            padding: 0 var(--container-padding) 8px;
+            gap: 12px;
+            padding: 0 var(--container-padding);
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -986,13 +986,14 @@
                 flex-direction: row;
                 align-items: stretch;
                 gap: 0;
-                padding: 0 0 24px var(--container-padding);
+                padding: 0 0 0 var(--container-padding);
             }
         }
 
         /* === Text Content Area === */
         .directions-content {
             flex: 0 0 auto;
+            text-align: center;
         }
 
         @media (min-width: 992px) {
@@ -1002,7 +1003,8 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                align-items: flex-start;
+                align-items: center;
+                text-align: center;
             }
         }
 
@@ -1068,62 +1070,76 @@
             }
         }
 
-        /* Carousel Navigation */
+        /* Carousel Navigation - Hidden (using unified nav below) */
         .directions-carousel-nav {
+            display: none;
+        }
+
+        /* === Unified Navigation (bottom of section) === */
+        .directions-nav {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            margin-top: 16px;
+            gap: 16px;
+            padding: 16px var(--container-padding) 20px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         @media (min-width: 992px) {
-            .directions-carousel-nav {
-                justify-content: flex-start;
-                margin-top: 24px;
+            .directions-nav {
+                padding: 20px var(--container-padding) 28px;
             }
         }
 
         .dir-nav-arrow {
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 0;
-            color: rgba(255, 255, 255, 0.6);
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .dir-nav-arrow:hover {
-            border-color: rgba(255, 255, 255, 0.5);
             color: rgba(255, 255, 255, 0.95);
+            transform: translateX(-2px);
         }
 
-        .dir-carousel-dots {
+        .dir-nav-arrow.dir-next:hover {
+            transform: translateX(2px);
+        }
+
+        .dir-nav-arrow svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .dir-nav-dots {
             display: flex;
-            gap: 6px;
+            gap: 8px;
         }
 
-        .dir-carousel-dots .dot {
-            width: 6px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.3);
+        .dir-nav-dots .dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.25);
             border-radius: 0;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
         }
 
-        .dir-carousel-dots .dot:hover {
+        .dir-nav-dots .dot:hover {
             background: rgba(255, 255, 255, 0.5);
         }
 
-        .dir-carousel-dots .dot.active {
+        .dir-nav-dots .dot.active {
             background: rgba(255, 255, 255, 0.9);
-            width: 16px;
+            width: 20px;
         }
 
         /* === Image Gallery === */
@@ -1132,21 +1148,19 @@
             flex: 1;
             min-width: 0;
             overflow: hidden;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: transparent;
         }
 
         @media (max-width: 991px) {
             .directions-gallery {
                 margin: 0 calc(-1 * var(--container-padding));
-                padding-bottom: 4px;
             }
         }
 
         @media (min-width: 992px) {
             .directions-gallery {
                 flex: 0 0 60%;
-                height: 420px;
+                height: 520px;
             }
         }
 
@@ -1158,7 +1172,7 @@
 
         @media (max-width: 991px) {
             .gallery-track {
-                height: 200px;
+                height: 280px;
             }
         }
 
@@ -1176,69 +1190,9 @@
             display: block;
         }
 
-        /* Gallery Controls - Minimal, no blur */
+        /* Gallery Controls - Hidden (using unified nav below) */
         .gallery-controls {
-            position: absolute;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 12px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        @media (min-width: 992px) {
-            .gallery-controls {
-                bottom: 16px;
-                left: 20px;
-                transform: none;
-                padding: 8px 14px;
-            }
-        }
-
-        .gallery-arrow {
-            width: 26px;
-            height: 26px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 0;
-            color: rgba(255, 255, 255, 0.85);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .gallery-arrow:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-        }
-
-        .gallery-dots {
-            display: flex;
-            gap: 5px;
-        }
-
-        .gallery-dots .dot {
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 0;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .gallery-dots .dot:hover {
-            background: rgba(255, 255, 255, 0.6);
-        }
-
-        .gallery-dots .dot.active {
-            background: rgba(255, 255, 255, 0.95);
-            width: 14px;
+            display: none;
         }
 
         /* ============================================
@@ -3152,16 +3106,17 @@
             <!-- Image Gallery -->
             <div class="directions-gallery" id="directionsGallery">
                 <div class="gallery-track" id="galleryTrack"></div>
-                <div class="gallery-controls">
-                    <button class="gallery-arrow gallery-prev" id="galleryPrev" aria-label="Previous">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                    </button>
-                    <div class="gallery-dots" id="galleryDots"></div>
-                    <button class="gallery-arrow gallery-next" id="galleryNext" aria-label="Next">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </button>
-                </div>
             </div>
+        </div>
+        <!-- Unified Navigation -->
+        <div class="directions-nav" id="directionsNav">
+            <button class="dir-nav-arrow dir-prev" id="dirNavPrev" aria-label="Previous">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <div class="dir-nav-dots" id="dirNavDots"></div>
+            <button class="dir-nav-arrow dir-next" id="dirNavNext" aria-label="Next">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
         </div>
     </section>
 
@@ -3975,13 +3930,13 @@
 
         // ============================================
         // DIRECTIONS SECTION - UNIFIED SYNCHRONIZED DESIGN
-        // Single currentIndex, synchronized text carousel + image gallery
+        // Single activeIndex, synchronized text + images (5 slides)
         // ============================================
         (function initDirectionsSection() {
             // Configuration
             const autoplayDelay = 4500; // ms - single tempo for both text and images
 
-            // Data arrays
+            // Data arrays - 5 directions, 5 images (1:1 mapping)
             const directionsData = [
                 {
                     title: 'ПЕПТИДЫ',
@@ -4005,31 +3960,33 @@
                 }
             ];
 
+            // 5 images - index 4 is placeholder (will be replaced later)
             const galleryImages = [
                 { src: 'foto1.jpeg', alt: 'Peptides production' },
                 { src: 'foto2.jpeg', alt: 'Laboratory equipment' },
                 { src: 'foto3.jpeg', alt: 'Quality control' },
-                { src: 'foto4.jpeg', alt: 'Manufacturing process' }
+                { src: 'foto4.jpeg', alt: 'Manufacturing process' },
+                { src: '', alt: 'Cosmetics', placeholder: true }
             ];
 
             // Single source of truth
-            let currentIndex = 0;
+            let activeIndex = 0;
             let autoplayTimer = null;
-            const totalSlides = directionsData.length;
+            const totalSlides = 5; // 5 directions = 5 images
 
             // DOM elements - Text Carousel
             const carouselTrack = document.getElementById('directionsCarouselTrack');
-            const carouselDots = document.getElementById('dirDots');
-            const carouselPrev = document.getElementById('dirPrev');
-            const carouselNext = document.getElementById('dirNext');
             const carouselEl = document.getElementById('directionsCarousel');
 
             // DOM elements - Image Gallery
             const galleryTrack = document.getElementById('galleryTrack');
-            const galleryDots = document.getElementById('galleryDots');
-            const galleryPrev = document.getElementById('galleryPrev');
-            const galleryNext = document.getElementById('galleryNext');
             const galleryEl = document.getElementById('directionsGallery');
+
+            // DOM elements - Unified Navigation
+            const navDots = document.getElementById('dirNavDots');
+            const navPrev = document.getElementById('dirNavPrev');
+            const navNext = document.getElementById('dirNavNext');
+            const sectionEl = document.getElementById('directions');
 
             if (!carouselTrack || !galleryTrack) return;
 
@@ -4042,60 +3999,56 @@
                     <p class="dir-carousel-text">${item.text}</p>
                 `;
                 carouselTrack.appendChild(div);
-
-                if (carouselDots) {
-                    const dot = document.createElement('span');
-                    dot.className = 'dot' + (i === 0 ? ' active' : '');
-                    dot.addEventListener('click', () => goTo(i));
-                    carouselDots.appendChild(dot);
-                }
             });
 
-            // Build gallery slides
+            // Build gallery slides (5 slides)
             galleryImages.forEach((img, i) => {
                 const div = document.createElement('div');
                 div.className = 'gallery-slide';
-                const imgEl = document.createElement('img');
-                imgEl.src = img.src;
-                imgEl.alt = img.alt;
-                imgEl.loading = 'lazy';
-                imgEl.onerror = function() {
-                    this.style.background = 'linear-gradient(135deg, #1a2a3a, #0d1a24)';
-                    this.style.minHeight = '100%';
-                };
-                div.appendChild(imgEl);
+                if (img.placeholder) {
+                    // Placeholder for 5th slide
+                    div.style.background = 'linear-gradient(135deg, #1a2a3a 0%, #0d1a24 100%)';
+                } else {
+                    const imgEl = document.createElement('img');
+                    imgEl.src = img.src;
+                    imgEl.alt = img.alt;
+                    imgEl.loading = i === 0 ? 'eager' : 'lazy';
+                    imgEl.onerror = function() {
+                        this.parentElement.style.background = 'linear-gradient(135deg, #1a2a3a, #0d1a24)';
+                        this.style.display = 'none';
+                    };
+                    div.appendChild(imgEl);
+                }
                 galleryTrack.appendChild(div);
+            });
 
-                if (galleryDots) {
+            // Build navigation dots (5 dots)
+            if (navDots) {
+                for (let i = 0; i < totalSlides; i++) {
                     const dot = document.createElement('span');
                     dot.className = 'dot' + (i === 0 ? ' active' : '');
                     dot.addEventListener('click', () => goTo(i));
-                    galleryDots.appendChild(dot);
+                    navDots.appendChild(dot);
                 }
-            });
+            }
 
             // Core render function - updates BOTH text and images simultaneously
             function render(index) {
-                // Normalize index based on total slides (directions count)
-                currentIndex = ((index % totalSlides) + totalSlides) % totalSlides;
-                // For images, cycle through available images
-                const imageIndex = currentIndex % galleryImages.length;
+                // Normalize index
+                activeIndex = ((index % totalSlides) + totalSlides) % totalSlides;
 
                 // Update text carousel
                 carouselTrack.querySelectorAll('.dir-carousel-item').forEach((item, i) => {
-                    item.classList.toggle('active', i === currentIndex);
+                    item.classList.toggle('active', i === activeIndex);
                 });
-                if (carouselDots) {
-                    carouselDots.querySelectorAll('.dot').forEach((d, i) => {
-                        d.classList.toggle('active', i === currentIndex);
-                    });
-                }
 
-                // Update image gallery
-                galleryTrack.style.transform = `translateX(-${imageIndex * 100}%)`;
-                if (galleryDots) {
-                    galleryDots.querySelectorAll('.dot').forEach((d, i) => {
-                        d.classList.toggle('active', i === imageIndex);
+                // Update image gallery (same index)
+                galleryTrack.style.transform = `translateX(-${activeIndex * 100}%)`;
+
+                // Update navigation dots
+                if (navDots) {
+                    navDots.querySelectorAll('.dot').forEach((d, i) => {
+                        d.classList.toggle('active', i === activeIndex);
                     });
                 }
             }
@@ -4107,18 +4060,18 @@
             }
 
             function next() {
-                goTo(currentIndex + 1);
+                goTo(activeIndex + 1);
             }
 
             function prev() {
-                goTo(currentIndex - 1);
+                goTo(activeIndex - 1);
             }
 
             // Autoplay functions
             function startAutoplay() {
                 stopAutoplay();
                 autoplayTimer = setInterval(() => {
-                    render(currentIndex + 1);
+                    render(activeIndex + 1);
                 }, autoplayDelay);
             }
 
@@ -4134,19 +4087,15 @@
                 startAutoplay();
             }
 
-            // Event listeners - Navigation buttons (all call same functions)
-            if (carouselPrev) carouselPrev.addEventListener('click', prev);
-            if (carouselNext) carouselNext.addEventListener('click', next);
-            if (galleryPrev) galleryPrev.addEventListener('click', prev);
-            if (galleryNext) galleryNext.addEventListener('click', next);
+            // Event listeners - Unified navigation
+            if (navPrev) navPrev.addEventListener('click', prev);
+            if (navNext) navNext.addEventListener('click', next);
 
-            // Pause autoplay on hover (either element)
-            [carouselEl, galleryEl].forEach(el => {
-                if (el) {
-                    el.addEventListener('mouseenter', stopAutoplay);
-                    el.addEventListener('mouseleave', startAutoplay);
-                }
-            });
+            // Pause autoplay on hover (entire section)
+            if (sectionEl) {
+                sectionEl.addEventListener('mouseenter', stopAutoplay);
+                sectionEl.addEventListener('mouseleave', startAutoplay);
+            }
 
             // Touch/swipe support - shared handlers
             let startX = 0, isDragging = false;
