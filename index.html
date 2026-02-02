@@ -3062,49 +3062,74 @@
         </div>
     </section>
 
-    <!-- Infrastructure Section -->
-    <section id="infrastructure" class="infra-section bg-dark">
+    <!-- Infrastructure Section - Using Partner Card Design -->
+    <section id="infrastructure" class="partners-premium infra-premium">
         <div class="container">
             <div class="section-header center reveal">
                 <span class="section-overline on-dark" data-i18n="infra.overline">ИНФРАСТРУКТУРА</span>
             </div>
-            <div class="infra-grid">
-                <div class="card on-dark infra-card reveal-card" data-expandable>
-                    <svg class="icon on-dark expand-chevron"><use href="assets/icons.svg#icon-chevron-down"></use></svg>
-                    <div class="icon-badge on-dark">
-                        <svg class="icon on-dark"><use href="assets/icons.svg#icon-globe-route"></use></svg>
+        </div>
+        <div class="partners-carousel-wrapper">
+            <div class="partners-carousel infra-carousel">
+                <!-- Card 1: Geography -->
+                <div class="partner-card" data-partner-index="0">
+                    <span class="partner-badge">Infra 01</span>
+                    <div class="partner-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
                     </div>
-                    <h3 class="card-title on-dark" data-i18n="infra.card1.title">География поставок</h3>
-                    <p class="card-text on-dark" data-i18n="infra.card1.text">Россия и международные направления</p>
-                    <p class="card-details" data-i18n="infra.card1.details">Выстроенные маршруты и регулярные отгрузки в нужные регионы.</p>
+                    <h3 class="partner-card-title" data-i18n="infra.card1.title">География поставок</h3>
+                    <p class="partner-card-text" data-i18n="infra.card1.text">Россия и международные направления</p>
                 </div>
-                <div class="card on-dark infra-card reveal-card" data-expandable>
-                    <svg class="icon on-dark expand-chevron"><use href="assets/icons.svg#icon-chevron-down"></use></svg>
-                    <div class="icon-badge on-dark">
-                        <svg class="icon on-dark"><use href="assets/icons.svg#icon-settings"></use></svg>
+                <!-- Card 2: B2B Infrastructure -->
+                <div class="partner-card" data-partner-index="1">
+                    <span class="partner-badge">Infra 02</span>
+                    <div class="partner-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
                     </div>
-                    <h3 class="card-title on-dark" data-i18n="infra.card2.title">B2B-инфраструктура</h3>
-                    <p class="card-text on-dark" data-i18n="infra.card2.text">Процессы в едином стандарте</p>
-                    <p class="card-details" data-i18n="infra.card2.details">Упаковка, маркировка и сопровождение по корпоративным требованиям.</p>
+                    <h3 class="partner-card-title" data-i18n="infra.card2.title">B2B-инфраструктура</h3>
+                    <p class="partner-card-text" data-i18n="infra.card2.text">Процессы в едином стандарте</p>
                 </div>
-                <div class="card on-dark infra-card reveal-card" data-expandable>
-                    <svg class="icon on-dark expand-chevron"><use href="assets/icons.svg#icon-chevron-down"></use></svg>
-                    <div class="icon-badge on-dark">
-                        <svg class="icon on-dark"><use href="assets/icons.svg#icon-shield-check"></use></svg>
+                <!-- Card 3: Batch Control -->
+                <div class="partner-card" data-partner-index="2">
+                    <span class="partner-badge">Infra 03</span>
+                    <div class="partner-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <polyline points="9 12 11 14 15 10"></polyline>
+                        </svg>
                     </div>
-                    <h3 class="card-title on-dark" data-i18n="infra.card3.title">Контроль партии</h3>
-                    <p class="card-text on-dark" data-i18n="infra.card3.text">Повторяемость параметров</p>
-                    <p class="card-details" data-i18n="infra.card3.details">Контроль характеристик от партии к партии — стабильный результат.</p>
+                    <h3 class="partner-card-title" data-i18n="infra.card3.title">Контроль партии</h3>
+                    <p class="partner-card-text" data-i18n="infra.card3.text">Повторяемость параметров</p>
                 </div>
-                <div class="card on-dark infra-card reveal-card" data-expandable>
-                    <svg class="icon on-dark expand-chevron"><use href="assets/icons.svg#icon-chevron-down"></use></svg>
-                    <div class="icon-badge on-dark">
-                        <svg class="icon on-dark"><use href="assets/icons.svg#icon-file"></use></svg>
+                <!-- Card 4: Documentation -->
+                <div class="partner-card" data-partner-index="3">
+                    <span class="partner-badge">Infra 04</span>
+                    <div class="partner-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
                     </div>
-                    <h3 class="card-title on-dark" data-i18n="infra.card4.title">Документация</h3>
-                    <p class="card-text on-dark" data-i18n="infra.card4.text">Материалы по запросу партнёра</p>
-                    <p class="card-details" data-i18n="infra.card4.details">Состав, спецификации, сертификаты — полное сопровождение партии.</p>
+                    <h3 class="partner-card-title" data-i18n="infra.card4.title">Документация</h3>
+                    <p class="partner-card-text" data-i18n="infra.card4.text">Материалы по запросу партнёра</p>
                 </div>
+            </div>
+            <!-- Dots Pagination -->
+            <div class="partners-dots infra-dots">
+                <button class="dot active" data-index="0" aria-label="Card 1"></button>
+                <button class="dot" data-index="1" aria-label="Card 2"></button>
+                <button class="dot" data-index="2" aria-label="Card 3"></button>
+                <button class="dot" data-index="3" aria-label="Card 4"></button>
             </div>
         </div>
     </section>
@@ -3680,16 +3705,6 @@
             });
         });
 
-        // Infra cards - expand on mobile
-        document.querySelectorAll('.infra-card[data-expandable]').forEach(card => {
-            card.addEventListener('click', () => {
-                if (!isMobile()) return;
-                const isActive = card.classList.contains('active');
-                document.querySelectorAll('.infra-card').forEach(c => c.classList.remove('active'));
-                if (!isActive) card.classList.add('active');
-            });
-        });
-
         // Benefit items - accordion on mobile/tablet
         document.querySelectorAll('.benefit-item[data-expandable]').forEach(item => {
             item.addEventListener('click', () => {
@@ -3845,16 +3860,15 @@
         });
 
         // ============================================
-        // PARTNERS CAROUSEL
+        // PARTNER-STYLE CAROUSELS (Partners + Infrastructure)
         // ============================================
-        const partnersCarousel = document.querySelector('.partners-carousel');
-        const partnerCards = document.querySelectorAll('.partner-card');
-        const partnerDots = document.querySelectorAll('.partners-dots .dot');
+        const allPartnerCarousels = document.querySelectorAll('.partners-carousel');
+        const allPartnerCards = document.querySelectorAll('.partner-card');
 
-        if (partnersCarousel && partnerCards.length) {
-            // Reveal cards on scroll
+        // Reveal all partner-style cards on scroll
+        if (allPartnerCards.length) {
             const revealPartnerCards = () => {
-                partnerCards.forEach(card => {
+                allPartnerCards.forEach(card => {
                     if (card.getBoundingClientRect().top < window.innerHeight - 60) {
                         card.classList.add('revealed');
                     }
@@ -3862,33 +3876,41 @@
             };
             window.addEventListener('scroll', revealPartnerCards);
             window.addEventListener('load', revealPartnerCards);
+        }
 
-            // Dots pagination for mobile
-            if (partnerDots.length) {
+        // Initialize each carousel with its own dots
+        allPartnerCarousels.forEach(carousel => {
+            const wrapper = carousel.closest('.partners-carousel-wrapper');
+            if (!wrapper) return;
+
+            const dots = wrapper.querySelectorAll('.partners-dots .dot');
+            const cards = carousel.querySelectorAll('.partner-card');
+
+            if (dots.length && cards.length) {
                 let scrollTimeout;
-                partnersCarousel.addEventListener('scroll', () => {
+                carousel.addEventListener('scroll', () => {
                     clearTimeout(scrollTimeout);
                     scrollTimeout = setTimeout(() => {
-                        const scrollLeft = partnersCarousel.scrollLeft;
-                        const cardWidth = partnerCards[0].offsetWidth + 16;
+                        const scrollLeft = carousel.scrollLeft;
+                        const cardWidth = cards[0].offsetWidth + 16;
                         const activeIndex = Math.round(scrollLeft / cardWidth);
-                        partnerDots.forEach((dot, i) => {
+                        dots.forEach((dot, i) => {
                             dot.classList.toggle('active', i === activeIndex);
                         });
                     }, 50);
                 });
 
-                partnerDots.forEach((dot, i) => {
+                dots.forEach((dot, i) => {
                     dot.addEventListener('click', () => {
-                        const cardWidth = partnerCards[0].offsetWidth + 16;
-                        partnersCarousel.scrollTo({
+                        const cardWidth = cards[0].offsetWidth + 16;
+                        carousel.scrollTo({
                             left: i * cardWidth,
                             behavior: 'smooth'
                         });
                     });
                 });
             }
-        }
+        });
 
         // ============================================
         // PRINCIPLES CAROUSEL
