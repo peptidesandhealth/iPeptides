@@ -1581,54 +1581,38 @@
             display: flex;
             flex-direction: column;
             gap: 0;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        @media (min-width: 992px) {
-            .production-cycle-wrapper {
-                flex-direction: row;
-                min-height: 600px;
-            }
-        }
-
-        /* === Left Column: Timeline === */
+        /* === Content Column === */
         .cycle-timeline-column {
             flex: 1;
-            padding: 48px var(--container-padding);
-            max-width: 1400px;
-            margin: 0 auto;
+            padding: 32px var(--container-padding);
             width: 100%;
         }
 
         @media (min-width: 992px) {
             .cycle-timeline-column {
-                flex: 0 0 55%;
-                padding: 64px 48px 64px var(--container-padding);
-                max-width: none;
-                margin: 0;
+                padding: 40px var(--container-padding);
             }
         }
 
         /* Section Header */
         .cycle-header {
-            margin-bottom: 32px;
+            margin-bottom: 24px;
+            text-align: center;
         }
 
         @media (min-width: 992px) {
             .cycle-header {
-                margin-bottom: 48px;
+                margin-bottom: 32px;
             }
         }
 
-        /* === Desktop Timeline === */
+        /* === Desktop Timeline (hidden - using accordion on all devices) === */
         .cycle-timeline {
             display: none;
-        }
-
-        @media (min-width: 992px) {
-            .cycle-timeline {
-                display: block;
-                position: relative;
-            }
         }
 
         /* Timeline Track (vertical line) */
@@ -1734,15 +1718,9 @@
             line-height: 1.6;
         }
 
-        /* === Mobile Accordion === */
+        /* === Accordion (all devices) === */
         .cycle-accordion {
             display: block;
-        }
-
-        @media (min-width: 992px) {
-            .cycle-accordion {
-                display: none;
-            }
         }
 
         .cycle-accordion-item {
@@ -1819,76 +1797,41 @@
             padding: 0 0 16px 44px;
         }
 
-        /* === Right Column: Visual === */
-        .cycle-visual-column {
-            display: none;
+        /* Desktop accordion enhancements */
+        @media (min-width: 992px) {
+            .cycle-accordion-header {
+                padding: 20px 0;
+                gap: 16px;
+            }
+
+            .cycle-accordion-header:hover {
+                margin: 0 -20px;
+                padding: 20px;
+            }
+
+            .cycle-accordion-number {
+                flex: 0 0 40px;
+                font-size: 1rem;
+            }
+
+            .cycle-accordion-title {
+                font-size: 0.8125rem;
+            }
+
+            .cycle-accordion-chevron {
+                width: 20px;
+                height: 20px;
+            }
+
+            .cycle-accordion-desc {
+                font-size: 0.875rem;
+                padding: 0 0 20px 56px;
+            }
         }
 
-        @media (min-width: 992px) {
-            .cycle-visual-column {
-                display: block;
-                flex: 0 0 45%;
-                position: relative;
-                background: linear-gradient(135deg, #1a2a3a 0%, #0f1922 100%);
-                overflow: hidden;
-            }
-
-            /* Sticky behavior */
-            .cycle-visual-inner {
-                position: sticky;
-                top: 0;
-                height: 100vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            /* Decorative gradient overlay */
-            .cycle-visual-column::before {
-                content: '';
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(135deg,
-                    rgba(165, 196, 212, 0.08) 0%,
-                    rgba(165, 196, 212, 0.02) 50%,
-                    transparent 100%);
-                pointer-events: none;
-            }
-
-            /* Decorative accent lines */
-            .cycle-visual-column::after {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 280px;
-                height: 280px;
-                border: 1px solid rgba(165, 196, 212, 0.12);
-                border-radius: 0;
-                pointer-events: none;
-            }
-
-            /* Central decorative element */
-            .cycle-visual-accent {
-                width: 120px;
-                height: 120px;
-                border: 1px solid rgba(165, 196, 212, 0.2);
-                background: linear-gradient(135deg, rgba(165, 196, 212, 0.1) 0%, transparent 100%);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-                z-index: 1;
-            }
-
-            .cycle-visual-accent svg {
-                width: 40px;
-                height: 40px;
-                stroke: rgba(165, 196, 212, 0.5);
-                stroke-width: 1.5;
-                fill: none;
-            }
+        /* === Right Column: Visual (hidden) === */
+        .cycle-visual-column {
+            display: none;
         }
 
         /* ============================================
