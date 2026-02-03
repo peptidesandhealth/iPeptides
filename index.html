@@ -74,25 +74,27 @@
             --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
             /* Unified Typography Tokens */
-            --ui-font: inherit;
+            --ui-font: var(--font-family);
 
-            /* Section Titles (overlines: НАШИ НАПРАВЛЕНИЯ, etc.) */
-            --ui-h2-size: clamp(0.6875rem, 0.5vw + 0.5rem, 0.8125rem);
+            /* Section Titles (НАШИ НАПРАВЛЕНИЯ, ПРИНЦИПЫ, etc.) - LARGEST */
+            --ui-h2-size: clamp(1.125rem, 0.9vw + 0.875rem, 1.75rem);
             --ui-h2-weight: 600;
-            --ui-h2-lh: 1.2;
-            --ui-h2-track: 0.15em;
+            --ui-h2-lh: 1.15;
+            --ui-h2-track: 0.12em;
 
-            /* Card Titles - unified for all cards */
-            --ui-h3-size: clamp(1rem, 1.25vw, 1.375rem);
+            /* Card/Accordion Titles - MEDIUM */
+            --ui-h3-size: clamp(0.875rem, 0.6vw + 0.75rem, 1.125rem);
             --ui-h3-weight: 500;
-            --ui-h3-lh: 1.15;
-            --ui-h3-track: 0.14em;
+            --ui-h3-lh: 1.2;
+            --ui-h3-track: 0.10em;
 
-            /* Card Text - unified for all card descriptions */
-            --ui-p-size: clamp(0.75rem, 0.9vw, 0.875rem);
+            /* Card/Accordion Body Text - SMALLEST, CAPS */
+            --ui-p-size: clamp(0.75rem, 0.35vw + 0.6875rem, 0.875rem);
             --ui-p-weight: 400;
-            --ui-p-lh: 1.45;
-            --ui-p-track: 0.06em;
+            --ui-p-lh: 1.55;
+            --ui-p-track: 0.045em;
+            --ui-p-track-mobile: 0.035em;
+            --ui-p-lh-mobile: 1.6;
         }
 
         /* ============================================
@@ -214,14 +216,14 @@
         /* Overline - Unified Style (uses typography tokens) */
         .section-overline {
             display: block;
+            font-family: var(--ui-font);
             font-size: var(--ui-h2-size);
             font-weight: var(--ui-h2-weight);
             text-transform: uppercase;
             letter-spacing: var(--ui-h2-track);
             line-height: var(--ui-h2-lh);
             color: var(--ice-flow-deep);
-            margin-bottom: 12px;
-            opacity: 0.85;
+            margin-bottom: 16px;
         }
 
         .section-overline.on-dark {
@@ -494,14 +496,14 @@
 
         /* Card Title (unified typography for all cards) */
         .card-title {
-            font-family: var(--font-family);
+            font-family: var(--ui-font);
             font-size: var(--ui-h3-size);
             font-weight: var(--ui-h3-weight);
             line-height: var(--ui-h3-lh);
             letter-spacing: var(--ui-h3-track);
             text-transform: uppercase;
             color: var(--text-dark);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .card-title.on-dark {
@@ -510,7 +512,7 @@
 
         /* Card Text (unified typography for all cards) */
         .card-text {
-            font-family: var(--font-family);
+            font-family: var(--ui-font);
             font-size: var(--ui-p-size);
             font-weight: var(--ui-p-weight);
             line-height: var(--ui-p-lh);
@@ -524,15 +526,16 @@
             color: var(--text-on-dark-secondary);
         }
 
-        /* Mobile card text readability adjustments */
+        /* Mobile card/accordion text readability adjustments */
         @media (max-width: 768px) {
             .card-text,
             .partner-card-text,
             .cycle-accordion-desc,
             .dir-accordion-text,
-            .infra-card .card-details {
-                letter-spacing: 0.05em;
-                line-height: 1.5;
+            .infra-card .card-details,
+            .benefit-text {
+                letter-spacing: var(--ui-p-track-mobile);
+                line-height: var(--ui-p-lh-mobile);
             }
         }
 
@@ -1111,7 +1114,7 @@
         }
 
         .dir-accordion-title {
-            font-family: var(--font-family);
+            font-family: var(--ui-font);
             font-size: var(--ui-h3-size);
             font-weight: var(--ui-h3-weight);
             line-height: var(--ui-h3-lh);
@@ -1149,7 +1152,7 @@
         }
 
         .dir-accordion-text {
-            font-family: var(--font-family);
+            font-family: var(--ui-font);
             font-size: var(--ui-p-size);
             font-weight: var(--ui-p-weight);
             line-height: var(--ui-p-lh);
@@ -1475,14 +1478,14 @@
         }
 
         .infra-card .card-details {
-            font-family: var(--font-family);
+            font-family: var(--ui-font);
             font-size: var(--ui-p-size);
             font-weight: var(--ui-p-weight);
             line-height: var(--ui-p-lh);
             letter-spacing: var(--ui-p-track);
             text-transform: uppercase;
             color: var(--text-on-dark-secondary);
-            opacity: 0.75;
+            opacity: 0.8;
             margin-top: 8px;
             display: none;
         }
@@ -1798,7 +1801,7 @@
         /* Cycle accordion title (unified typography) */
         .cycle-accordion-title {
             flex: 1;
-            font-family: var(--font-family);
+            font-family: var(--ui-font);
             font-size: var(--ui-h3-size);
             font-weight: var(--ui-h3-weight);
             line-height: var(--ui-h3-lh);
@@ -1835,14 +1838,14 @@
 
         /* Cycle accordion description (unified typography) */
         .cycle-accordion-desc {
-            font-family: var(--font-family);
+            font-family: var(--ui-font);
             font-size: var(--ui-p-size);
             font-weight: var(--ui-p-weight);
             line-height: var(--ui-p-lh);
             letter-spacing: var(--ui-p-track);
             text-transform: uppercase;
             color: var(--text-muted);
-            opacity: 0.85;
+            opacity: 0.8;
             padding: 0 0 16px 44px;
         }
 
@@ -1996,7 +1999,7 @@
 
         /* Partner Card Title (unified typography) */
         .partner-card-title {
-            font-family: var(--font-family);
+            font-family: var(--ui-font);
             font-size: var(--ui-h3-size);
             font-weight: var(--ui-h3-weight);
             line-height: var(--ui-h3-lh);
@@ -2011,14 +2014,14 @@
 
         /* Partner Card Text (unified typography) */
         .partner-card-text {
-            font-family: var(--font-family);
+            font-family: var(--ui-font);
             font-size: var(--ui-p-size);
             font-weight: var(--ui-p-weight);
             line-height: var(--ui-p-lh);
             letter-spacing: var(--ui-p-track);
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.7);
-            opacity: 0.85;
+            opacity: 0.8;
             margin-top: auto;
             hyphens: none;
             word-break: normal;
@@ -2035,8 +2038,8 @@
 
         /* Format card specific styles (slightly smaller for longer content) */
         .format-card .partner-card-text {
-            font-size: clamp(0.625rem, 0.75vw, 0.8125rem);
-            line-height: 1.4;
+            font-size: clamp(0.6875rem, 0.4vw + 0.5rem, 0.8125rem);
+            line-height: 1.5;
         }
 
         /* Carousel Dots */
@@ -2385,8 +2388,9 @@
             gap: 8px;
         }
 
-        /* Benefit title (uses typography tokens) */
+        /* Benefit title (unified typography) */
         .benefit-title {
+            font-family: var(--ui-font);
             font-size: var(--ui-h3-size);
             font-weight: var(--ui-h3-weight);
             line-height: var(--ui-h3-lh);
@@ -2456,17 +2460,19 @@
             }
         }
 
-        /* Benefit description - accordion on mobile (uses typography tokens) */
+        /* Benefit description - accordion on mobile (unified typography) */
         .benefit-text {
+            font-family: var(--ui-font);
             font-size: var(--ui-p-size);
             font-weight: var(--ui-p-weight);
             line-height: var(--ui-p-lh);
             letter-spacing: var(--ui-p-track);
+            text-transform: uppercase;
             color: var(--text-secondary);
+            opacity: 0.8;
             margin: 0;
             max-height: 0;
             overflow: hidden;
-            opacity: 0;
             filter: blur(3px);
             transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
                         opacity 0.3s ease,
