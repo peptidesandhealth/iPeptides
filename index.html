@@ -1003,6 +1003,13 @@
             text-align: center;
         }
 
+        /* Mobile: gap between text and slider */
+        @media (max-width: 991px) {
+            .directions-content {
+                margin-bottom: clamp(12px, 3vw, 22px);
+            }
+        }
+
         @media (min-width: 992px) {
             .directions-content {
                 flex: 0 0 40%;
@@ -1088,20 +1095,18 @@
             display: none;
         }
 
-        /* === Unified Navigation (bottom of section) === */
+        /* === Unified Navigation (bound to gallery) === */
         .directions-nav {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 16px;
-            padding: 8px var(--container-padding) 0;
-            max-width: 1400px;
-            margin: 0 auto;
+            margin-top: clamp(8px, 2vw, 14px);
         }
 
         @media (min-width: 992px) {
             .directions-nav {
-                padding: 12px var(--container-padding) 0;
+                margin-top: 12px;
             }
         }
 
@@ -1155,11 +1160,23 @@
             width: 20px;
         }
 
+        /* === Gallery Wrapper (contains gallery + navigation) === */
+        .directions-gallery-wrapper {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 0;
+        }
+
+        @media (min-width: 992px) {
+            .directions-gallery-wrapper {
+                flex: 0 0 60%;
+            }
+        }
+
         /* === Image Gallery === */
         .directions-gallery {
             position: relative;
-            flex: 1;
-            min-width: 0;
             overflow: hidden;
             background: transparent;
         }
@@ -1173,7 +1190,6 @@
 
         @media (min-width: 992px) {
             .directions-gallery {
-                flex: 0 0 60%;
                 height: 580px;
             }
         }
@@ -3219,20 +3235,22 @@
                     </div>
                 </div>
             </div>
-            <!-- Image Gallery -->
-            <div class="directions-gallery" id="directionsGallery">
-                <div class="gallery-track" id="galleryTrack"></div>
+            <!-- Image Gallery + Navigation Container -->
+            <div class="directions-gallery-wrapper">
+                <div class="directions-gallery" id="directionsGallery">
+                    <div class="gallery-track" id="galleryTrack"></div>
+                </div>
+                <!-- Navigation bound to gallery -->
+                <div class="directions-nav" id="directionsNav">
+                    <button class="dir-nav-arrow dir-prev" id="dirNavPrev" aria-label="Previous">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+                    <div class="dir-nav-dots" id="dirNavDots"></div>
+                    <button class="dir-nav-arrow dir-next" id="dirNavNext" aria-label="Next">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
             </div>
-        </div>
-        <!-- Unified Navigation -->
-        <div class="directions-nav" id="directionsNav">
-            <button class="dir-nav-arrow dir-prev" id="dirNavPrev" aria-label="Previous">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
-            <div class="dir-nav-dots" id="dirNavDots"></div>
-            <button class="dir-nav-arrow dir-next" id="dirNavNext" aria-label="Next">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
         </div>
     </section>
 
