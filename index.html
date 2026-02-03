@@ -1617,7 +1617,7 @@
            PRODUCTION CYCLE SECTION - Premium Timeline
            ============================================ */
         .production-cycle-section {
-            background: var(--bg-accent);
+            background: var(--brand-hero-title);
             overflow: hidden;
             /* Uses standard section padding from CSS variables */
         }
@@ -1880,7 +1880,7 @@
            PARTNERS SECTION - Premium B2B (Dark theme)
            ============================================ */
         .partners-premium {
-            background: linear-gradient(180deg, #1a2a3a 0%, #0f1922 100%);
+            background: var(--brand-hero-title);
             overflow: hidden;
             /* Uses standard section padding from CSS variables */
         }
@@ -1893,7 +1893,7 @@
         .partners-premium .section-text {
             max-width: 480px;
             margin: 0 auto;
-            color: rgba(255, 255, 255, 0.75);
+            color: var(--text-muted);
         }
 
         /* Mobile Carousel Container */
@@ -1919,16 +1919,14 @@
             display: none;
         }
 
-        /* Premium B2B Card - Glass on dark background */
+        /* Premium B2B Card - White on light background */
         .partner-card {
             flex: 0 0 calc(85% - 8px);
             min-width: calc(85% - 8px);
             scroll-snap-align: center;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
+            background: var(--bg-white);
+            border: none;
+            border-radius: var(--radius-lg);
             padding: 28px 24px;
             display: flex;
             flex-direction: column;
@@ -1941,7 +1939,7 @@
                         box-shadow 0.35s ease,
                         border-color 0.35s ease,
                         background 0.35s ease;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow-sm);
         }
 
         .partner-card.revealed {
@@ -1956,7 +1954,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.18em;
-            color: rgba(165, 196, 212, 0.9);
+            color: var(--ice-flow-deep);
             margin-bottom: 16px;
             display: flex;
             align-items: center;
@@ -1967,7 +1965,7 @@
             content: '';
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, rgba(165, 196, 212, 0.35) 0%, transparent 100%);
+            background: linear-gradient(90deg, rgba(165, 196, 212, 0.5) 0%, transparent 100%);
         }
 
         /* Card Icon */
@@ -1977,8 +1975,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(165, 196, 212, 0.18) 0%, rgba(165, 196, 212, 0.08) 100%);
-            border-radius: 12px;
+            background: rgba(165, 196, 212, 0.12);
+            border-radius: var(--radius-sm);
             margin-bottom: 16px;
             transition: background 0.3s ease, transform 0.3s ease;
         }
@@ -1986,7 +1984,7 @@
         .partner-icon svg {
             width: 20px;
             height: 20px;
-            stroke: rgba(165, 196, 212, 0.95);
+            stroke: var(--ice-flow-deep);
             stroke-width: 1.75;
             fill: none;
             transition: stroke 0.3s ease;
@@ -2000,7 +1998,7 @@
             line-height: var(--ui-h3-lh);
             letter-spacing: var(--ui-h3-track);
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.95);
+            color: var(--text-dark);
             margin-bottom: 6px;
             hyphens: none;
             word-break: normal;
@@ -2015,7 +2013,7 @@
             line-height: var(--ui-p-lh);
             letter-spacing: var(--ui-p-track);
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-muted);
             opacity: var(--ui-p-opacity);
             margin-top: auto;
             hyphens: none;
@@ -2100,18 +2098,16 @@
 
             .partner-card:hover {
                 transform: translateY(-4px);
-                background: rgba(255, 255, 255, 0.12);
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-                border-color: rgba(165, 196, 212, 0.35);
+                box-shadow: var(--shadow-lg);
             }
 
             .partner-card:hover .partner-icon {
-                background: linear-gradient(135deg, rgba(165, 196, 212, 0.28) 0%, rgba(165, 196, 212, 0.12) 100%);
+                background: rgba(165, 196, 212, 0.2);
                 transform: scale(1.05);
             }
 
             .partner-card:hover .partner-icon svg {
-                stroke: rgba(165, 196, 212, 1);
+                stroke: var(--ice-flow-deep);
             }
 
             .partners-dots {
@@ -3518,7 +3514,7 @@
     <section id="partners" class="partners-premium">
         <div class="container">
             <div class="section-header center reveal">
-                <span class="section-overline on-dark" data-i18n="partners.overline">ФОРМАТЫ СОТРУДНИЧЕСТВА</span>
+                <span class="section-overline" data-i18n="partners.overline">ФОРМАТЫ СОТРУДНИЧЕСТВА</span>
             </div>
         </div>
         <div class="partners-carousel-wrapper">
