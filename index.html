@@ -72,6 +72,27 @@
 
             /* Typography */
             --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+            /* Unified Typography Tokens */
+            --ui-font: inherit;
+
+            /* Section Titles (overlines: НАШИ НАПРАВЛЕНИЯ, etc.) */
+            --ui-h2-size: clamp(0.6875rem, 0.5vw + 0.5rem, 0.8125rem);
+            --ui-h2-weight: 600;
+            --ui-h2-lh: 1.2;
+            --ui-h2-track: 0.15em;
+
+            /* Card Titles */
+            --ui-h3-size: clamp(0.75rem, 0.4vw + 0.6rem, 0.9375rem);
+            --ui-h3-weight: 600;
+            --ui-h3-lh: 1.3;
+            --ui-h3-track: 0.1em;
+
+            /* Support Text (descriptions) */
+            --ui-p-size: clamp(0.6875rem, 0.3vw + 0.55rem, 0.875rem);
+            --ui-p-weight: 500;
+            --ui-p-lh: 1.55;
+            --ui-p-track: 0.04em;
         }
 
         /* ============================================
@@ -190,13 +211,14 @@
             text-align: center;
         }
 
-        /* Overline - Unified Style */
+        /* Overline - Unified Style (uses typography tokens) */
         .section-overline {
             display: block;
-            font-size: 0.6875rem;
-            font-weight: 600;
+            font-size: var(--ui-h2-size);
+            font-weight: var(--ui-h2-weight);
             text-transform: uppercase;
-            letter-spacing: 0.18em;
+            letter-spacing: var(--ui-h2-track);
+            line-height: var(--ui-h2-lh);
             color: var(--ice-flow-deep);
             margin-bottom: 12px;
             opacity: 0.85;
@@ -209,10 +231,51 @@
 
         @media (min-width: 768px) {
             .section-overline {
-                font-size: 0.75rem;
-                letter-spacing: 0.2em;
                 margin-bottom: 14px;
             }
+        }
+
+        /* ============================================
+           UNIFIED TYPOGRAPHY CLASSES
+           Apply to all sections EXCEPT HERO
+           ============================================ */
+
+        /* Section Title (overline style) */
+        .ui-section-title {
+            font-family: var(--ui-font);
+            font-size: var(--ui-h2-size);
+            font-weight: var(--ui-h2-weight);
+            line-height: var(--ui-h2-lh);
+            letter-spacing: var(--ui-h2-track);
+            text-transform: uppercase;
+        }
+
+        /* Card/Item Title */
+        .ui-card-title {
+            font-family: var(--ui-font);
+            font-size: var(--ui-h3-size);
+            font-weight: var(--ui-h3-weight);
+            line-height: var(--ui-h3-lh);
+            letter-spacing: var(--ui-h3-track);
+            text-transform: uppercase;
+        }
+
+        /* Description/Support Text */
+        .ui-text {
+            font-family: var(--ui-font);
+            font-size: var(--ui-p-size);
+            font-weight: var(--ui-p-weight);
+            line-height: var(--ui-p-lh);
+            letter-spacing: var(--ui-p-track);
+            word-break: normal;
+            overflow-wrap: anywhere;
+            hyphens: auto;
+        }
+
+        /* Keep original case (for B2B, D2C, etc.) */
+        .keep-case {
+            text-transform: none !important;
+            letter-spacing: normal !important;
         }
 
         /* 3 Words Tags - Plain Text with Dots */
@@ -429,51 +492,32 @@
             }
         }
 
-        /* Card Title */
+        /* Card Title (uses typography tokens) */
         .card-title {
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: var(--ui-h3-size);
+            font-weight: var(--ui-h3-weight);
+            line-height: var(--ui-h3-lh);
+            letter-spacing: var(--ui-h3-track);
+            text-transform: uppercase;
             color: var(--text-dark);
             margin-bottom: 8px;
-            letter-spacing: -0.01em;
         }
 
         .card-title.on-dark {
             color: var(--text-on-dark);
         }
 
-        .card-title.caps {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 0;
-        }
-
-        @media (min-width: 768px) {
-            .card-title {
-                font-size: 1.0625rem;
-            }
-            .card-title.caps {
-                font-size: 0.8125rem;
-            }
-        }
-
-        /* Card Text */
+        /* Card Text (uses typography tokens) */
         .card-text {
-            font-size: 0.8125rem;
+            font-size: var(--ui-p-size);
+            font-weight: var(--ui-p-weight);
+            line-height: var(--ui-p-lh);
+            letter-spacing: var(--ui-p-track);
             color: var(--text-secondary);
-            line-height: 1.5;
         }
 
         .card-text.on-dark {
             color: var(--text-on-dark-secondary);
-        }
-
-        @media (min-width: 768px) {
-            .card-text {
-                font-size: 0.875rem;
-                line-height: 1.55;
-            }
         }
 
         /* Disable hover on touch devices */
@@ -1052,28 +1096,31 @@
             pointer-events: auto;
         }
 
+        /* Direction carousel title (category names - slightly larger) */
         .dir-carousel-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #ffffff;
+            font-size: clamp(0.875rem, 0.5vw + 0.7rem, 1.125rem);
+            font-weight: var(--ui-h3-weight);
+            line-height: var(--ui-h3-lh);
+            letter-spacing: var(--ui-h3-track);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            color: #ffffff;
             margin-bottom: 10px;
         }
 
         @media (min-width: 992px) {
             .dir-carousel-title {
-                font-size: 1.25rem;
-                margin-bottom: 16px;
+                margin-bottom: 14px;
             }
         }
 
+        /* Direction carousel text (uses typography tokens) */
         .dir-carousel-text {
-            font-size: clamp(0.625rem, 2.5vw, 0.75rem);
-            color: rgba(255, 255, 255, 0.75);
-            line-height: 1.45;
+            font-size: var(--ui-p-size);
+            font-weight: var(--ui-p-weight);
+            line-height: var(--ui-p-lh);
+            letter-spacing: var(--ui-p-track);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
+            color: rgba(255, 255, 255, 0.75);
             white-space: pre-line;
             max-width: 320px;
             margin: 0 auto;
@@ -1081,8 +1128,6 @@
 
         @media (min-width: 992px) {
             .dir-carousel-text {
-                font-size: clamp(0.6875rem, 0.9vw, 0.8125rem);
-                line-height: 1.4;
                 max-width: 460px;
             }
         }
@@ -1276,17 +1321,12 @@
             stroke: var(--ice-flow-deep);
         }
 
+        /* Principle card inherits from .card-title/.card-text unified typography */
         .principle-card .card-title {
             margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.875rem;
-            font-weight: 600;
         }
 
         .principle-card .card-text {
-            font-size: 0.75rem;
-            line-height: 1.5;
             color: var(--text-muted);
             hyphens: none;
             word-break: keep-all;
@@ -1357,14 +1397,7 @@
             }
 
             .principle-card .card-title {
-                font-size: 0.9375rem;
-                letter-spacing: 0.1em;
                 margin-bottom: 12px;
-            }
-
-            .principle-card .card-text {
-                font-size: 0.8125rem;
-                line-height: 1.6;
             }
 
             .principles-dots {
@@ -1739,14 +1772,15 @@
             letter-spacing: -0.02em;
         }
 
+        /* Cycle accordion title (uses typography tokens) */
         .cycle-accordion-title {
             flex: 1;
-            font-size: 0.75rem;
-            font-weight: 600;
+            font-size: var(--ui-h3-size);
+            font-weight: var(--ui-h3-weight);
+            line-height: var(--ui-h3-lh);
+            letter-spacing: var(--ui-h3-track);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
             color: var(--text-primary);
-            line-height: 1.4;
         }
 
         .cycle-accordion-chevron {
@@ -1775,10 +1809,13 @@
             transition: max-height 0.3s ease;
         }
 
+        /* Cycle accordion description (uses typography tokens) */
         .cycle-accordion-desc {
-            font-size: 0.8125rem;
+            font-size: var(--ui-p-size);
+            font-weight: var(--ui-p-weight);
+            line-height: var(--ui-p-lh);
+            letter-spacing: var(--ui-p-track);
             color: var(--text-muted);
-            line-height: 1.6;
             padding: 0 0 16px 44px;
         }
 
@@ -1799,17 +1836,12 @@
                 font-size: 1rem;
             }
 
-            .cycle-accordion-title {
-                font-size: 0.8125rem;
-            }
-
             .cycle-accordion-chevron {
                 width: 20px;
                 height: 20px;
             }
 
             .cycle-accordion-desc {
-                font-size: 0.875rem;
                 padding: 0 0 20px 56px;
             }
         }
@@ -1935,20 +1967,31 @@
             transition: stroke 0.3s ease;
         }
 
+        /* Partner Card Title (uses typography tokens) */
         .partner-card-title {
-            font-size: 1.0625rem;
-            font-weight: 600;
+            font-size: var(--ui-h3-size);
+            font-weight: var(--ui-h3-weight);
+            line-height: var(--ui-h3-lh);
+            letter-spacing: var(--ui-h3-track);
+            text-transform: uppercase;
             color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 8px;
-            letter-spacing: -0.01em;
-            line-height: 1.35;
+            margin-bottom: 10px;
+            hyphens: none;
+            word-break: normal;
+            overflow-wrap: break-word;
         }
 
+        /* Partner Card Text (uses typography tokens) */
         .partner-card-text {
-            font-size: 0.9375rem;
+            font-size: var(--ui-p-size);
+            font-weight: var(--ui-p-weight);
+            line-height: var(--ui-p-lh);
+            letter-spacing: var(--ui-p-track);
             color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
             margin-top: auto;
+            hyphens: none;
+            word-break: normal;
+            overflow-wrap: break-word;
         }
 
         /* Decorative top line (replaces badge text) */
@@ -1959,75 +2002,12 @@
             margin-bottom: 16px;
         }
 
-        /* Infrastructure card specific styles */
-        .infra-card .partner-card-title {
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            hyphens: none;
-            word-break: normal;
-            overflow-wrap: break-word;
-        }
-
-        .infra-card .partner-card-text {
-            font-size: 0.8125rem;
-            line-height: 1.55;
-            hyphens: none;
-            word-break: normal;
-            overflow-wrap: break-word;
-        }
-
-        /* Desktop: larger text for infra cards */
-        @media (min-width: 768px) {
-            .infra-card .partner-card-title {
-                font-size: 0.9375rem;
-                letter-spacing: 0.1em;
-                margin-bottom: 12px;
-            }
-
-            .infra-card .partner-card-text {
-                font-size: 0.875rem;
-                line-height: 1.6;
-            }
-        }
-
-        /* Format card specific styles (Partners section) */
-        .format-card .partner-card-title {
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            hyphens: none;
-            word-break: normal;
-            overflow-wrap: break-word;
-        }
-
+        /* Format card specific styles (smaller text for longer content) */
         .format-card .partner-card-text {
-            font-size: 0.5625rem;
-            line-height: 1.3;
+            font-size: clamp(0.5rem, 0.2vw + 0.4rem, 0.625rem);
+            line-height: 1.35;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            hyphens: none;
-            word-break: normal;
-            overflow-wrap: break-word;
-        }
-
-        /* Desktop: larger text for format cards */
-        @media (min-width: 768px) {
-            .format-card .partner-card-title {
-                font-size: 0.9375rem;
-                letter-spacing: 0.1em;
-                margin-bottom: 14px;
-            }
-
-            .format-card .partner-card-text {
-                font-size: 0.5rem;
-                line-height: 1.25;
-                letter-spacing: 0.08em;
-            }
+            letter-spacing: 0.06em;
         }
 
         /* Carousel Dots */
@@ -2381,14 +2361,15 @@
             gap: 8px;
         }
 
+        /* Benefit title (uses typography tokens) */
         .benefit-title {
-            font-size: 0.6875rem;
-            font-weight: 600;
+            font-size: var(--ui-h3-size);
+            font-weight: var(--ui-h3-weight);
+            line-height: var(--ui-h3-lh);
+            letter-spacing: var(--ui-h3-track);
             text-transform: uppercase;
-            letter-spacing: 0.08em;
             color: var(--text-dark);
             margin-bottom: 0;
-            line-height: 1.3;
         }
 
         /* Chevron for mobile accordion */
@@ -2451,11 +2432,13 @@
             }
         }
 
-        /* Benefit description - accordion on mobile */
+        /* Benefit description - accordion on mobile (uses typography tokens) */
         .benefit-text {
-            font-size: 0.8125rem;
+            font-size: var(--ui-p-size);
+            font-weight: var(--ui-p-weight);
+            line-height: var(--ui-p-lh);
+            letter-spacing: var(--ui-p-track);
             color: var(--text-secondary);
-            line-height: 1.45;
             margin: 0;
             max-height: 0;
             overflow: hidden;
@@ -2475,17 +2458,11 @@
         }
 
         @media (min-width: 1024px) {
-            .benefit-title {
-                font-size: 0.75rem;
-                letter-spacing: 0.1em;
-            }
-
             .benefit-text {
                 max-height: none;
                 opacity: 1;
                 filter: blur(0);
                 margin-top: 4px;
-                font-size: 0.875rem;
             }
 
             .benefit-item.active .benefit-text {
