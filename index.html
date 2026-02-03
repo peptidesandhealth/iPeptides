@@ -1465,7 +1465,7 @@
         .photo-break {
             position: relative;
             width: 100%;
-            min-height: 280px;
+            min-height: 196px;
             background-image: url('fotofon200.jpeg');
             background-size: cover;
             background-position: center;
@@ -1474,6 +1474,16 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+        }
+
+        /* White photo break variant */
+        .photo-break--white {
+            background-image: none;
+            background-color: #ffffff;
+        }
+
+        .photo-break--white::before {
+            display: none;
         }
 
         /* Subtle overlay for text readability */
@@ -1513,11 +1523,11 @@
 
         @media (min-width: 768px) {
             .photo-break {
-                min-height: 360px;
+                min-height: 252px;
             }
 
             .photo-break-content {
-                padding: 64px 24px;
+                padding: 48px 24px;
             }
 
             .photo-break-content .section-tags span {
@@ -1528,11 +1538,11 @@
 
         @media (min-width: 1024px) {
             .photo-break {
-                min-height: 420px;
+                min-height: 294px;
             }
 
             .photo-break-content {
-                padding: 80px 32px;
+                padding: 56px 32px;
             }
 
             .photo-break-content .section-tags span {
@@ -1543,7 +1553,7 @@
 
         @media (min-width: 1280px) {
             .photo-break {
-                min-height: 480px;
+                min-height: 336px;
             }
         }
 
@@ -3296,6 +3306,12 @@
         </div>
     </section>
 
+    <!-- Photo Break - Premium Visual Divider -->
+    <section class="photo-break">
+        <div class="photo-break-content">
+        </div>
+    </section>
+
     <!-- Infrastructure Section - Using Partner Card Design -->
     <section id="infrastructure" class="partners-premium infra-premium">
         <div class="container">
@@ -3365,12 +3381,6 @@
                 <button class="dot" data-index="2" aria-label="Card 3"></button>
                 <button class="dot" data-index="3" aria-label="Card 4"></button>
             </div>
-        </div>
-    </section>
-
-    <!-- Photo Break - Premium Visual Divider -->
-    <section class="photo-break">
-        <div class="photo-break-content">
         </div>
     </section>
 
@@ -3600,6 +3610,12 @@
                     <button class="dot" data-index="3" aria-label="Card 4"></button>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Photo Break White - Premium Visual Divider -->
+    <section class="photo-break photo-break--white">
+        <div class="photo-break-content">
         </div>
     </section>
 
