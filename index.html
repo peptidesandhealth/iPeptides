@@ -50,9 +50,9 @@
 
             /* Spacing */
             --container-padding: 20px;
-            --section-padding-mobile: 48px;
-            --section-padding-tablet: 64px;
-            --section-padding-desktop: 80px;
+            --section-padding-mobile: 40px;
+            --section-padding-tablet: 48px;
+            --section-padding-desktop: 56px;
 
             /* Border Radius - Unified */
             --radius-sm: 12px;
@@ -956,13 +956,7 @@
         .directions-section-new {
             background: var(--brand-hero-title);
             overflow: hidden;
-            padding: 20px 0 12px;
-        }
-
-        @media (min-width: 992px) {
-            .directions-section-new {
-                padding: 32px 0 20px;
-            }
+            /* Uses standard section padding from CSS variables */
         }
 
         /* Section Header - Compact */
@@ -1012,8 +1006,8 @@
 
         @media (min-width: 992px) {
             .directions-content {
-                flex: 0 0 40%;
-                padding-right: 48px;
+                flex: 0 0 38%;
+                padding-right: 32px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -1029,12 +1023,12 @@
 
         .directions-carousel-track {
             position: relative;
-            min-height: 100px;
+            min-height: 85px;
         }
 
         @media (min-width: 992px) {
             .directions-carousel-track {
-                min-height: 110px;
+                min-height: 95px;
             }
         }
 
@@ -1563,6 +1557,7 @@
         .production-cycle-section {
             background: var(--bg-accent);
             overflow: hidden;
+            /* Uses standard section padding from CSS variables */
         }
 
         .production-cycle-wrapper {
@@ -1576,25 +1571,19 @@
         /* === Content Column === */
         .cycle-timeline-column {
             flex: 1;
-            padding: 32px var(--container-padding);
+            padding: 0 var(--container-padding);
             width: 100%;
-        }
-
-        @media (min-width: 992px) {
-            .cycle-timeline-column {
-                padding: 40px var(--container-padding);
-            }
         }
 
         /* Section Header */
         .cycle-header {
-            margin-bottom: 24px;
+            margin-bottom: 16px;
             text-align: center;
         }
 
         @media (min-width: 992px) {
             .cycle-header {
-                margin-bottom: 32px;
+                margin-bottom: 20px;
             }
         }
 
@@ -1723,15 +1712,15 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 16px 0;
+            padding: 12px 0;
             cursor: pointer;
             transition: background 0.2s ease;
         }
 
         .cycle-accordion-header:hover {
             background: rgba(165, 196, 212, 0.05);
-            margin: 0 -16px;
-            padding: 16px;
+            margin: 0 -12px;
+            padding: 12px;
         }
 
         .cycle-accordion-number {
@@ -1788,13 +1777,13 @@
         /* Desktop accordion enhancements */
         @media (min-width: 992px) {
             .cycle-accordion-header {
-                padding: 20px 0;
+                padding: 14px 0;
                 gap: 16px;
             }
 
             .cycle-accordion-header:hover {
-                margin: 0 -20px;
-                padding: 20px;
+                margin: 0 -14px;
+                padding: 14px;
             }
 
             .cycle-accordion-number {
@@ -1828,11 +1817,12 @@
         .partners-premium {
             background: linear-gradient(180deg, #1a2a3a 0%, #0f1922 100%);
             overflow: hidden;
+            /* Uses standard section padding from CSS variables */
         }
 
         .partners-premium .section-header {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 32px;
         }
 
         .partners-premium .section-text {
@@ -2173,23 +2163,8 @@
         .partnership-section {
             position: relative;
             overflow: hidden;
-            padding-top: 40px;
-            padding-bottom: 40px;
             background: var(--brand-hero-title);
-        }
-
-        @media (min-width: 768px) {
-            .partnership-section {
-                padding-top: 48px;
-                padding-bottom: 48px;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .partnership-section {
-                padding-top: 56px;
-                padding-bottom: 56px;
-            }
+            /* Uses standard section padding from CSS variables */
         }
 
         /* Text colors for metallic background */
