@@ -4795,6 +4795,51 @@
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
         });
+
+        // ============================================
+        // SYNC SECTION HEIGHTS (Desktop only)
+        // Match #directions height to #partnership
+        // ============================================
+        (function() {
+            const directionsSection = document.getElementById('directions');
+            const partnershipSection = document.getElementById('partnership');
+
+            if (!directionsSection || !partnershipSection) return;
+
+            function syncSectionHeights() {
+                // Only sync on desktop (1024px+)
+                if (window.innerWidth >= 1024) {
+                    // Reset min-height first to get natural height
+                    directionsSection.style.minHeight = '';
+
+                    // Get natural heights
+                    const partnershipHeight = partnershipSection.offsetHeight;
+                    const directionsHeight = directionsSection.offsetHeight;
+
+                    // If directions is taller, sync partnership to directions
+                    // If partnership is taller, sync directions to partnership
+                    if (partnershipHeight > directionsHeight) {
+                        directionsSection.style.minHeight = partnershipHeight + 'px';
+                    } else {
+                        partnershipSection.style.minHeight = directionsHeight + 'px';
+                    }
+                } else {
+                    // Reset on mobile/tablet
+                    directionsSection.style.minHeight = '';
+                    partnershipSection.style.minHeight = '';
+                }
+            }
+
+            // Debounce for resize
+            let resizeTimeout;
+            function handleResize() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(syncSectionHeights, 100);
+            }
+
+            window.addEventListener('load', syncSectionHeights);
+            window.addEventListener('resize', handleResize);
+        })();
     </script>
 </body>
 </html>
