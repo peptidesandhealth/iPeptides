@@ -994,33 +994,48 @@
         }
 
         /* ============================================
-           DIRECTIONS SECTION - UNIFIED DESIGN
-           Synced text + image carousel, no accordion
+           DIRECTIONS SECTION - ACCORDION + GALLERY
+           Left: accordion list, Right: synced gallery
            ============================================ */
         .directions-section-new {
             background: var(--brand-hero-title);
             overflow: hidden;
-            /* Uses standard section padding from CSS variables */
+            padding-top: var(--section-padding-mobile);
+            padding-bottom: var(--section-padding-mobile);
+        }
+
+        @media (min-width: 768px) {
+            .directions-section-new {
+                padding-top: var(--section-padding-tablet);
+                padding-bottom: var(--section-padding-tablet);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .directions-section-new {
+                padding-top: var(--section-padding-desktop);
+                padding-bottom: var(--section-padding-desktop);
+            }
         }
 
         /* Section Header - Compact */
         .directions-header {
             text-align: center;
-            padding: 0 var(--container-padding) 8px;
+            padding: 0 var(--container-padding) 16px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         @media (min-width: 992px) {
             .directions-header {
-                padding: 0 var(--container-padding) 16px;
+                padding: 0 var(--container-padding) 20px;
             }
         }
 
         .directions-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 0;
+            gap: 16px;
             padding: 0 var(--container-padding);
             max-width: 1400px;
             margin: 0 auto;
@@ -1036,105 +1051,106 @@
             }
         }
 
-        /* === Text Content Area === */
+        /* === Text Content Area (Accordion) === */
         .directions-content {
             flex: 0 0 auto;
-            text-align: center;
             order: 1;
-        }
-
-        /* Mobile: gap between text and slider */
-        @media (max-width: 991px) {
-            .directions-content {
-                margin-bottom: clamp(12px, 3vw, 18px);
-            }
         }
 
         @media (min-width: 992px) {
             .directions-content {
-                flex: 0 0 340px;
+                flex: 0 0 40%;
                 padding-right: 32px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                align-items: center;
-                text-align: center;
                 order: 1;
             }
         }
 
-        /* === Text Carousel (works on both mobile and desktop) === */
-        .directions-carousel {
+        /* === Accordion Styles === */
+        .directions-accordion {
             width: 100%;
         }
 
-        .directions-carousel-track {
-            position: relative;
-            min-height: 85px;
+        .dir-accordion-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        @media (min-width: 992px) {
-            .directions-carousel-track {
-                min-height: 95px;
-            }
+        .dir-accordion-item:first-child {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
         }
 
-        .dir-carousel-item {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            opacity: 0;
-            transform: translateY(8px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            pointer-events: none;
+        .dir-accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
         }
 
-        .dir-carousel-item.active {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
+        .dir-accordion-header:hover {
+            opacity: 0.85;
         }
 
-        /* Direction carousel title (category names - slightly larger) */
-        .dir-carousel-title {
-            font-size: clamp(0.875rem, 0.5vw + 0.7rem, 1.125rem);
+        .dir-accordion-title {
+            font-size: var(--ui-h3-size);
             font-weight: var(--ui-h3-weight);
             line-height: var(--ui-h3-lh);
             letter-spacing: var(--ui-h3-track);
             text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            transition: color 0.3s ease;
+        }
+
+        .dir-accordion-item.active .dir-accordion-title {
             color: #ffffff;
-            margin-bottom: 10px;
         }
 
-        @media (min-width: 992px) {
-            .dir-carousel-title {
-                margin-bottom: 14px;
-            }
+        .dir-accordion-chevron {
+            width: 18px;
+            height: 18px;
+            color: rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease, color 0.3s ease;
+            flex-shrink: 0;
         }
 
-        /* Direction carousel text (uses typography tokens) */
-        .dir-carousel-text {
+        .dir-accordion-item.active .dir-accordion-chevron {
+            transform: rotate(180deg);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .dir-accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .dir-accordion-item.active .dir-accordion-content {
+            max-height: 200px;
+        }
+
+        .dir-accordion-text {
             font-size: var(--ui-p-size);
             font-weight: var(--ui-p-weight);
             line-height: var(--ui-p-lh);
             letter-spacing: var(--ui-p-track);
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.75);
+            color: rgba(255, 255, 255, 0.7);
             white-space: pre-line;
-            max-width: 320px;
-            margin: 0 auto;
+            padding-bottom: 14px;
         }
 
         @media (min-width: 992px) {
-            .dir-carousel-text {
-                max-width: 460px;
+            .dir-accordion-header {
+                padding: 16px 0;
             }
-        }
 
-        /* Carousel Navigation - Hidden (using unified nav below) */
-        .directions-carousel-nav {
-            display: none;
+            .dir-accordion-text {
+                padding-bottom: 16px;
+                max-width: 400px;
+            }
         }
 
         /* === Unified Navigation (overlay on gallery) === */
@@ -1202,7 +1218,7 @@
             width: 20px;
         }
 
-        /* === Gallery Wrapper (contains gallery + navigation) === */
+        /* === Gallery Wrapper === */
         .directions-gallery-wrapper {
             display: flex;
             flex-direction: column;
@@ -1213,11 +1229,10 @@
 
         @media (min-width: 992px) {
             .directions-gallery-wrapper {
-                flex: 1;
+                flex: 0 0 60%;
                 order: 2;
                 /* Full-bleed to right edge */
                 margin-right: calc(50% - 50vw);
-                width: auto;
             }
         }
 
@@ -1231,13 +1246,13 @@
         @media (max-width: 991px) {
             .directions-gallery {
                 margin: 0 calc(-1 * var(--container-padding));
-                height: 340px;
+                height: 306px; /* 10% smaller than 340px */
             }
         }
 
         @media (min-width: 992px) {
             .directions-gallery {
-                height: 522px; /* Reduced 10% from 580px */
+                height: 522px;
             }
         }
 
@@ -3184,26 +3199,15 @@
         </div>
     </section>
 
-    <!-- Directions Section - Text carousel + Image gallery, no title -->
+    <!-- Directions Section - Accordion + Image gallery -->
     <section id="directions" class="directions-section-new">
         <div class="directions-header">
             <span class="section-overline on-dark" data-i18n="directions.overline">НАШИ НАПРАВЛЕНИЯ</span>
         </div>
         <div class="directions-wrapper">
-            <!-- Text Content (carousel on both mobile and desktop) -->
+            <!-- Text Content (Accordion) -->
             <div class="directions-content">
-                <div class="directions-carousel" id="directionsCarousel">
-                    <div class="directions-carousel-track" id="directionsCarouselTrack"></div>
-                    <div class="directions-carousel-nav">
-                        <button class="dir-nav-arrow dir-prev" id="dirPrev" aria-label="Previous">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                        </button>
-                        <div class="dir-carousel-dots" id="dirDots"></div>
-                        <button class="dir-nav-arrow dir-next" id="dirNext" aria-label="Next">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                        </button>
-                    </div>
-                </div>
+                <div class="directions-accordion" id="directionsAccordion"></div>
             </div>
             <!-- Image Gallery + Navigation Container -->
             <div class="directions-gallery-wrapper">
@@ -4040,15 +4044,15 @@
         })();
 
         // ============================================
-        // DIRECTIONS SECTION - UNIFIED SYNCHRONIZED DESIGN
-        // Single activeIndex, synchronized text + images (5 slides)
+        // DIRECTIONS SECTION - ACCORDION + GALLERY SYNC
+        // Single activeIndex controls accordion + gallery
+        // Order: ПЕПТИДЫ, ВИТАМИНЫ, КОМПЛЕКСЫ, КОСМЕТОЛОГИЯ, КОСМЕЦЕВТИКА
         // ============================================
         (function initDirectionsSection() {
             // Configuration
-            const autoplayDelay = 4500; // ms - single tempo for both text and images
+            const autoplayDelay = 4500; // ms
 
-            // Data arrays - 5 directions, 5 images (1:1 mapping)
-            // Order: ПЕПТИДЫ, ВИТАМИНЫ, КОСМЕТОЛОГИЯ, КОСМЕЦЕВТИКА, КОМПЛЕКСЫ
+            // Data arrays - 5 directions in required order
             const directionsData = [
                 {
                     title: 'ПЕПТИДЫ',
@@ -4059,61 +4063,67 @@
                     text: 'ПОДДЕРЖКА НУТРИЕНТНОГО ПРОФИЛЯ:\nВИТАМИНЫ, МАКРО- И МИКРОЭЛЕМЕНТЫ,\nБАЗОВЫЕ СОЧЕТАНИЯ ДЛЯ ЕЖЕДНЕВНОГО ПРИЕМА.'
                 },
                 {
+                    title: 'КОМПЛЕКСЫ',
+                    text: 'ГОТОВЫЕ РЕШЕНИЯ ПОД КЛЮЧ:\nФОРМУЛЫ-СОЧЕТАНИЯ ПОД\nКОНКРЕТНЫЙ СЦЕНАРИЙ ПРИМЕНЕНИЯ,\nКУРСОВЫЕ НАБОРЫ, СИСТЕМНЫЕ ЛИНЕЙКИ.'
+                },
+                {
                     title: 'КОСМЕТОЛОГИЯ',
                     text: 'КОСМЕТОЛОГИЧЕСКИЕ ФОРМАТЫ:\nСЫВОРОТКИ, ЭМУЛЬСИИ, ПЕПТИДНЫЕ КОМПОНЕНТЫ И\nКОНЦЕНТРАТЫ ДЛЯ ЭСТЕТИЧЕСКОГО\nПРОФЕССИОНАЛЬНОГО НАПРАВЛЕНИЯ.'
                 },
                 {
                     title: 'КОСМЕЦЕВТИКА',
                     text: 'ПРОДУКТЫ ДЛЯ ЕЖЕДНЕВНОГО УХОДА:\nКРЕМЫ, СЫВОРОТКИ, ГЕЛИ/ПЕНКИ ДЛЯ ОЧИЩЕНИЯ,\nТОНИКИ/МИСТЫ, МАСКИ, СРЕДСТВА\nДЛЯ ДОМАШНЕГО ПРИМЕНЕНИЯ.'
-                },
-                {
-                    title: 'КОМПЛЕКСЫ',
-                    text: 'ГОТОВЫЕ РЕШЕНИЯ ПОД КЛЮЧ:\nФОРМУЛЫ-СОЧЕТАНИЯ ПОД\nКОНКРЕТНЫЙ СЦЕНАРИЙ ПРИМЕНЕНИЯ,\nКУРСОВЫЕ НАБОРЫ, СИСТЕМНЫЕ ЛИНЕЙКИ.'
                 }
             ];
 
-            // 5 images matching order: ПЕПТИДЫ, ВИТАМИНЫ, КОСМЕТОЛОГИЯ, КОСМЕЦЕВТИКА, КОМПЛЕКСЫ
+            // 5 images matching new order
             const galleryImages = [
                 { src: 'foto1.jpeg', alt: 'Peptides' },
                 { src: 'foto2.jpeg', alt: 'Vitamins' },
+                { src: '', alt: 'Complexes', placeholder: true },
                 { src: 'foto3.jpeg', alt: 'Cosmetology' },
-                { src: 'foto4.jpeg', alt: 'Cosmeceuticals' },
-                { src: '', alt: 'Complexes', placeholder: true }
+                { src: 'foto4.jpeg', alt: 'Cosmeceuticals' }
             ];
 
             // Single source of truth
             let activeIndex = 0;
             let autoplayTimer = null;
-            const totalSlides = 5; // 5 directions = 5 images
+            const totalSlides = 5;
 
-            // DOM elements - Text Carousel
-            const carouselTrack = document.getElementById('directionsCarouselTrack');
-            const carouselEl = document.getElementById('directionsCarousel');
-
-            // DOM elements - Image Gallery
+            // DOM elements
+            const accordionEl = document.getElementById('directionsAccordion');
             const galleryTrack = document.getElementById('galleryTrack');
-            const galleryEl = document.getElementById('directionsGallery');
-
-            // DOM elements - Unified Navigation
             const navDots = document.getElementById('dirNavDots');
             const navPrev = document.getElementById('dirNavPrev');
             const navNext = document.getElementById('dirNavNext');
             const sectionEl = document.getElementById('directions');
 
-            if (!carouselTrack || !galleryTrack) return;
+            if (!accordionEl || !galleryTrack) return;
 
-            // Build text carousel items
+            // Build accordion items
             directionsData.forEach((item, i) => {
                 const div = document.createElement('div');
-                div.className = 'dir-carousel-item' + (i === 0 ? ' active' : '');
+                div.className = 'dir-accordion-item' + (i === 0 ? ' active' : '');
+                div.dataset.index = i;
                 div.innerHTML = `
-                    <h3 class="dir-carousel-title">${item.title}</h3>
-                    <p class="dir-carousel-text">${item.text}</p>
+                    <div class="dir-accordion-header">
+                        <span class="dir-accordion-title">${item.title}</span>
+                        <svg class="dir-accordion-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                    <div class="dir-accordion-content">
+                        <p class="dir-accordion-text">${item.text}</p>
+                    </div>
                 `;
-                carouselTrack.appendChild(div);
+                // Click handler for accordion
+                div.querySelector('.dir-accordion-header').addEventListener('click', () => {
+                    setActiveIndex(i);
+                });
+                accordionEl.appendChild(div);
             });
 
-            // Build gallery slides (5 slides)
+            // Build gallery slides
             galleryImages.forEach((img, i) => {
                 const div = document.createElement('div');
                 div.className = 'gallery-slide';
@@ -4124,60 +4134,64 @@
                     imgEl.loading = i === 0 ? 'eager' : 'lazy';
                     div.appendChild(imgEl);
                 }
-                // No dark background for placeholder - keep transparent
                 galleryTrack.appendChild(div);
             });
 
-            // Build navigation dots (5 dots)
+            // Build navigation dots
             if (navDots) {
                 for (let i = 0; i < totalSlides; i++) {
                     const dot = document.createElement('span');
                     dot.className = 'dot' + (i === 0 ? ' active' : '');
-                    dot.addEventListener('click', () => goTo(i));
+                    dot.addEventListener('click', () => setActiveIndex(i));
                     navDots.appendChild(dot);
                 }
             }
 
-            // Core render function - updates BOTH text and images simultaneously
-            function render(index) {
-                // Normalize index
+            // Core sync function - updates accordion + gallery + dots
+            function setActiveIndex(index) {
                 activeIndex = ((index % totalSlides) + totalSlides) % totalSlides;
 
-                // Update text carousel
-                carouselTrack.querySelectorAll('.dir-carousel-item').forEach((item, i) => {
+                // Update accordion
+                accordionEl.querySelectorAll('.dir-accordion-item').forEach((item, i) => {
                     item.classList.toggle('active', i === activeIndex);
                 });
 
-                // Update image gallery (same index)
+                // Update gallery
                 galleryTrack.style.transform = `translateX(-${activeIndex * 100}%)`;
 
-                // Update navigation dots
+                // Update dots
                 if (navDots) {
                     navDots.querySelectorAll('.dot').forEach((d, i) => {
                         d.classList.toggle('active', i === activeIndex);
                     });
                 }
-            }
 
-            // Navigation functions
-            function goTo(index) {
-                render(index);
                 resetAutoplay();
             }
 
             function next() {
-                goTo(activeIndex + 1);
+                setActiveIndex(activeIndex + 1);
             }
 
             function prev() {
-                goTo(activeIndex - 1);
+                setActiveIndex(activeIndex - 1);
             }
 
             // Autoplay functions
             function startAutoplay() {
                 stopAutoplay();
                 autoplayTimer = setInterval(() => {
-                    render(activeIndex + 1);
+                    activeIndex = ((activeIndex + 1) % totalSlides);
+                    // Update without resetting autoplay
+                    accordionEl.querySelectorAll('.dir-accordion-item').forEach((item, i) => {
+                        item.classList.toggle('active', i === activeIndex);
+                    });
+                    galleryTrack.style.transform = `translateX(-${activeIndex * 100}%)`;
+                    if (navDots) {
+                        navDots.querySelectorAll('.dot').forEach((d, i) => {
+                            d.classList.toggle('active', i === activeIndex);
+                        });
+                    }
                 }, autoplayDelay);
             }
 
@@ -4193,17 +4207,17 @@
                 startAutoplay();
             }
 
-            // Event listeners - Unified navigation
+            // Event listeners
             if (navPrev) navPrev.addEventListener('click', prev);
             if (navNext) navNext.addEventListener('click', next);
 
-            // Pause autoplay on hover (entire section)
+            // Pause autoplay on hover
             if (sectionEl) {
                 sectionEl.addEventListener('mouseenter', stopAutoplay);
                 sectionEl.addEventListener('mouseleave', startAutoplay);
             }
 
-            // Touch/swipe support - shared handlers
+            // Touch/swipe support
             let startX = 0, isDragging = false;
 
             function handleTouchStart(e) {
@@ -4220,16 +4234,13 @@
                 }
             }
 
-            // Add touch listeners to both carousel and gallery
-            [carouselTrack, galleryTrack].forEach(el => {
-                if (el) {
-                    el.addEventListener('touchstart', handleTouchStart, { passive: true });
-                    el.addEventListener('touchend', handleTouchEnd, { passive: true });
-                }
-            });
+            // Touch listeners on gallery
+            if (galleryTrack) {
+                galleryTrack.addEventListener('touchstart', handleTouchStart, { passive: true });
+                galleryTrack.addEventListener('touchend', handleTouchEnd, { passive: true });
+            }
 
             // Initialize
-            render(0);
             startAutoplay();
         })();
 
