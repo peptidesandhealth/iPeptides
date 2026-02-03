@@ -2173,42 +2173,43 @@
         .partnership-section {
             position: relative;
             overflow: hidden;
-            background: var(--brand-hero-title);
+            background: linear-gradient(180deg, #1a2a3a 0%, #0f1922 100%);
             /* Uses standard section padding from CSS variables */
         }
 
-        /* Text colors for metallic background */
+        /* Text colors for dark background */
         .partnership-section .section-overline {
-            color: #3a3a3a;
+            color: var(--ice-flow);
+            opacity: 0.9;
         }
 
         .partnership-section .benefit-title {
-            color: #2a2a2a;
-            font-weight: 600;
+            color: rgba(255, 255, 255, 0.95);
+            font-weight: 500;
         }
 
         .partnership-section .benefit-text {
-            color: #404040;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .partnership-section .benefit-icon {
-            background: rgba(60, 60, 60, 0.08);
-            border: 1px solid rgba(60, 60, 60, 0.2);
+            background: rgba(165, 196, 212, 0.12);
+            border: 1px solid rgba(165, 196, 212, 0.25);
         }
 
         .partnership-section .benefit-icon svg {
-            stroke: #404040;
+            stroke: rgba(165, 196, 212, 0.8);
             stroke-width: 2;
         }
 
         .partnership-section .benefit-item {
-            border-bottom-color: rgba(60, 60, 60, 0.15);
+            border-bottom-color: rgba(165, 196, 212, 0.15);
         }
 
         /* Mobile only: subtle highlight for active accordion item */
         @media (max-width: 1023px) {
             .partnership-section .benefit-item.active {
-                background: rgba(255, 255, 255, 0.2);
+                background: rgba(165, 196, 212, 0.12);
             }
         }
 
@@ -2224,7 +2225,7 @@
         }
 
         .partnership-section .benefit-chevron svg {
-            stroke: #505050;
+            stroke: rgba(255, 255, 255, 0.5);
         }
 
         /* Two-Column Layout Container */
