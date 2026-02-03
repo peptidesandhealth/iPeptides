@@ -1015,12 +1015,12 @@
 
         .directions-carousel-track {
             position: relative;
-            min-height: 100px;
+            min-height: 120px;
         }
 
         @media (min-width: 992px) {
             .directions-carousel-track {
-                min-height: 140px;
+                min-height: 130px;
             }
         }
 
@@ -1058,15 +1058,21 @@
         }
 
         .dir-carousel-text {
-            font-size: 0.8125rem;
+            font-size: 0.5625rem;
             color: rgba(255, 255, 255, 0.75);
-            line-height: 1.6;
+            line-height: 1.35;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            white-space: pre-line;
+            max-width: 320px;
+            margin: 0 auto;
         }
 
         @media (min-width: 992px) {
             .dir-carousel-text {
-                font-size: 0.9375rem;
-                line-height: 1.7;
+                font-size: 0.5rem;
+                line-height: 1.3;
+                max-width: 460px;
             }
         }
 
@@ -4046,36 +4052,37 @@
             const autoplayDelay = 4500; // ms - single tempo for both text and images
 
             // Data arrays - 5 directions, 5 images (1:1 mapping)
+            // Order: ПЕПТИДЫ, ВИТАМИНЫ, КОСМЕТОЛОГИЯ, КОСМЕЦЕВТИКА, КОМПЛЕКСЫ
             const directionsData = [
                 {
                     title: 'ПЕПТИДЫ',
-                    text: 'Пептидная поддержка: виалы (лиофилизаты/растворы), назальные спреи, капли, протоколы под задачи.'
+                    text: 'ПЕПТИДНАЯ ПОДДЕРЖКА:\nВИАЛЫ (ЛИОФИЛИЗАТЫ/РАСТВОРЫ),\nНАЗАЛЬНЫЕ СПРЕИ, КАПЛИ,\nПРОТОКОЛЫ ПОД РАЗЛИЧНЫЕ ЗАДАЧИ.'
                 },
                 {
                     title: 'ВИТАМИНЫ',
-                    text: 'Поддержка нутриентного профиля: витамины, макро- и микроэлементы, базовые сочетания для ежедневного приёма.'
-                },
-                {
-                    title: 'КОМПЛЕКСЫ',
-                    text: 'Готовые решения под ключ: формулы-сочетания под конкретный сценарий применения, курсовые наборы, системные линейки.'
+                    text: 'ПОДДЕРЖКА НУТРИЕНТНОГО ПРОФИЛЯ:\nВИТАМИНЫ, МАКРО- И МИКРОЭЛЕМЕНТЫ,\nБАЗОВЫЕ СОЧЕТАНИЯ ДЛЯ ЕЖЕДНЕВНОГО ПРИЕМА.'
                 },
                 {
                     title: 'КОСМЕТОЛОГИЯ',
-                    text: 'Косметологические форматы: сыворотки, активы, пептидные компоненты и концентраты для эстетического направления.'
+                    text: 'КОСМЕТОЛОГИЧЕСКИЕ ФОРМАТЫ:\nСЫВОРОТКИ, ЭМУЛЬСИИ, ПЕПТИДНЫЕ КОМПОНЕНТЫ И\nКОНЦЕНТРАТЫ ДЛЯ ЭСТЕТИЧЕСКОГО\nПРОФЕССИОНАЛЬНОГО НАПРАВЛЕНИЯ.'
                 },
                 {
-                    title: 'КОСМЕТИКА',
-                    text: 'Продукты для ежедневного ухода: кремы, сыворотки, гели/пенки для очищения, тоники/мисты, маски, средства для домашнего применения.'
+                    title: 'КОСМЕЦЕВТИКА',
+                    text: 'ПРОДУКТЫ ДЛЯ ЕЖЕДНЕВНОГО УХОДА:\nКРЕМЫ, СЫВОРОТКИ, ГЕЛИ/ПЕНКИ ДЛЯ ОЧИЩЕНИЯ,\nТОНИКИ/МИСТЫ, МАСКИ, СРЕДСТВА\nДЛЯ ДОМАШНЕГО ПРИМЕНЕНИЯ.'
+                },
+                {
+                    title: 'КОМПЛЕКСЫ',
+                    text: 'ГОТОВЫЕ РЕШЕНИЯ ПОД КЛЮЧ:\nФОРМУЛЫ-СОЧЕТАНИЯ ПОД\nКОНКРЕТНЫЙ СЦЕНАРИЙ ПРИМЕНЕНИЯ,\nКУРСОВЫЕ НАБОРЫ, СИСТЕМНЫЕ ЛИНЕЙКИ.'
                 }
             ];
 
-            // 5 images - index 4 is placeholder (will be replaced later)
+            // 5 images matching order: ПЕПТИДЫ, ВИТАМИНЫ, КОСМЕТОЛОГИЯ, КОСМЕЦЕВТИКА, КОМПЛЕКСЫ
             const galleryImages = [
-                { src: 'foto1.jpeg', alt: 'Peptides production' },
-                { src: 'foto2.jpeg', alt: 'Laboratory equipment' },
-                { src: 'foto3.jpeg', alt: 'Quality control' },
-                { src: 'foto4.jpeg', alt: 'Manufacturing process' },
-                { src: '', alt: 'Cosmetics', placeholder: true }
+                { src: 'foto1.jpeg', alt: 'Peptides' },
+                { src: 'foto2.jpeg', alt: 'Vitamins' },
+                { src: 'foto3.jpeg', alt: 'Cosmetology' },
+                { src: 'foto4.jpeg', alt: 'Cosmeceuticals' },
+                { src: '', alt: 'Complexes', placeholder: true }
             ];
 
             // Single source of truth
