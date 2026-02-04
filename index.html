@@ -1084,6 +1084,18 @@
             margin: 0 auto;
         }
 
+        /* Mobile: dynamic gap via CSS variable */
+        @media (max-width: 767px) {
+            .directions-wrapper {
+                gap: 0; /* Remove flex gap, use margin instead */
+            }
+
+            .directions-content {
+                margin-bottom: var(--dir-acc-gap, 10px);
+                transition: margin-bottom 180ms ease;
+            }
+        }
+
         @media (min-width: 992px) {
             .directions-wrapper {
                 flex-direction: row;
@@ -4502,11 +4514,72 @@
                     // Update highlight
                     updateHighlight(activeIndex);
                     resetAutoplay();
+
+                    // Update dynamic gap for mobile (immediate + delayed for animation)
+                    requestAnimationFrame(() => {
+                        updateDynamicGap();
+                        // Recalculate after CSS transition completes (~350ms)
+                        setTimeout(updateDynamicGap, 380);
+                    });
                 } else {
                     // Desktop: standard behavior
                     setActiveIndex(index, true);
                 }
             }
+
+            // Dynamic gap calculation for mobile (prevent text overlap with gallery)
+            const wrapperEl = document.querySelector('.directions-wrapper');
+            const BASE_GAP = 10;      // Base gap in px
+            const GAP_FACTOR = 0.30;  // Coefficient for content height
+            const MIN_EXTRA = 8;      // Minimum extra gap
+            const MAX_EXTRA = 80;     // Maximum extra gap
+
+            function updateDynamicGap() {
+                if (!isMobile() || !wrapperEl) {
+                    // Desktop: remove variable, let CSS handle it
+                    if (wrapperEl) wrapperEl.style.removeProperty('--dir-acc-gap');
+                    return;
+                }
+
+                const openItem = accordionEl.querySelector('.dir-accordion-item.is-open');
+
+                if (!openItem) {
+                    // No open item - use base gap
+                    wrapperEl.style.setProperty('--dir-acc-gap', BASE_GAP + 'px');
+                    return;
+                }
+
+                const content = openItem.querySelector('.dir-accordion-content');
+                if (!content) {
+                    wrapperEl.style.setProperty('--dir-acc-gap', BASE_GAP + 'px');
+                    return;
+                }
+
+                // Get content height (use scrollHeight for full expanded height)
+                const contentHeight = content.scrollHeight;
+
+                // Calculate extra gap based on content height
+                const extraGap = Math.min(MAX_EXTRA, Math.max(MIN_EXTRA, contentHeight * GAP_FACTOR));
+                const totalGap = BASE_GAP + extraGap;
+
+                wrapperEl.style.setProperty('--dir-acc-gap', totalGap + 'px');
+            }
+
+            // Debounced resize handler for gap recalculation
+            let gapResizeTimer;
+            function handleGapResize() {
+                clearTimeout(gapResizeTimer);
+                gapResizeTimer = setTimeout(() => {
+                    updateDynamicGap();
+                }, 150);
+            }
+
+            // Listen for resize and orientation changes
+            window.addEventListener('resize', handleGapResize);
+            window.addEventListener('orientationchange', handleGapResize);
+
+            // Initial gap calculation (with delay for DOM to settle)
+            setTimeout(updateDynamicGap, 100);
 
             // Preload all images for smoother transitions
             galleryImages.forEach((img, i) => {
