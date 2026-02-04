@@ -2036,24 +2036,88 @@
 
         /* Desktop accordion enhancements */
         @media (min-width: 992px) {
+            /* Left-align wrapper on desktop */
+            .production-cycle-wrapper {
+                max-width: 560px;
+                margin-left: var(--container-padding);
+                margin-right: auto;
+            }
+
+            /* Left-align header */
+            .cycle-header {
+                text-align: left;
+            }
+
+            /* Backdrop container for accordion */
+            .cycle-accordion {
+                background: rgba(0, 0, 0, 0.12);
+                backdrop-filter: blur(6px);
+                -webkit-backdrop-filter: blur(6px);
+                padding: 20px 24px;
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
             .cycle-accordion-header {
-                padding: 14px;
-                margin: 0 -14px;
+                padding: 16px 18px;
+                margin: 0 -18px;
                 gap: 16px;
             }
 
             .cycle-accordion-number {
                 flex: 0 0 40px;
                 font-size: 1rem;
+                color: rgba(255, 255, 255, 0.75);
+            }
+
+            .cycle-accordion-title {
+                color: rgba(255, 255, 255, 0.92);
             }
 
             .cycle-accordion-chevron {
                 width: 20px;
                 height: 20px;
+                color: rgba(255, 255, 255, 0.70);
             }
 
             .cycle-accordion-desc {
-                padding: 0 0 20px 56px;
+                padding: 0 0 20px 58px;
+                color: rgba(255, 255, 255, 0.70);
+            }
+
+            /* Accordion item borders - lighter on dark backdrop */
+            .cycle-accordion-item {
+                border-bottom-color: rgba(255, 255, 255, 0.12);
+            }
+
+            .cycle-accordion-item:first-child {
+                border-top-color: rgba(255, 255, 255, 0.12);
+            }
+
+            /* Enhanced hover state */
+            .cycle-accordion-header:hover {
+                background: rgba(255, 255, 255, 0.12);
+            }
+
+            .cycle-accordion-header:hover .cycle-accordion-number,
+            .cycle-accordion-header:hover .cycle-accordion-title,
+            .cycle-accordion-header:hover .cycle-accordion-chevron {
+                color: #FFFFFF;
+            }
+
+            /* Enhanced active state */
+            .cycle-accordion-item.active .cycle-accordion-header {
+                background: rgba(255, 255, 255, 0.18);
+            }
+
+            .cycle-accordion-item.active .cycle-accordion-number,
+            .cycle-accordion-item.active .cycle-accordion-title,
+            .cycle-accordion-item.active .cycle-accordion-chevron {
+                color: #FFFFFF;
+            }
+
+            .cycle-accordion-item.active .cycle-accordion-desc {
+                color: rgba(255, 255, 255, 0.88);
             }
         }
 
