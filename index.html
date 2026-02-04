@@ -1649,7 +1649,46 @@
         .production-cycle-section {
             background: var(--theme-light-alt-bg);
             overflow: hidden;
+            position: relative;
             /* Uses standard section padding from CSS variables */
+        }
+
+        /* Video Background Container */
+        .cycle-video-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .cycle-video-bg video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            object-position: center;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .cycle-video-bg video.is-ready {
+            opacity: 1;
+        }
+
+        /* Overlay for text readability */
+        .cycle-video-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.22);
+            z-index: 1;
+            pointer-events: none;
         }
 
         .production-cycle-wrapper {
@@ -1658,6 +1697,8 @@
             gap: 0;
             max-width: 900px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         /* === Content Column === */
@@ -3439,6 +3480,12 @@
 
     <!-- Production Cycle Section - Premium Timeline -->
     <section id="production-cycle" class="production-cycle-section">
+        <!-- Video Background -->
+        <div class="cycle-video-bg">
+            <video id="cycleVideo" autoplay muted loop playsinline preload="metadata">
+                <source src="./video2.mp4" type="video/mp4">
+            </video>
+        </div>
         <div class="production-cycle-wrapper">
             <!-- Left Column: Timeline Content -->
             <div class="cycle-timeline-column">
@@ -3928,6 +3975,18 @@
             const showHeroVideo = () => heroVideo.classList.add('is-ready');
             if (heroVideo.readyState >= 3) showHeroVideo();
             else heroVideo.addEventListener('canplay', showHeroVideo, { once: true });
+        }
+
+        // Production Cycle Video Background
+        const cycleVideo = document.getElementById('cycleVideo');
+        if (cycleVideo) {
+            const showCycleVideo = () => cycleVideo.classList.add('is-ready');
+            if (cycleVideo.readyState >= 3) showCycleVideo();
+            else cycleVideo.addEventListener('canplay', showCycleVideo, { once: true });
+            // Fallback: hide video container if load fails (no console error)
+            cycleVideo.addEventListener('error', () => {
+                cycleVideo.parentElement.style.display = 'none';
+            }, { once: true });
         }
 
         // ============================================
