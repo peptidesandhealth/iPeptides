@@ -1084,14 +1084,14 @@
             margin: 0 auto;
         }
 
-        /* Mobile: dynamic gap via CSS variable */
-        @media (max-width: 767px) {
+        /* Mobile + Tablet: dynamic gap via CSS variable */
+        @media (max-width: 991px) {
             .directions-wrapper {
                 gap: 0; /* Remove flex gap, use margin instead */
             }
 
             .directions-content {
-                margin-bottom: var(--dir-acc-gap, 10px);
+                margin-bottom: var(--dir-acc-gap, 6px);
                 transition: margin-bottom 180ms ease;
             }
         }
@@ -4539,21 +4539,28 @@
                 }
             }
 
-            // Dynamic gap calculation for mobile (prevent text overlap with gallery)
+            // Dynamic gap calculation for mobile/tablet (prevent text overlap with gallery)
             const wrapperEl = document.querySelector('.directions-wrapper');
-            const BASE_GAP = 10;      // Base gap in px
-            const GAP_FACTOR = 0.30;  // Coefficient for content height
-            const MIN_EXTRA = 8;      // Minimum extra gap
-            const MAX_EXTRA = 80;     // Maximum extra gap
+            const BASE_GAP = 6;       // Base gap in px (minimal when closed)
+            const GAP_FACTOR = 0.25;  // Coefficient for content height
+            const MIN_EXTRA = 6;      // Minimum extra gap
+            const MAX_EXTRA = 60;     // Maximum extra gap
+
+            // Check if we're in mobile/tablet view (matches CSS breakpoint)
+            function isNotDesktop() {
+                return window.matchMedia('(max-width: 991px)').matches;
+            }
 
             function updateDynamicGap() {
-                if (!isMobile() || !wrapperEl) {
+                if (!isNotDesktop() || !wrapperEl) {
                     // Desktop: remove variable, let CSS handle it
                     if (wrapperEl) wrapperEl.style.removeProperty('--dir-acc-gap');
                     return;
                 }
 
-                const openItem = accordionEl.querySelector('.dir-accordion-item.is-open');
+                // Check for open item (is-open on mobile, active on tablet)
+                const openItem = accordionEl.querySelector('.dir-accordion-item.is-open') ||
+                                 accordionEl.querySelector('.dir-accordion-item.active');
 
                 if (!openItem) {
                     // No open item - use base gap
