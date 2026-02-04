@@ -1349,43 +1349,19 @@
             display: none;
         }
 
+        /* Principle cards use .partner-card base styles */
         .principle-card {
             flex: 0 0 calc(85% - 8px);
             min-width: calc(85% - 8px);
             scroll-snap-align: center;
-            text-align: center;
-            padding: 28px 20px;
-            background: var(--theme-dark-card-bg);
-            border: 1px solid var(--theme-dark-card-border);
-            border-radius: var(--radius-lg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
         }
 
-        .principle-card .icon-badge {
-            margin: 0 auto 16px;
-            width: 48px;
-            height: 48px;
-            background: rgba(165, 196, 212, 0.15);
-            border-radius: var(--radius-sm);
-        }
-
-        .principle-card .icon-badge .icon {
-            width: 22px;
-            height: 22px;
+        /* Icon uses <use> element, needs display: flex on svg */
+        .principle-card .partner-icon .icon {
+            width: 20px;
+            height: 20px;
             stroke: var(--ice-flow);
-        }
-
-        /* Principle card text for dark theme */
-        .principle-card .card-title {
-            margin-bottom: 10px;
-            color: var(--theme-dark-heading);
-        }
-
-        .principle-card .card-text {
-            color: var(--theme-dark-text-muted);
-            hyphens: none;
-            word-break: keep-all;
+            fill: none;
         }
 
         /* Principles Dots - Mobile */
@@ -1431,30 +1407,11 @@
             .principle-card {
                 flex: none;
                 min-width: 0;
-                padding: 32px 24px;
-                min-height: 200px;
-                transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             }
 
-            .principle-card:hover {
-                transform: translateY(-4px);
-                background: rgba(255, 255, 255, 0.1);
-                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-            }
-
-            .principle-card .icon-badge {
-                width: 52px;
-                height: 52px;
-                margin-bottom: 20px;
-            }
-
-            .principle-card .icon-badge .icon {
-                width: 24px;
-                height: 24px;
-            }
-
-            .principle-card .card-title {
-                margin-bottom: 12px;
+            .principle-card .partner-icon .icon {
+                width: 22px;
+                height: 22px;
             }
 
             .principles-dots {
@@ -3306,28 +3263,31 @@
             <div class="principles-carousel-wrapper">
                 <div class="principles-carousel">
                     <!-- Card 1: Partnership -->
-                    <div class="card principle-card reveal-card">
-                        <div class="icon-badge">
+                    <div class="partner-card principle-card reveal-card">
+                        <div class="card-topline"></div>
+                        <div class="partner-icon">
                             <svg class="icon"><use href="assets/icons.svg#icon-handshake"></use></svg>
                         </div>
-                        <h3 class="card-title" data-i18n="principles.card1.title">Партнёрство</h3>
-                        <p class="card-text" data-i18n="principles.card1.text">Гибкие форматы работы и сопровождение под задачи бизнеса на каждом шаге. Выстроенная модель взаимодействия: от первичного запроса до готовой продукции и документов.</p>
+                        <h3 class="partner-card-title" data-i18n="principles.card1.title">Партнёрство</h3>
+                        <p class="partner-card-text" data-i18n="principles.card1.text">Гибкие форматы работы и сопровождение под задачи бизнеса на каждом шаге. Выстроенная модель взаимодействия: от первичного запроса до готовой продукции и документов.</p>
                     </div>
                     <!-- Card 2: Precision -->
-                    <div class="card principle-card reveal-card">
-                        <div class="icon-badge">
+                    <div class="partner-card principle-card reveal-card">
+                        <div class="card-topline"></div>
+                        <div class="partner-icon">
                             <svg class="icon"><use href="assets/icons.svg#icon-target"></use></svg>
                         </div>
-                        <h3 class="card-title" data-i18n="principles.card2.title">Точность</h3>
-                        <p class="card-text" data-i18n="principles.card2.text">Стандартизация процедур и контроль на ключевых этапах. Работаем по единому стандарту: входной контроль, контроль продукции, упаковка/маркировка и подтверждения по запросу.</p>
+                        <h3 class="partner-card-title" data-i18n="principles.card2.title">Точность</h3>
+                        <p class="partner-card-text" data-i18n="principles.card2.text">Стандартизация процедур и контроль на ключевых этапах. Работаем по единому стандарту: входной контроль, контроль продукции, упаковка/маркировка и подтверждения по запросу.</p>
                     </div>
                     <!-- Card 3: Stability -->
-                    <div class="card principle-card reveal-card">
-                        <div class="icon-badge">
+                    <div class="partner-card principle-card reveal-card">
+                        <div class="card-topline"></div>
+                        <div class="partner-icon">
                             <svg class="icon"><use href="assets/icons.svg#icon-layers"></use></svg>
                         </div>
-                        <h3 class="card-title" data-i18n="principles.card3.title">Стабильность</h3>
-                        <p class="card-text" data-i18n="principles.card3.text">Повторяемость характеристик продукции и прозрачность процессов. Держим единый уровень параметров и сроков, чтобы каждая поставка соответствовала параметрам спецификации.</p>
+                        <h3 class="partner-card-title" data-i18n="principles.card3.title">Стабильность</h3>
+                        <p class="partner-card-text" data-i18n="principles.card3.text">Повторяемость характеристик продукции и прозрачность процессов. Держим единый уровень параметров и сроков, чтобы каждая поставка соответствовала параметрам спецификации.</p>
                     </div>
                 </div>
                 <div class="principles-dots">
