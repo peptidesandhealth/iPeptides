@@ -1953,39 +1953,32 @@
 
         .cycle-accordion-item {
             border-bottom: 1px solid rgba(15, 27, 38, 0.12);
+            border-radius: 6px;
+            margin: 0 -12px;
+            padding: 0 12px;
+            transition: background 180ms ease;
         }
 
         .cycle-accordion-item:first-child {
             border-top: 1px solid rgba(15, 27, 38, 0.12);
         }
 
-        .cycle-accordion-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            margin: 0 -12px;
-            cursor: pointer;
-            transition: background 180ms ease, color 180ms ease;
-            border-radius: 6px;
-            background: transparent;
+        /* Hover state - darken entire item */
+        .cycle-accordion-item:hover {
+            background: rgba(11, 22, 32, 0.50);
         }
 
-        /* Hover state - strong darkening */
-        .cycle-accordion-header:hover {
-            background: rgba(11, 22, 32, 0.55);
-        }
-
-        .cycle-accordion-header:hover .cycle-accordion-number,
-        .cycle-accordion-header:hover .cycle-accordion-title,
-        .cycle-accordion-header:hover .cycle-accordion-chevron {
+        .cycle-accordion-item:hover .cycle-accordion-number,
+        .cycle-accordion-item:hover .cycle-accordion-title,
+        .cycle-accordion-item:hover .cycle-accordion-chevron,
+        .cycle-accordion-item:hover .cycle-accordion-desc {
             color: #FFFFFF;
             transition: color 180ms ease;
         }
 
-        /* Active/open state - stronger darkening for contrast */
-        .cycle-accordion-item.active .cycle-accordion-header {
-            background: rgba(11, 22, 32, 0.82);
+        /* Active/open state - darker entire item */
+        .cycle-accordion-item.active {
+            background: rgba(11, 22, 32, 0.78);
         }
 
         .cycle-accordion-item.active .cycle-accordion-number,
@@ -1993,6 +1986,16 @@
         .cycle-accordion-item.active .cycle-accordion-chevron {
             color: #FFFFFF;
             font-weight: 700;
+        }
+
+        .cycle-accordion-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            cursor: pointer;
+            transition: color 180ms ease;
+            background: transparent;
         }
 
         /* Base number style - dark and contrasting */
@@ -2079,9 +2082,19 @@
                 border: 1px solid rgba(197, 221, 232, 0.35);
             }
 
-            .cycle-accordion-header {
-                padding: 16px 18px;
+            /* Desktop: item padding/margin adjustments */
+            .cycle-accordion-item {
                 margin: 0 -18px;
+                padding: 0 18px;
+                border-bottom-color: rgba(15, 27, 38, 0.15);
+            }
+
+            .cycle-accordion-item:first-child {
+                border-top-color: rgba(15, 27, 38, 0.15);
+            }
+
+            .cycle-accordion-header {
+                padding: 16px 0;
                 gap: 16px;
             }
 
@@ -2107,28 +2120,20 @@
                 color: #132433;
             }
 
-            /* Accordion item borders - subtle on light backdrop */
-            .cycle-accordion-item {
-                border-bottom-color: rgba(15, 27, 38, 0.15);
-            }
-
-            .cycle-accordion-item:first-child {
-                border-top-color: rgba(15, 27, 38, 0.15);
-            }
-
-            /* Enhanced hover state - darker background */
-            .cycle-accordion-header:hover {
+            /* Enhanced hover state - darken entire item */
+            .cycle-accordion-item:hover {
                 background: rgba(11, 22, 32, 0.55);
             }
 
-            .cycle-accordion-header:hover .cycle-accordion-number,
-            .cycle-accordion-header:hover .cycle-accordion-title,
-            .cycle-accordion-header:hover .cycle-accordion-chevron {
+            .cycle-accordion-item:hover .cycle-accordion-number,
+            .cycle-accordion-item:hover .cycle-accordion-title,
+            .cycle-accordion-item:hover .cycle-accordion-chevron,
+            .cycle-accordion-item:hover .cycle-accordion-desc {
                 color: #FFFFFF;
             }
 
-            /* Enhanced active state - even darker for strong contrast */
-            .cycle-accordion-item.active .cycle-accordion-header {
+            /* Enhanced active state - darker entire item */
+            .cycle-accordion-item.active {
                 background: rgba(11, 22, 32, 0.82);
             }
 
