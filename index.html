@@ -900,11 +900,19 @@
         .hero {
             position: relative;
             min-height: 100vh;
+            min-height: 100svh; /* Modern: accounts for mobile browser UI */
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             padding: 0;
+        }
+
+        /* Mobile: Use dynamic viewport height for true full-screen */
+        @supports (min-height: 100dvh) {
+            .hero {
+                min-height: 100dvh;
+            }
         }
 
         .hero-video {
@@ -1070,7 +1078,7 @@
         .directions-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 24px; /* Increased gap for mobile */
             padding: 0 var(--container-padding);
             max-width: 1400px;
             margin: 0 auto;
@@ -1090,6 +1098,13 @@
         .directions-content {
             flex: 0 0 auto;
             order: 1;
+        }
+
+        /* Mobile: Reserve height for accordion to prevent layout shift */
+        @media (max-width: 991px) {
+            .directions-content {
+                min-height: 420px; /* Reserve space for longest expanded item */
+            }
         }
 
         @media (min-width: 992px) {
@@ -3225,11 +3240,12 @@
             <button class="menu-lang-btn active" data-lang="ru">RU</button>
             <button class="menu-lang-btn" data-lang="en">EN</button>
         </div>
-        <a href="#directions" data-i18n="nav.directions">Направления</a>
-        <a href="#principles" data-i18n="nav.principles">Принципы</a>
-        <a href="#infrastructure" data-i18n="nav.infrastructure">Инфраструктура</a>
+        <a href="#directions" data-i18n="nav.directions">Наши направления</a>
+        <a href="#principles" data-i18n="nav.principles">Принципы сотрудничества</a>
+        <a href="#infrastructure" data-i18n="nav.infrastructure">Операционная модель</a>
         <a href="#production-cycle" data-i18n="nav.cycle">Цикл производства</a>
-        <a href="#partnership" data-i18n="nav.partnership">Сотрудничество</a>
+        <a href="#partners" data-i18n="nav.partners">Форматы сотрудничества</a>
+        <a href="#partnership" data-i18n="nav.partnership">Стать партнёром</a>
     </aside>
 
     <!-- Hero -->
@@ -3885,13 +3901,17 @@
             history.scrollRestoration = 'manual';
         }
 
-        // Reset scroll on page load (unless navigating to specific anchor)
+        // Always reset scroll on page load (force start from Hero)
         function resetScrollToTop() {
-            // Only reset if no hash in URL (not navigating to anchor)
-            if (!window.location.hash) {
-                window.scrollTo(0, 0);
+            window.scrollTo(0, 0);
+            // Clear hash from URL without triggering scroll
+            if (window.location.hash) {
+                history.replaceState(null, '', window.location.pathname + window.location.search);
             }
         }
+
+        // Run immediately for fastest reset
+        resetScrollToTop();
 
         // Run on initial load
         window.addEventListener('load', resetScrollToTop);
@@ -4616,11 +4636,12 @@
         // ============================================
         const i18n = {
             ru: {
-                'nav.directions': 'Направления',
-                'nav.principles': 'Принципы',
-                'nav.infrastructure': 'Инфраструктура',
+                'nav.directions': 'Наши направления',
+                'nav.principles': 'Принципы сотрудничества',
+                'nav.infrastructure': 'Операционная модель',
                 'nav.cycle': 'Цикл производства',
-                'nav.partners': 'Партнёрам',
+                'nav.partners': 'Форматы сотрудничества',
+                'nav.partnership': 'Стать партнёром',
                 'hero.label': 'Manufacturer & Global Supplier • B2B Solutions',
                 'hero.tagline1': 'Ведущий производитель и поставщик',
                 'hero.tagline2': 'пептидных решений премиум-класса',
@@ -4732,11 +4753,12 @@
                 'footer.disclaimer': 'Информация носит ознакомительный характер. Не является публичной офертой.'
             },
             en: {
-                'nav.directions': 'Directions',
-                'nav.principles': 'Principles',
-                'nav.infrastructure': 'Infrastructure',
+                'nav.directions': 'Our Directions',
+                'nav.principles': 'Partnership Principles',
+                'nav.infrastructure': 'Operational Model',
                 'nav.cycle': 'Production Cycle',
-                'nav.partners': 'Partners',
+                'nav.partners': 'Partnership Formats',
+                'nav.partnership': 'Become a Partner',
                 'hero.label': 'Manufacturer & Global Supplier • B2B Solutions',
                 'hero.tagline1': 'Leading manufacturer and supplier',
                 'hero.tagline2': 'of premium peptide solutions',
