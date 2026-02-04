@@ -4177,13 +4177,13 @@
                 }
             ];
 
-            // 5 images matching new order
+            // 5 images matching new order: ПЕПТИДЫ, ВИТАМИНЫ, КОМПЛЕКСЫ, КОСМЕТОЛОГИЯ, КОСМЕЦЕВТИКА
             const galleryImages = [
-                { src: 'foto1.jpeg', alt: 'Peptides' },
-                { src: 'foto2.jpeg', alt: 'Vitamins' },
-                { src: '', alt: 'Complexes', placeholder: true },
-                { src: 'foto3.jpeg', alt: 'Cosmetology' },
-                { src: 'foto4.jpeg', alt: 'Cosmeceuticals' }
+                { src: './1peptides.jpeg', alt: 'Пептиды' },
+                { src: './2vitamin.jpeg', alt: 'Витамины' },
+                { src: './3complex.jpeg', alt: 'Комплексы' },
+                { src: './4cosmetolog.jpeg', alt: 'Косметология' },
+                { src: './5cosmetic.jpeg', alt: 'Космецевтика' }
             ];
 
             // Single source of truth
@@ -4224,15 +4224,29 @@
                 accordionEl.appendChild(div);
             });
 
-            // Build gallery slides
+            // Preload all images for smoother transitions
+            galleryImages.forEach((img, i) => {
+                if (img.src) {
+                    const preloadImg = new Image();
+                    preloadImg.src = img.src;
+                }
+            });
+
+            // Build gallery slides with error handling
             galleryImages.forEach((img, i) => {
                 const div = document.createElement('div');
                 div.className = 'gallery-slide';
-                if (!img.placeholder && img.src) {
+                if (img.src) {
                     const imgEl = document.createElement('img');
                     imgEl.src = img.src;
                     imgEl.alt = img.alt;
                     imgEl.loading = i === 0 ? 'eager' : 'lazy';
+                    // Fallback on error - show placeholder gradient
+                    imgEl.onerror = function() {
+                        this.style.display = 'none';
+                        div.style.background = 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)';
+                        div.innerHTML += '<span style="color:#4a5568;font-size:14px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);">Изображение загружается...</span>';
+                    };
                     div.appendChild(imgEl);
                 }
                 galleryTrack.appendChild(div);
