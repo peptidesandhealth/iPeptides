@@ -1078,7 +1078,7 @@
         .directions-wrapper {
             display: flex;
             flex-direction: column;
-            gap: 24px; /* Increased gap for mobile */
+            gap: 16px;
             padding: 0 var(--container-padding);
             max-width: 1400px;
             margin: 0 auto;
@@ -1098,13 +1098,7 @@
         .directions-content {
             flex: 0 0 auto;
             order: 1;
-        }
-
-        /* Mobile: Reserve height for accordion to prevent layout shift */
-        @media (max-width: 991px) {
-            .directions-content {
-                min-height: 420px; /* Reserve space for longest expanded item */
-            }
+            /* min-height set dynamically by JS for stability */
         }
 
         @media (min-width: 992px) {
@@ -4346,6 +4340,47 @@
                 galleryTrack.addEventListener('touchstart', handleTouchStart, { passive: true });
                 galleryTrack.addEventListener('touchend', handleTouchEnd, { passive: true });
             }
+
+            // === Dynamic min-height for mobile stability ===
+            function calculateAccordionMinHeight() {
+                // Only apply on mobile
+                if (window.innerWidth >= 992) {
+                    accordionEl.style.minHeight = '';
+                    return;
+                }
+
+                const items = accordionEl.querySelectorAll('.dir-accordion-item');
+                let headersHeight = 0;
+                let maxContentHeight = 0;
+
+                items.forEach((item) => {
+                    // Measure header height
+                    const header = item.querySelector('.dir-accordion-header');
+                    headersHeight += header.offsetHeight;
+
+                    // Measure content height (temporarily show it)
+                    const content = item.querySelector('.dir-accordion-content');
+                    const originalMaxHeight = content.style.maxHeight;
+                    content.style.maxHeight = 'none';
+                    const contentHeight = content.scrollHeight;
+                    content.style.maxHeight = originalMaxHeight;
+
+                    if (contentHeight > maxContentHeight) {
+                        maxContentHeight = contentHeight;
+                    }
+                });
+
+                // Add borders (1px per item)
+                const bordersHeight = items.length + 1;
+
+                // Set min-height: all headers + tallest content + borders + small buffer
+                const minHeight = headersHeight + maxContentHeight + bordersHeight + 8;
+                accordionEl.style.minHeight = minHeight + 'px';
+            }
+
+            // Run on load and resize
+            calculateAccordionMinHeight();
+            window.addEventListener('resize', calculateAccordionMinHeight);
 
             // Initialize
             startAutoplay();
