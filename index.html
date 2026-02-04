@@ -2051,6 +2051,24 @@
             margin-bottom: 16px;
         }
 
+        /* Card header: icon + title in one row */
+        .card-head {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+        .card-head .partner-icon {
+            margin-bottom: 0;
+            flex-shrink: 0;
+        }
+        .card-head .partner-card-title {
+            margin-bottom: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
         /* Format card specific styles (slightly smaller for longer content) */
         .format-card .partner-card-text {
             font-size: clamp(0.6875rem, 0.4vw + 0.5rem, 0.8125rem);
@@ -3265,28 +3283,45 @@
                     <!-- Card 1: Partnership -->
                     <div class="partner-card principle-card reveal-card">
                         <div class="card-topline"></div>
-                        <div class="partner-icon">
-                            <svg class="icon"><use href="assets/icons.svg#icon-handshake"></use></svg>
+                        <div class="card-head">
+                            <div class="partner-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path>
+                                    <path d="M12 5.36L8.87 8.5a2.13 2.13 0 0 0 0 3h0a2.13 2.13 0 0 0 3 0l2.26-2.21a3.5 3.5 0 0 1 5 0 3.5 3.5 0 0 1 0 5l-4.13 4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="partner-card-title" data-i18n="principles.card1.title">Партнёрство</h3>
                         </div>
-                        <h3 class="partner-card-title" data-i18n="principles.card1.title">Партнёрство</h3>
                         <p class="partner-card-text" data-i18n="principles.card1.text">Гибкие форматы работы и сопровождение под задачи бизнеса на каждом шаге. Выстроенная модель взаимодействия: от первичного запроса до готовой продукции и документов.</p>
                     </div>
                     <!-- Card 2: Precision -->
                     <div class="partner-card principle-card reveal-card">
                         <div class="card-topline"></div>
-                        <div class="partner-icon">
-                            <svg class="icon"><use href="assets/icons.svg#icon-target"></use></svg>
+                        <div class="card-head">
+                            <div class="partner-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <circle cx="12" cy="12" r="6"></circle>
+                                    <circle cx="12" cy="12" r="2"></circle>
+                                </svg>
+                            </div>
+                            <h3 class="partner-card-title" data-i18n="principles.card2.title">Точность</h3>
                         </div>
-                        <h3 class="partner-card-title" data-i18n="principles.card2.title">Точность</h3>
                         <p class="partner-card-text" data-i18n="principles.card2.text">Стандартизация процедур и контроль на ключевых этапах. Работаем по единому стандарту: входной контроль, контроль продукции, упаковка/маркировка и подтверждения по запросу.</p>
                     </div>
                     <!-- Card 3: Stability -->
                     <div class="partner-card principle-card reveal-card">
                         <div class="card-topline"></div>
-                        <div class="partner-icon">
-                            <svg class="icon"><use href="assets/icons.svg#icon-layers"></use></svg>
+                        <div class="card-head">
+                            <div class="partner-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                                    <polyline points="2 17 12 22 22 17"></polyline>
+                                    <polyline points="2 12 12 17 22 12"></polyline>
+                                </svg>
+                            </div>
+                            <h3 class="partner-card-title" data-i18n="principles.card3.title">Стабильность</h3>
                         </div>
-                        <h3 class="partner-card-title" data-i18n="principles.card3.title">Стабильность</h3>
                         <p class="partner-card-text" data-i18n="principles.card3.text">Повторяемость характеристик продукции и прозрачность процессов. Держим единый уровень параметров и сроков, чтобы каждая поставка соответствовала параметрам спецификации.</p>
                     </div>
                 </div>
@@ -3317,53 +3352,61 @@
                 <!-- Card 1: Geography -->
                 <div class="partner-card infra-card" data-partner-index="0">
                     <div class="card-topline"></div>
-                    <div class="partner-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="2" y1="12" x2="22" y2="12"></line>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                        </svg>
+                    <div class="card-head">
+                        <div class="partner-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="partner-card-title" data-i18n="infra.card1.title">География поставок</h3>
                     </div>
-                    <h3 class="partner-card-title" data-i18n="infra.card1.title">География поставок</h3>
                     <p class="partner-card-text" data-i18n="infra.card1.text">Локальные и международные направления. Подбираем схему доставки и формат передачи партии под сроки, условия и объёмы.</p>
                 </div>
                 <!-- Card 2: B2B Infrastructure -->
                 <div class="partner-card infra-card" data-partner-index="1">
                     <div class="card-topline"></div>
-                    <div class="partner-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="3"></circle>
-                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                        </svg>
+                    <div class="card-head">
+                        <div class="partner-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="partner-card-title" data-i18n="infra.card2.title">B2B-инфраструктура</h3>
                     </div>
-                    <h3 class="partner-card-title" data-i18n="infra.card2.title">B2B-инфраструктура</h3>
                     <p class="partner-card-text" data-i18n="infra.card2.text">Операционный контур для партнёров: согласование требований, стандарты упаковки/маркировки и понятное сопровождение на каждом шаге.</p>
                 </div>
                 <!-- Card 3: Batch Control -->
                 <div class="partner-card infra-card" data-partner-index="2">
                     <div class="card-topline"></div>
-                    <div class="partner-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            <polyline points="9 12 11 14 15 10"></polyline>
-                        </svg>
+                    <div class="card-head">
+                        <div class="partner-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <polyline points="9 12 11 14 15 10"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="partner-card-title" data-i18n="infra.card3.title">Контроль партии</h3>
                     </div>
-                    <h3 class="partner-card-title" data-i18n="infra.card3.title">Контроль партии</h3>
                     <p class="partner-card-text" data-i18n="infra.card3.text">Верификация партии перед отгрузкой: контроль параметров, отслеживание соответствия спецификации и стабильности характеристик.</p>
                 </div>
                 <!-- Card 4: Documentation -->
                 <div class="partner-card infra-card" data-partner-index="3">
                     <div class="card-topline"></div>
-                    <div class="partner-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                            <polyline points="10 9 9 9 8 9"></polyline>
-                        </svg>
+                    <div class="card-head">
+                        <div class="partner-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="partner-card-title" data-i18n="infra.card4.title">Документация</h3>
                     </div>
-                    <h3 class="partner-card-title" data-i18n="infra.card4.title">Документация</h3>
                     <p class="partner-card-text" data-i18n="infra.card4.text">Документы и подтверждения для бизнеса: от базовых материалов до расширенного пакета по запросу и под регламенты партнёра.</p>
                 </div>
             </div>
@@ -3547,51 +3590,59 @@
                     <!-- Card 1: Distributors -->
                     <div class="partner-card format-card" data-partner-index="0">
                         <div class="card-topline"></div>
-                        <div class="partner-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                            </svg>
+                        <div class="card-head">
+                            <div class="partner-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                                </svg>
+                            </div>
+                            <h3 class="partner-card-title" data-i18n="partners.card1.title">Оптовые партнёры</h3>
                         </div>
-                        <h3 class="partner-card-title" data-i18n="partners.card1.title">Оптовые партнёры</h3>
                         <p class="partner-card-text" data-i18n="partners.card1.text">Дистрибьюторы / реселлеры / дилерские сети / региональные операторы</p>
                     </div>
                     <!-- Card 2: Professional -->
                     <div class="partner-card format-card" data-partner-index="1">
                         <div class="card-topline"></div>
-                        <div class="partner-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                            </svg>
+                        <div class="card-head">
+                            <div class="partner-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                            </div>
+                            <h3 class="partner-card-title" data-i18n="partners.card2.title">Профессиональный сегмент</h3>
                         </div>
-                        <h3 class="partner-card-title" data-i18n="partners.card2.title">Профессиональный сегмент</h3>
                         <p class="partner-card-text" data-i18n="partners.card2.text">Клиники / косметология / эстетические центры / wellness</p>
                     </div>
                     <!-- Card 3: Private Label -->
                     <div class="partner-card format-card" data-partner-index="2">
                         <div class="card-topline"></div>
-                        <div class="partner-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
-                                <line x1="7" y1="7" x2="7.01" y2="7"></line>
-                            </svg>
+                        <div class="card-head">
+                            <div class="partner-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                                    <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                                </svg>
+                            </div>
+                            <h3 class="partner-card-title" data-i18n="partners.card3.title">Private Label</h3>
                         </div>
-                        <h3 class="partner-card-title" data-i18n="partners.card3.title">Private Label</h3>
                         <p class="partner-card-text" data-i18n="partners.card3.text">Запуск СТМ / собственные линейки / расширение портфеля</p>
                     </div>
                     <!-- Card 4: Online Channels -->
                     <div class="partner-card format-card" data-partner-index="3">
                         <div class="card-topline"></div>
-                        <div class="partner-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="2" y1="12" x2="22" y2="12"></line>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                            </svg>
+                        <div class="card-head">
+                            <div class="partner-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="partner-card-title" data-i18n="partners.card4.title">Digital-каналы</h3>
                         </div>
-                        <h3 class="partner-card-title" data-i18n="partners.card4.title">Digital-каналы</h3>
                         <p class="partner-card-text" data-i18n="partners.card4.text">E-commerce / D2C / Telegram / онлайн-витрины</p>
                     </div>
                 </div>
