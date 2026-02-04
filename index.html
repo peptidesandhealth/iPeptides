@@ -1704,24 +1704,24 @@
             opacity: 1;
         }
 
-        /* Matte overlay for text readability - light frosted glass effect */
+        /* Premium soft overlay for text readability */
         .cycle-video-bg::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.12));
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             z-index: 1;
             pointer-events: none;
         }
 
-        /* Mobile: lighter overlay, ensure video covers properly */
+        /* Mobile: same soft overlay */
         @media (max-width: 767px) {
             .cycle-video-bg::after {
-                background: rgba(255, 255, 255, 0.40);
-                backdrop-filter: blur(6px);
-                -webkit-backdrop-filter: blur(6px);
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.14));
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
             }
         }
 
@@ -1879,15 +1879,19 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px 0;
+            padding: 12px;
+            margin: 0 -12px;
             cursor: pointer;
-            transition: background 0.2s ease;
+            transition: background 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 6px;
         }
 
         .cycle-accordion-header:hover {
-            background: rgba(165, 196, 212, 0.05);
-            margin: 0 -12px;
-            padding: 12px;
+            background: rgba(15, 27, 38, 0.08);
+        }
+
+        .cycle-accordion-item.active .cycle-accordion-header {
+            background: rgba(15, 27, 38, 0.12);
         }
 
         .cycle-accordion-number {
@@ -1952,13 +1956,9 @@
         /* Desktop accordion enhancements */
         @media (min-width: 992px) {
             .cycle-accordion-header {
-                padding: 14px 0;
-                gap: 16px;
-            }
-
-            .cycle-accordion-header:hover {
-                margin: 0 -14px;
                 padding: 14px;
+                margin: 0 -14px;
+                gap: 16px;
             }
 
             .cycle-accordion-number {
@@ -3273,6 +3273,8 @@
             color: var(--text-secondary);
         }
     </style>
+    <!-- Preload video for faster playback -->
+    <link rel="preload" as="video" href="./video2.mp4" type="video/mp4">
 </head>
 <body>
     <!-- Header -->
@@ -3516,7 +3518,7 @@
     <section id="production-cycle" class="production-cycle-section">
         <!-- Video Background -->
         <div class="cycle-video-bg">
-            <video id="cycleVideo" autoplay muted loop playsinline preload="metadata" poster="./fonwork.jpeg">
+            <video id="cycleVideo" autoplay muted loop playsinline preload="auto">
                 <source src="./video2.mp4" type="video/mp4">
             </video>
         </div>
