@@ -1942,6 +1942,13 @@
         /* === Accordion (all devices) === */
         .cycle-accordion {
             display: block;
+            /* Mobile: light blue backdrop */
+            background: rgba(197, 221, 232, 0.35);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid rgba(197, 221, 232, 0.25);
         }
 
         .cycle-accordion-item {
@@ -1976,15 +1983,16 @@
             transition: color 180ms ease;
         }
 
-        /* Active/open state - even stronger darkening */
+        /* Active/open state - stronger darkening for contrast */
         .cycle-accordion-item.active .cycle-accordion-header {
-            background: rgba(11, 22, 32, 0.70);
+            background: rgba(11, 22, 32, 0.82);
         }
 
         .cycle-accordion-item.active .cycle-accordion-number,
         .cycle-accordion-item.active .cycle-accordion-title,
         .cycle-accordion-item.active .cycle-accordion-chevron {
             color: #FFFFFF;
+            font-weight: 700;
         }
 
         /* Base number style - dark and contrasting */
@@ -2041,9 +2049,10 @@
             padding: 0 0 12px 44px;
         }
 
-        /* Description in active state - white */
+        /* Description in active state - bright white for contrast */
         .cycle-accordion-item.active .cycle-accordion-desc {
-            color: rgba(255, 255, 255, 0.90);
+            color: #FFFFFF;
+            font-weight: 500;
         }
 
         /* Desktop accordion enhancements */
@@ -2055,19 +2064,19 @@
                 margin-right: auto;
             }
 
-            /* Left-align header */
+            /* Center header over accordion */
             .cycle-header {
-                text-align: left;
+                text-align: center;
             }
 
-            /* Backdrop container for accordion */
+            /* Light blue backdrop for accordion (#C5DDE8) */
             .cycle-accordion {
-                background: rgba(0, 0, 0, 0.12);
+                background: rgba(197, 221, 232, 0.45);
                 backdrop-filter: blur(6px);
                 -webkit-backdrop-filter: blur(6px);
                 padding: 20px 24px;
                 border-radius: 10px;
-                border: 1px solid rgba(255, 255, 255, 0.08);
+                border: 1px solid rgba(197, 221, 232, 0.35);
             }
 
             .cycle-accordion-header {
@@ -2076,39 +2085,40 @@
                 gap: 16px;
             }
 
+            /* Base text colors - dark for readability on light backdrop */
             .cycle-accordion-number {
                 flex: 0 0 40px;
                 font-size: 1rem;
-                color: rgba(255, 255, 255, 0.75);
+                color: #0B1620;
             }
 
             .cycle-accordion-title {
-                color: rgba(255, 255, 255, 0.92);
+                color: #0B1620;
             }
 
             .cycle-accordion-chevron {
                 width: 20px;
                 height: 20px;
-                color: rgba(255, 255, 255, 0.70);
+                color: #0B1620;
             }
 
             .cycle-accordion-desc {
                 padding: 0 0 20px 58px;
-                color: rgba(255, 255, 255, 0.70);
+                color: #132433;
             }
 
-            /* Accordion item borders - lighter on dark backdrop */
+            /* Accordion item borders - subtle on light backdrop */
             .cycle-accordion-item {
-                border-bottom-color: rgba(255, 255, 255, 0.12);
+                border-bottom-color: rgba(15, 27, 38, 0.15);
             }
 
             .cycle-accordion-item:first-child {
-                border-top-color: rgba(255, 255, 255, 0.12);
+                border-top-color: rgba(15, 27, 38, 0.15);
             }
 
-            /* Enhanced hover state */
+            /* Enhanced hover state - darker background */
             .cycle-accordion-header:hover {
-                background: rgba(255, 255, 255, 0.12);
+                background: rgba(11, 22, 32, 0.55);
             }
 
             .cycle-accordion-header:hover .cycle-accordion-number,
@@ -2117,19 +2127,21 @@
                 color: #FFFFFF;
             }
 
-            /* Enhanced active state */
+            /* Enhanced active state - even darker for strong contrast */
             .cycle-accordion-item.active .cycle-accordion-header {
-                background: rgba(255, 255, 255, 0.18);
+                background: rgba(11, 22, 32, 0.82);
             }
 
             .cycle-accordion-item.active .cycle-accordion-number,
             .cycle-accordion-item.active .cycle-accordion-title,
             .cycle-accordion-item.active .cycle-accordion-chevron {
                 color: #FFFFFF;
+                font-weight: 700;
             }
 
             .cycle-accordion-item.active .cycle-accordion-desc {
-                color: rgba(255, 255, 255, 0.88);
+                color: #FFFFFF;
+                font-weight: 500;
             }
         }
 
