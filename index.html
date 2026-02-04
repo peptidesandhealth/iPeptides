@@ -1562,14 +1562,22 @@
             overflow: hidden;
         }
 
-        /* White photo break variant */
+        /* Second photo break - with background image */
         .photo-break--white {
-            background-image: none;
-            background-color: #ffffff;
+            background-image: url('./blokfoto2.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #0f1b26; /* fallback */
         }
 
+        /* Soft overlay for second photo-break */
         .photo-break--white::before {
-            display: none;
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.15);
+            pointer-events: none;
         }
 
         /* Subtle overlay for text readability */
