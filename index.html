@@ -1651,21 +1651,25 @@
             }
         }
 
-        /* Desktop: Wider photo breaks (+5%) */
+        /* Desktop: Wider photo breaks (+5%) and increased height */
         @media (min-width: 992px) {
             .photo-break {
                 width: 105%;
                 max-width: 105%;
                 margin-left: -2.5%;
                 margin-right: -2.5%;
+                min-height: 370px; /* +10% height for less cropping */
+                background-size: cover;
             }
 
-            /* First photo-break (with image): less cropping on desktop */
+            /* First photo-break: adjust position to show more of the frame */
             .photo-break:not(.photo-break--white) {
-                background-size: contain;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-color: #0f1b26;
+                background-position: center 35%;
+            }
+
+            /* Second photo-break: adjust position */
+            .photo-break--white {
+                background-position: center 45%;
             }
         }
 
