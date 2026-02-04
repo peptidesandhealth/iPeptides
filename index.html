@@ -1057,15 +1057,21 @@
             margin: 0 auto;
         }
 
-        /* Mobile + Tablet: dynamic gap via CSS variable */
+        /* Mobile + Tablet: dynamic gap based on open state */
         @media (max-width: 991px) {
             .directions-wrapper {
                 gap: 0; /* Remove flex gap, use margin instead */
             }
 
+            /* Base gap when all items closed */
             .directions-content {
-                margin-bottom: var(--dir-acc-gap, 6px);
+                margin-bottom: 8px;
                 transition: margin-bottom 180ms ease;
+            }
+
+            /* Larger gap when any item is open */
+            .directions-section-new.dir-has-open .directions-content {
+                margin-bottom: 18px;
             }
         }
 
@@ -1331,7 +1337,8 @@
         @media (max-width: 991px) {
             .directions-gallery {
                 margin: 0 calc(-1 * var(--container-padding));
-                height: 306px; /* 10% smaller than 340px */
+                height: auto;
+                aspect-ratio: 4 / 3; /* Maintains proportions without fixed height */
             }
         }
 
@@ -4484,78 +4491,27 @@
                     updateHighlight(activeIndex);
                     resetAutoplay();
 
-                    // Update dynamic gap for mobile (immediate + delayed for animation)
-                    requestAnimationFrame(() => {
-                        updateDynamicGap();
-                        // Recalculate after CSS transition completes (~350ms)
-                        setTimeout(updateDynamicGap, 380);
-                    });
+                    // Update open state class for gap (immediate + delayed for animation)
+                    updateOpenStateClass();
                 } else {
                     // Desktop: standard behavior
                     setActiveIndex(index, true);
                 }
             }
 
-            // Dynamic gap calculation for mobile/tablet (prevent text overlap with gallery)
-            const wrapperEl = document.querySelector('.directions-wrapper');
-            const BASE_GAP = 6;       // Base gap in px (minimal when closed)
-            const GAP_FACTOR = 0.25;  // Coefficient for content height
-            const MIN_EXTRA = 6;      // Minimum extra gap
-            const MAX_EXTRA = 60;     // Maximum extra gap
+            // Simple class toggle for open state (controls gap via CSS)
+            function updateOpenStateClass() {
+                if (!sectionEl) return;
 
-            // Check if we're in mobile/tablet view (matches CSS breakpoint)
-            function isNotDesktop() {
-                return window.matchMedia('(max-width: 991px)').matches;
+                // Check for any open item
+                const hasOpenItem = accordionEl.querySelector('.dir-accordion-item.is-open') ||
+                                   accordionEl.querySelector('.dir-accordion-item.active');
+
+                sectionEl.classList.toggle('dir-has-open', !!hasOpenItem);
             }
 
-            function updateDynamicGap() {
-                if (!isNotDesktop() || !wrapperEl) {
-                    // Desktop: remove variable, let CSS handle it
-                    if (wrapperEl) wrapperEl.style.removeProperty('--dir-acc-gap');
-                    return;
-                }
-
-                // Check for open item (is-open on mobile, active on tablet)
-                const openItem = accordionEl.querySelector('.dir-accordion-item.is-open') ||
-                                 accordionEl.querySelector('.dir-accordion-item.active');
-
-                if (!openItem) {
-                    // No open item - use base gap
-                    wrapperEl.style.setProperty('--dir-acc-gap', BASE_GAP + 'px');
-                    return;
-                }
-
-                const content = openItem.querySelector('.dir-accordion-content');
-                if (!content) {
-                    wrapperEl.style.setProperty('--dir-acc-gap', BASE_GAP + 'px');
-                    return;
-                }
-
-                // Get content height (use scrollHeight for full expanded height)
-                const contentHeight = content.scrollHeight;
-
-                // Calculate extra gap based on content height
-                const extraGap = Math.min(MAX_EXTRA, Math.max(MIN_EXTRA, contentHeight * GAP_FACTOR));
-                const totalGap = BASE_GAP + extraGap;
-
-                wrapperEl.style.setProperty('--dir-acc-gap', totalGap + 'px');
-            }
-
-            // Debounced resize handler for gap recalculation
-            let gapResizeTimer;
-            function handleGapResize() {
-                clearTimeout(gapResizeTimer);
-                gapResizeTimer = setTimeout(() => {
-                    updateDynamicGap();
-                }, 150);
-            }
-
-            // Listen for resize and orientation changes
-            window.addEventListener('resize', handleGapResize);
-            window.addEventListener('orientationchange', handleGapResize);
-
-            // Initial gap calculation (with delay for DOM to settle)
-            setTimeout(updateDynamicGap, 100);
+            // Initial state check
+            setTimeout(updateOpenStateClass, 100);
 
             // Preload all images for smoother transitions
             galleryImages.forEach((img, i) => {
