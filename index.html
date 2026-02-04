@@ -46,7 +46,28 @@
 
             /* Backgrounds */
             --bg-white: #FFFFFF;
-            --bg-accent: #F5F7F9;
+            --bg-accent: #f0f4f8;
+
+            /* Section Theme Colors */
+            --theme-light-bg: #C5DDE8;
+            --theme-light-alt-bg: #f0f4f8;
+            --theme-dark-gradient: linear-gradient(180deg, #1a2a3a 0%, #0f1922 100%);
+
+            /* Light theme text (for #C5DDE8 and #f0f4f8 backgrounds) */
+            --theme-light-heading: #0f1922;
+            --theme-light-text: #1a2a3a;
+            --theme-light-text-muted: rgba(26, 42, 58, 0.75);
+            --theme-light-border: rgba(15, 25, 34, 0.15);
+            --theme-light-card-bg: #FFFFFF;
+            --theme-light-card-border: rgba(15, 25, 34, 0.08);
+
+            /* Dark theme text (for gradient backgrounds) */
+            --theme-dark-heading: #F4F7FA;
+            --theme-dark-text: #D7E2EA;
+            --theme-dark-text-muted: rgba(215, 226, 234, 0.78);
+            --theme-dark-border: rgba(244, 247, 250, 0.15);
+            --theme-dark-card-bg: rgba(255, 255, 255, 0.06);
+            --theme-dark-card-border: rgba(255, 255, 255, 0.12);
 
             /* Spacing */
             --container-padding: 20px;
@@ -1012,7 +1033,7 @@
            Left: accordion list, Right: synced gallery
            ============================================ */
         .directions-section-new {
-            background: linear-gradient(180deg, #1a2a3a 0%, #0f1922 100%);
+            background: var(--theme-light-bg);
             overflow: hidden;
             padding-top: var(--section-padding-mobile);
             padding-bottom: var(--section-padding-mobile);
@@ -1088,11 +1109,11 @@
         }
 
         .dir-accordion-item {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid var(--theme-light-border);
         }
 
         .dir-accordion-item:first-child {
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            border-top: 1px solid var(--theme-light-border);
         }
 
         .dir-accordion-header {
@@ -1115,25 +1136,25 @@
             line-height: var(--ui-h3-lh);
             letter-spacing: var(--ui-h3-track);
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--theme-light-text-muted);
             transition: color 0.3s ease;
         }
 
         .dir-accordion-item.active .dir-accordion-title {
-            color: #ffffff;
+            color: var(--theme-light-heading);
         }
 
         .dir-accordion-chevron {
             width: 18px;
             height: 18px;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--theme-light-text-muted);
             transition: transform 0.3s ease, color 0.3s ease;
             flex-shrink: 0;
         }
 
         .dir-accordion-item.active .dir-accordion-chevron {
             transform: rotate(180deg);
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--theme-light-heading);
         }
 
         .dir-accordion-content {
@@ -1153,7 +1174,7 @@
             line-height: var(--ui-p-lh);
             letter-spacing: var(--ui-p-track);
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--theme-light-text);
             opacity: var(--ui-p-opacity);
             white-space: pre-line;
             padding-bottom: 10px;
@@ -1299,10 +1320,10 @@
         }
 
         /* ============================================
-           PRINCIPLES SECTION
+           PRINCIPLES SECTION - Dark theme
            ============================================ */
         .principles-section {
-            background: var(--brand-hero-title);
+            background: var(--theme-dark-gradient);
         }
 
         /* Mobile Carousel Container */
@@ -1334,32 +1355,35 @@
             scroll-snap-align: center;
             text-align: center;
             padding: 28px 20px;
-            background: var(--bg-white);
+            background: var(--theme-dark-card-bg);
+            border: 1px solid var(--theme-dark-card-border);
             border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .principle-card .icon-badge {
             margin: 0 auto 16px;
             width: 48px;
             height: 48px;
-            background: rgba(165, 196, 212, 0.12);
+            background: rgba(165, 196, 212, 0.15);
             border-radius: var(--radius-sm);
         }
 
         .principle-card .icon-badge .icon {
             width: 22px;
             height: 22px;
-            stroke: var(--ice-flow-deep);
+            stroke: var(--ice-flow);
         }
 
-        /* Principle card inherits from .card-title/.card-text unified typography */
+        /* Principle card text for dark theme */
         .principle-card .card-title {
             margin-bottom: 10px;
+            color: var(--theme-dark-heading);
         }
 
         .principle-card .card-text {
-            color: var(--text-muted);
+            color: var(--theme-dark-text-muted);
             hyphens: none;
             word-break: keep-all;
         }
@@ -1376,7 +1400,7 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: rgba(165, 196, 212, 0.35);
+            background: rgba(165, 196, 212, 0.4);
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
@@ -1384,7 +1408,7 @@
         }
 
         .principles-dots .dot.active {
-            background: var(--ice-flow-deep);
+            background: var(--ice-flow);
             width: 20px;
             border-radius: 3px;
         }
@@ -1409,12 +1433,13 @@
                 min-width: 0;
                 padding: 32px 24px;
                 min-height: 200px;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
             }
 
             .principle-card:hover {
                 transform: translateY(-4px);
-                box-shadow: var(--shadow-lg);
+                background: rgba(255, 255, 255, 0.1);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
             }
 
             .principle-card .icon-badge {
@@ -1438,8 +1463,47 @@
         }
 
         /* ============================================
-           INFRASTRUCTURE SECTION
+           INFRASTRUCTURE SECTION - Dark theme
            ============================================ */
+        #infrastructure {
+            background: var(--theme-dark-gradient);
+        }
+
+        #infrastructure .partner-card {
+            background: var(--theme-dark-card-bg);
+            border: 1px solid var(--theme-dark-card-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: none;
+        }
+
+        #infrastructure .partner-card-title {
+            color: var(--theme-dark-heading);
+        }
+
+        #infrastructure .partner-card-text {
+            color: var(--theme-dark-text-muted);
+        }
+
+        #infrastructure .partner-icon {
+            background: rgba(165, 196, 212, 0.15);
+        }
+
+        #infrastructure .partner-icon svg {
+            stroke: var(--ice-flow);
+        }
+
+        #infrastructure .card-topline {
+            background: linear-gradient(90deg, rgba(165, 196, 212, 0.5) 0%, transparent 70%);
+        }
+
+        @media (min-width: 768px) {
+            #infrastructure .partner-card:hover {
+                background: rgba(255, 255, 255, 0.1);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            }
+        }
+
         .infra-section {
             background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-bg-deeper) 100%);
         }
@@ -1617,7 +1681,7 @@
            PRODUCTION CYCLE SECTION - Premium Timeline
            ============================================ */
         .production-cycle-section {
-            background: var(--brand-hero-title);
+            background: var(--theme-light-alt-bg);
             overflow: hidden;
             /* Uses standard section padding from CSS variables */
         }
@@ -1880,7 +1944,7 @@
            PARTNERS SECTION - Premium B2B (Dark theme)
            ============================================ */
         .partners-premium {
-            background: var(--brand-hero-title);
+            background: var(--theme-dark-gradient);
             overflow: hidden;
             /* Uses standard section padding from CSS variables */
         }
@@ -1893,7 +1957,7 @@
         .partners-premium .section-text {
             max-width: 480px;
             margin: 0 auto;
-            color: var(--text-muted);
+            color: var(--theme-dark-text-muted);
         }
 
         /* Mobile Carousel Container */
@@ -1919,13 +1983,13 @@
             display: none;
         }
 
-        /* Premium B2B Card - White on light background */
+        /* Premium B2B Card - Glass on dark background */
         .partner-card {
             flex: 0 0 calc(85% - 8px);
             min-width: calc(85% - 8px);
             scroll-snap-align: center;
-            background: var(--bg-white);
-            border: none;
+            background: var(--theme-dark-card-bg);
+            border: 1px solid var(--theme-dark-card-border);
             border-radius: var(--radius-lg);
             padding: 28px 24px;
             display: flex;
@@ -1939,7 +2003,8 @@
                         box-shadow 0.35s ease,
                         border-color 0.35s ease,
                         background 0.35s ease;
-            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
         .partner-card.revealed {
@@ -1954,7 +2019,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.18em;
-            color: var(--ice-flow-deep);
+            color: var(--ice-flow);
             margin-bottom: 16px;
             display: flex;
             align-items: center;
@@ -1965,7 +2030,7 @@
             content: '';
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, rgba(165, 196, 212, 0.5) 0%, transparent 100%);
+            background: linear-gradient(90deg, rgba(165, 196, 212, 0.4) 0%, transparent 100%);
         }
 
         /* Card Icon */
@@ -1975,7 +2040,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(165, 196, 212, 0.12);
+            background: rgba(165, 196, 212, 0.15);
             border-radius: var(--radius-sm);
             margin-bottom: 16px;
             transition: background 0.3s ease, transform 0.3s ease;
@@ -1984,7 +2049,7 @@
         .partner-icon svg {
             width: 20px;
             height: 20px;
-            stroke: var(--ice-flow-deep);
+            stroke: var(--ice-flow);
             stroke-width: 1.75;
             fill: none;
             transition: stroke 0.3s ease;
@@ -1998,7 +2063,7 @@
             line-height: var(--ui-h3-lh);
             letter-spacing: var(--ui-h3-track);
             text-transform: uppercase;
-            color: var(--text-dark);
+            color: var(--theme-dark-heading);
             margin-bottom: 6px;
             hyphens: none;
             word-break: normal;
@@ -2013,7 +2078,7 @@
             line-height: var(--ui-p-lh);
             letter-spacing: var(--ui-p-track);
             text-transform: uppercase;
-            color: var(--text-muted);
+            color: var(--theme-dark-text-muted);
             opacity: var(--ui-p-opacity);
             margin-top: auto;
             hyphens: none;
@@ -2098,16 +2163,17 @@
 
             .partner-card:hover {
                 transform: translateY(-4px);
-                box-shadow: var(--shadow-lg);
+                background: rgba(255, 255, 255, 0.1);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
             }
 
             .partner-card:hover .partner-icon {
-                background: rgba(165, 196, 212, 0.2);
+                background: rgba(165, 196, 212, 0.25);
                 transform: scale(1.05);
             }
 
             .partner-card:hover .partner-icon svg {
-                stroke: var(--ice-flow-deep);
+                stroke: var(--ice-flow);
             }
 
             .partners-dots {
@@ -2169,43 +2235,42 @@
         .partnership-section {
             position: relative;
             overflow: hidden;
-            background: linear-gradient(180deg, #1a2a3a 0%, #0f1922 100%);
+            background: var(--theme-light-bg);
             /* Uses standard section padding from CSS variables */
         }
 
-        /* Text colors for dark background */
+        /* Text colors for light background */
         .partnership-section .section-overline {
-            color: var(--ice-flow);
-            opacity: 0.9;
+            color: var(--theme-light-heading);
         }
 
         .partnership-section .benefit-title {
-            color: rgba(255, 255, 255, 0.95);
+            color: var(--theme-light-heading);
             font-weight: 500;
         }
 
         .partnership-section .benefit-text {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--theme-light-text-muted);
         }
 
         .partnership-section .benefit-icon {
-            background: rgba(165, 196, 212, 0.12);
-            border: 1px solid rgba(165, 196, 212, 0.25);
+            background: rgba(15, 25, 34, 0.06);
+            border: 1px solid var(--theme-light-border);
         }
 
         .partnership-section .benefit-icon svg {
-            stroke: rgba(165, 196, 212, 0.8);
+            stroke: var(--ice-flow-deep);
             stroke-width: 2;
         }
 
         .partnership-section .benefit-item {
-            border-bottom-color: rgba(165, 196, 212, 0.15);
+            border-bottom-color: var(--theme-light-border);
         }
 
         /* Mobile only: subtle highlight for active accordion item */
         @media (max-width: 1023px) {
             .partnership-section .benefit-item.active {
-                background: rgba(165, 196, 212, 0.12);
+                background: rgba(255, 255, 255, 0.5);
             }
         }
 
@@ -2221,7 +2286,7 @@
         }
 
         .partnership-section .benefit-chevron svg {
-            stroke: rgba(255, 255, 255, 0.5);
+            stroke: var(--theme-light-text-muted);
         }
 
         /* Two-Column Layout Container */
@@ -3206,7 +3271,7 @@
     <!-- Directions Section - Accordion + Image gallery -->
     <section id="directions" class="directions-section-new">
         <div class="directions-header">
-            <span class="section-overline on-dark" data-i18n="directions.overline">НАШИ НАПРАВЛЕНИЯ</span>
+            <span class="section-overline" data-i18n="directions.overline">НАШИ НАПРАВЛЕНИЯ</span>
         </div>
         <div class="directions-wrapper">
             <!-- Text Content (Accordion) -->
@@ -3236,7 +3301,7 @@
     <section id="principles" class="principles-section">
         <div class="container">
             <div class="section-header center reveal">
-                <span class="section-overline" data-i18n="principles.overline">ПРИНЦИПЫ СОТРУДНИЧЕСТВА</span>
+                <span class="section-overline on-dark" data-i18n="principles.overline">ПРИНЦИПЫ СОТРУДНИЧЕСТВА</span>
             </div>
             <div class="principles-carousel-wrapper">
                 <div class="principles-carousel">
@@ -3514,7 +3579,7 @@
     <section id="partners" class="partners-premium">
         <div class="container">
             <div class="section-header center reveal">
-                <span class="section-overline" data-i18n="partners.overline">ФОРМАТЫ СОТРУДНИЧЕСТВА</span>
+                <span class="section-overline on-dark" data-i18n="partners.overline">ФОРМАТЫ СОТРУДНИЧЕСТВА</span>
             </div>
         </div>
         <div class="partners-carousel-wrapper">
