@@ -1131,11 +1131,7 @@
             justify-content: space-between;
             padding: 10px 0;
             cursor: pointer;
-            transition: opacity 0.2s ease;
-        }
-
-        .dir-accordion-header:hover {
-            opacity: 0.85;
+            transition: background 180ms ease, padding 180ms ease, margin 180ms ease;
         }
 
         .dir-accordion-title {
@@ -1174,6 +1170,39 @@
 
         .dir-accordion-item.active .dir-accordion-content {
             max-height: 200px;
+        }
+
+        /* Mobile: highlighted state (synced with slide, but NOT expanded) */
+        .dir-accordion-item.is-highlighted .dir-accordion-header {
+            background: rgba(11, 22, 32, 0.08);
+            margin: 0 -12px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            transition: background 180ms ease;
+        }
+
+        .dir-accordion-item.is-highlighted .dir-accordion-title {
+            color: var(--theme-light-heading);
+        }
+
+        .dir-accordion-item.is-highlighted .dir-accordion-chevron {
+            color: var(--theme-light-heading);
+        }
+
+        /* Hover state for all devices */
+        .dir-accordion-header:hover {
+            background: rgba(11, 22, 32, 0.06);
+            margin: 0 -12px;
+            padding: 10px 12px;
+            border-radius: 6px;
+        }
+
+        /* Active (expanded) state - stronger */
+        .dir-accordion-item.active .dir-accordion-header {
+            background: rgba(11, 22, 32, 0.12);
+            margin: 0 -12px;
+            padding: 10px 12px;
+            border-radius: 6px;
         }
 
         .dir-accordion-text {
@@ -1321,6 +1350,16 @@
             height: 100%;
             object-fit: cover;
             display: block;
+        }
+
+        /* Premium soft overlay on gallery slides */
+        .gallery-slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.06) 100%);
+            pointer-events: none;
+            z-index: 1;
         }
 
         /* Gallery Controls - Hidden (using unified nav below) */
@@ -4330,9 +4369,9 @@
                         <p class="dir-accordion-text">${item.text}</p>
                     </div>
                 `;
-                // Click handler for accordion
+                // Click handler for accordion - always user-initiated
                 div.querySelector('.dir-accordion-header').addEventListener('click', () => {
-                    setActiveIndex(i);
+                    setActiveIndex(i, true);
                 });
                 accordionEl.appendChild(div);
             });
@@ -4370,19 +4409,34 @@
                 for (let i = 0; i < totalSlides; i++) {
                     const dot = document.createElement('span');
                     dot.className = 'dot' + (i === 0 ? ' active' : '');
-                    dot.addEventListener('click', () => setActiveIndex(i));
+                    dot.addEventListener('click', () => setActiveIndex(i, true)); // user-initiated
                     navDots.appendChild(dot);
                 }
             }
 
-            // Core sync function - updates accordion + gallery + dots
-            function setActiveIndex(index) {
-                activeIndex = ((index % totalSlides) + totalSlides) % totalSlides;
+            // Check if mobile
+            function isMobile() {
+                return window.matchMedia('(max-width: 767px)').matches;
+            }
 
-                // Update accordion
+            // Update only highlight (mobile: no expand, just visual highlight)
+            function updateHighlight(index) {
                 accordionEl.querySelectorAll('.dir-accordion-item').forEach((item, i) => {
-                    item.classList.toggle('active', i === activeIndex);
+                    item.classList.toggle('is-highlighted', i === index);
                 });
+            }
+
+            // Update accordion expand state (desktop: full expand)
+            function updateAccordionExpand(index) {
+                accordionEl.querySelectorAll('.dir-accordion-item').forEach((item, i) => {
+                    item.classList.toggle('active', i === index);
+                });
+            }
+
+            // Core sync function - updates accordion + gallery + dots
+            // userClick = true when user clicks (always expand), false for auto/swipe
+            function setActiveIndex(index, userClick = false) {
+                activeIndex = ((index % totalSlides) + totalSlides) % totalSlides;
 
                 // Update gallery
                 galleryTrack.style.transform = `translateX(-${activeIndex * 100}%)`;
@@ -4394,15 +4448,25 @@
                     });
                 }
 
+                // Mobile vs Desktop behavior
+                if (isMobile() && !userClick) {
+                    // Mobile + auto/swipe: only highlight header, no expand
+                    updateHighlight(activeIndex);
+                } else {
+                    // Desktop OR user click: full expand
+                    updateHighlight(-1); // remove all highlights
+                    updateAccordionExpand(activeIndex);
+                }
+
                 resetAutoplay();
             }
 
             function next() {
-                setActiveIndex(activeIndex + 1);
+                setActiveIndex(activeIndex + 1, false);
             }
 
             function prev() {
-                setActiveIndex(activeIndex - 1);
+                setActiveIndex(activeIndex - 1, false);
             }
 
             // Autoplay functions
@@ -4410,15 +4474,25 @@
                 stopAutoplay();
                 autoplayTimer = setInterval(() => {
                     activeIndex = ((activeIndex + 1) % totalSlides);
-                    // Update without resetting autoplay
-                    accordionEl.querySelectorAll('.dir-accordion-item').forEach((item, i) => {
-                        item.classList.toggle('active', i === activeIndex);
-                    });
+
+                    // Update gallery
                     galleryTrack.style.transform = `translateX(-${activeIndex * 100}%)`;
+
+                    // Update dots
                     if (navDots) {
                         navDots.querySelectorAll('.dot').forEach((d, i) => {
                             d.classList.toggle('active', i === activeIndex);
                         });
+                    }
+
+                    // Mobile vs Desktop behavior for autoplay
+                    if (isMobile()) {
+                        // Mobile: only highlight, no expand
+                        updateHighlight(activeIndex);
+                    } else {
+                        // Desktop: full expand
+                        updateHighlight(-1);
+                        updateAccordionExpand(activeIndex);
                     }
                 }, autoplayDelay);
             }
