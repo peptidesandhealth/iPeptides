@@ -1168,8 +1168,26 @@
             transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .dir-accordion-item.active .dir-accordion-content {
-            max-height: 200px;
+        /* Desktop: active = expanded */
+        @media (min-width: 768px) {
+            .dir-accordion-item.active .dir-accordion-content {
+                max-height: 200px;
+            }
+        }
+
+        /* Mobile: is-open = expanded (only by click) */
+        @media (max-width: 767px) {
+            .dir-accordion-item.is-open .dir-accordion-content {
+                max-height: 200px;
+            }
+
+            .dir-accordion-item.is-open .dir-accordion-chevron {
+                transform: rotate(180deg);
+            }
+
+            .dir-accordion-item.is-open .dir-accordion-header {
+                background: rgba(11, 22, 32, 0.14);
+            }
         }
 
         /* Mobile: highlighted state (synced with slide, but NOT expanded) */
@@ -1197,12 +1215,18 @@
             border-radius: 6px;
         }
 
-        /* Active (expanded) state - stronger */
-        .dir-accordion-item.active .dir-accordion-header {
-            background: rgba(11, 22, 32, 0.12);
-            margin: 0 -12px;
-            padding: 10px 12px;
-            border-radius: 6px;
+        /* Desktop: Active (expanded) state - stronger */
+        @media (min-width: 768px) {
+            .dir-accordion-item.active .dir-accordion-header {
+                background: rgba(11, 22, 32, 0.12);
+                margin: 0 -12px;
+                padding: 10px 12px;
+                border-radius: 6px;
+            }
+
+            .dir-accordion-item.active .dir-accordion-chevron {
+                transform: rotate(180deg);
+            }
         }
 
         .dir-accordion-text {
@@ -4353,10 +4377,21 @@
 
             if (!accordionEl || !galleryTrack) return;
 
+            // Check if mobile (define early for init)
+            function isMobile() {
+                return window.matchMedia('(max-width: 767px)').matches;
+            }
+
             // Build accordion items
             directionsData.forEach((item, i) => {
                 const div = document.createElement('div');
-                div.className = 'dir-accordion-item' + (i === 0 ? ' active' : '');
+                // Mobile: first item only highlighted (not expanded)
+                // Desktop: first item active (expanded)
+                if (i === 0) {
+                    div.className = 'dir-accordion-item' + (isMobile() ? ' is-highlighted' : ' active');
+                } else {
+                    div.className = 'dir-accordion-item';
+                }
                 div.dataset.index = i;
                 div.innerHTML = `
                     <div class="dir-accordion-header">
@@ -4369,12 +4404,45 @@
                         <p class="dir-accordion-text">${item.text}</p>
                     </div>
                 `;
-                // Click handler for accordion - always user-initiated
+                // Click handler for accordion
                 div.querySelector('.dir-accordion-header').addEventListener('click', () => {
-                    setActiveIndex(i, true);
+                    handleAccordionClick(i);
                 });
                 accordionEl.appendChild(div);
             });
+
+            // Handle accordion click - different behavior for mobile/desktop
+            function handleAccordionClick(index) {
+                if (isMobile()) {
+                    // Mobile: toggle is-open for clicked item, close others
+                    const items = accordionEl.querySelectorAll('.dir-accordion-item');
+                    const clickedItem = items[index];
+                    const wasOpen = clickedItem.classList.contains('is-open');
+
+                    // Close all
+                    items.forEach(item => item.classList.remove('is-open'));
+
+                    // Toggle clicked item
+                    if (!wasOpen) {
+                        clickedItem.classList.add('is-open');
+                    }
+
+                    // Sync slide to clicked item
+                    activeIndex = index;
+                    galleryTrack.style.transform = `translateX(-${activeIndex * 100}%)`;
+                    if (navDots) {
+                        navDots.querySelectorAll('.dot').forEach((d, i) => {
+                            d.classList.toggle('active', i === activeIndex);
+                        });
+                    }
+                    // Update highlight
+                    updateHighlight(activeIndex);
+                    resetAutoplay();
+                } else {
+                    // Desktop: standard behavior
+                    setActiveIndex(index, true);
+                }
+            }
 
             // Preload all images for smoother transitions
             galleryImages.forEach((img, i) => {
@@ -4409,14 +4477,10 @@
                 for (let i = 0; i < totalSlides; i++) {
                     const dot = document.createElement('span');
                     dot.className = 'dot' + (i === 0 ? ' active' : '');
-                    dot.addEventListener('click', () => setActiveIndex(i, true)); // user-initiated
+                    // Dots: on mobile only highlight, on desktop full sync
+                    dot.addEventListener('click', () => setActiveIndex(i, false));
                     navDots.appendChild(dot);
                 }
-            }
-
-            // Check if mobile
-            function isMobile() {
-                return window.matchMedia('(max-width: 767px)').matches;
             }
 
             // Update only highlight (mobile: no expand, just visual highlight)
@@ -4434,7 +4498,8 @@
             }
 
             // Core sync function - updates accordion + gallery + dots
-            // userClick = true when user clicks (always expand), false for auto/swipe
+            // On mobile: never auto-expand, only highlight
+            // On desktop: always sync expand
             function setActiveIndex(index, userClick = false) {
                 activeIndex = ((index % totalSlides) + totalSlides) % totalSlides;
 
@@ -4449,11 +4514,12 @@
                 }
 
                 // Mobile vs Desktop behavior
-                if (isMobile() && !userClick) {
-                    // Mobile + auto/swipe: only highlight header, no expand
+                if (isMobile()) {
+                    // Mobile: ALWAYS only highlight, never auto-expand
+                    // is-open is controlled separately by handleAccordionClick
                     updateHighlight(activeIndex);
                 } else {
-                    // Desktop OR user click: full expand
+                    // Desktop: always sync expand
                     updateHighlight(-1); // remove all highlights
                     updateAccordionExpand(activeIndex);
                 }
