@@ -1320,10 +1320,10 @@
 
         @media (min-width: 992px) {
             .directions-gallery-wrapper {
-                flex: 0 0 60%;
+                flex: 0 0 55%;
+                max-width: 55%;
                 order: 2;
-                /* Full-bleed to right edge */
-                margin-right: calc(50% - 50vw);
+                /* Removed full-bleed, gallery stays within column */
             }
         }
 
@@ -1344,7 +1344,8 @@
 
         @media (min-width: 992px) {
             .directions-gallery {
-                height: 522px;
+                height: 460px;
+                border-radius: 8px;
             }
         }
 
