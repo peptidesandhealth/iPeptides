@@ -1080,7 +1080,7 @@
                 flex-direction: row;
                 align-items: stretch;
                 gap: 0;
-                padding: 0 var(--container-padding);
+                padding: 0 0 0 var(--container-padding);
                 max-width: none;
             }
         }
@@ -1094,9 +1094,8 @@
 
         @media (min-width: 992px) {
             .directions-content {
-                flex: 0 0 auto;
-                width: 40%;
-                max-width: 420px;
+                flex: 0 0 40%;
+                padding-right: 32px;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -1321,12 +1320,10 @@
 
         @media (min-width: 992px) {
             .directions-gallery-wrapper {
-                flex: 1;
+                flex: 0 0 55%;
+                max-width: 55%;
                 order: 2;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
+                /* Removed full-bleed, gallery stays within column */
             }
         }
 
@@ -1347,8 +1344,6 @@
 
         @media (min-width: 992px) {
             .directions-gallery {
-                width: 100%;
-                max-width: 540px;
                 height: 460px;
                 border-radius: 8px;
             }
